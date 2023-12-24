@@ -41,7 +41,7 @@
   "name": "GetShowSnapshotResponse",
   "message": {
     "fields": [{
-      "name": "shows",
+      "name": "show",
       "type": "ShowSnapshot",
       "import": "./show"
     }]

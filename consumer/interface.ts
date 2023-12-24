@@ -61,14 +61,14 @@ export let GET_SHOW_SNAPSHOT_REQUEST_BODY: MessageDescriptor<GetShowSnapshotRequ
 };
 
 export interface GetShowSnapshotResponse {
-  shows?: ShowSnapshot,
+  show?: ShowSnapshot,
 }
 
 export let GET_SHOW_SNAPSHOT_RESPONSE: MessageDescriptor<GetShowSnapshotResponse> = {
   name: 'GetShowSnapshotResponse',
   fields: [
     {
-      name: 'shows',
+      name: 'show',
       messageType: SHOW_SNAPSHOT,
     },
   ]
