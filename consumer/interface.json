@@ -1,37 +1,4 @@
 [{
-  "name": "ListShowsRequestBody",
-  "message": {
-    "fields": [{
-      "name": "showId",
-      "type": "string",
-      "isArray": true
-    }]
-  }
-}, {
-  "name": "ListShowsResponse",
-  "message": {
-    "fields": [{
-      "name": "shows",
-      "type": "ShowSnapshot",
-      "import": "./show_snapshot",
-      "isArray": true
-    }]
-  }
-}, {
-  "name": "ListShows",
-  "service": {
-    "path": "/ListShows",
-    "body": "ListShowsRequestBody",
-    "auth": {
-      "key": "auth",
-      "type": "WebClientSession",
-      "import": "@phading/user_session_service_interface/web_client_session"
-    },
-    "response": "ListShowsResponse",
-    "outputWebClient": "./client_requests",
-    "outputHandler": "./server_handler"
-  }
-}, {
   "name": "GetShowRequestBody",
   "message": {
     "fields": [{
@@ -59,6 +26,37 @@
       "import": "@phading/user_session_service_interface/web_client_session"
     },
     "response": "GetShowResponse",
+    "outputWebClient": "./client_requests",
+    "outputHandler": "./server_handler"
+  }
+}, {
+  "name": "GetShowSnapshotRequestBody",
+  "message": {
+    "fields": [{
+      "name": "showId",
+      "type": "string"
+    }]
+  }
+}, {
+  "name": "GetShowSnapshotResponse",
+  "message": {
+    "fields": [{
+      "name": "shows",
+      "type": "ShowSnapshot",
+      "import": "./show"
+    }]
+  }
+}, {
+  "name": "GetShowSnapshot",
+  "service": {
+    "path": "/GetShowSnapshot",
+    "body": "GetShowSnapshotRequestBody",
+    "auth": {
+      "key": "auth",
+      "type": "WebClientSession",
+      "import": "@phading/user_session_service_interface/web_client_session"
+    },
+    "response": "GetShowSnapshotResponse",
     "outputWebClient": "./client_requests",
     "outputHandler": "./server_handler"
   }

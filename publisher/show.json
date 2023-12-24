@@ -25,9 +25,32 @@
       "type": "number",
       "comment": "Timestamp in sec. Empty means not published yet but may be pending published."
     }, {
-      "name": "errorMessage",
+      "name": "errorMessages",
       "type": "string",
+      "isArray": true,
       "comment": "Any problem during publishing process. E.g. failed to encode the video, or failed to make a payment."
+    }]
+  }
+}, {
+  "name": "ShowSnapshot",
+  "message": {
+    "fields": [{
+      "name": "id",
+      "type": "string"
+    }, {
+      "name": "title",
+      "type": "string"
+    }, {
+      "name": "coverImagePath",
+      "type": "string"
+    }, {
+      "name": "publishedTime",
+      "type": "number",
+      "comment": "Timestamp in sec. Empty means not published yet but may be pending published."
+    }, {
+      "name": "showHasError",
+      "type": "boolean",
+      "comment": "Show a message that there are errors the user should check."
     }]
   }
 }]

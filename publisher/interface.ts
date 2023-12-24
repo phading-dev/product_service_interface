@@ -1,8 +1,7 @@
 import { MessageDescriptor, PrimitiveType } from '@selfage/message/descriptor';
 import { ServiceDescriptor, PrimitveTypeForBody } from '@selfage/service_descriptor';
 import { WEB_CLIENT_SESSION } from '@phading/user_session_service_interface/web_client_session';
-import { Show, SHOW } from './show';
-import { ShowSnapshot, SHOW_SNAPSHOT } from './show_snapshot';
+import { Show, SHOW, ShowSnapshot, SHOW_SNAPSHOT } from './show';
 
 export interface CreateDraftShowRequestBody {
 }

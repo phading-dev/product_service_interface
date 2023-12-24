@@ -223,7 +223,7 @@
     "fields": [{
       "name": "shows",
       "type": "ShowSnapshot",
-      "import": "./show_snapshot",
+      "import": "./show",
       "isArray": true
     }]
   }

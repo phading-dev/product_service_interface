@@ -11,7 +11,7 @@ export interface Show {
 /* Timestamp in sec. Empty means not published yet but may be pending published. */
   publishedTime?: number,
 /* Any problem during publishing process. E.g. failed to encode the video, or failed to make a payment. */
-  errorMessage?: string,
+  errorMessages?: Array<string>,
 }
 
 export let SHOW: MessageDescriptor<Show> = {
@@ -46,8 +46,45 @@ export let SHOW: MessageDescriptor<Show> = {
       primitiveType: PrimitiveType.NUMBER,
     },
     {
-      name: 'errorMessage',
+      name: 'errorMessages',
       primitiveType: PrimitiveType.STRING,
+      isArray: true,
+    },
+  ]
+};
+
+export interface ShowSnapshot {
+  id?: string,
+  title?: string,
+  coverImagePath?: string,
+/* Timestamp in sec. Empty means not published yet but may be pending published. */
+  publishedTime?: number,
+/* Show a message that there are errors the user should check. */
+  showHasError?: boolean,
+}
+
+export let SHOW_SNAPSHOT: MessageDescriptor<ShowSnapshot> = {
+  name: 'ShowSnapshot',
+  fields: [
+    {
+      name: 'id',
+      primitiveType: PrimitiveType.STRING,
+    },
+    {
+      name: 'title',
+      primitiveType: PrimitiveType.STRING,
+    },
+    {
+      name: 'coverImagePath',
+      primitiveType: PrimitiveType.STRING,
+    },
+    {
+      name: 'publishedTime',
+      primitiveType: PrimitiveType.NUMBER,
+    },
+    {
+      name: 'showHasError',
+      primitiveType: PrimitiveType.BOOLEAN,
     },
   ]
 };
