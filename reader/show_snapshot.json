@@ -1,0 +1,18 @@
+[{
+  "name": "ShowSnapshot",
+  "message": {
+    "fields": [{
+      "name": "id",
+      "type": "string"
+    }, {
+      "name": "title",
+      "type": "string"
+    }, {
+      "name": "coverImagePath",
+      "type": "string"
+    }, {
+      "name": "publishedTime",
+      "type": "number"
+    }]
+  }
+}]

@@ -1,0 +1,244 @@
+[{
+  "name": "CreateDraftShowRequestBody",
+  "message": {
+    "fields": []
+  }
+}, {
+  "name": "CreateDraftShowResponse",
+  "message": {
+    "fields": [{
+      "name": "showId",
+      "type": "string"
+    }]
+  }
+}, {
+  "name": "CreateDraftShow",
+  "service": {
+    "path": "/CreateDraftShow",
+    "body": "CreateDraftShowRequestBody",
+    "auth": {
+      "key": "auth",
+      "type": "WebClientSession",
+      "import": "@phading/user_session_service_interface/web_client_session"
+    },
+    "response": "CreateDraftShowResponse",
+    "outputWebClient": "./client_requests",
+    "outputHandler": "./server_handler"
+  }
+}, {
+  "name": "EditShowRequestBody",
+  "message": {
+    "fields": [{
+      "name": "showId",
+      "type": "string"
+    }, {
+      "name": "title",
+      "type": "string"
+    }, {
+      "name": "description",
+      "type": "string"
+    }, {
+      "name": "scheduledPublishTime",
+      "type": "number",
+      "comment": "Timestamp in sec. Empty means in draft or unpublished."
+    }]
+  }
+}, {
+  "name": "EditShowResponse",
+  "message": {
+    "fields": []
+  }
+}, {
+  "name": "EditShow",
+  "service": {
+    "path": "/EditShow",
+    "body": "EditShowRequestBody",
+    "auth": {
+      "key": "auth",
+      "type": "WebClientSession",
+      "import": "@phading/user_session_service_interface/web_client_session"
+    },
+    "response": "EditShowResponse",
+    "outputWebClient": "./client_requests",
+    "outputHandler": "./server_handler"
+  }
+}, {
+  "name": "UploadCoverImageRequestMetadata",
+  "message": {
+    "fields": [{
+      "name": "showId",
+      "type": "string"
+    }]
+  }
+}, {
+  "name": "UploadCoverImageResponse",
+  "message": {
+    "fields": []
+  }
+}, {
+  "name": "UploadCoverImage",
+  "service": {
+    "path": "/UploadCoverImage",
+    "metadata": {
+      "key": "metadata",
+      "type": "UploadCoverImageRequestMetadata"
+    },
+    "body": "bytes",
+    "auth": {
+      "key": "auth",
+      "type": "WebClientSession",
+      "import": "@phading/user_session_service_interface/web_client_session"
+    },
+    "response": "UploadCoverImageResponse",
+    "outputWebClient": "./client_requests",
+    "outputHandler": "./server_handler"
+  }
+}, {
+  "name": "GetPendingUploadShowRequestBody",
+  "message": {
+    "fields": [{
+      "name": "showId",
+      "type": "string"
+    }]
+  }
+}, {
+  "name": "GetPendingUploadShowResponse",
+  "message": {
+    "fields": [{
+      "name": "offsetBytes",
+      "type": "number"
+    }]
+  }
+}, {
+  "name": "GetPendingUploadShow",
+  "service": {
+    "path": "/GetPendingUploadShow",
+    "body": "GetPendingUploadShowRequestBody",
+    "auth": {
+      "key": "auth",
+      "type": "WebClientSession",
+      "import": "@phading/user_session_service_interface/web_client_session"
+    },
+    "response": "GetPendingUploadShowResponse",
+    "outputWebClient": "./client_requests",
+    "outputHandler": "./server_handler"
+  }
+}, {
+  "name": "RestartUploadShowRequestBody",
+  "message": {
+    "fields": [{
+      "name": "showId",
+      "type": "string"
+    }]
+  }
+}, {
+  "name": "RestartUploadShowResponse",
+  "message": {
+    "fields": []
+  }
+}, {
+  "name": "RestartUploadShow",
+  "service": {
+    "path": "/RestartUploadShow",
+    "body": "RestartUploadShowRequestBody",
+    "auth": {
+      "key": "auth",
+      "type": "WebClientSession",
+      "import": "@phading/user_session_service_interface/web_client_session"
+    },
+    "response": "RestartUploadShowResponse",
+    "outputWebClient": "./client_requests",
+    "outputHandler": "./server_handler"
+  }
+}, {
+  "name": "UploadShowRequestMetadata",
+  "message": {
+    "fields": [{
+      "name": "showId",
+      "type": "string"
+    }]
+  }
+}, {
+  "name": "UploadShowResponse",
+  "message": {
+    "fields": []
+  }
+}, {
+  "name": "UploadShow",
+  "service": {
+    "path": "/UploadShow",
+    "metadata": {
+      "key": "metadata",
+      "type": "UploadShowRequestMetadata"
+    },
+    "body": "bytes",
+    "auth": {
+      "key": "auth",
+      "type": "WebClientSession",
+      "import": "@phading/user_session_service_interface/web_client_session"
+    },
+    "response": "UploadShowResponse",
+    "outputWebClient": "./client_requests",
+    "outputHandler": "./server_handler"
+  }
+}, {
+  "name": "GetShowRequestBody",
+  "message": {
+    "fields": [{
+      "name": "showId",
+      "type": "string"
+    }]
+  }
+}, {
+  "name": "GetShowResponse",
+  "message": {
+    "fields": [{
+      "name": "show",
+      "type": "Show",
+      "import": "./show"
+    }]
+  }
+}, {
+  "name": "GetShow",
+  "service": {
+    "path": "/GetShow",
+    "body": "GetShowRequestBody",
+    "auth": {
+      "key": "auth",
+      "type": "WebClientSession",
+      "import": "@phading/user_session_service_interface/web_client_session"
+    },
+    "response": "GetShowResponse",
+    "outputWebClient": "./client_requests",
+    "outputHandler": "./server_handler"
+  }
+}, {
+  "name": "ListShowsSnapshotRequestBody",
+  "message": {
+    "fields": []
+  }
+}, {
+  "name": "ListShowsSnapshotResponse",
+  "message": {
+    "fields": [{
+      "name": "shows",
+      "type": "ShowSnapshot",
+      "import": "./show_snapshot",
+      "isArray": true
+    }]
+  }
+}, {
+  "name": "ListShowsSnapshot",
+  "service": {
+    "path": "/ListShowsSnapshot",
+    "body": "ListShowsSnapshotRequestBody",
+    "auth": {
+      "key": "auth",
+      "type": "WebClientSession",
+      "import": "@phading/user_session_service_interface/web_client_session"
+    },
+    "response": "ListShowsSnapshotResponse",
+    "outputWebClient": "./client_requests",
+    "outputHandler": "./server_handler"
+  }
+}]

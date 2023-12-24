@@ -1,0 +1,33 @@
+[{
+  "name": "Show",
+  "message": {
+    "fields": [{
+      "name": "id",
+      "type": "string"
+    }, {
+      "name": "title",
+      "type": "string"
+    }, {
+      "name": "description",
+      "type": "string"
+    }, {
+      "name": "videoPath",
+      "type": "string"
+    }, {
+      "name": "coverImagePath",
+      "type": "string"
+    }, {
+      "name": "scheduledPublishTime",
+      "type": "number",
+      "comment": "Timestamp in sec. Empty means in draft or unpublished."
+    }, {
+      "name": "publishedTime",
+      "type": "number",
+      "comment": "Timestamp in sec. Empty means not published yet but may be pending published."
+    }, {
+      "name": "errorMessage",
+      "type": "string",
+      "comment": "Any problem during publishing process. E.g. failed to encode the video, or failed to make a payment."
+    }]
+  }
+}]
