@@ -1,4 +1,192 @@
 [{
+  "name": "RecordPlayHistoryRequestBody",
+  "message": {
+    "fields": [{
+      "name": "productId",
+      "type": "string"
+    }, {
+      "name": "playedTimestamp",
+      "type": "number",
+      "comment": "When it was played."
+    }, {
+      "name": "progress",
+      "type": "number",
+      "comment": "Interpert differently per app type."
+    }]
+  }
+}, {
+  "name": "RecordPlayHistoryResponse",
+  "message": {
+    "fields": []
+  }
+}, {
+  "name": "RecordPlayHistory",
+  "service": {
+    "path": "/RecordPlayHistory",
+    "body": "RecordPlayHistoryRequestBody",
+    "auth": {
+      "key": "auth",
+      "type": "WebClientSession",
+      "import": "@phading/user_session_service_interface/web_client_session"
+    },
+    "response": "RecordPlayHistoryResponse",
+    "outputWebClient": "./client_requests",
+    "outputHandler": "./server_handlers"
+  }
+}, {
+  "name": "SaveProductRequestBody",
+  "message": {
+    "fields": [{
+      "name": "productId",
+      "type": "number"
+    }, {
+      "name": "listId",
+      "type": "string",
+      "comment": "Optional. If empty, save to the default list."
+    }]
+  }
+}, {
+  "name": "SaveProductResponse",
+  "message": {
+    "fields": []
+  }
+}, {
+  "name": "SaveProduct",
+  "service": {
+    "path": "/SaveProduct",
+    "body": "SaveProductRequestBody",
+    "auth": {
+      "key": "auth",
+      "type": "WebClientSession",
+      "import": "@phading/user_session_service_interface/web_client_session"
+    },
+    "response": "SaveProductResponse",
+    "outputWebClient": "./client_requests",
+    "outputHandler": "./server_handlers"
+  }
+}, {
+  "name": "CreateSavedProductListRequestBody",
+  "message": {
+    "fields": [{
+      "name": "appType",
+      "type": "AppType",
+      "import": "../app_type"
+    }, {
+      "name": "name",
+      "type": "string"
+    }]
+  }
+}, {
+  "name": "CreateSavedProductListResponse",
+  "message": {
+    "fields": [{
+      "name": "listId",
+      "type": "string"
+    }]
+  }
+}, {
+  "name": "CreateSavedProductList",
+  "service": {
+    "path": "/CreateSavedProductList",
+    "body": "CreateSavedProductListRequestBody",
+    "auth": {
+      "key": "auth",
+      "type": "WebClientSession",
+      "import": "@phading/user_session_service_interface/web_client_session"
+    },
+    "response": "CreateSavedProductListResponse",
+    "outputWebClient": "./client_requests",
+    "outputHandler": "./server_handlers"
+  }
+}, {
+  "name": "DeleteSavedProductListRequestBody",
+  "message": {
+    "fields": [{
+      "name": "listId",
+      "type": "string"
+    }]
+  }
+}, {
+  "name": "DeleteSavedProductListResponse",
+  "message": {
+    "fields": []
+  }
+}, {
+  "name": "DeleteSavedProductList",
+  "service": {
+    "path": "/DeleteSavedProductList",
+    "body": "DeleteSavedProductListRequestBody",
+    "auth": {
+      "key": "auth",
+      "type": "WebClientSession",
+      "import": "@phading/user_session_service_interface/web_client_session"
+    },
+    "response": "DeleteSavedProductListResponse",
+    "outputWebClient": "./client_requests",
+    "outputHandler": "./server_handlers"
+  }
+}, {
+  "name": "ListSavedProductListsRequestBody",
+  "message": {
+    "fields": [{
+      "name": "appType",
+      "type": "AppType",
+      "import": "../app_type"
+    }]
+  }
+}, {
+  "name": "ListSavedProductListsResponse",
+  "message": {
+    "fields": [{
+      "name": "lists",
+      "type": "SavedProductList",
+      "import": "./saved_product_list",
+      "isArray": true
+    }]
+  }
+}, {
+  "name": "ListSavedProductLists",
+  "service": {
+    "path": "/ListSavedProductLists",
+    "body": "ListSavedProductListsRequestBody",
+    "auth": {
+      "key": "auth",
+      "type": "WebClientSession",
+      "import": "@phading/user_session_service_interface/web_client_session"
+    },
+    "response": "ListSavedProductListsResponse",
+    "outputWebClient": "./client_requests",
+    "outputHandler": "./server_handlers"
+  }
+}, {
+  "name": "EditSavedProductListRequestBody",
+  "message": {
+    "fields": [{
+      "name": "list",
+      "type": "SavedProductList",
+      "import": "./saved_product_list"
+    }]
+  }
+}, {
+  "name": "EditSavedProductListResponse",
+  "message": {
+    "fields": []
+  }
+}, {
+  "name": "EditSavedProductList",
+  "service": {
+    "path": "/EditSavedProductList",
+    "body": "EditSavedProductListRequestBody",
+    "auth": {
+      "key": "auth",
+      "type": "WebClientSession",
+      "import": "@phading/user_session_service_interface/web_client_session"
+    },
+    "response": "EditSavedProductListResponse",
+    "outputWebClient": "./client_requests",
+    "outputHandler": "./server_handlers"
+  }
+}, {
   "name": "GetShowRequestBody",
   "message": {
     "fields": [{
@@ -27,7 +215,7 @@
     },
     "response": "GetShowResponse",
     "outputWebClient": "./client_requests",
-    "outputHandler": "./server_handler"
+    "outputHandler": "./server_handlers"
   }
 }, {
   "name": "GetShowSnapshotRequestBody",
@@ -58,6 +246,6 @@
     },
     "response": "GetShowSnapshotResponse",
     "outputWebClient": "./client_requests",
-    "outputHandler": "./server_handler"
+    "outputHandler": "./server_handlers"
   }
 }]

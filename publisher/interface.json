@@ -23,7 +23,7 @@
     },
     "response": "CreateDraftShowResponse",
     "outputWebClient": "./client_requests",
-    "outputHandler": "./server_handler"
+    "outputHandler": "./server_handlers"
   }
 }, {
   "name": "EditShowRequestBody",
@@ -60,7 +60,7 @@
     },
     "response": "EditShowResponse",
     "outputWebClient": "./client_requests",
-    "outputHandler": "./server_handler"
+    "outputHandler": "./server_handlers"
   }
 }, {
   "name": "UploadCoverImageRequestMetadata",
@@ -91,7 +91,7 @@
     },
     "response": "UploadCoverImageResponse",
     "outputWebClient": "./client_requests",
-    "outputHandler": "./server_handler"
+    "outputHandler": "./server_handlers"
   }
 }, {
   "name": "GetPendingUploadShowRequestBody",
@@ -121,7 +121,7 @@
     },
     "response": "GetPendingUploadShowResponse",
     "outputWebClient": "./client_requests",
-    "outputHandler": "./server_handler"
+    "outputHandler": "./server_handlers"
   }
 }, {
   "name": "RestartUploadShowRequestBody",
@@ -148,7 +148,7 @@
     },
     "response": "RestartUploadShowResponse",
     "outputWebClient": "./client_requests",
-    "outputHandler": "./server_handler"
+    "outputHandler": "./server_handlers"
   }
 }, {
   "name": "UploadShowRequestMetadata",
@@ -179,7 +179,7 @@
     },
     "response": "UploadShowResponse",
     "outputWebClient": "./client_requests",
-    "outputHandler": "./server_handler"
+    "outputHandler": "./server_handlers"
   }
 }, {
   "name": "GetShowRequestBody",
@@ -210,7 +210,7 @@
     },
     "response": "GetShowResponse",
     "outputWebClient": "./client_requests",
-    "outputHandler": "./server_handler"
+    "outputHandler": "./server_handlers"
   }
 }, {
   "name": "ListShowsSnapshotRequestBody",
@@ -239,6 +239,6 @@
     },
     "response": "ListShowsSnapshotResponse",
     "outputWebClient": "./client_requests",
-    "outputHandler": "./server_handler"
+    "outputHandler": "./server_handlers"
   }
 }]
