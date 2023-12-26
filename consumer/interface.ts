@@ -2,7 +2,7 @@ import { MessageDescriptor, PrimitiveType } from '@selfage/message/descriptor';
 import { ServiceDescriptor } from '@selfage/service_descriptor';
 import { WEB_CLIENT_SESSION } from '@phading/user_session_service_interface/web_client_session';
 import { AppType, APP_TYPE } from '../app_type';
-import { SavedProductList, SAVED_PRODUCT_LIST } from './saved_product_list';
+import { SavedProductListSnapshot, SAVED_PRODUCT_LIST_SNAPSHOT, SavedProductList, SAVED_PRODUCT_LIST } from './saved_product_list';
 import { Show, SHOW, ShowSnapshot, SHOW_SNAPSHOT } from './show';
 
 export interface RecordPlayHistoryRequestBody {
@@ -200,7 +200,7 @@ export let LIST_SAVED_PRODUCT_LISTS_REQUEST_BODY: MessageDescriptor<ListSavedPro
 };
 
 export interface ListSavedProductListsResponse {
-  lists?: Array<SavedProductList>,
+  lists?: Array<SavedProductListSnapshot>,
 }
 
 export let LIST_SAVED_PRODUCT_LISTS_RESPONSE: MessageDescriptor<ListSavedProductListsResponse> = {
@@ -208,7 +208,7 @@ export let LIST_SAVED_PRODUCT_LISTS_RESPONSE: MessageDescriptor<ListSavedProduct
   fields: [
     {
       name: 'lists',
-      messageType: SAVED_PRODUCT_LIST,
+      messageType: SAVED_PRODUCT_LIST_SNAPSHOT,
       isArray: true,
     },
   ]
@@ -226,6 +226,49 @@ export let LIST_SAVED_PRODUCT_LISTS: ServiceDescriptor = {
   },
   response: {
     messageType: LIST_SAVED_PRODUCT_LISTS_RESPONSE,
+  },
+}
+
+export interface GetSavedProductListRequestBody {
+  listId?: string,
+}
+
+export let GET_SAVED_PRODUCT_LIST_REQUEST_BODY: MessageDescriptor<GetSavedProductListRequestBody> = {
+  name: 'GetSavedProductListRequestBody',
+  fields: [
+    {
+      name: 'listId',
+      primitiveType: PrimitiveType.STRING,
+    },
+  ]
+};
+
+export interface GetSavedProductListResponse {
+  list?: SavedProductList,
+}
+
+export let GET_SAVED_PRODUCT_LIST_RESPONSE: MessageDescriptor<GetSavedProductListResponse> = {
+  name: 'GetSavedProductListResponse',
+  fields: [
+    {
+      name: 'list',
+      messageType: SAVED_PRODUCT_LIST,
+    },
+  ]
+};
+
+export let GET_SAVED_PRODUCT_LIST: ServiceDescriptor = {
+  name: "GetSavedProductList",
+  path: "/GetSavedProductList",
+  body: {
+    messageType: GET_SAVED_PRODUCT_LIST_REQUEST_BODY,
+  },
+  auth: {
+    key: "auth",
+    type: WEB_CLIENT_SESSION
+  },
+  response: {
+    messageType: GET_SAVED_PRODUCT_LIST_RESPONSE,
   },
 }
 

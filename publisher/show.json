@@ -2,10 +2,10 @@
   "name": "Show",
   "message": {
     "fields": [{
-      "name": "id",
+      "name": "showId",
       "type": "string"
     }, {
-      "name": "title",
+      "name": "name",
       "type": "string"
     }, {
       "name": "description",
@@ -35,10 +35,10 @@
   "name": "ShowSnapshot",
   "message": {
     "fields": [{
-      "name": "id",
+      "name": "showId",
       "type": "string"
     }, {
-      "name": "title",
+      "name": "name",
       "type": "string"
     }, {
       "name": "coverImagePath",

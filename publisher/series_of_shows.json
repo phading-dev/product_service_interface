@@ -1,8 +1,8 @@
 [{
-  "name": "Show",
+  "name": "SeriesOfShows",
   "message": {
     "fields": [{
-      "name": "showId",
+      "name": "seriesOfShowsId",
       "type": "string"
     }, {
       "name": "name",
@@ -11,21 +11,23 @@
       "name": "description",
       "type": "string"
     }, {
-      "name": "videoPath",
-      "type": "string"
-    }, {
       "name": "coverImagePath",
       "type": "string"
     }, {
-      "name": "publishedTime",
+      "name": "createdTimestamp",
       "type": "number"
+    }, {
+      "name": "seasons",
+      "type": "SeasonOfShowsSnapshot",
+      "import": "./season_of_shows",
+      "isArray": true
     }]
   }
 }, {
-  "name": "ShowSnapshot",
+  "name": "SeriesOfShowsSnapshot",
   "message": {
     "fields": [{
-      "name": "showId",
+      "name": "seriesOfShowsId",
       "type": "string"
     }, {
       "name": "name",
@@ -34,7 +36,7 @@
       "name": "coverImagePath",
       "type": "string"
     }, {
-      "name": "publishedTime",
+      "name": "createdTimestamp",
       "type": "number"
     }]
   }

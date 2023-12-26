@@ -1,19 +1,20 @@
 import { MessageDescriptor, PrimitiveType } from '@selfage/message/descriptor';
+import { ShowSnapshot, SHOW_SNAPSHOT } from './show';
 
-export interface Show {
-  showId?: string,
+export interface SeasonOfShows {
+  seasonOfShowsId?: string,
   name?: string,
   description?: string,
-  videoPath?: string,
   coverImagePath?: string,
-  publishedTime?: number,
+  createdTimestamp?: number,
+  shows?: Array<ShowSnapshot>,
 }
 
-export let SHOW: MessageDescriptor<Show> = {
-  name: 'Show',
+export let SEASON_OF_SHOWS: MessageDescriptor<SeasonOfShows> = {
+  name: 'SeasonOfShows',
   fields: [
     {
-      name: 'showId',
+      name: 'seasonOfShowsId',
       primitiveType: PrimitiveType.STRING,
     },
     {
@@ -25,32 +26,33 @@ export let SHOW: MessageDescriptor<Show> = {
       primitiveType: PrimitiveType.STRING,
     },
     {
-      name: 'videoPath',
-      primitiveType: PrimitiveType.STRING,
-    },
-    {
       name: 'coverImagePath',
       primitiveType: PrimitiveType.STRING,
     },
     {
-      name: 'publishedTime',
+      name: 'createdTimestamp',
       primitiveType: PrimitiveType.NUMBER,
+    },
+    {
+      name: 'shows',
+      messageType: SHOW_SNAPSHOT,
+      isArray: true,
     },
   ]
 };
 
-export interface ShowSnapshot {
-  showId?: string,
+export interface SeasonOfShowsSnapshot {
+  seasonOfShowsId?: string,
   name?: string,
   coverImagePath?: string,
-  publishedTime?: number,
+  createdTimestamp?: number,
 }
 
-export let SHOW_SNAPSHOT: MessageDescriptor<ShowSnapshot> = {
-  name: 'ShowSnapshot',
+export let SEASON_OF_SHOWS_SNAPSHOT: MessageDescriptor<SeasonOfShowsSnapshot> = {
+  name: 'SeasonOfShowsSnapshot',
   fields: [
     {
-      name: 'showId',
+      name: 'seasonOfShowsId',
       primitiveType: PrimitiveType.STRING,
     },
     {
@@ -62,7 +64,7 @@ export let SHOW_SNAPSHOT: MessageDescriptor<ShowSnapshot> = {
       primitiveType: PrimitiveType.STRING,
     },
     {
-      name: 'publishedTime',
+      name: 'createdTimestamp',
       primitiveType: PrimitiveType.NUMBER,
     },
   ]

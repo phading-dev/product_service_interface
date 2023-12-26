@@ -1,5 +1,5 @@
 import { WebServiceClientInterface } from '@selfage/service_descriptor/web_service_client_interface';
-import { RecordPlayHistoryRequestBody, RecordPlayHistoryResponse, RECORD_PLAY_HISTORY, SaveProductRequestBody, SaveProductResponse, SAVE_PRODUCT, CreateSavedProductListRequestBody, CreateSavedProductListResponse, CREATE_SAVED_PRODUCT_LIST, DeleteSavedProductListRequestBody, DeleteSavedProductListResponse, DELETE_SAVED_PRODUCT_LIST, ListSavedProductListsRequestBody, ListSavedProductListsResponse, LIST_SAVED_PRODUCT_LISTS, EditSavedProductListRequestBody, EditSavedProductListResponse, EDIT_SAVED_PRODUCT_LIST, GetShowRequestBody, GetShowResponse, GET_SHOW, GetShowSnapshotRequestBody, GetShowSnapshotResponse, GET_SHOW_SNAPSHOT } from './interface';
+import { RecordPlayHistoryRequestBody, RecordPlayHistoryResponse, RECORD_PLAY_HISTORY, SaveProductRequestBody, SaveProductResponse, SAVE_PRODUCT, CreateSavedProductListRequestBody, CreateSavedProductListResponse, CREATE_SAVED_PRODUCT_LIST, DeleteSavedProductListRequestBody, DeleteSavedProductListResponse, DELETE_SAVED_PRODUCT_LIST, ListSavedProductListsRequestBody, ListSavedProductListsResponse, LIST_SAVED_PRODUCT_LISTS, GetSavedProductListRequestBody, GetSavedProductListResponse, GET_SAVED_PRODUCT_LIST, EditSavedProductListRequestBody, EditSavedProductListResponse, EDIT_SAVED_PRODUCT_LIST, GetShowRequestBody, GetShowResponse, GET_SHOW, GetShowSnapshotRequestBody, GetShowSnapshotResponse, GET_SHOW_SNAPSHOT } from './interface';
 
 export function recordPlayHistory(
   client: WebServiceClientInterface,
@@ -47,6 +47,16 @@ export function listSavedProductLists(
 ): Promise<ListSavedProductListsResponse> {
   return client.send({
     descriptor: LIST_SAVED_PRODUCT_LISTS,
+    body,
+  });
+}
+
+export function getSavedProductList(
+  client: WebServiceClientInterface,
+  body: GetSavedProductListRequestBody,
+): Promise<GetSavedProductListResponse> {
+  return client.send({
+    descriptor: GET_SAVED_PRODUCT_LIST,
     body,
   });
 }

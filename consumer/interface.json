@@ -139,7 +139,7 @@
   "message": {
     "fields": [{
       "name": "lists",
-      "type": "SavedProductList",
+      "type": "SavedProductListSnapshot",
       "import": "./saved_product_list",
       "isArray": true
     }]
@@ -155,6 +155,37 @@
       "import": "@phading/user_session_service_interface/web_client_session"
     },
     "response": "ListSavedProductListsResponse",
+    "outputWebClient": "./client_requests",
+    "outputHandler": "./server_handlers"
+  }
+}, {
+  "name": "GetSavedProductListRequestBody",
+  "message": {
+    "fields": [{
+      "name": "listId",
+      "type": "string"
+    }]
+  }
+}, {
+  "name": "GetSavedProductListResponse",
+  "message": {
+    "fields": [{
+      "name": "list",
+      "type": "SavedProductList",
+      "import": "./saved_product_list"
+    }]
+  }
+}, {
+  "name": "GetSavedProductList",
+  "service": {
+    "path": "/GetSavedProductList",
+    "body": "GetSavedProductListRequestBody",
+    "auth": {
+      "key": "auth",
+      "type": "WebClientSession",
+      "import": "@phading/user_session_service_interface/web_client_session"
+    },
+    "response": "GetSavedProductListResponse",
     "outputWebClient": "./client_requests",
     "outputHandler": "./server_handlers"
   }

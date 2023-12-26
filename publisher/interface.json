@@ -1,7 +1,10 @@
 [{
   "name": "CreateDraftShowRequestBody",
   "message": {
-    "fields": []
+    "fields": [{
+      "name": "name",
+      "type": "string"
+    }]
   }
 }, {
   "name": "CreateDraftShowResponse",
@@ -32,7 +35,7 @@
       "name": "showId",
       "type": "string"
     }, {
-      "name": "title",
+      "name": "name",
       "type": "string"
     }, {
       "name": "description",
@@ -63,7 +66,7 @@
     "outputHandler": "./server_handlers"
   }
 }, {
-  "name": "UploadCoverImageRequestMetadata",
+  "name": "UploadCoverImageOfShowRequestMetadata",
   "message": {
     "fields": [{
       "name": "showId",
@@ -71,17 +74,17 @@
     }]
   }
 }, {
-  "name": "UploadCoverImageResponse",
+  "name": "UploadCoverImageOfShowResponse",
   "message": {
     "fields": []
   }
 }, {
-  "name": "UploadCoverImage",
+  "name": "UploadCoverImageOfShow",
   "service": {
-    "path": "/UploadCoverImage",
+    "path": "/UploadCoverImageOfShow",
     "metadata": {
       "key": "metadata",
-      "type": "UploadCoverImageRequestMetadata"
+      "type": "UploadCoverImageOfShowRequestMetadata"
     },
     "body": "bytes",
     "auth": {
@@ -89,7 +92,7 @@
       "type": "WebClientSession",
       "import": "@phading/user_session_service_interface/web_client_session"
     },
-    "response": "UploadCoverImageResponse",
+    "response": "UploadCoverImageOfShowResponse",
     "outputWebClient": "./client_requests",
     "outputHandler": "./server_handlers"
   }
@@ -238,6 +241,368 @@
       "import": "@phading/user_session_service_interface/web_client_session"
     },
     "response": "ListShowsSnapshotResponse",
+    "outputWebClient": "./client_requests",
+    "outputHandler": "./server_handlers"
+  }
+}, {
+  "name": "CreateSeriesOfShowsRequestBody",
+  "message": {
+    "fields": [{
+      "name": "name",
+      "type": "string"
+    }]
+  }
+}, {
+  "name": "CreateSeriesOfShowsResponse",
+  "message": {
+    "fields": [{
+      "name": "seriesOfShowsId",
+      "type": "string"
+    }]
+  }
+}, {
+  "name": "CreateSeriesOfShows",
+  "service": {
+    "path": "/CreateSeriesOfShows",
+    "body": "CreateSeriesOfShowsRequestBody",
+    "auth": {
+      "key": "auth",
+      "type": "WebClientSession",
+      "import": "@phading/user_session_service_interface/web_client_session"
+    },
+    "response": "CreateSeriesOfShowsResponse",
+    "outputWebClient": "./client_requests",
+    "outputHandler": "./server_handlers"
+  }
+}, {
+  "name": "DeleteSeriesOfShowsRequestBody",
+  "message": {
+    "fields": [{
+      "name": "seriesOfShowsId",
+      "type": "string"
+    }]
+  }
+}, {
+  "name": "DeleteSeriesOfShowsResponse",
+  "message": {
+    "fields": []
+  }
+}, {
+  "name": "DeleteSeriesOfShows",
+  "service": {
+    "path": "/DeleteSeriesOfShows",
+    "body": "DeleteSeriesOfShowsRequestBody",
+    "auth": {
+      "key": "auth",
+      "type": "WebClientSession",
+      "import": "@phading/user_session_service_interface/web_client_session"
+    },
+    "response": "DeleteSeriesOfShowsResponse",
+    "outputWebClient": "./client_requests",
+    "outputHandler": "./server_handlers"
+  }
+}, {
+  "name": "ListSeriesOfShowsRequestBody",
+  "message": {
+    "fields": []
+  }
+}, {
+  "name": "ListSeriesOfShowsResponse",
+  "message": {
+    "fields": [{
+      "name": "seriesOfShows",
+      "type": "SeriesOfShowsSnapshot",
+      "import": "./series_of_shows",
+      "isArray": true
+    }]
+  }
+}, {
+  "name": "ListSeriesOfShows",
+  "service": {
+    "path": "/ListSeriesOfShows",
+    "body": "ListSeriesOfShowsRequestBody",
+    "auth": {
+      "key": "auth",
+      "type": "WebClientSession",
+      "import": "@phading/user_session_service_interface/web_client_session"
+    },
+    "response": "ListSeriesOfShowsResponse",
+    "outputWebClient": "./client_requests",
+    "outputHandler": "./server_handlers"
+  }
+}, {
+  "name": "GetSeriesOfShowsRequestBody",
+  "message": {
+    "fields": [{
+      "name": "seriesOfShowsId",
+      "type": "string"
+    }]
+  }
+}, {
+  "name": "GetSeriesOfShowsResponse",
+  "message": {
+    "fields": [{
+      "name": "seriesOfShows",
+      "type": "SeriesOfShows",
+      "import": "./series_of_shows"
+    }]
+  }
+}, {
+  "name": "GetSeriesOfShows",
+  "service": {
+    "path": "/GetSeriesOfShows",
+    "body": "GetSeriesOfShowsRequestBody",
+    "auth": {
+      "key": "auth",
+      "type": "WebClientSession",
+      "import": "@phading/user_session_service_interface/web_client_session"
+    },
+    "response": "GetSeriesOfShowsResponse",
+    "outputWebClient": "./client_requests",
+    "outputHandler": "./server_handlers"
+  }
+}, {
+  "name": "EditSeriesOfShowsRequestBody",
+  "message": {
+    "fields": [{
+      "name": "seriesOfShowsId",
+      "type": "string"
+    }, {
+      "name": "name",
+      "type": "string"
+    }, {
+      "name": "description",
+      "type": "string"
+    }]
+  }
+}, {
+  "name": "EditSeriesOfShowsResponse",
+  "message": {
+    "fields": []
+  }
+}, {
+  "name": "EditSeriesOfShows",
+  "service": {
+    "path": "/EditSeriesOfShows",
+    "body": "EditSeriesOfShowsRequestBody",
+    "auth": {
+      "key": "auth",
+      "type": "WebClientSession",
+      "import": "@phading/user_session_service_interface/web_client_session"
+    },
+    "response": "EditSeriesOfShowsResponse",
+    "outputWebClient": "./client_requests",
+    "outputHandler": "./server_handlers"
+  }
+}, {
+  "name": "UploadCoverImageOfSeriesOfShowsRequestMetadata",
+  "message": {
+    "fields": [{
+      "name": "seriesOfShowsId",
+      "type": "string"
+    }]
+  }
+}, {
+  "name": "UploadCoverImageOfSeriesOfShowsResponse",
+  "message": {
+    "fields": []
+  }
+}, {
+  "name": "UploadCoverImageOfSeriesOfShows",
+  "service": {
+    "path": "/UploadCoverImageOfSeriesOfShows",
+    "metadata": {
+      "key": "metadata",
+      "type": "UploadCoverImageOfSeriesOfShowsRequestMetadata"
+    },
+    "body": "bytes",
+    "auth": {
+      "key": "auth",
+      "type": "WebClientSession",
+      "import": "@phading/user_session_service_interface/web_client_session"
+    },
+    "response": "UploadCoverImageOfSeriesOfShowsResponse",
+    "outputWebClient": "./client_requests",
+    "outputHandler": "./server_handlers"
+  }
+}, {
+  "name": "CreateSeasonOfShowsRequestBody",
+  "message": {
+    "fields": [{
+      "name": "name",
+      "type": "string"
+    }]
+  }
+}, {
+  "name": "CreateSeasonOfShowsResponse",
+  "message": {
+    "fields": [{
+      "name": "seasonOfShowsId",
+      "type": "string"
+    }]
+  }
+}, {
+  "name": "CreateSeasonOfShows",
+  "service": {
+    "path": "/CreateSeasonOfShows",
+    "body": "CreateSeasonOfShowsRequestBody",
+    "auth": {
+      "key": "auth",
+      "type": "WebClientSession",
+      "import": "@phading/user_session_service_interface/web_client_session"
+    },
+    "response": "CreateSeasonOfShowsResponse",
+    "outputWebClient": "./client_requests",
+    "outputHandler": "./server_handlers"
+  }
+}, {
+  "name": "DeleteSeasonOfShowsRequestBody",
+  "message": {
+    "fields": [{
+      "name": "seasonOfShowsId",
+      "type": "string"
+    }]
+  }
+}, {
+  "name": "DeleteSeasonOfShowsResponse",
+  "message": {
+    "fields": []
+  }
+}, {
+  "name": "DeleteSeasonOfShows",
+  "service": {
+    "path": "/DeleteSeasonOfShows",
+    "body": "DeleteSeasonOfShowsRequestBody",
+    "auth": {
+      "key": "auth",
+      "type": "WebClientSession",
+      "import": "@phading/user_session_service_interface/web_client_session"
+    },
+    "response": "DeleteSeasonOfShowsResponse",
+    "outputWebClient": "./client_requests",
+    "outputHandler": "./server_handlers"
+  }
+}, {
+  "name": "ListSeasonOfShowsRequestBody",
+  "message": {
+    "fields": []
+  }
+}, {
+  "name": "ListSeasonOfShowsResponse",
+  "message": {
+    "fields": [{
+      "name": "seasonOfShows",
+      "type": "SeasonOfShowsSnapshot",
+      "import": "./season_of_shows",
+      "isArray": true
+    }]
+  }
+}, {
+  "name": "ListSeasonOfShows",
+  "service": {
+    "path": "/ListSeasonOfShows",
+    "body": "ListSeasonOfShowsRequestBody",
+    "auth": {
+      "key": "auth",
+      "type": "WebClientSession",
+      "import": "@phading/user_session_service_interface/web_client_session"
+    },
+    "response": "ListSeasonOfShowsResponse",
+    "outputWebClient": "./client_requests",
+    "outputHandler": "./server_handlers"
+  }
+}, {
+  "name": "GetSeasonOfShowsRequestBody",
+  "message": {
+    "fields": [{
+      "name": "seasonOfShowsId",
+      "type": "string"
+    }]
+  }
+}, {
+  "name": "GetSeasonOfShowsResponse",
+  "message": {
+    "fields": [{
+      "name": "seasonOfShows",
+      "type": "SeasonOfShows",
+      "import": "./season_of_shows"
+    }]
+  }
+}, {
+  "name": "GetSeasonOfShows",
+  "service": {
+    "path": "/GetSeasonOfShows",
+    "body": "GetSeasonOfShowsRequestBody",
+    "auth": {
+      "key": "auth",
+      "type": "WebClientSession",
+      "import": "@phading/user_session_service_interface/web_client_session"
+    },
+    "response": "GetSeasonOfShowsResponse",
+    "outputWebClient": "./client_requests",
+    "outputHandler": "./server_handlers"
+  }
+}, {
+  "name": "EditSeasonOfShowsRequestBody",
+  "message": {
+    "fields": [{
+      "name": "seasonOfShowsId",
+      "type": "string"
+    }, {
+      "name": "name",
+      "type": "string"
+    }, {
+      "name": "description",
+      "type": "string"
+    }]
+  }
+}, {
+  "name": "EditSeasonOfShowsResponse",
+  "message": {
+    "fields": []
+  }
+}, {
+  "name": "EditSeasonOfShows",
+  "service": {
+    "path": "/EditSeasonOfShows",
+    "body": "EditSeasonOfShowsRequestBody",
+    "auth": {
+      "key": "auth",
+      "type": "WebClientSession",
+      "import": "@phading/user_session_service_interface/web_client_session"
+    },
+    "response": "EditSeasonOfShowsResponse",
+    "outputWebClient": "./client_requests",
+    "outputHandler": "./server_handlers"
+  }
+}, {
+  "name": "UploadCoverImageOfSeasonOfShowsRequestMetadata",
+  "message": {
+    "fields": [{
+      "name": "seasonOfShowsId",
+      "type": "string"
+    }]
+  }
+}, {
+  "name": "UploadCoverImageOfSeasonOfShowsResponse",
+  "message": {
+    "fields": []
+  }
+}, {
+  "name": "UploadCoverImageOfSeasonOfShows",
+  "service": {
+    "path": "/UploadCoverImageOfSeasonOfShows",
+    "metadata": {
+      "key": "metadata",
+      "type": "UploadCoverImageOfSeasonOfShowsRequestMetadata"
+    },
+    "body": "bytes",
+    "auth": {
+      "key": "auth",
+      "type": "WebClientSession",
+      "import": "@phading/user_session_service_interface/web_client_session"
+    },
+    "response": "UploadCoverImageOfSeasonOfShowsResponse",
     "outputWebClient": "./client_requests",
     "outputHandler": "./server_handlers"
   }

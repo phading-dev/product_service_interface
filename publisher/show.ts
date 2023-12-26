@@ -1,8 +1,8 @@
 import { MessageDescriptor, PrimitiveType } from '@selfage/message/descriptor';
 
 export interface Show {
-  id?: string,
-  title?: string,
+  showId?: string,
+  name?: string,
   description?: string,
   videoPath?: string,
   coverImagePath?: string,
@@ -18,11 +18,11 @@ export let SHOW: MessageDescriptor<Show> = {
   name: 'Show',
   fields: [
     {
-      name: 'id',
+      name: 'showId',
       primitiveType: PrimitiveType.STRING,
     },
     {
-      name: 'title',
+      name: 'name',
       primitiveType: PrimitiveType.STRING,
     },
     {
@@ -54,8 +54,8 @@ export let SHOW: MessageDescriptor<Show> = {
 };
 
 export interface ShowSnapshot {
-  id?: string,
-  title?: string,
+  showId?: string,
+  name?: string,
   coverImagePath?: string,
 /* Timestamp in sec. Empty means not published yet but may be pending published. */
   publishedTime?: number,
@@ -67,11 +67,11 @@ export let SHOW_SNAPSHOT: MessageDescriptor<ShowSnapshot> = {
   name: 'ShowSnapshot',
   fields: [
     {
-      name: 'id',
+      name: 'showId',
       primitiveType: PrimitiveType.STRING,
     },
     {
-      name: 'title',
+      name: 'name',
       primitiveType: PrimitiveType.STRING,
     },
     {

@@ -1,19 +1,20 @@
 import { MessageDescriptor, PrimitiveType } from '@selfage/message/descriptor';
+import { SeasonOfShowsSnapshot, SEASON_OF_SHOWS_SNAPSHOT } from './season_of_shows';
 
-export interface Show {
-  showId?: string,
+export interface SeriesOfShows {
+  seriesOfShowsId?: string,
   name?: string,
   description?: string,
-  videoPath?: string,
   coverImagePath?: string,
-  publishedTime?: number,
+  createdTimestamp?: number,
+  seasons?: Array<SeasonOfShowsSnapshot>,
 }
 
-export let SHOW: MessageDescriptor<Show> = {
-  name: 'Show',
+export let SERIES_OF_SHOWS: MessageDescriptor<SeriesOfShows> = {
+  name: 'SeriesOfShows',
   fields: [
     {
-      name: 'showId',
+      name: 'seriesOfShowsId',
       primitiveType: PrimitiveType.STRING,
     },
     {
@@ -25,32 +26,33 @@ export let SHOW: MessageDescriptor<Show> = {
       primitiveType: PrimitiveType.STRING,
     },
     {
-      name: 'videoPath',
-      primitiveType: PrimitiveType.STRING,
-    },
-    {
       name: 'coverImagePath',
       primitiveType: PrimitiveType.STRING,
     },
     {
-      name: 'publishedTime',
+      name: 'createdTimestamp',
       primitiveType: PrimitiveType.NUMBER,
+    },
+    {
+      name: 'seasons',
+      messageType: SEASON_OF_SHOWS_SNAPSHOT,
+      isArray: true,
     },
   ]
 };
 
-export interface ShowSnapshot {
-  showId?: string,
+export interface SeriesOfShowsSnapshot {
+  seriesOfShowsId?: string,
   name?: string,
   coverImagePath?: string,
-  publishedTime?: number,
+  createdTimestamp?: number,
 }
 
-export let SHOW_SNAPSHOT: MessageDescriptor<ShowSnapshot> = {
-  name: 'ShowSnapshot',
+export let SERIES_OF_SHOWS_SNAPSHOT: MessageDescriptor<SeriesOfShowsSnapshot> = {
+  name: 'SeriesOfShowsSnapshot',
   fields: [
     {
-      name: 'showId',
+      name: 'seriesOfShowsId',
       primitiveType: PrimitiveType.STRING,
     },
     {
@@ -62,7 +64,7 @@ export let SHOW_SNAPSHOT: MessageDescriptor<ShowSnapshot> = {
       primitiveType: PrimitiveType.STRING,
     },
     {
-      name: 'publishedTime',
+      name: 'createdTimestamp',
       primitiveType: PrimitiveType.NUMBER,
     },
   ]
