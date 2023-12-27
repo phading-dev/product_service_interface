@@ -10,7 +10,7 @@
     }, {
       "name": "shows",
       "type": "ShowSnapshot",
-      "import": "./show",
+      "import": "../show",
       "isArray": true
     }]
   }

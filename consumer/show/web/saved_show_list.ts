@@ -1,5 +1,5 @@
 import { MessageDescriptor, PrimitiveType } from '@selfage/message/descriptor';
-import { ShowSnapshot, SHOW_SNAPSHOT } from './show';
+import { ShowSnapshot, SHOW_SNAPSHOT } from '../show';
 
 export interface SavedShowList {
   listId?: string,

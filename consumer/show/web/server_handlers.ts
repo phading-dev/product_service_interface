@@ -1,5 +1,5 @@
 import { ServiceHandlerInterface } from '@selfage/service_descriptor/service_handler_interface';
-import { RECORD_PLAY_HISTORY, RecordPlayHistoryRequestBody, RecordPlayHistoryResponse, SAVE_SHOW, SaveShowRequestBody, SaveShowResponse, CREATE_SAVED_SHOW_LIST, CreateSavedShowListRequestBody, CreateSavedShowListResponse, DELETE_SAVED_SHOW_LIST, DeleteSavedShowListRequestBody, DeleteSavedShowListResponse, LIST_SAVED_SHOW_LISTS, ListSavedShowListsRequestBody, ListSavedShowListsResponse, GET_SAVED_SHOW_LIST, GetSavedShowListRequestBody, GetSavedShowListResponse, EDIT_SAVED_SHOW_LIST, EditSavedShowListRequestBody, EditSavedShowListResponse, GET_SHOW, GetShowRequestBody, GetShowResponse, GET_SHOW_SNAPSHOT, GetShowSnapshotRequestBody, GetShowSnapshotResponse } from './interface';
+import { RECORD_PLAY_HISTORY, RecordPlayHistoryRequestBody, RecordPlayHistoryResponse, SAVE_SHOW, SaveShowRequestBody, SaveShowResponse, CREATE_SAVED_SHOW_LIST, CreateSavedShowListRequestBody, CreateSavedShowListResponse, DELETE_SAVED_SHOW_LIST, DeleteSavedShowListRequestBody, DeleteSavedShowListResponse, LIST_SAVED_SHOW_LISTS, ListSavedShowListsRequestBody, ListSavedShowListsResponse, GET_SAVED_SHOW_LIST, GetSavedShowListRequestBody, GetSavedShowListResponse, EDIT_SAVED_SHOW_LIST, EditSavedShowListRequestBody, EditSavedShowListResponse, GET_SHOW, GetShowRequestBody, GetShowResponse } from './interface';
 import { WebClientSession } from '@phading/user_session_service_interface/web_client_session';
 
 export abstract class RecordPlayHistoryHandlerInterface implements ServiceHandlerInterface {
@@ -72,13 +72,4 @@ export abstract class GetShowHandlerInterface implements ServiceHandlerInterface
     body: GetShowRequestBody,
     auth: WebClientSession,
   ): Promise<GetShowResponse>;
-}
-
-export abstract class GetShowSnapshotHandlerInterface implements ServiceHandlerInterface {
-  public descriptor = GET_SHOW_SNAPSHOT;
-  public abstract handle(
-    requestId: string,
-    body: GetShowSnapshotRequestBody,
-    auth: WebClientSession,
-  ): Promise<GetShowSnapshotResponse>;
 }

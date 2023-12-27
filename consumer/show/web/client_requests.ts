@@ -1,5 +1,5 @@
 import { WebServiceClientInterface } from '@selfage/service_descriptor/web_service_client_interface';
-import { RecordPlayHistoryRequestBody, RecordPlayHistoryResponse, RECORD_PLAY_HISTORY, SaveShowRequestBody, SaveShowResponse, SAVE_SHOW, CreateSavedShowListRequestBody, CreateSavedShowListResponse, CREATE_SAVED_SHOW_LIST, DeleteSavedShowListRequestBody, DeleteSavedShowListResponse, DELETE_SAVED_SHOW_LIST, ListSavedShowListsRequestBody, ListSavedShowListsResponse, LIST_SAVED_SHOW_LISTS, GetSavedShowListRequestBody, GetSavedShowListResponse, GET_SAVED_SHOW_LIST, EditSavedShowListRequestBody, EditSavedShowListResponse, EDIT_SAVED_SHOW_LIST, GetShowRequestBody, GetShowResponse, GET_SHOW, GetShowSnapshotRequestBody, GetShowSnapshotResponse, GET_SHOW_SNAPSHOT } from './interface';
+import { RecordPlayHistoryRequestBody, RecordPlayHistoryResponse, RECORD_PLAY_HISTORY, SaveShowRequestBody, SaveShowResponse, SAVE_SHOW, CreateSavedShowListRequestBody, CreateSavedShowListResponse, CREATE_SAVED_SHOW_LIST, DeleteSavedShowListRequestBody, DeleteSavedShowListResponse, DELETE_SAVED_SHOW_LIST, ListSavedShowListsRequestBody, ListSavedShowListsResponse, LIST_SAVED_SHOW_LISTS, GetSavedShowListRequestBody, GetSavedShowListResponse, GET_SAVED_SHOW_LIST, EditSavedShowListRequestBody, EditSavedShowListResponse, EDIT_SAVED_SHOW_LIST, GetShowRequestBody, GetShowResponse, GET_SHOW } from './interface';
 
 export function recordPlayHistory(
   client: WebServiceClientInterface,
@@ -77,16 +77,6 @@ export function getShow(
 ): Promise<GetShowResponse> {
   return client.send({
     descriptor: GET_SHOW,
-    body,
-  });
-}
-
-export function getShowSnapshot(
-  client: WebServiceClientInterface,
-  body: GetShowSnapshotRequestBody,
-): Promise<GetShowSnapshotResponse> {
-  return client.send({
-    descriptor: GET_SHOW_SNAPSHOT,
     body,
   });
 }
