@@ -364,14 +364,14 @@ export let CREATE_SERIES_OF_SHOWS_REQUEST_BODY: MessageDescriptor<CreateSeriesOf
 };
 
 export interface CreateSeriesOfShowsResponse {
-  seriesOfShowsId?: string,
+  seriesId?: string,
 }
 
 export let CREATE_SERIES_OF_SHOWS_RESPONSE: MessageDescriptor<CreateSeriesOfShowsResponse> = {
   name: 'CreateSeriesOfShowsResponse',
   fields: [
     {
-      name: 'seriesOfShowsId',
+      name: 'seriesId',
       primitiveType: PrimitiveType.STRING,
     },
   ]
@@ -393,14 +393,14 @@ export let CREATE_SERIES_OF_SHOWS: ServiceDescriptor = {
 }
 
 export interface DeleteSeriesOfShowsRequestBody {
-  seriesOfShowsId?: string,
+  seriesId?: string,
 }
 
 export let DELETE_SERIES_OF_SHOWS_REQUEST_BODY: MessageDescriptor<DeleteSeriesOfShowsRequestBody> = {
   name: 'DeleteSeriesOfShowsRequestBody',
   fields: [
     {
-      name: 'seriesOfShowsId',
+      name: 'seriesId',
       primitiveType: PrimitiveType.STRING,
     },
   ]
@@ -470,14 +470,14 @@ export let LIST_SERIES_OF_SHOWS: ServiceDescriptor = {
 }
 
 export interface GetSeriesOfShowsRequestBody {
-  seriesOfShowsId?: string,
+  seriesId?: string,
 }
 
 export let GET_SERIES_OF_SHOWS_REQUEST_BODY: MessageDescriptor<GetSeriesOfShowsRequestBody> = {
   name: 'GetSeriesOfShowsRequestBody',
   fields: [
     {
-      name: 'seriesOfShowsId',
+      name: 'seriesId',
       primitiveType: PrimitiveType.STRING,
     },
   ]
@@ -513,7 +513,7 @@ export let GET_SERIES_OF_SHOWS: ServiceDescriptor = {
 }
 
 export interface EditSeriesOfShowsRequestBody {
-  seriesOfShowsId?: string,
+  seriesId?: string,
   name?: string,
   description?: string,
 }
@@ -522,7 +522,7 @@ export let EDIT_SERIES_OF_SHOWS_REQUEST_BODY: MessageDescriptor<EditSeriesOfShow
   name: 'EditSeriesOfShowsRequestBody',
   fields: [
     {
-      name: 'seriesOfShowsId',
+      name: 'seriesId',
       primitiveType: PrimitiveType.STRING,
     },
     {
@@ -561,14 +561,14 @@ export let EDIT_SERIES_OF_SHOWS: ServiceDescriptor = {
 }
 
 export interface UploadCoverImageOfSeriesOfShowsRequestMetadata {
-  seriesOfShowsId?: string,
+  seriesId?: string,
 }
 
 export let UPLOAD_COVER_IMAGE_OF_SERIES_OF_SHOWS_REQUEST_METADATA: MessageDescriptor<UploadCoverImageOfSeriesOfShowsRequestMetadata> = {
   name: 'UploadCoverImageOfSeriesOfShowsRequestMetadata',
   fields: [
     {
-      name: 'seriesOfShowsId',
+      name: 'seriesId',
       primitiveType: PrimitiveType.STRING,
     },
   ]
@@ -617,14 +617,14 @@ export let CREATE_SEASON_OF_SHOWS_REQUEST_BODY: MessageDescriptor<CreateSeasonOf
 };
 
 export interface CreateSeasonOfShowsResponse {
-  seasonOfShowsId?: string,
+  seasonId?: string,
 }
 
 export let CREATE_SEASON_OF_SHOWS_RESPONSE: MessageDescriptor<CreateSeasonOfShowsResponse> = {
   name: 'CreateSeasonOfShowsResponse',
   fields: [
     {
-      name: 'seasonOfShowsId',
+      name: 'seasonId',
       primitiveType: PrimitiveType.STRING,
     },
   ]
@@ -646,14 +646,14 @@ export let CREATE_SEASON_OF_SHOWS: ServiceDescriptor = {
 }
 
 export interface DeleteSeasonOfShowsRequestBody {
-  seasonOfShowsId?: string,
+  seasonId?: string,
 }
 
 export let DELETE_SEASON_OF_SHOWS_REQUEST_BODY: MessageDescriptor<DeleteSeasonOfShowsRequestBody> = {
   name: 'DeleteSeasonOfShowsRequestBody',
   fields: [
     {
-      name: 'seasonOfShowsId',
+      name: 'seasonId',
       primitiveType: PrimitiveType.STRING,
     },
   ]
@@ -723,14 +723,14 @@ export let LIST_SEASON_OF_SHOWS: ServiceDescriptor = {
 }
 
 export interface GetSeasonOfShowsRequestBody {
-  seasonOfShowsId?: string,
+  seasonId?: string,
 }
 
 export let GET_SEASON_OF_SHOWS_REQUEST_BODY: MessageDescriptor<GetSeasonOfShowsRequestBody> = {
   name: 'GetSeasonOfShowsRequestBody',
   fields: [
     {
-      name: 'seasonOfShowsId',
+      name: 'seasonId',
       primitiveType: PrimitiveType.STRING,
     },
   ]
@@ -766,7 +766,7 @@ export let GET_SEASON_OF_SHOWS: ServiceDescriptor = {
 }
 
 export interface EditSeasonOfShowsRequestBody {
-  seasonOfShowsId?: string,
+  seasonId?: string,
   name?: string,
   description?: string,
 }
@@ -775,7 +775,7 @@ export let EDIT_SEASON_OF_SHOWS_REQUEST_BODY: MessageDescriptor<EditSeasonOfShow
   name: 'EditSeasonOfShowsRequestBody',
   fields: [
     {
-      name: 'seasonOfShowsId',
+      name: 'seasonId',
       primitiveType: PrimitiveType.STRING,
     },
     {
@@ -814,14 +814,14 @@ export let EDIT_SEASON_OF_SHOWS: ServiceDescriptor = {
 }
 
 export interface UploadCoverImageOfSeasonOfShowsRequestMetadata {
-  seasonOfShowsId?: string,
+  seasonId?: string,
 }
 
 export let UPLOAD_COVER_IMAGE_OF_SEASON_OF_SHOWS_REQUEST_METADATA: MessageDescriptor<UploadCoverImageOfSeasonOfShowsRequestMetadata> = {
   name: 'UploadCoverImageOfSeasonOfShowsRequestMetadata',
   fields: [
     {
-      name: 'seasonOfShowsId',
+      name: 'seasonId',
       primitiveType: PrimitiveType.STRING,
     },
   ]

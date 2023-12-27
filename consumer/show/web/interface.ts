@@ -1,23 +1,22 @@
 import { MessageDescriptor, PrimitiveType } from '@selfage/message/descriptor';
 import { ServiceDescriptor } from '@selfage/service_descriptor';
 import { WEB_CLIENT_SESSION } from '@phading/user_session_service_interface/web_client_session';
-import { AppType, APP_TYPE } from '../app_type';
-import { SavedProductListSnapshot, SAVED_PRODUCT_LIST_SNAPSHOT, SavedProductList, SAVED_PRODUCT_LIST } from './saved_product_list';
+import { SavedShowListSnapshot, SAVED_SHOW_LIST_SNAPSHOT, SavedShowList, SAVED_SHOW_LIST } from './saved_show_list';
 import { Show, SHOW, ShowSnapshot, SHOW_SNAPSHOT } from './show';
 
 export interface RecordPlayHistoryRequestBody {
-  productId?: string,
+  showId?: string,
 /* When it was played. */
   playedTimestamp?: number,
-/* Interpert differently per app type. */
-  progress?: number,
+/* Timestamp of the show. */
+  timestamp?: number,
 }
 
 export let RECORD_PLAY_HISTORY_REQUEST_BODY: MessageDescriptor<RecordPlayHistoryRequestBody> = {
   name: 'RecordPlayHistoryRequestBody',
   fields: [
     {
-      name: 'productId',
+      name: 'showId',
       primitiveType: PrimitiveType.STRING,
     },
     {
@@ -25,7 +24,7 @@ export let RECORD_PLAY_HISTORY_REQUEST_BODY: MessageDescriptor<RecordPlayHistory
       primitiveType: PrimitiveType.NUMBER,
     },
     {
-      name: 'progress',
+      name: 'timestamp',
       primitiveType: PrimitiveType.NUMBER,
     },
   ]
@@ -55,17 +54,17 @@ export let RECORD_PLAY_HISTORY: ServiceDescriptor = {
   },
 }
 
-export interface SaveProductRequestBody {
-  productId?: number,
+export interface SaveShowRequestBody {
+  showId?: number,
 /* Optional. If empty, save to the default list. */
   listId?: string,
 }
 
-export let SAVE_PRODUCT_REQUEST_BODY: MessageDescriptor<SaveProductRequestBody> = {
-  name: 'SaveProductRequestBody',
+export let SAVE_SHOW_REQUEST_BODY: MessageDescriptor<SaveShowRequestBody> = {
+  name: 'SaveShowRequestBody',
   fields: [
     {
-      name: 'productId',
+      name: 'showId',
       primitiveType: PrimitiveType.NUMBER,
     },
     {
@@ -75,42 +74,37 @@ export let SAVE_PRODUCT_REQUEST_BODY: MessageDescriptor<SaveProductRequestBody> 
   ]
 };
 
-export interface SaveProductResponse {
+export interface SaveShowResponse {
 }
 
-export let SAVE_PRODUCT_RESPONSE: MessageDescriptor<SaveProductResponse> = {
-  name: 'SaveProductResponse',
+export let SAVE_SHOW_RESPONSE: MessageDescriptor<SaveShowResponse> = {
+  name: 'SaveShowResponse',
   fields: [
   ]
 };
 
-export let SAVE_PRODUCT: ServiceDescriptor = {
-  name: "SaveProduct",
-  path: "/SaveProduct",
+export let SAVE_SHOW: ServiceDescriptor = {
+  name: "SaveShow",
+  path: "/SaveShow",
   body: {
-    messageType: SAVE_PRODUCT_REQUEST_BODY,
+    messageType: SAVE_SHOW_REQUEST_BODY,
   },
   auth: {
     key: "auth",
     type: WEB_CLIENT_SESSION
   },
   response: {
-    messageType: SAVE_PRODUCT_RESPONSE,
+    messageType: SAVE_SHOW_RESPONSE,
   },
 }
 
-export interface CreateSavedProductListRequestBody {
-  appType?: AppType,
+export interface CreateSavedShowListRequestBody {
   name?: string,
 }
 
-export let CREATE_SAVED_PRODUCT_LIST_REQUEST_BODY: MessageDescriptor<CreateSavedProductListRequestBody> = {
-  name: 'CreateSavedProductListRequestBody',
+export let CREATE_SAVED_SHOW_LIST_REQUEST_BODY: MessageDescriptor<CreateSavedShowListRequestBody> = {
+  name: 'CreateSavedShowListRequestBody',
   fields: [
-    {
-      name: 'appType',
-      enumType: APP_TYPE,
-    },
     {
       name: 'name',
       primitiveType: PrimitiveType.STRING,
@@ -118,12 +112,12 @@ export let CREATE_SAVED_PRODUCT_LIST_REQUEST_BODY: MessageDescriptor<CreateSaved
   ]
 };
 
-export interface CreateSavedProductListResponse {
+export interface CreateSavedShowListResponse {
   listId?: string,
 }
 
-export let CREATE_SAVED_PRODUCT_LIST_RESPONSE: MessageDescriptor<CreateSavedProductListResponse> = {
-  name: 'CreateSavedProductListResponse',
+export let CREATE_SAVED_SHOW_LIST_RESPONSE: MessageDescriptor<CreateSavedShowListResponse> = {
+  name: 'CreateSavedShowListResponse',
   fields: [
     {
       name: 'listId',
@@ -132,27 +126,27 @@ export let CREATE_SAVED_PRODUCT_LIST_RESPONSE: MessageDescriptor<CreateSavedProd
   ]
 };
 
-export let CREATE_SAVED_PRODUCT_LIST: ServiceDescriptor = {
-  name: "CreateSavedProductList",
-  path: "/CreateSavedProductList",
+export let CREATE_SAVED_SHOW_LIST: ServiceDescriptor = {
+  name: "CreateSavedShowList",
+  path: "/CreateSavedShowList",
   body: {
-    messageType: CREATE_SAVED_PRODUCT_LIST_REQUEST_BODY,
+    messageType: CREATE_SAVED_SHOW_LIST_REQUEST_BODY,
   },
   auth: {
     key: "auth",
     type: WEB_CLIENT_SESSION
   },
   response: {
-    messageType: CREATE_SAVED_PRODUCT_LIST_RESPONSE,
+    messageType: CREATE_SAVED_SHOW_LIST_RESPONSE,
   },
 }
 
-export interface DeleteSavedProductListRequestBody {
+export interface DeleteSavedShowListRequestBody {
   listId?: string,
 }
 
-export let DELETE_SAVED_PRODUCT_LIST_REQUEST_BODY: MessageDescriptor<DeleteSavedProductListRequestBody> = {
-  name: 'DeleteSavedProductListRequestBody',
+export let DELETE_SAVED_SHOW_LIST_REQUEST_BODY: MessageDescriptor<DeleteSavedShowListRequestBody> = {
+  name: 'DeleteSavedShowListRequestBody',
   fields: [
     {
       name: 'listId',
@@ -161,80 +155,75 @@ export let DELETE_SAVED_PRODUCT_LIST_REQUEST_BODY: MessageDescriptor<DeleteSaved
   ]
 };
 
-export interface DeleteSavedProductListResponse {
+export interface DeleteSavedShowListResponse {
 }
 
-export let DELETE_SAVED_PRODUCT_LIST_RESPONSE: MessageDescriptor<DeleteSavedProductListResponse> = {
-  name: 'DeleteSavedProductListResponse',
+export let DELETE_SAVED_SHOW_LIST_RESPONSE: MessageDescriptor<DeleteSavedShowListResponse> = {
+  name: 'DeleteSavedShowListResponse',
   fields: [
   ]
 };
 
-export let DELETE_SAVED_PRODUCT_LIST: ServiceDescriptor = {
-  name: "DeleteSavedProductList",
-  path: "/DeleteSavedProductList",
+export let DELETE_SAVED_SHOW_LIST: ServiceDescriptor = {
+  name: "DeleteSavedShowList",
+  path: "/DeleteSavedShowList",
   body: {
-    messageType: DELETE_SAVED_PRODUCT_LIST_REQUEST_BODY,
+    messageType: DELETE_SAVED_SHOW_LIST_REQUEST_BODY,
   },
   auth: {
     key: "auth",
     type: WEB_CLIENT_SESSION
   },
   response: {
-    messageType: DELETE_SAVED_PRODUCT_LIST_RESPONSE,
+    messageType: DELETE_SAVED_SHOW_LIST_RESPONSE,
   },
 }
 
-export interface ListSavedProductListsRequestBody {
-  appType?: AppType,
+export interface ListSavedShowListsRequestBody {
 }
 
-export let LIST_SAVED_PRODUCT_LISTS_REQUEST_BODY: MessageDescriptor<ListSavedProductListsRequestBody> = {
-  name: 'ListSavedProductListsRequestBody',
+export let LIST_SAVED_SHOW_LISTS_REQUEST_BODY: MessageDescriptor<ListSavedShowListsRequestBody> = {
+  name: 'ListSavedShowListsRequestBody',
   fields: [
-    {
-      name: 'appType',
-      enumType: APP_TYPE,
-    },
   ]
 };
 
-export interface ListSavedProductListsResponse {
-  lists?: Array<SavedProductListSnapshot>,
+export interface ListSavedShowListsResponse {
+  lists?: Array<SavedShowListSnapshot>,
 }
 
-export let LIST_SAVED_PRODUCT_LISTS_RESPONSE: MessageDescriptor<ListSavedProductListsResponse> = {
-  name: 'ListSavedProductListsResponse',
+export let LIST_SAVED_SHOW_LISTS_RESPONSE: MessageDescriptor<ListSavedShowListsResponse> = {
+  name: 'ListSavedShowListsResponse',
   fields: [
     {
       name: 'lists',
-      messageType: SAVED_PRODUCT_LIST_SNAPSHOT,
+      messageType: SAVED_SHOW_LIST_SNAPSHOT,
       isArray: true,
     },
   ]
 };
 
-export let LIST_SAVED_PRODUCT_LISTS: ServiceDescriptor = {
-  name: "ListSavedProductLists",
-  path: "/ListSavedProductLists",
+export let LIST_SAVED_SHOW_LISTS: ServiceDescriptor = {
+  name: "ListSavedShowLists",
+  path: "/ListSavedShowLists",
   body: {
-    messageType: LIST_SAVED_PRODUCT_LISTS_REQUEST_BODY,
+    messageType: LIST_SAVED_SHOW_LISTS_REQUEST_BODY,
   },
   auth: {
     key: "auth",
     type: WEB_CLIENT_SESSION
   },
   response: {
-    messageType: LIST_SAVED_PRODUCT_LISTS_RESPONSE,
+    messageType: LIST_SAVED_SHOW_LISTS_RESPONSE,
   },
 }
 
-export interface GetSavedProductListRequestBody {
+export interface GetSavedShowListRequestBody {
   listId?: string,
 }
 
-export let GET_SAVED_PRODUCT_LIST_REQUEST_BODY: MessageDescriptor<GetSavedProductListRequestBody> = {
-  name: 'GetSavedProductListRequestBody',
+export let GET_SAVED_SHOW_LIST_REQUEST_BODY: MessageDescriptor<GetSavedShowListRequestBody> = {
+  name: 'GetSavedShowListRequestBody',
   fields: [
     {
       name: 'listId',
@@ -243,70 +232,70 @@ export let GET_SAVED_PRODUCT_LIST_REQUEST_BODY: MessageDescriptor<GetSavedProduc
   ]
 };
 
-export interface GetSavedProductListResponse {
-  list?: SavedProductList,
+export interface GetSavedShowListResponse {
+  list?: SavedShowList,
 }
 
-export let GET_SAVED_PRODUCT_LIST_RESPONSE: MessageDescriptor<GetSavedProductListResponse> = {
-  name: 'GetSavedProductListResponse',
+export let GET_SAVED_SHOW_LIST_RESPONSE: MessageDescriptor<GetSavedShowListResponse> = {
+  name: 'GetSavedShowListResponse',
   fields: [
     {
       name: 'list',
-      messageType: SAVED_PRODUCT_LIST,
+      messageType: SAVED_SHOW_LIST,
     },
   ]
 };
 
-export let GET_SAVED_PRODUCT_LIST: ServiceDescriptor = {
-  name: "GetSavedProductList",
-  path: "/GetSavedProductList",
+export let GET_SAVED_SHOW_LIST: ServiceDescriptor = {
+  name: "GetSavedShowList",
+  path: "/GetSavedShowList",
   body: {
-    messageType: GET_SAVED_PRODUCT_LIST_REQUEST_BODY,
+    messageType: GET_SAVED_SHOW_LIST_REQUEST_BODY,
   },
   auth: {
     key: "auth",
     type: WEB_CLIENT_SESSION
   },
   response: {
-    messageType: GET_SAVED_PRODUCT_LIST_RESPONSE,
+    messageType: GET_SAVED_SHOW_LIST_RESPONSE,
   },
 }
 
-export interface EditSavedProductListRequestBody {
-  list?: SavedProductList,
+export interface EditSavedShowListRequestBody {
+  list?: SavedShowList,
 }
 
-export let EDIT_SAVED_PRODUCT_LIST_REQUEST_BODY: MessageDescriptor<EditSavedProductListRequestBody> = {
-  name: 'EditSavedProductListRequestBody',
+export let EDIT_SAVED_SHOW_LIST_REQUEST_BODY: MessageDescriptor<EditSavedShowListRequestBody> = {
+  name: 'EditSavedShowListRequestBody',
   fields: [
     {
       name: 'list',
-      messageType: SAVED_PRODUCT_LIST,
+      messageType: SAVED_SHOW_LIST,
     },
   ]
 };
 
-export interface EditSavedProductListResponse {
+export interface EditSavedShowListResponse {
 }
 
-export let EDIT_SAVED_PRODUCT_LIST_RESPONSE: MessageDescriptor<EditSavedProductListResponse> = {
-  name: 'EditSavedProductListResponse',
+export let EDIT_SAVED_SHOW_LIST_RESPONSE: MessageDescriptor<EditSavedShowListResponse> = {
+  name: 'EditSavedShowListResponse',
   fields: [
   ]
 };
 
-export let EDIT_SAVED_PRODUCT_LIST: ServiceDescriptor = {
-  name: "EditSavedProductList",
-  path: "/EditSavedProductList",
+export let EDIT_SAVED_SHOW_LIST: ServiceDescriptor = {
+  name: "EditSavedShowList",
+  path: "/EditSavedShowList",
   body: {
-    messageType: EDIT_SAVED_PRODUCT_LIST_REQUEST_BODY,
+    messageType: EDIT_SAVED_SHOW_LIST_REQUEST_BODY,
   },
   auth: {
     key: "auth",
     type: WEB_CLIENT_SESSION
   },
   response: {
-    messageType: EDIT_SAVED_PRODUCT_LIST_RESPONSE,
+    messageType: EDIT_SAVED_SHOW_LIST_RESPONSE,
   },
 }
 

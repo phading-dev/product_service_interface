@@ -1,13 +1,14 @@
 import { MessageDescriptor, PrimitiveType } from '@selfage/message/descriptor';
+import { ShowSnapshot, SHOW_SNAPSHOT } from './show';
 
-export interface SavedProductList {
+export interface SavedShowList {
   listId?: string,
   name?: string,
-  productIds?: Array<string>,
+  shows?: Array<ShowSnapshot>,
 }
 
-export let SAVED_PRODUCT_LIST: MessageDescriptor<SavedProductList> = {
-  name: 'SavedProductList',
+export let SAVED_SHOW_LIST: MessageDescriptor<SavedShowList> = {
+  name: 'SavedShowList',
   fields: [
     {
       name: 'listId',
@@ -18,20 +19,20 @@ export let SAVED_PRODUCT_LIST: MessageDescriptor<SavedProductList> = {
       primitiveType: PrimitiveType.STRING,
     },
     {
-      name: 'productIds',
-      primitiveType: PrimitiveType.STRING,
+      name: 'shows',
+      messageType: SHOW_SNAPSHOT,
       isArray: true,
     },
   ]
 };
 
-export interface SavedProductListSnapshot {
+export interface SavedShowListSnapshot {
   listId?: string,
   name?: string,
 }
 
-export let SAVED_PRODUCT_LIST_SNAPSHOT: MessageDescriptor<SavedProductListSnapshot> = {
-  name: 'SavedProductListSnapshot',
+export let SAVED_SHOW_LIST_SNAPSHOT: MessageDescriptor<SavedShowListSnapshot> = {
+  name: 'SavedShowListSnapshot',
   fields: [
     {
       name: 'listId',

@@ -256,7 +256,7 @@
   "name": "CreateSeriesOfShowsResponse",
   "message": {
     "fields": [{
-      "name": "seriesOfShowsId",
+      "name": "seriesId",
       "type": "string"
     }]
   }
@@ -278,7 +278,7 @@
   "name": "DeleteSeriesOfShowsRequestBody",
   "message": {
     "fields": [{
-      "name": "seriesOfShowsId",
+      "name": "seriesId",
       "type": "string"
     }]
   }
@@ -334,7 +334,7 @@
   "name": "GetSeriesOfShowsRequestBody",
   "message": {
     "fields": [{
-      "name": "seriesOfShowsId",
+      "name": "seriesId",
       "type": "string"
     }]
   }
@@ -365,7 +365,7 @@
   "name": "EditSeriesOfShowsRequestBody",
   "message": {
     "fields": [{
-      "name": "seriesOfShowsId",
+      "name": "seriesId",
       "type": "string"
     }, {
       "name": "name",
@@ -398,7 +398,7 @@
   "name": "UploadCoverImageOfSeriesOfShowsRequestMetadata",
   "message": {
     "fields": [{
-      "name": "seriesOfShowsId",
+      "name": "seriesId",
       "type": "string"
     }]
   }
@@ -437,7 +437,7 @@
   "name": "CreateSeasonOfShowsResponse",
   "message": {
     "fields": [{
-      "name": "seasonOfShowsId",
+      "name": "seasonId",
       "type": "string"
     }]
   }
@@ -459,7 +459,7 @@
   "name": "DeleteSeasonOfShowsRequestBody",
   "message": {
     "fields": [{
-      "name": "seasonOfShowsId",
+      "name": "seasonId",
       "type": "string"
     }]
   }
@@ -515,7 +515,7 @@
   "name": "GetSeasonOfShowsRequestBody",
   "message": {
     "fields": [{
-      "name": "seasonOfShowsId",
+      "name": "seasonId",
       "type": "string"
     }]
   }
@@ -546,7 +546,7 @@
   "name": "EditSeasonOfShowsRequestBody",
   "message": {
     "fields": [{
-      "name": "seasonOfShowsId",
+      "name": "seasonId",
       "type": "string"
     }, {
       "name": "name",
@@ -579,7 +579,7 @@
   "name": "UploadCoverImageOfSeasonOfShowsRequestMetadata",
   "message": {
     "fields": [{
-      "name": "seasonOfShowsId",
+      "name": "seasonId",
       "type": "string"
     }]
   }

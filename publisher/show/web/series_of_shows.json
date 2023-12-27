@@ -2,7 +2,7 @@
   "name": "SeriesOfShows",
   "message": {
     "fields": [{
-      "name": "seriesOfShowsId",
+      "name": "seriesId",
       "type": "string"
     }, {
       "name": "name",
@@ -27,7 +27,7 @@
   "name": "SeriesOfShowsSnapshot",
   "message": {
     "fields": [{
-      "name": "seriesOfShowsId",
+      "name": "seriesId",
       "type": "string"
     }, {
       "name": "name",

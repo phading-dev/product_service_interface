@@ -2,16 +2,16 @@
   "name": "RecordPlayHistoryRequestBody",
   "message": {
     "fields": [{
-      "name": "productId",
+      "name": "showId",
       "type": "string"
     }, {
       "name": "playedTimestamp",
       "type": "number",
       "comment": "When it was played."
     }, {
-      "name": "progress",
+      "name": "timestamp",
       "type": "number",
-      "comment": "Interpert differently per app type."
+      "comment": "Timestamp of the show."
     }]
   }
 }, {
@@ -34,10 +34,10 @@
     "outputHandler": "./server_handlers"
   }
 }, {
-  "name": "SaveProductRequestBody",
+  "name": "SaveShowRequestBody",
   "message": {
     "fields": [{
-      "name": "productId",
+      "name": "showId",
       "type": "number"
     }, {
       "name": "listId",
@@ -46,38 +46,34 @@
     }]
   }
 }, {
-  "name": "SaveProductResponse",
+  "name": "SaveShowResponse",
   "message": {
     "fields": []
   }
 }, {
-  "name": "SaveProduct",
+  "name": "SaveShow",
   "service": {
-    "path": "/SaveProduct",
-    "body": "SaveProductRequestBody",
+    "path": "/SaveShow",
+    "body": "SaveShowRequestBody",
     "auth": {
       "key": "auth",
       "type": "WebClientSession",
       "import": "@phading/user_session_service_interface/web_client_session"
     },
-    "response": "SaveProductResponse",
+    "response": "SaveShowResponse",
     "outputWebClient": "./client_requests",
     "outputHandler": "./server_handlers"
   }
 }, {
-  "name": "CreateSavedProductListRequestBody",
+  "name": "CreateSavedShowListRequestBody",
   "message": {
     "fields": [{
-      "name": "appType",
-      "type": "AppType",
-      "import": "../app_type"
-    }, {
       "name": "name",
       "type": "string"
     }]
   }
 }, {
-  "name": "CreateSavedProductListResponse",
+  "name": "CreateSavedShowListResponse",
   "message": {
     "fields": [{
       "name": "listId",
@@ -85,21 +81,21 @@
     }]
   }
 }, {
-  "name": "CreateSavedProductList",
+  "name": "CreateSavedShowList",
   "service": {
-    "path": "/CreateSavedProductList",
-    "body": "CreateSavedProductListRequestBody",
+    "path": "/CreateSavedShowList",
+    "body": "CreateSavedShowListRequestBody",
     "auth": {
       "key": "auth",
       "type": "WebClientSession",
       "import": "@phading/user_session_service_interface/web_client_session"
     },
-    "response": "CreateSavedProductListResponse",
+    "response": "CreateSavedShowListResponse",
     "outputWebClient": "./client_requests",
     "outputHandler": "./server_handlers"
   }
 }, {
-  "name": "DeleteSavedProductListRequestBody",
+  "name": "DeleteSavedShowListRequestBody",
   "message": {
     "fields": [{
       "name": "listId",
@@ -107,59 +103,55 @@
     }]
   }
 }, {
-  "name": "DeleteSavedProductListResponse",
+  "name": "DeleteSavedShowListResponse",
   "message": {
     "fields": []
   }
 }, {
-  "name": "DeleteSavedProductList",
+  "name": "DeleteSavedShowList",
   "service": {
-    "path": "/DeleteSavedProductList",
-    "body": "DeleteSavedProductListRequestBody",
+    "path": "/DeleteSavedShowList",
+    "body": "DeleteSavedShowListRequestBody",
     "auth": {
       "key": "auth",
       "type": "WebClientSession",
       "import": "@phading/user_session_service_interface/web_client_session"
     },
-    "response": "DeleteSavedProductListResponse",
+    "response": "DeleteSavedShowListResponse",
     "outputWebClient": "./client_requests",
     "outputHandler": "./server_handlers"
   }
 }, {
-  "name": "ListSavedProductListsRequestBody",
+  "name": "ListSavedShowListsRequestBody",
   "message": {
-    "fields": [{
-      "name": "appType",
-      "type": "AppType",
-      "import": "../app_type"
-    }]
+    "fields": []
   }
 }, {
-  "name": "ListSavedProductListsResponse",
+  "name": "ListSavedShowListsResponse",
   "message": {
     "fields": [{
       "name": "lists",
-      "type": "SavedProductListSnapshot",
-      "import": "./saved_product_list",
+      "type": "SavedShowListSnapshot",
+      "import": "./saved_show_list",
       "isArray": true
     }]
   }
 }, {
-  "name": "ListSavedProductLists",
+  "name": "ListSavedShowLists",
   "service": {
-    "path": "/ListSavedProductLists",
-    "body": "ListSavedProductListsRequestBody",
+    "path": "/ListSavedShowLists",
+    "body": "ListSavedShowListsRequestBody",
     "auth": {
       "key": "auth",
       "type": "WebClientSession",
       "import": "@phading/user_session_service_interface/web_client_session"
     },
-    "response": "ListSavedProductListsResponse",
+    "response": "ListSavedShowListsResponse",
     "outputWebClient": "./client_requests",
     "outputHandler": "./server_handlers"
   }
 }, {
-  "name": "GetSavedProductListRequestBody",
+  "name": "GetSavedShowListRequestBody",
   "message": {
     "fields": [{
       "name": "listId",
@@ -167,53 +159,53 @@
     }]
   }
 }, {
-  "name": "GetSavedProductListResponse",
+  "name": "GetSavedShowListResponse",
   "message": {
     "fields": [{
       "name": "list",
-      "type": "SavedProductList",
-      "import": "./saved_product_list"
+      "type": "SavedShowList",
+      "import": "./saved_show_list"
     }]
   }
 }, {
-  "name": "GetSavedProductList",
+  "name": "GetSavedShowList",
   "service": {
-    "path": "/GetSavedProductList",
-    "body": "GetSavedProductListRequestBody",
+    "path": "/GetSavedShowList",
+    "body": "GetSavedShowListRequestBody",
     "auth": {
       "key": "auth",
       "type": "WebClientSession",
       "import": "@phading/user_session_service_interface/web_client_session"
     },
-    "response": "GetSavedProductListResponse",
+    "response": "GetSavedShowListResponse",
     "outputWebClient": "./client_requests",
     "outputHandler": "./server_handlers"
   }
 }, {
-  "name": "EditSavedProductListRequestBody",
+  "name": "EditSavedShowListRequestBody",
   "message": {
     "fields": [{
       "name": "list",
-      "type": "SavedProductList",
-      "import": "./saved_product_list"
+      "type": "SavedShowList",
+      "import": "./saved_show_list"
     }]
   }
 }, {
-  "name": "EditSavedProductListResponse",
+  "name": "EditSavedShowListResponse",
   "message": {
     "fields": []
   }
 }, {
-  "name": "EditSavedProductList",
+  "name": "EditSavedShowList",
   "service": {
-    "path": "/EditSavedProductList",
-    "body": "EditSavedProductListRequestBody",
+    "path": "/EditSavedShowList",
+    "body": "EditSavedShowListRequestBody",
     "auth": {
       "key": "auth",
       "type": "WebClientSession",
       "import": "@phading/user_session_service_interface/web_client_session"
     },
-    "response": "EditSavedProductListResponse",
+    "response": "EditSavedShowListResponse",
     "outputWebClient": "./client_requests",
     "outputHandler": "./server_handlers"
   }

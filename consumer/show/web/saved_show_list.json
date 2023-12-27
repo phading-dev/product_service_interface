@@ -1,5 +1,5 @@
 [{
-  "name": "SavedProductList",
+  "name": "SavedShowList",
   "message": {
     "fields": [{
       "name": "listId",
@@ -8,13 +8,14 @@
       "name": "name",
       "type": "string"
     }, {
-      "name": "productIds",
-      "type": "string",
+      "name": "shows",
+      "type": "ShowSnapshot",
+      "import": "./show",
       "isArray": true
     }]
   }
 }, {
-  "name": "SavedProductListSnapshot",
+  "name": "SavedShowListSnapshot",
   "message": {
     "fields": [{
       "name": "listId",

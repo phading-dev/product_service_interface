@@ -2,7 +2,7 @@ import { MessageDescriptor, PrimitiveType } from '@selfage/message/descriptor';
 import { SeasonOfShowsSnapshot, SEASON_OF_SHOWS_SNAPSHOT } from './season_of_shows';
 
 export interface SeriesOfShows {
-  seriesOfShowsId?: string,
+  seriesId?: string,
   name?: string,
   description?: string,
   coverImagePath?: string,
@@ -14,7 +14,7 @@ export let SERIES_OF_SHOWS: MessageDescriptor<SeriesOfShows> = {
   name: 'SeriesOfShows',
   fields: [
     {
-      name: 'seriesOfShowsId',
+      name: 'seriesId',
       primitiveType: PrimitiveType.STRING,
     },
     {
@@ -42,7 +42,7 @@ export let SERIES_OF_SHOWS: MessageDescriptor<SeriesOfShows> = {
 };
 
 export interface SeriesOfShowsSnapshot {
-  seriesOfShowsId?: string,
+  seriesId?: string,
   name?: string,
   coverImagePath?: string,
   createdTimestamp?: number,
@@ -52,7 +52,7 @@ export let SERIES_OF_SHOWS_SNAPSHOT: MessageDescriptor<SeriesOfShowsSnapshot> = 
   name: 'SeriesOfShowsSnapshot',
   fields: [
     {
-      name: 'seriesOfShowsId',
+      name: 'seriesId',
       primitiveType: PrimitiveType.STRING,
     },
     {
