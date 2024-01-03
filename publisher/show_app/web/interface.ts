@@ -1,7 +1,7 @@
 import { MessageDescriptor, PrimitiveType } from '@selfage/message/descriptor';
 import { ServiceDescriptor, PrimitveTypeForBody } from '@selfage/service_descriptor';
 import { WEB_CLIENT_SESSION } from '@phading/user_session_service_interface/web_client_session';
-import { Show, SHOW, ShowSnapshot, SHOW_SNAPSHOT } from './show';
+import { Show, SHOW, ShowSnapshot, SHOW_SNAPSHOT } from '../show';
 import { SeriesOfShowsSnapshot, SERIES_OF_SHOWS_SNAPSHOT, SeriesOfShows, SERIES_OF_SHOWS } from './series_of_shows';
 import { SeasonOfShowsSnapshot, SEASON_OF_SHOWS_SNAPSHOT, SeasonOfShows, SEASON_OF_SHOWS } from './season_of_shows';
 

@@ -19,6 +19,10 @@
     }, {
       "name": "publishedTime",
       "type": "number"
+    }, {
+      "name": "publisher",
+      "type": "AccountSnapshot",
+      "import": "@phading/user_service_interface/third_person/account"
     }]
   }
 }, {
@@ -34,8 +38,16 @@
       "name": "coverImagePath",
       "type": "string"
     }, {
+      "name": "length",
+      "type": "number",
+      "comment": "Video length in seconds."
+    }, {
       "name": "publishedTime",
       "type": "number"
+    }, {
+      "name": "publisher",
+      "type": "AccountSnapshot",
+      "import": "@phading/user_service_interface/third_person/account"
     }]
   }
 }]

@@ -198,7 +198,7 @@
     "fields": [{
       "name": "show",
       "type": "Show",
-      "import": "./show"
+      "import": "../show"
     }]
   }
 }, {
@@ -226,7 +226,7 @@
     "fields": [{
       "name": "shows",
       "type": "ShowSnapshot",
-      "import": "./show",
+      "import": "../show",
       "isArray": true
     }]
   }

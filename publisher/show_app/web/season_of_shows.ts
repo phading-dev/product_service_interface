@@ -1,5 +1,5 @@
 import { MessageDescriptor, PrimitiveType } from '@selfage/message/descriptor';
-import { ShowSnapshot, SHOW_SNAPSHOT } from './show';
+import { ShowSnapshot, SHOW_SNAPSHOT } from '../show';
 
 export interface SeasonOfShows {
   seasonId?: string,
@@ -45,6 +45,8 @@ export interface SeasonOfShowsSnapshot {
   seasonId?: string,
   name?: string,
   coverImagePath?: string,
+/* The number of items contained. */
+  count?: number,
   createdTimestamp?: number,
 }
 
@@ -62,6 +64,10 @@ export let SEASON_OF_SHOWS_SNAPSHOT: MessageDescriptor<SeasonOfShowsSnapshot> = 
     {
       name: 'coverImagePath',
       primitiveType: PrimitiveType.STRING,
+    },
+    {
+      name: 'count',
+      primitiveType: PrimitiveType.NUMBER,
     },
     {
       name: 'createdTimestamp',

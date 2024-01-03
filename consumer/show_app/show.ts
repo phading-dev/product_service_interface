@@ -1,4 +1,5 @@
 import { MessageDescriptor, PrimitiveType } from '@selfage/message/descriptor';
+import { AccountSnapshot, ACCOUNT_SNAPSHOT } from '@phading/user_service_interface/third_person/account';
 
 export interface Show {
   showId?: string,
@@ -7,6 +8,7 @@ export interface Show {
   videoPath?: string,
   coverImagePath?: string,
   publishedTime?: number,
+  publisher?: AccountSnapshot,
 }
 
 export let SHOW: MessageDescriptor<Show> = {
@@ -36,6 +38,10 @@ export let SHOW: MessageDescriptor<Show> = {
       name: 'publishedTime',
       primitiveType: PrimitiveType.NUMBER,
     },
+    {
+      name: 'publisher',
+      messageType: ACCOUNT_SNAPSHOT,
+    },
   ]
 };
 
@@ -43,7 +49,10 @@ export interface ShowSnapshot {
   showId?: string,
   name?: string,
   coverImagePath?: string,
+/* Video length in seconds. */
+  length?: number,
   publishedTime?: number,
+  publisher?: AccountSnapshot,
 }
 
 export let SHOW_SNAPSHOT: MessageDescriptor<ShowSnapshot> = {
@@ -62,8 +71,16 @@ export let SHOW_SNAPSHOT: MessageDescriptor<ShowSnapshot> = {
       primitiveType: PrimitiveType.STRING,
     },
     {
+      name: 'length',
+      primitiveType: PrimitiveType.NUMBER,
+    },
+    {
       name: 'publishedTime',
       primitiveType: PrimitiveType.NUMBER,
+    },
+    {
+      name: 'publisher',
+      messageType: ACCOUNT_SNAPSHOT,
     },
   ]
 };

@@ -17,6 +17,10 @@
       "name": "coverImagePath",
       "type": "string"
     }, {
+      "name": "length",
+      "type": "number",
+      "comment": "Video length in seconds."
+    }, {
       "name": "scheduledPublishTime",
       "type": "number",
       "comment": "Timestamp in sec. Empty means in draft or unpublished."
@@ -43,6 +47,10 @@
     }, {
       "name": "coverImagePath",
       "type": "string"
+    }, {
+      "name": "length",
+      "type": "number",
+      "comment": "Video length in seconds."
     }, {
       "name": "publishedTime",
       "type": "number",

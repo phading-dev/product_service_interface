@@ -6,6 +6,8 @@ export interface Show {
   description?: string,
   videoPath?: string,
   coverImagePath?: string,
+/* Video length in seconds. */
+  length?: number,
 /* Timestamp in sec. Empty means in draft or unpublished. */
   scheduledPublishTime?: number,
 /* Timestamp in sec. Empty means not published yet but may be pending published. */
@@ -38,6 +40,10 @@ export let SHOW: MessageDescriptor<Show> = {
       primitiveType: PrimitiveType.STRING,
     },
     {
+      name: 'length',
+      primitiveType: PrimitiveType.NUMBER,
+    },
+    {
       name: 'scheduledPublishTime',
       primitiveType: PrimitiveType.NUMBER,
     },
@@ -57,6 +63,8 @@ export interface ShowSnapshot {
   showId?: string,
   name?: string,
   coverImagePath?: string,
+/* Video length in seconds. */
+  length?: number,
 /* Timestamp in sec. Empty means not published yet but may be pending published. */
   publishedTime?: number,
 /* Show a message that there are errors the user should check. */
@@ -77,6 +85,10 @@ export let SHOW_SNAPSHOT: MessageDescriptor<ShowSnapshot> = {
     {
       name: 'coverImagePath',
       primitiveType: PrimitiveType.STRING,
+    },
+    {
+      name: 'length',
+      primitiveType: PrimitiveType.NUMBER,
     },
     {
       name: 'publishedTime',

@@ -1,8 +1,8 @@
 [{
-  "name": "SeasonOfShows",
+  "name": "SeriesOfShows",
   "message": {
     "fields": [{
-      "name": "seasonId",
+      "name": "seriesId",
       "type": "string"
     }, {
       "name": "name",
@@ -17,17 +17,17 @@
       "name": "createdTimestamp",
       "type": "number"
     }, {
-      "name": "shows",
-      "type": "ShowSnapshot",
-      "import": "./show",
+      "name": "seasons",
+      "type": "SeasonOfShowsSnapshot",
+      "import": "./season_of_shows",
       "isArray": true
     }]
   }
 }, {
-  "name": "SeasonOfShowsSnapshot",
+  "name": "SeriesOfShowsSnapshot",
   "message": {
     "fields": [{
-      "name": "seasonId",
+      "name": "seriesId",
       "type": "string"
     }, {
       "name": "name",
@@ -35,6 +35,10 @@
     }, {
       "name": "coverImagePath",
       "type": "string"
+    }, {
+      "name": "count",
+      "type": "number",
+      "comment": "The number of items contained."
     }, {
       "name": "createdTimestamp",
       "type": "number"

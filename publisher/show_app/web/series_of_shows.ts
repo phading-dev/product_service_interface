@@ -45,6 +45,8 @@ export interface SeriesOfShowsSnapshot {
   seriesId?: string,
   name?: string,
   coverImagePath?: string,
+/* The number of items contained. */
+  count?: number,
   createdTimestamp?: number,
 }
 
@@ -62,6 +64,10 @@ export let SERIES_OF_SHOWS_SNAPSHOT: MessageDescriptor<SeriesOfShowsSnapshot> = 
     {
       name: 'coverImagePath',
       primitiveType: PrimitiveType.STRING,
+    },
+    {
+      name: 'count',
+      primitiveType: PrimitiveType.NUMBER,
     },
     {
       name: 'createdTimestamp',
