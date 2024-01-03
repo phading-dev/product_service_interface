@@ -18,7 +18,8 @@
       "type": "string"
     }, {
       "name": "publishedTime",
-      "type": "number"
+      "type": "number",
+      "comment": "Timestamp in seconds."
     }, {
       "name": "publisher",
       "type": "AccountSnapshot",
@@ -43,7 +44,8 @@
       "comment": "Video length in seconds."
     }, {
       "name": "publishedTime",
-      "type": "number"
+      "type": "number",
+      "comment": "Timestamp in seconds."
     }, {
       "name": "publisher",
       "type": "AccountSnapshot",

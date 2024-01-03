@@ -7,6 +7,7 @@ export interface Show {
   description?: string,
   videoPath?: string,
   coverImagePath?: string,
+/* Timestamp in seconds. */
   publishedTime?: number,
   publisher?: AccountSnapshot,
 }
@@ -51,6 +52,7 @@ export interface ShowSnapshot {
   coverImagePath?: string,
 /* Video length in seconds. */
   length?: number,
+/* Timestamp in seconds. */
   publishedTime?: number,
   publisher?: AccountSnapshot,
 }
