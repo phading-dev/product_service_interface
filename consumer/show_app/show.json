@@ -38,6 +38,9 @@
       "name": "publisher",
       "type": "AccountSnapshot",
       "import": "@phading/user_service_interface/third_person/account"
+    }, {
+      "name": "liking",
+      "type": "Liking"
     }]
   }
 }, {
@@ -64,9 +67,6 @@
       "name": "publisher",
       "type": "AccountSnapshot",
       "import": "@phading/user_service_interface/third_person/account"
-    }, {
-      "name": "liking",
-      "type": "Liking"
     }]
   }
 }]

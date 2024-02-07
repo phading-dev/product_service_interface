@@ -34,6 +34,7 @@ export interface Show {
 /* Timestamp in seconds. */
   publishedTime?: number,
   publisher?: AccountSnapshot,
+  liking?: Liking,
 }
 
 export let SHOW: MessageDescriptor<Show> = {
@@ -67,6 +68,10 @@ export let SHOW: MessageDescriptor<Show> = {
       name: 'publisher',
       messageType: ACCOUNT_SNAPSHOT,
     },
+    {
+      name: 'liking',
+      enumType: LIKING,
+    },
   ]
 };
 
@@ -79,7 +84,6 @@ export interface ShowSnapshot {
 /* Timestamp in seconds. */
   publishedTime?: number,
   publisher?: AccountSnapshot,
-  liking?: Liking,
 }
 
 export let SHOW_SNAPSHOT: MessageDescriptor<ShowSnapshot> = {
@@ -108,10 +112,6 @@ export let SHOW_SNAPSHOT: MessageDescriptor<ShowSnapshot> = {
     {
       name: 'publisher',
       messageType: ACCOUNT_SNAPSHOT,
-    },
-    {
-      name: 'liking',
-      enumType: LIKING,
     },
   ]
 };
