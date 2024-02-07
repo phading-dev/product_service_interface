@@ -1,6 +1,15 @@
 import { ServiceHandlerInterface } from '@selfage/service_descriptor/service_handler_interface';
-import { RECORD_PLAY_HISTORY, RecordPlayHistoryRequestBody, RecordPlayHistoryResponse, SAVE_SHOW, SaveShowRequestBody, SaveShowResponse, CREATE_SAVED_SHOW_LIST, CreateSavedShowListRequestBody, CreateSavedShowListResponse, DELETE_SAVED_SHOW_LIST, DeleteSavedShowListRequestBody, DeleteSavedShowListResponse, LIST_SAVED_SHOW_LISTS, ListSavedShowListsRequestBody, ListSavedShowListsResponse, GET_SAVED_SHOW_LIST, GetSavedShowListRequestBody, GetSavedShowListResponse, EDIT_SAVED_SHOW_LIST, EditSavedShowListRequestBody, EditSavedShowListResponse, GET_SHOW, GetShowRequestBody, GetShowResponse } from './interface';
+import { GET_SHOW, GetShowRequestBody, GetShowResponse, RECORD_PLAY_HISTORY, RecordPlayHistoryRequestBody, RecordPlayHistoryResponse, LIKE_SHOW, LikeShowRequestBody, LikeShowResponse, SAVE_SHOW, SaveShowRequestBody, SaveShowResponse, CREATE_SAVED_SHOW_LIST, CreateSavedShowListRequestBody, CreateSavedShowListResponse, DELETE_SAVED_SHOW_LIST, DeleteSavedShowListRequestBody, DeleteSavedShowListResponse, LIST_SAVED_SHOW_LISTS, ListSavedShowListsRequestBody, ListSavedShowListsResponse, GET_SAVED_SHOW_LIST, GetSavedShowListRequestBody, GetSavedShowListResponse, EDIT_SAVED_SHOW_LIST, EditSavedShowListRequestBody, EditSavedShowListResponse } from './interface';
 import { WebClientSession } from '@phading/user_session_service_interface/web_client_session';
+
+export abstract class GetShowHandlerInterface implements ServiceHandlerInterface {
+  public descriptor = GET_SHOW;
+  public abstract handle(
+    requestId: string,
+    body: GetShowRequestBody,
+    auth: WebClientSession,
+  ): Promise<GetShowResponse>;
+}
 
 export abstract class RecordPlayHistoryHandlerInterface implements ServiceHandlerInterface {
   public descriptor = RECORD_PLAY_HISTORY;
@@ -9,6 +18,15 @@ export abstract class RecordPlayHistoryHandlerInterface implements ServiceHandle
     body: RecordPlayHistoryRequestBody,
     auth: WebClientSession,
   ): Promise<RecordPlayHistoryResponse>;
+}
+
+export abstract class LikeShowHandlerInterface implements ServiceHandlerInterface {
+  public descriptor = LIKE_SHOW;
+  public abstract handle(
+    requestId: string,
+    body: LikeShowRequestBody,
+    auth: WebClientSession,
+  ): Promise<LikeShowResponse>;
 }
 
 export abstract class SaveShowHandlerInterface implements ServiceHandlerInterface {
@@ -63,13 +81,4 @@ export abstract class EditSavedShowListHandlerInterface implements ServiceHandle
     body: EditSavedShowListRequestBody,
     auth: WebClientSession,
   ): Promise<EditSavedShowListResponse>;
-}
-
-export abstract class GetShowHandlerInterface implements ServiceHandlerInterface {
-  public descriptor = GET_SHOW;
-  public abstract handle(
-    requestId: string,
-    body: GetShowRequestBody,
-    auth: WebClientSession,
-  ): Promise<GetShowResponse>;
 }

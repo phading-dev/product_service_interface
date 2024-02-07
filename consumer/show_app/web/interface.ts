@@ -1,8 +1,51 @@
 import { MessageDescriptor, PrimitiveType } from '@selfage/message/descriptor';
+import { Show, SHOW, Liking, LIKING } from '../show';
 import { ServiceDescriptor } from '@selfage/service_descriptor';
 import { WEB_CLIENT_SESSION } from '@phading/user_session_service_interface/web_client_session';
 import { SavedShowListSnapshot, SAVED_SHOW_LIST_SNAPSHOT, SavedShowList, SAVED_SHOW_LIST } from './saved_show_list';
-import { Show, SHOW } from '../show';
+
+export interface GetShowRequestBody {
+  showId?: string,
+}
+
+export let GET_SHOW_REQUEST_BODY: MessageDescriptor<GetShowRequestBody> = {
+  name: 'GetShowRequestBody',
+  fields: [
+    {
+      name: 'showId',
+      primitiveType: PrimitiveType.STRING,
+    },
+  ]
+};
+
+export interface GetShowResponse {
+  show?: Show,
+}
+
+export let GET_SHOW_RESPONSE: MessageDescriptor<GetShowResponse> = {
+  name: 'GetShowResponse',
+  fields: [
+    {
+      name: 'show',
+      messageType: SHOW,
+    },
+  ]
+};
+
+export let GET_SHOW: ServiceDescriptor = {
+  name: "GetShow",
+  path: "/GetShow",
+  body: {
+    messageType: GET_SHOW_REQUEST_BODY,
+  },
+  auth: {
+    key: "auth",
+    type: WEB_CLIENT_SESSION
+  },
+  response: {
+    messageType: GET_SHOW_RESPONSE,
+  },
+}
 
 export interface RecordPlayHistoryRequestBody {
   showId?: string,
@@ -51,6 +94,49 @@ export let RECORD_PLAY_HISTORY: ServiceDescriptor = {
   },
   response: {
     messageType: RECORD_PLAY_HISTORY_RESPONSE,
+  },
+}
+
+export interface LikeShowRequestBody {
+  showId?: number,
+  liking?: Liking,
+}
+
+export let LIKE_SHOW_REQUEST_BODY: MessageDescriptor<LikeShowRequestBody> = {
+  name: 'LikeShowRequestBody',
+  fields: [
+    {
+      name: 'showId',
+      primitiveType: PrimitiveType.NUMBER,
+    },
+    {
+      name: 'liking',
+      enumType: LIKING,
+    },
+  ]
+};
+
+export interface LikeShowResponse {
+}
+
+export let LIKE_SHOW_RESPONSE: MessageDescriptor<LikeShowResponse> = {
+  name: 'LikeShowResponse',
+  fields: [
+  ]
+};
+
+export let LIKE_SHOW: ServiceDescriptor = {
+  name: "LikeShow",
+  path: "/LikeShow",
+  body: {
+    messageType: LIKE_SHOW_REQUEST_BODY,
+  },
+  auth: {
+    key: "auth",
+    type: WEB_CLIENT_SESSION
+  },
+  response: {
+    messageType: LIKE_SHOW_RESPONSE,
   },
 }
 
@@ -296,48 +382,5 @@ export let EDIT_SAVED_SHOW_LIST: ServiceDescriptor = {
   },
   response: {
     messageType: EDIT_SAVED_SHOW_LIST_RESPONSE,
-  },
-}
-
-export interface GetShowRequestBody {
-  showId?: string,
-}
-
-export let GET_SHOW_REQUEST_BODY: MessageDescriptor<GetShowRequestBody> = {
-  name: 'GetShowRequestBody',
-  fields: [
-    {
-      name: 'showId',
-      primitiveType: PrimitiveType.STRING,
-    },
-  ]
-};
-
-export interface GetShowResponse {
-  show?: Show,
-}
-
-export let GET_SHOW_RESPONSE: MessageDescriptor<GetShowResponse> = {
-  name: 'GetShowResponse',
-  fields: [
-    {
-      name: 'show',
-      messageType: SHOW,
-    },
-  ]
-};
-
-export let GET_SHOW: ServiceDescriptor = {
-  name: "GetShow",
-  path: "/GetShow",
-  body: {
-    messageType: GET_SHOW_REQUEST_BODY,
-  },
-  auth: {
-    key: "auth",
-    type: WEB_CLIENT_SESSION
-  },
-  response: {
-    messageType: GET_SHOW_RESPONSE,
   },
 }

@@ -1,4 +1,35 @@
 [{
+  "name": "GetShowRequestBody",
+  "message": {
+    "fields": [{
+      "name": "showId",
+      "type": "string"
+    }]
+  }
+}, {
+  "name": "GetShowResponse",
+  "message": {
+    "fields": [{
+      "name": "show",
+      "type": "Show",
+      "import": "../show"
+    }]
+  }
+}, {
+  "name": "GetShow",
+  "service": {
+    "path": "/GetShow",
+    "body": "GetShowRequestBody",
+    "auth": {
+      "key": "auth",
+      "type": "WebClientSession",
+      "import": "@phading/user_session_service_interface/web_client_session"
+    },
+    "response": "GetShowResponse",
+    "outputWebClient": "./client_requests",
+    "outputHandler": "./server_handlers"
+  }
+}, {
   "name": "RecordPlayHistoryRequestBody",
   "message": {
     "fields": [{
@@ -30,6 +61,37 @@
       "import": "@phading/user_session_service_interface/web_client_session"
     },
     "response": "RecordPlayHistoryResponse",
+    "outputWebClient": "./client_requests",
+    "outputHandler": "./server_handlers"
+  }
+}, {
+  "name": "LikeShowRequestBody",
+  "message": {
+    "fields": [{
+      "name": "showId",
+      "type": "number"
+    }, {
+      "name": "liking",
+      "type": "Liking",
+      "import": "../show"
+    }]
+  }
+}, {
+  "name": "LikeShowResponse",
+  "message": {
+    "fields": []
+  }
+}, {
+  "name": "LikeShow",
+  "service": {
+    "path": "/LikeShow",
+    "body": "LikeShowRequestBody",
+    "auth": {
+      "key": "auth",
+      "type": "WebClientSession",
+      "import": "@phading/user_session_service_interface/web_client_session"
+    },
+    "response": "LikeShowResponse",
     "outputWebClient": "./client_requests",
     "outputHandler": "./server_handlers"
   }
@@ -206,37 +268,6 @@
       "import": "@phading/user_session_service_interface/web_client_session"
     },
     "response": "EditSavedShowListResponse",
-    "outputWebClient": "./client_requests",
-    "outputHandler": "./server_handlers"
-  }
-}, {
-  "name": "GetShowRequestBody",
-  "message": {
-    "fields": [{
-      "name": "showId",
-      "type": "string"
-    }]
-  }
-}, {
-  "name": "GetShowResponse",
-  "message": {
-    "fields": [{
-      "name": "show",
-      "type": "Show",
-      "import": "../show"
-    }]
-  }
-}, {
-  "name": "GetShow",
-  "service": {
-    "path": "/GetShow",
-    "body": "GetShowRequestBody",
-    "auth": {
-      "key": "auth",
-      "type": "WebClientSession",
-      "import": "@phading/user_session_service_interface/web_client_session"
-    },
-    "response": "GetShowResponse",
     "outputWebClient": "./client_requests",
     "outputHandler": "./server_handlers"
   }
