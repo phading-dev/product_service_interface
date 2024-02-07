@@ -98,7 +98,7 @@ export let RECORD_PLAY_HISTORY: ServiceDescriptor = {
 }
 
 export interface LikeShowRequestBody {
-  showId?: number,
+  showId?: string,
   liking?: Liking,
 }
 
@@ -107,7 +107,7 @@ export let LIKE_SHOW_REQUEST_BODY: MessageDescriptor<LikeShowRequestBody> = {
   fields: [
     {
       name: 'showId',
-      primitiveType: PrimitiveType.NUMBER,
+      primitiveType: PrimitiveType.STRING,
     },
     {
       name: 'liking',
@@ -141,7 +141,7 @@ export let LIKE_SHOW: ServiceDescriptor = {
 }
 
 export interface SaveShowRequestBody {
-  showId?: number,
+  showId?: string,
 /* Optional. If empty, save to the default list. */
   listId?: string,
 }
@@ -151,7 +151,7 @@ export let SAVE_SHOW_REQUEST_BODY: MessageDescriptor<SaveShowRequestBody> = {
   fields: [
     {
       name: 'showId',
-      primitiveType: PrimitiveType.NUMBER,
+      primitiveType: PrimitiveType.STRING,
     },
     {
       name: 'listId',
