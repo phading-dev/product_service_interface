@@ -1,5 +1,5 @@
 import { WebServiceClientInterface } from '@selfage/service_descriptor/web_service_client_interface';
-import { GetShowRequestBody, GetShowResponse, GET_SHOW, RecordPlayHistoryRequestBody, RecordPlayHistoryResponse, RECORD_PLAY_HISTORY, LikeShowRequestBody, LikeShowResponse, LIKE_SHOW, SaveShowRequestBody, SaveShowResponse, SAVE_SHOW, CreateSavedShowListRequestBody, CreateSavedShowListResponse, CREATE_SAVED_SHOW_LIST, DeleteSavedShowListRequestBody, DeleteSavedShowListResponse, DELETE_SAVED_SHOW_LIST, ListSavedShowListsRequestBody, ListSavedShowListsResponse, LIST_SAVED_SHOW_LISTS, GetSavedShowListRequestBody, GetSavedShowListResponse, GET_SAVED_SHOW_LIST, EditSavedShowListRequestBody, EditSavedShowListResponse, EDIT_SAVED_SHOW_LIST } from './interface';
+import { GetShowRequestBody, GetShowResponse, GET_SHOW, RecordPlayHistoryRequestBody, RecordPlayHistoryResponse, RECORD_PLAY_HISTORY, LikeShowRequestBody, LikeShowResponse, LIKE_SHOW, SaveShowRequestBody, SaveShowResponse, SAVE_SHOW, CreateSavedShowListRequestBody, CreateSavedShowListResponse, CREATE_SAVED_SHOW_LIST, DeleteSavedShowListRequestBody, DeleteSavedShowListResponse, DELETE_SAVED_SHOW_LIST, ListSavedShowListsRequestBody, ListSavedShowListsResponse, LIST_SAVED_SHOW_LISTS, GetSavedShowListRequestBody, GetSavedShowListResponse, GET_SAVED_SHOW_LIST, EditSavedShowListRequestBody, EditSavedShowListResponse, EDIT_SAVED_SHOW_LIST, GetPlayerSettingsRequestBody, GetPlayerSettingsResponse, GET_PLAYER_SETTINGS, SavePlayerSettingsRequestBody, SavePlayerSettingsResponse, SAVE_PLAYER_SETTINGS } from './interface';
 
 export function getShow(
   client: WebServiceClientInterface,
@@ -87,6 +87,26 @@ export function editSavedShowList(
 ): Promise<EditSavedShowListResponse> {
   return client.send({
     descriptor: EDIT_SAVED_SHOW_LIST,
+    body,
+  });
+}
+
+export function getPlayerSettings(
+  client: WebServiceClientInterface,
+  body: GetPlayerSettingsRequestBody,
+): Promise<GetPlayerSettingsResponse> {
+  return client.send({
+    descriptor: GET_PLAYER_SETTINGS,
+    body,
+  });
+}
+
+export function savePlayerSettings(
+  client: WebServiceClientInterface,
+  body: SavePlayerSettingsRequestBody,
+): Promise<SavePlayerSettingsResponse> {
+  return client.send({
+    descriptor: SAVE_PLAYER_SETTINGS,
     body,
   });
 }

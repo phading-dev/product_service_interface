@@ -3,6 +3,7 @@ import { Show, SHOW, Liking, LIKING } from '../show';
 import { ServiceDescriptor } from '@selfage/service_descriptor';
 import { WEB_CLIENT_SESSION } from '@phading/user_session_service_interface/web_client_session';
 import { SavedShowListSnapshot, SAVED_SHOW_LIST_SNAPSHOT, SavedShowList, SAVED_SHOW_LIST } from './saved_show_list';
+import { PlayerSettings, PLAYER_SETTINGS } from '../player_settings';
 
 export interface GetShowRequestBody {
   showId?: string,
@@ -382,5 +383,81 @@ export let EDIT_SAVED_SHOW_LIST: ServiceDescriptor = {
   },
   response: {
     messageType: EDIT_SAVED_SHOW_LIST_RESPONSE,
+  },
+}
+
+export interface GetPlayerSettingsRequestBody {
+}
+
+export let GET_PLAYER_SETTINGS_REQUEST_BODY: MessageDescriptor<GetPlayerSettingsRequestBody> = {
+  name: 'GetPlayerSettingsRequestBody',
+  fields: [
+  ]
+};
+
+export interface GetPlayerSettingsResponse {
+  playerSettings?: PlayerSettings,
+}
+
+export let GET_PLAYER_SETTINGS_RESPONSE: MessageDescriptor<GetPlayerSettingsResponse> = {
+  name: 'GetPlayerSettingsResponse',
+  fields: [
+    {
+      name: 'playerSettings',
+      messageType: PLAYER_SETTINGS,
+    },
+  ]
+};
+
+export let GET_PLAYER_SETTINGS: ServiceDescriptor = {
+  name: "GetPlayerSettings",
+  path: "/GetPlayerSettings",
+  body: {
+    messageType: GET_PLAYER_SETTINGS_REQUEST_BODY,
+  },
+  auth: {
+    key: "auth",
+    type: WEB_CLIENT_SESSION
+  },
+  response: {
+    messageType: GET_PLAYER_SETTINGS_RESPONSE,
+  },
+}
+
+export interface SavePlayerSettingsRequestBody {
+  playerSettings?: PlayerSettings,
+}
+
+export let SAVE_PLAYER_SETTINGS_REQUEST_BODY: MessageDescriptor<SavePlayerSettingsRequestBody> = {
+  name: 'SavePlayerSettingsRequestBody',
+  fields: [
+    {
+      name: 'playerSettings',
+      messageType: PLAYER_SETTINGS,
+    },
+  ]
+};
+
+export interface SavePlayerSettingsResponse {
+}
+
+export let SAVE_PLAYER_SETTINGS_RESPONSE: MessageDescriptor<SavePlayerSettingsResponse> = {
+  name: 'SavePlayerSettingsResponse',
+  fields: [
+  ]
+};
+
+export let SAVE_PLAYER_SETTINGS: ServiceDescriptor = {
+  name: "SavePlayerSettings",
+  path: "/SavePlayerSettings",
+  body: {
+    messageType: SAVE_PLAYER_SETTINGS_REQUEST_BODY,
+  },
+  auth: {
+    key: "auth",
+    type: WEB_CLIENT_SESSION
+  },
+  response: {
+    messageType: SAVE_PLAYER_SETTINGS_RESPONSE,
   },
 }

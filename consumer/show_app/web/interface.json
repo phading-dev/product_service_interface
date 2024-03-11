@@ -271,4 +271,60 @@
     "outputWebClient": "./client_requests",
     "outputHandler": "./server_handlers"
   }
+}, {
+  "name": "GetPlayerSettingsRequestBody",
+  "message": {
+    "fields": []
+  }
+}, {
+  "name": "GetPlayerSettingsResponse",
+  "message": {
+    "fields": [{
+      "name": "playerSettings",
+      "type": "PlayerSettings",
+      "import": "../player_settings"
+    }]
+  }
+}, {
+  "name": "GetPlayerSettings",
+  "service": {
+    "path": "/GetPlayerSettings",
+    "body": "GetPlayerSettingsRequestBody",
+    "auth": {
+      "key": "auth",
+      "type": "WebClientSession",
+      "import": "@phading/user_session_service_interface/web_client_session"
+    },
+    "response": "GetPlayerSettingsResponse",
+    "outputWebClient": "./client_requests",
+    "outputHandler": "./server_handlers"
+  }
+}, {
+  "name": "SavePlayerSettingsRequestBody",
+  "message": {
+    "fields": [{
+      "name": "playerSettings",
+      "type": "PlayerSettings",
+      "import": "../player_settings"
+    }]
+  }
+}, {
+  "name": "SavePlayerSettingsResponse",
+  "message": {
+    "fields": []
+  }
+}, {
+  "name": "SavePlayerSettings",
+  "service": {
+    "path": "/SavePlayerSettings",
+    "body": "SavePlayerSettingsRequestBody",
+    "auth": {
+      "key": "auth",
+      "type": "WebClientSession",
+      "import": "@phading/user_session_service_interface/web_client_session"
+    },
+    "response": "SavePlayerSettingsResponse",
+    "outputWebClient": "./client_requests",
+    "outputHandler": "./server_handlers"
+  }
 }]

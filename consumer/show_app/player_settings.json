@@ -1,0 +1,74 @@
+[{
+  "name": "VideoSettings",
+  "message": {
+    "fields": [{
+      "name": "volume",
+      "type": "number",
+      "comment": "0 to 1"
+    }, {
+      "name": "looping",
+      "type": "boolean"
+    }, {
+      "name": "playbackSpeed",
+      "type": "number",
+      "comment": ".25x to 4x"
+    }]
+  }
+}, {
+  "name": "DistributionStyle",
+  "enum": {
+    "values": [{
+      "name": "RANDOM",
+      "value": 1
+    }, {
+      "name": "TOP_DOWN",
+      "value": 2
+    }]
+  }
+}, {
+  "name": "DanmakuSettings",
+  "message": {
+    "fields": [{
+      "name": "enable",
+      "type": "boolean"
+    }, {
+      "name": "speed",
+      "type": "number"
+    }, {
+      "name": "opacity",
+      "type": "number",
+      "comment": "0 to 1"
+    }, {
+      "name": "fontSize",
+      "type": "number"
+    }, {
+      "name": "density",
+      "type": "number"
+    }, {
+      "name": "topMargin",
+      "type": "number",
+      "comment":"Ratio 0 to 1"
+    }, {
+      "name": "bottomMargin",
+      "type": "number",
+      "comment":"Ratio 0 to 1"
+    }, {
+      "name": "fontFamily",
+      "type": "string"
+    }, {
+      "name": "distributionStyle",
+      "type": "DistributionStyle"
+    }]
+  }
+}, {
+  "name": "PlayerSettings",
+  "message": {
+    "fields": [{
+      "name": "VideoSettings",
+      "type": "VideoSettings"
+    }, {
+      "name": "danmakuSettings",
+      "type": "DanmakuSettings"
+    }]
+  }
+}]

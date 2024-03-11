@@ -1,5 +1,5 @@
 import { ServiceHandlerInterface } from '@selfage/service_descriptor/service_handler_interface';
-import { GET_SHOW, GetShowRequestBody, GetShowResponse, RECORD_PLAY_HISTORY, RecordPlayHistoryRequestBody, RecordPlayHistoryResponse, LIKE_SHOW, LikeShowRequestBody, LikeShowResponse, SAVE_SHOW, SaveShowRequestBody, SaveShowResponse, CREATE_SAVED_SHOW_LIST, CreateSavedShowListRequestBody, CreateSavedShowListResponse, DELETE_SAVED_SHOW_LIST, DeleteSavedShowListRequestBody, DeleteSavedShowListResponse, LIST_SAVED_SHOW_LISTS, ListSavedShowListsRequestBody, ListSavedShowListsResponse, GET_SAVED_SHOW_LIST, GetSavedShowListRequestBody, GetSavedShowListResponse, EDIT_SAVED_SHOW_LIST, EditSavedShowListRequestBody, EditSavedShowListResponse } from './interface';
+import { GET_SHOW, GetShowRequestBody, GetShowResponse, RECORD_PLAY_HISTORY, RecordPlayHistoryRequestBody, RecordPlayHistoryResponse, LIKE_SHOW, LikeShowRequestBody, LikeShowResponse, SAVE_SHOW, SaveShowRequestBody, SaveShowResponse, CREATE_SAVED_SHOW_LIST, CreateSavedShowListRequestBody, CreateSavedShowListResponse, DELETE_SAVED_SHOW_LIST, DeleteSavedShowListRequestBody, DeleteSavedShowListResponse, LIST_SAVED_SHOW_LISTS, ListSavedShowListsRequestBody, ListSavedShowListsResponse, GET_SAVED_SHOW_LIST, GetSavedShowListRequestBody, GetSavedShowListResponse, EDIT_SAVED_SHOW_LIST, EditSavedShowListRequestBody, EditSavedShowListResponse, GET_PLAYER_SETTINGS, GetPlayerSettingsRequestBody, GetPlayerSettingsResponse, SAVE_PLAYER_SETTINGS, SavePlayerSettingsRequestBody, SavePlayerSettingsResponse } from './interface';
 import { WebClientSession } from '@phading/user_session_service_interface/web_client_session';
 
 export abstract class GetShowHandlerInterface implements ServiceHandlerInterface {
@@ -81,4 +81,22 @@ export abstract class EditSavedShowListHandlerInterface implements ServiceHandle
     body: EditSavedShowListRequestBody,
     auth: WebClientSession,
   ): Promise<EditSavedShowListResponse>;
+}
+
+export abstract class GetPlayerSettingsHandlerInterface implements ServiceHandlerInterface {
+  public descriptor = GET_PLAYER_SETTINGS;
+  public abstract handle(
+    requestId: string,
+    body: GetPlayerSettingsRequestBody,
+    auth: WebClientSession,
+  ): Promise<GetPlayerSettingsResponse>;
+}
+
+export abstract class SavePlayerSettingsHandlerInterface implements ServiceHandlerInterface {
+  public descriptor = SAVE_PLAYER_SETTINGS;
+  public abstract handle(
+    requestId: string,
+    body: SavePlayerSettingsRequestBody,
+    auth: WebClientSession,
+  ): Promise<SavePlayerSettingsResponse>;
 }
