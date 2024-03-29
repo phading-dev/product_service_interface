@@ -6,7 +6,7 @@
       "type": "number",
       "comment": "0 to 1"
     }, {
-      "name": "looping",
+      "name": "muted",
       "type": "boolean"
     }, {
       "name": "playbackSpeed",
@@ -43,7 +43,8 @@
       "type": "number"
     }, {
       "name": "density",
-      "type": "number"
+      "type": "number",
+      "comment": "Ratio 0 to 1. For every 100 pixels, the number of pixels should be occupied."
     }, {
       "name": "topMargin",
       "type": "number",
@@ -64,7 +65,7 @@
   "name": "PlayerSettings",
   "message": {
     "fields": [{
-      "name": "VideoSettings",
+      "name": "videoSettings",
       "type": "VideoSettings"
     }, {
       "name": "danmakuSettings",

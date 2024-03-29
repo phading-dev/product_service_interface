@@ -3,7 +3,7 @@ import { MessageDescriptor, PrimitiveType, EnumDescriptor } from '@selfage/messa
 export interface VideoSettings {
 /* 0 to 1 */
   volume?: number,
-  looping?: boolean,
+  muted?: boolean,
 /* .25x to 4x */
   playbackSpeed?: number,
 }
@@ -16,7 +16,7 @@ export let VIDEO_SETTINGS: MessageDescriptor<VideoSettings> = {
       primitiveType: PrimitiveType.NUMBER,
     },
     {
-      name: 'looping',
+      name: 'muted',
       primitiveType: PrimitiveType.BOOLEAN,
     },
     {
@@ -51,6 +51,7 @@ export interface DanmakuSettings {
 /* 0 to 1 */
   opacity?: number,
   fontSize?: number,
+/* Ratio 0 to 1. For every 100 pixels, the number of pixels should be occupied. */
   density?: number,
 /* Ratio 0 to 1 */
   topMargin?: number,
@@ -103,7 +104,7 @@ export let DANMAKU_SETTINGS: MessageDescriptor<DanmakuSettings> = {
 };
 
 export interface PlayerSettings {
-  VideoSettings?: VideoSettings,
+  videoSettings?: VideoSettings,
   danmakuSettings?: DanmakuSettings,
 }
 
@@ -111,7 +112,7 @@ export let PLAYER_SETTINGS: MessageDescriptor<PlayerSettings> = {
   name: 'PlayerSettings',
   fields: [
     {
-      name: 'VideoSettings',
+      name: 'videoSettings',
       messageType: VIDEO_SETTINGS,
     },
     {
