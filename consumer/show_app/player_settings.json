@@ -15,7 +15,7 @@
     }]
   }
 }, {
-  "name": "DistributionStyle",
+  "name": "StackingMethod",
   "enum": {
     "values": [{
       "name": "RANDOM",
@@ -37,7 +37,7 @@
     }, {
       "name": "opacity",
       "type": "number",
-      "comment": "0 to 1"
+      "comment": "0 to 100 percentage."
     }, {
       "name": "fontSize",
       "type": "number"
@@ -57,8 +57,8 @@
       "name": "fontFamily",
       "type": "string"
     }, {
-      "name": "distributionStyle",
-      "type": "DistributionStyle"
+      "name": "stackingMethod",
+      "type": "StackingMethod"
     }]
   }
 }, {

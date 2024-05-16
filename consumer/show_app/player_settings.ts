@@ -26,13 +26,13 @@ export let VIDEO_SETTINGS: MessageDescriptor<VideoSettings> = {
   ]
 };
 
-export enum DistributionStyle {
+export enum StackingMethod {
   RANDOM = 1,
   TOP_DOWN = 2,
 }
 
-export let DISTRIBUTION_STYLE: EnumDescriptor<DistributionStyle> = {
-  name: 'DistributionStyle',
+export let STACKING_METHOD: EnumDescriptor<StackingMethod> = {
+  name: 'StackingMethod',
   values: [
     {
       name: 'RANDOM',
@@ -48,7 +48,7 @@ export let DISTRIBUTION_STYLE: EnumDescriptor<DistributionStyle> = {
 export interface DanmakuSettings {
   enable?: boolean,
   speed?: number,
-/* 0 to 1 */
+/* 0 to 100 percentage. */
   opacity?: number,
   fontSize?: number,
 /* 0 to 100 percentage. For every 100 pixels, the number of pixels should be occupied. */
@@ -58,7 +58,7 @@ export interface DanmakuSettings {
 /* 0 to 100 percentage. */
   bottomMargin?: number,
   fontFamily?: string,
-  distributionStyle?: DistributionStyle,
+  stackingMethod?: StackingMethod,
 }
 
 export let DANMAKU_SETTINGS: MessageDescriptor<DanmakuSettings> = {
@@ -97,8 +97,8 @@ export let DANMAKU_SETTINGS: MessageDescriptor<DanmakuSettings> = {
       primitiveType: PrimitiveType.STRING,
     },
     {
-      name: 'distributionStyle',
-      enumType: DISTRIBUTION_STYLE,
+      name: 'stackingMethod',
+      enumType: STACKING_METHOD,
     },
   ]
 };
