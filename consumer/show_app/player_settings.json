@@ -44,15 +44,15 @@
     }, {
       "name": "density",
       "type": "number",
-      "comment": "Ratio 0 to 1. For every 100 pixels, the number of pixels should be occupied."
+      "comment": "0 to 100 percentage. For every 100 pixels, the number of pixels should be occupied."
     }, {
       "name": "topMargin",
       "type": "number",
-      "comment":"Ratio 0 to 1"
+      "comment":"0 to 100 percentage."
     }, {
       "name": "bottomMargin",
       "type": "number",
-      "comment":"Ratio 0 to 1"
+      "comment":"0 to 100 percentage."
     }, {
       "name": "fontFamily",
       "type": "string"

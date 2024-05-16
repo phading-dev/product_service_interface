@@ -51,11 +51,11 @@ export interface DanmakuSettings {
 /* 0 to 1 */
   opacity?: number,
   fontSize?: number,
-/* Ratio 0 to 1. For every 100 pixels, the number of pixels should be occupied. */
+/* 0 to 100 percentage. For every 100 pixels, the number of pixels should be occupied. */
   density?: number,
-/* Ratio 0 to 1 */
+/* 0 to 100 percentage. */
   topMargin?: number,
-/* Ratio 0 to 1 */
+/* 0 to 100 percentage. */
   bottomMargin?: number,
   fontFamily?: string,
   distributionStyle?: DistributionStyle,
