@@ -1,0 +1,45 @@
+[{
+  "name": "EpisodeItem",
+  "message": {
+    "fields": [{
+      "name": "episodeId",
+      "type": "string"
+    }, {
+      "name": "name",
+      "type": "string"
+    }, {
+      "name": "length",
+      "type": "number",
+      "comment": "Video length in seconds."
+    }]
+  }
+}, {
+  "name": "SeasonToPlay",
+  "message": {
+    "fields": [{
+      "name": "seasonId",
+      "type": "string"
+    }, {
+      "name": "name",
+      "type": "string"
+    }, {
+      "name": "description",
+      "type": "string"
+    }, {
+      "name": "coverImagePath",
+      "type": "string"
+    }, {
+      "name": "grade",
+      "type": "number",
+      "comment": "Small number means low quality and price."
+    }, {
+      "name": "episodes",
+      "type": "EpisodeItem",
+      "isArray": true
+    }, {
+      "name": "publisher",
+      "type": "AccountSnapshot",
+      "import": "./account_snapshot"
+    }]
+  }
+}]

@@ -1,0 +1,64 @@
+[{
+  "name": "UploadCoverImageResponse",
+  "message": {
+    "fields": [{
+      "name": "path",
+      "type": "string"
+    }]
+  }
+}, {
+  "name": "UploadCoverImage",
+  "service": {
+    "path": "/UploadCoverImage",
+    "body": "bytes",
+    "auth": {
+      "key": "auth",
+      "type": "ClientSession",
+      "import": "@phading/user_session_service_interface/client_session"
+    },
+    "response": "UploadCoverImageResponse",
+    "outputWebClient": "./client_requests",
+    "outputHandler": "./server_handlers"
+  }
+}, {
+  "name": "CreateSeasonRequestBody",
+  "message": {
+    "fields": [{
+      "name": "name",
+      "type": "string"
+    }, {
+      "name": "description",
+      "type": "string"
+    }, {
+      "name": "coverImagePath",
+      "type": "string"
+    }, {
+      "name": "grade",
+      "type": "number",
+      "comment": "1 - 8. Lowest grade means lowest quality."
+    }]
+  }
+}, {
+  "name": "CreateSeasonResponse",
+  "message": {
+    "fields": [{
+      "name": "season",
+      "type": "SeasonSnapshot",
+      "import": "./season_snapshot"
+    }]
+  }
+}, {
+  "name": "CreateSeason",
+  "service": {
+    "path": "/CreateSeason",
+    "body": "CreateSeasonRequestBody",
+    "auth": {
+      "key": "auth",
+      "type": "ClientSession",
+      "import": "@phading/user_session_service_interface/client_session"
+    },
+    "response": "CreateSeasonResponse",
+    "outputWebClient": "./client_requests",
+    "outputHandler": "./server_handlers"
+  }
+}]

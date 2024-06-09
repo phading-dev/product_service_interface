@@ -1,0 +1,25 @@
+[{
+  "name": "SeasonSnapshot",
+  "message": {
+    "fields": [{
+      "name": "seasonId",
+      "type": "string"
+    }, {
+      "name": "name",
+      "type": "string"
+    }, {
+      "name": "coverImagePath",
+      "type": "string"
+    }, {
+      "name": "grade",
+      "type": "number"
+    }, {
+      "name": "episodesCount",
+      "type": "number"
+    }, {
+      "name": "createdTime",
+      "type": "number",
+      "comment": "Timestamp in seconds."
+    }]
+  }
+}]

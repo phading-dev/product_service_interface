@@ -1,0 +1,23 @@
+[{
+  "name": "EpisodeToPlay",
+  "message": {
+    "fields": [{
+      "name": "episodeId",
+      "type": "string"
+    }, {
+      "name": "name",
+      "type": "string"
+    }, {
+      "name": "videoPath",
+      "type": "string"
+    }, {
+      "name": "continueTimestamp",
+      "type": "number",
+      "comment": "Timestamp in seconds."
+    }, {
+      "name": "publishedTime",
+      "type": "number",
+      "comment": "Timestamp in seconds."
+    }]
+  }
+}]
