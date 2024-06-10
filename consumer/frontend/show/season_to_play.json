@@ -1,4 +1,18 @@
 [{
+  "name": "AccountSnapshot",
+  "message": {
+    "fields": [{
+      "name": "accountId",
+      "type": "string"
+    }, {
+      "name": "naturalName",
+      "type": "string"
+    }, {
+      "name": "avatarSmallPath",
+      "type": "string"
+    }]
+  }
+}, {
   "name": "EpisodeItem",
   "message": {
     "fields": [{
@@ -38,8 +52,7 @@
       "isArray": true
     }, {
       "name": "publisher",
-      "type": "AccountSnapshot",
-      "import": "./account_snapshot"
+      "type": "AccountSnapshot"
     }]
   }
 }]

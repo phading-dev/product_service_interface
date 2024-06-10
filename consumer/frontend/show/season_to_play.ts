@@ -1,5 +1,28 @@
 import { MessageDescriptor, PrimitiveType } from '@selfage/message/descriptor';
-import { AccountSnapshot, ACCOUNT_SNAPSHOT } from './account_snapshot';
+
+export interface AccountSnapshot {
+  accountId?: string,
+  naturalName?: string,
+  avatarSmallPath?: string,
+}
+
+export let ACCOUNT_SNAPSHOT: MessageDescriptor<AccountSnapshot> = {
+  name: 'AccountSnapshot',
+  fields: [
+    {
+      name: 'accountId',
+      primitiveType: PrimitiveType.STRING,
+    },
+    {
+      name: 'naturalName',
+      primitiveType: PrimitiveType.STRING,
+    },
+    {
+      name: 'avatarSmallPath',
+      primitiveType: PrimitiveType.STRING,
+    },
+  ]
+};
 
 export interface EpisodeItem {
   episodeId?: string,
@@ -34,8 +57,6 @@ export interface SeasonToPlay {
 /* Small number means low quality and price. */
   grade?: number,
   episodes?: Array<EpisodeItem>,
-  seriesId?: string,
-  seriesName?: string,
   publisher?: AccountSnapshot,
 }
 
@@ -66,14 +87,6 @@ export let SEASON_TO_PLAY: MessageDescriptor<SeasonToPlay> = {
       name: 'episodes',
       messageType: EPISODE_ITEM,
       isArray: true,
-    },
-    {
-      name: 'seriesId',
-      primitiveType: PrimitiveType.STRING,
-    },
-    {
-      name: 'seriesName',
-      primitiveType: PrimitiveType.STRING,
     },
     {
       name: 'publisher',
