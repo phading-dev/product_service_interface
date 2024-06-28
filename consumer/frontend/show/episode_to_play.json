@@ -1,11 +1,8 @@
 [{
-  "name": "EpisodeToPlay",
+  "name": "Episode",
   "message": {
     "fields": [{
       "name": "episodeId",
-      "type": "string"
-    }, {
-      "name": "name",
       "type": "string"
     }, {
       "name": "videoPath",
@@ -14,10 +11,70 @@
       "name": "continueTimestamp",
       "type": "number",
       "comment": "Timestamp in seconds."
+    }]
+  }
+}, {
+  "name": "EpisodeSummary",
+  "message": {
+    "fields": [{
+      "name": "episodeId",
+      "type": "string"
+    }, {
+      "name": "name",
+      "type": "string"
+    }, {
+      "name": "length",
+      "type": "number",
+      "comment": "Video length in seconds."
     }, {
       "name": "publishedTime",
       "type": "number",
       "comment": "Timestamp in seconds."
+    }]
+  }
+}, {
+  "name": "PublisherSummary",
+  "message": {
+    "fields": [{
+      "name": "accountId",
+      "type": "string"
+    }, {
+      "name": "naturalName",
+      "type": "string"
+    }, {
+      "name": "avatarSmallPath",
+      "type": "string"
+    }]
+  }
+}, {
+  "name": "EpisodeToPlay",
+  "message": {
+    "fields": [{
+      "name": "seasonId",
+      "type": "string"
+    }, {
+      "name": "name",
+      "type": "string"
+    }, {
+      "name": "description",
+      "type": "string"
+    }, {
+      "name": "coverImagePath",
+      "type": "string"
+    }, {
+      "name": "grade",
+      "type": "number",
+      "comment": "Small number means low quality and price."
+    }, {
+      "name": "episode",
+      "type": "Episode"
+    }, {
+      "name": "episodes",
+      "type": "EpisodeSummary",
+      "isArray": true
+    }, {
+      "name": "publisher",
+      "type": "PublisherSummary"
     }]
   }
 }]
