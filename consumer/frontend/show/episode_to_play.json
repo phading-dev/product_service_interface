@@ -14,6 +14,27 @@
     }]
   }
 }, {
+  "name": "SeasonDetail",
+  "message": {
+    "fields": [{
+      "name": "seasonId",
+      "type": "string"
+    }, {
+      "name": "name",
+      "type": "string"
+    }, {
+      "name": "description",
+      "type": "string"
+    }, {
+      "name": "coverImagePath",
+      "type": "string"
+    }, {
+      "name": "grade",
+      "type": "number",
+      "comment": "Small number means low quality and price."
+    }]
+  }
+}, {
   "name": "EpisodeSummary",
   "message": {
     "fields": [{
@@ -50,21 +71,8 @@
   "name": "EpisodeToPlay",
   "message": {
     "fields": [{
-      "name": "seasonId",
-      "type": "string"
-    }, {
-      "name": "name",
-      "type": "string"
-    }, {
-      "name": "description",
-      "type": "string"
-    }, {
-      "name": "coverImagePath",
-      "type": "string"
-    }, {
-      "name": "grade",
-      "type": "number",
-      "comment": "Small number means low quality and price."
+      "name": "season",
+      "type": "SeasonDetail"
     }, {
       "name": "episode",
       "type": "Episode"

@@ -25,6 +25,41 @@ export let EPISODE: MessageDescriptor<Episode> = {
   ]
 };
 
+export interface SeasonDetail {
+  seasonId?: string,
+  name?: string,
+  description?: string,
+  coverImagePath?: string,
+/* Small number means low quality and price. */
+  grade?: number,
+}
+
+export let SEASON_DETAIL: MessageDescriptor<SeasonDetail> = {
+  name: 'SeasonDetail',
+  fields: [
+    {
+      name: 'seasonId',
+      primitiveType: PrimitiveType.STRING,
+    },
+    {
+      name: 'name',
+      primitiveType: PrimitiveType.STRING,
+    },
+    {
+      name: 'description',
+      primitiveType: PrimitiveType.STRING,
+    },
+    {
+      name: 'coverImagePath',
+      primitiveType: PrimitiveType.STRING,
+    },
+    {
+      name: 'grade',
+      primitiveType: PrimitiveType.NUMBER,
+    },
+  ]
+};
+
 export interface EpisodeSummary {
   episodeId?: string,
   name?: string,
@@ -81,12 +116,7 @@ export let PUBLISHER_SUMMARY: MessageDescriptor<PublisherSummary> = {
 };
 
 export interface EpisodeToPlay {
-  seasonId?: string,
-  name?: string,
-  description?: string,
-  coverImagePath?: string,
-/* Small number means low quality and price. */
-  grade?: number,
+  season?: SeasonDetail,
   episode?: Episode,
   episodes?: Array<EpisodeSummary>,
   publisher?: PublisherSummary,
@@ -96,24 +126,8 @@ export let EPISODE_TO_PLAY: MessageDescriptor<EpisodeToPlay> = {
   name: 'EpisodeToPlay',
   fields: [
     {
-      name: 'seasonId',
-      primitiveType: PrimitiveType.STRING,
-    },
-    {
-      name: 'name',
-      primitiveType: PrimitiveType.STRING,
-    },
-    {
-      name: 'description',
-      primitiveType: PrimitiveType.STRING,
-    },
-    {
-      name: 'coverImagePath',
-      primitiveType: PrimitiveType.STRING,
-    },
-    {
-      name: 'grade',
-      primitiveType: PrimitiveType.NUMBER,
+      name: 'season',
+      messageType: SEASON_DETAIL,
     },
     {
       name: 'episode',
