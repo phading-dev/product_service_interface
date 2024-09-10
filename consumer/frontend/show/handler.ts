@@ -1,8 +1,8 @@
-import { ServiceHandlerInterface } from '@selfage/service_descriptor/service_handler_interface';
-import { GET_EPISODE_TO_PLAY, GetEpisodeToPlayRequestBody, GetEpisodeToPlayResponse, GET_PLAYER_SETTINGS, GetPlayerSettingsRequestBody, GetPlayerSettingsResponse, SAVE_PLAYER_SETTINGS, SavePlayerSettingsRequestBody, SavePlayerSettingsResponse } from './interface';
+import { GetEpisodeToPlayRequestBody, GET_EPISODE_TO_PLAY, GetEpisodeToPlayResponse, GetPlayerSettingsRequestBody, GET_PLAYER_SETTINGS, GetPlayerSettingsResponse, SavePlayerSettingsRequestBody, SAVE_PLAYER_SETTINGS, SavePlayerSettingsResponse } from './interface';
 import { ClientSession } from '@phading/user_session_service_interface/client_session';
+import { WebHandlerInterface } from '@selfage/service_descriptor/handler_interface';
 
-export abstract class GetEpisodeToPlayHandlerInterface implements ServiceHandlerInterface {
+export abstract class GetEpisodeToPlayHandlerInterface implements WebHandlerInterface {
   public descriptor = GET_EPISODE_TO_PLAY;
   public abstract handle(
     loggingPrefix: string,
@@ -11,7 +11,7 @@ export abstract class GetEpisodeToPlayHandlerInterface implements ServiceHandler
   ): Promise<GetEpisodeToPlayResponse>;
 }
 
-export abstract class GetPlayerSettingsHandlerInterface implements ServiceHandlerInterface {
+export abstract class GetPlayerSettingsHandlerInterface implements WebHandlerInterface {
   public descriptor = GET_PLAYER_SETTINGS;
   public abstract handle(
     loggingPrefix: string,
@@ -20,7 +20,7 @@ export abstract class GetPlayerSettingsHandlerInterface implements ServiceHandle
   ): Promise<GetPlayerSettingsResponse>;
 }
 
-export abstract class SavePlayerSettingsHandlerInterface implements ServiceHandlerInterface {
+export abstract class SavePlayerSettingsHandlerInterface implements WebHandlerInterface {
   public descriptor = SAVE_PLAYER_SETTINGS;
   public abstract handle(
     loggingPrefix: string,

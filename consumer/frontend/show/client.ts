@@ -1,10 +1,10 @@
-import { WebServiceClientInterface, WebServiceClientOptions } from '@selfage/service_descriptor/web_service_client_interface';
 import { GetEpisodeToPlayRequestBody, GetEpisodeToPlayResponse, GET_EPISODE_TO_PLAY, GetPlayerSettingsRequestBody, GetPlayerSettingsResponse, GET_PLAYER_SETTINGS, SavePlayerSettingsRequestBody, SavePlayerSettingsResponse, SAVE_PLAYER_SETTINGS } from './interface';
+import { WebClientInterface, WebClientOptions } from '@selfage/service_descriptor/client_interface';
 
 export function getEpisodeToPlay(
-  client: WebServiceClientInterface,
+  client: WebClientInterface,
   body: GetEpisodeToPlayRequestBody,
-  options?: WebServiceClientOptions,
+  options?: WebClientOptions,
 ): Promise<GetEpisodeToPlayResponse> {
   return client.send(
     {
@@ -16,9 +16,9 @@ export function getEpisodeToPlay(
 }
 
 export function getPlayerSettings(
-  client: WebServiceClientInterface,
+  client: WebClientInterface,
   body: GetPlayerSettingsRequestBody,
-  options?: WebServiceClientOptions,
+  options?: WebClientOptions,
 ): Promise<GetPlayerSettingsResponse> {
   return client.send(
     {
@@ -30,9 +30,9 @@ export function getPlayerSettings(
 }
 
 export function savePlayerSettings(
-  client: WebServiceClientInterface,
+  client: WebClientInterface,
   body: SavePlayerSettingsRequestBody,
-  options?: WebServiceClientOptions,
+  options?: WebClientOptions,
 ): Promise<SavePlayerSettingsResponse> {
   return client.send(
     {

@@ -1,9 +1,9 @@
-import { ServiceHandlerInterface } from '@selfage/service_descriptor/service_handler_interface';
-import { UPLOAD_COVER_IMAGE, UploadCoverImageResponse, CREATE_SEASON, CreateSeasonRequestBody, CreateSeasonResponse } from './interface';
 import { Readable } from 'stream';
 import { ClientSession } from '@phading/user_session_service_interface/client_session';
+import { UPLOAD_COVER_IMAGE, UploadCoverImageResponse, CreateSeasonRequestBody, CREATE_SEASON, CreateSeasonResponse } from './interface';
+import { WebHandlerInterface } from '@selfage/service_descriptor/handler_interface';
 
-export abstract class UploadCoverImageHandlerInterface implements ServiceHandlerInterface {
+export abstract class UploadCoverImageHandlerInterface implements WebHandlerInterface {
   public descriptor = UPLOAD_COVER_IMAGE;
   public abstract handle(
     loggingPrefix: string,
@@ -12,7 +12,7 @@ export abstract class UploadCoverImageHandlerInterface implements ServiceHandler
   ): Promise<UploadCoverImageResponse>;
 }
 
-export abstract class CreateSeasonHandlerInterface implements ServiceHandlerInterface {
+export abstract class CreateSeasonHandlerInterface implements WebHandlerInterface {
   public descriptor = CREATE_SEASON;
   public abstract handle(
     loggingPrefix: string,

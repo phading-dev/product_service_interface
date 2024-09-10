@@ -1,88 +1,87 @@
 [{
-  "name": "GetEpisodeToPlayRequestBody",
   "message": {
+    "name": "GetEpisodeToPlayRequestBody",
     "fields": [{
       "name": "episodeId",
-      "type": "string"
+      "type": "string",
+      "index": 1
     }]
   }
 }, {
-  "name": "GetEpisodeToPlayResponse",
   "message": {
+    "name": "GetEpisodeToPlayResponse",
     "fields": [{
       "name": "episode",
       "type": "EpisodeToPlay",
-      "import": "./episode_to_play"
+      "import": "./consumer/frontend/show/episode_to_play",
+      "index": 1
     }]
   }
 }, {
-  "name": "GetEpisodeToPlay",
-  "service": {
-    "path": "/GetEpisodeToPlay",
-    "body": "GetEpisodeToPlayRequestBody",
-    "auth": {
-      "key": "auth",
-      "type": "ClientSession",
-      "import": "@phading/user_session_service_interface/client_session"
-    },
-    "response": "GetEpisodeToPlayResponse",
-    "outputWebClient": "./client_requests",
-    "outputHandler": "./server_handlers"
-  }
-}, {
-  "name": "GetPlayerSettingsRequestBody",
   "message": {
+    "name": "GetPlayerSettingsRequestBody",
     "fields": []
   }
 }, {
-  "name": "GetPlayerSettingsResponse",
   "message": {
+    "name": "GetPlayerSettingsResponse",
     "fields": [{
       "name": "playerSettings",
       "type": "PlayerSettings",
-      "import": "./player_settings"
+      "import": "./consumer/frontend/show/player_settings",
+      "index": 1
     }]
   }
 }, {
-  "name": "GetPlayerSettings",
-  "service": {
-    "path": "/GetPlayerSettings",
-    "body": "GetPlayerSettingsRequestBody",
-    "auth": {
-      "key": "auth",
-      "type": "ClientSession",
-      "import": "@phading/user_session_service_interface/client_session"
-    },
-    "response": "GetPlayerSettingsResponse",
-    "outputWebClient": "./client_requests",
-    "outputHandler": "./server_handlers"
-  }
-}, {
-  "name": "SavePlayerSettingsRequestBody",
   "message": {
+    "name": "SavePlayerSettingsRequestBody",
     "fields": [{
       "name": "playerSettings",
       "type": "PlayerSettings",
-      "import": "./player_settings"
+      "import": "./consumer/frontend/show/player_settings",
+      "index": 1
     }]
   }
 }, {
-  "name": "SavePlayerSettingsResponse",
   "message": {
+    "name": "SavePlayerSettingsResponse",
     "fields": []
   }
 }, {
-  "name": "SavePlayerSettings",
-  "service": {
-    "path": "/SavePlayerSettings",
-    "body": "SavePlayerSettingsRequestBody",
-    "auth": {
-      "key": "auth",
-      "type": "ClientSession",
-      "import": "@phading/user_session_service_interface/client_session"
-    },
-    "response": "SavePlayerSettingsResponse",
-    "outputWebClient": "./client_requests",
-    "outputHandler": "./server_handlers"
+  "webService": {
+    "name": "ProductConsumerFrontendShowService",
+    "remoteCalls": [{
+      "name": "GetEpisodeToPlay",
+      "path": "/GetEpisodeToPlay",
+      "body": "GetEpisodeToPlayRequestBody",
+      "auth": {
+        "key": "auth",
+        "type": "ClientSession",
+        "import": "@phading/user_session_service_interface/client_session"
+      },
+      "response": "GetEpisodeToPlayResponse"
+    }, {
+      "name": "GetPlayerSettings",
+      "path": "/GetPlayerSettings",
+      "body": "GetPlayerSettingsRequestBody",
+      "auth": {
+        "key": "auth",
+        "type": "ClientSession",
+        "import": "@phading/user_session_service_interface/client_session"
+      },
+      "response": "GetPlayerSettingsResponse"
+    }, {
+      "name": "SavePlayerSettings",
+      "path": "/SavePlayerSettings",
+      "body": "SavePlayerSettingsRequestBody",
+      "auth": {
+        "key": "auth",
+        "type": "ClientSession",
+        "import": "@phading/user_session_service_interface/client_session"
+      },
+      "response": "SavePlayerSettingsResponse"
+    }],
+    "outputClient": "./consumer/frontend/show/client",
+    "outputHandler": "./consumer/frontend/show/handler"
   }
 }]

@@ -1,22 +1,25 @@
 [{
-  "name": "VideoSettings",
   "message": {
+    "name": "VideoSettings",
     "fields": [{
       "name": "volume",
       "type": "number",
+      "index": 1,
       "comment": "0 to 1"
     }, {
       "name": "muted",
-      "type": "boolean"
+      "type": "boolean",
+      "index": 2
     }, {
       "name": "playbackSpeed",
       "type": "number",
+      "index": 3,
       "comment": ".25x to 4x"
     }]
   }
 }, {
-  "name": "StackingMethod",
   "enum": {
+    "name": "StackingMethod",
     "values": [{
       "name": "RANDOM",
       "value": 1
@@ -26,50 +29,61 @@
     }]
   }
 }, {
-  "name": "DanmakuSettings",
   "message": {
+    "name": "DanmakuSettings",
     "fields": [{
       "name": "enable",
-      "type": "boolean"
+      "type": "boolean",
+      "index": 1
     }, {
       "name": "speed",
-      "type": "number"
+      "type": "number",
+      "index": 2
     }, {
       "name": "opacity",
       "type": "number",
+      "index": 3,
       "comment": "0 to 100 percentage."
     }, {
       "name": "fontSize",
-      "type": "number"
+      "type": "number",
+      "index": 4
     }, {
       "name": "density",
       "type": "number",
+      "index": 5,
       "comment": "0 to 100 percentage. For every 100 pixels, the number of pixels should be occupied."
     }, {
       "name": "topMargin",
       "type": "number",
+      "index": 6,
       "comment":"0 to 100 percentage."
     }, {
       "name": "bottomMargin",
       "type": "number",
+      "index": 7,
       "comment":"0 to 100 percentage."
     }, {
       "name": "fontFamily",
-      "type": "string"
+      "type": "string",
+      "index": 8
     }, {
       "name": "stackingMethod",
-      "type": "StackingMethod"
+      "type": "StackingMethod",
+      "index": 9
     }]
   }
 }, {
-  "name": "PlayerSettings",
   "message": {
+    "name": "PlayerSettings",
     "fields": [{
       "name": "videoSettings",
-      "type": "VideoSettings"
+      "type": "VideoSettings",
+      "index": 1
     }, {
       "name": "danmakuSettings",
-      "type": "DanmakuSettings"
+      "type": "DanmakuSettings",
+      "index": 2
     }]
   }
 }]

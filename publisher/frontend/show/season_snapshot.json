@@ -1,24 +1,30 @@
 [{
-  "name": "SeasonSnapshot",
   "message": {
+    "name": "SeasonSnapshot",
     "fields": [{
       "name": "seasonId",
-      "type": "string"
+      "type": "string",
+      "index": 1
     }, {
       "name": "name",
-      "type": "string"
+      "type": "string",
+      "index": 2
     }, {
       "name": "coverImagePath",
-      "type": "string"
+      "type": "string",
+      "index": 3
     }, {
       "name": "grade",
-      "type": "number"
+      "type": "number",
+      "index": 4
     }, {
       "name": "episodesCount",
-      "type": "number"
+      "type": "number",
+      "index": 5
     }, {
       "name": "createdTime",
       "type": "number",
+      "index": 6,
       "comment": "Timestamp in seconds."
     }]
   }

@@ -1,8 +1,8 @@
-import { MessageDescriptor, PrimitiveType } from '@selfage/message/descriptor';
+import { PrimitiveType, MessageDescriptor } from '@selfage/message/descriptor';
 import { EpisodeToPlay, EPISODE_TO_PLAY } from './episode_to_play';
-import { ServiceDescriptor } from '@selfage/service_descriptor';
-import { CLIENT_SESSION } from '@phading/user_session_service_interface/client_session';
 import { PlayerSettings, PLAYER_SETTINGS } from './player_settings';
+import { CLIENT_SESSION } from '@phading/user_session_service_interface/client_session';
+import { WebRemoteCallDescriptor } from '@selfage/service_descriptor';
 
 export interface GetEpisodeToPlayRequestBody {
   episodeId?: string,
@@ -10,12 +10,11 @@ export interface GetEpisodeToPlayRequestBody {
 
 export let GET_EPISODE_TO_PLAY_REQUEST_BODY: MessageDescriptor<GetEpisodeToPlayRequestBody> = {
   name: 'GetEpisodeToPlayRequestBody',
-  fields: [
-    {
-      name: 'episodeId',
-      primitiveType: PrimitiveType.STRING,
-    },
-  ]
+  fields: [{
+    name: 'episodeId',
+    index: 1,
+    primitiveType: PrimitiveType.STRING,
+  }],
 };
 
 export interface GetEpisodeToPlayResponse {
@@ -24,15 +23,56 @@ export interface GetEpisodeToPlayResponse {
 
 export let GET_EPISODE_TO_PLAY_RESPONSE: MessageDescriptor<GetEpisodeToPlayResponse> = {
   name: 'GetEpisodeToPlayResponse',
-  fields: [
-    {
-      name: 'episode',
-      messageType: EPISODE_TO_PLAY,
-    },
-  ]
+  fields: [{
+    name: 'episode',
+    index: 1,
+    messageType: EPISODE_TO_PLAY,
+  }],
 };
 
-export let GET_EPISODE_TO_PLAY: ServiceDescriptor = {
+export interface GetPlayerSettingsRequestBody {
+}
+
+export let GET_PLAYER_SETTINGS_REQUEST_BODY: MessageDescriptor<GetPlayerSettingsRequestBody> = {
+  name: 'GetPlayerSettingsRequestBody',
+  fields: [],
+};
+
+export interface GetPlayerSettingsResponse {
+  playerSettings?: PlayerSettings,
+}
+
+export let GET_PLAYER_SETTINGS_RESPONSE: MessageDescriptor<GetPlayerSettingsResponse> = {
+  name: 'GetPlayerSettingsResponse',
+  fields: [{
+    name: 'playerSettings',
+    index: 1,
+    messageType: PLAYER_SETTINGS,
+  }],
+};
+
+export interface SavePlayerSettingsRequestBody {
+  playerSettings?: PlayerSettings,
+}
+
+export let SAVE_PLAYER_SETTINGS_REQUEST_BODY: MessageDescriptor<SavePlayerSettingsRequestBody> = {
+  name: 'SavePlayerSettingsRequestBody',
+  fields: [{
+    name: 'playerSettings',
+    index: 1,
+    messageType: PLAYER_SETTINGS,
+  }],
+};
+
+export interface SavePlayerSettingsResponse {
+}
+
+export let SAVE_PLAYER_SETTINGS_RESPONSE: MessageDescriptor<SavePlayerSettingsResponse> = {
+  name: 'SavePlayerSettingsResponse',
+  fields: [],
+};
+
+export let GET_EPISODE_TO_PLAY: WebRemoteCallDescriptor = {
   name: "GetEpisodeToPlay",
   path: "/GetEpisodeToPlay",
   body: {
@@ -47,30 +87,7 @@ export let GET_EPISODE_TO_PLAY: ServiceDescriptor = {
   },
 }
 
-export interface GetPlayerSettingsRequestBody {
-}
-
-export let GET_PLAYER_SETTINGS_REQUEST_BODY: MessageDescriptor<GetPlayerSettingsRequestBody> = {
-  name: 'GetPlayerSettingsRequestBody',
-  fields: [
-  ]
-};
-
-export interface GetPlayerSettingsResponse {
-  playerSettings?: PlayerSettings,
-}
-
-export let GET_PLAYER_SETTINGS_RESPONSE: MessageDescriptor<GetPlayerSettingsResponse> = {
-  name: 'GetPlayerSettingsResponse',
-  fields: [
-    {
-      name: 'playerSettings',
-      messageType: PLAYER_SETTINGS,
-    },
-  ]
-};
-
-export let GET_PLAYER_SETTINGS: ServiceDescriptor = {
+export let GET_PLAYER_SETTINGS: WebRemoteCallDescriptor = {
   name: "GetPlayerSettings",
   path: "/GetPlayerSettings",
   body: {
@@ -85,30 +102,7 @@ export let GET_PLAYER_SETTINGS: ServiceDescriptor = {
   },
 }
 
-export interface SavePlayerSettingsRequestBody {
-  playerSettings?: PlayerSettings,
-}
-
-export let SAVE_PLAYER_SETTINGS_REQUEST_BODY: MessageDescriptor<SavePlayerSettingsRequestBody> = {
-  name: 'SavePlayerSettingsRequestBody',
-  fields: [
-    {
-      name: 'playerSettings',
-      messageType: PLAYER_SETTINGS,
-    },
-  ]
-};
-
-export interface SavePlayerSettingsResponse {
-}
-
-export let SAVE_PLAYER_SETTINGS_RESPONSE: MessageDescriptor<SavePlayerSettingsResponse> = {
-  name: 'SavePlayerSettingsResponse',
-  fields: [
-  ]
-};
-
-export let SAVE_PLAYER_SETTINGS: ServiceDescriptor = {
+export let SAVE_PLAYER_SETTINGS: WebRemoteCallDescriptor = {
   name: "SavePlayerSettings",
   path: "/SavePlayerSettings",
   body: {
