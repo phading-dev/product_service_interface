@@ -1,7 +1,6 @@
 import { PrimitiveType, MessageDescriptor } from '@selfage/message/descriptor';
 import { EpisodeToPlay, EPISODE_TO_PLAY } from './episode_to_play';
 import { PlayerSettings, PLAYER_SETTINGS } from './player_settings';
-import { CLIENT_SESSION } from '@phading/user_session_service_interface/client_session';
 import { WebRemoteCallDescriptor } from '@selfage/service_descriptor';
 
 export interface GetEpisodeToPlayRequestBody {
@@ -78,10 +77,7 @@ export let GET_EPISODE_TO_PLAY: WebRemoteCallDescriptor = {
   body: {
     messageType: GET_EPISODE_TO_PLAY_REQUEST_BODY,
   },
-  auth: {
-    key: "auth",
-    type: CLIENT_SESSION
-  },
+  sessionKey: "sk",
   response: {
     messageType: GET_EPISODE_TO_PLAY_RESPONSE,
   },
@@ -93,10 +89,7 @@ export let GET_PLAYER_SETTINGS: WebRemoteCallDescriptor = {
   body: {
     messageType: GET_PLAYER_SETTINGS_REQUEST_BODY,
   },
-  auth: {
-    key: "auth",
-    type: CLIENT_SESSION
-  },
+  sessionKey: "sk",
   response: {
     messageType: GET_PLAYER_SETTINGS_RESPONSE,
   },
@@ -108,10 +101,7 @@ export let SAVE_PLAYER_SETTINGS: WebRemoteCallDescriptor = {
   body: {
     messageType: SAVE_PLAYER_SETTINGS_REQUEST_BODY,
   },
-  auth: {
-    key: "auth",
-    type: CLIENT_SESSION
-  },
+  sessionKey: "sk",
   response: {
     messageType: SAVE_PLAYER_SETTINGS_RESPONSE,
   },

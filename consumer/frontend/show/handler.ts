@@ -1,5 +1,4 @@
 import { GetEpisodeToPlayRequestBody, GET_EPISODE_TO_PLAY, GetEpisodeToPlayResponse, GetPlayerSettingsRequestBody, GET_PLAYER_SETTINGS, GetPlayerSettingsResponse, SavePlayerSettingsRequestBody, SAVE_PLAYER_SETTINGS, SavePlayerSettingsResponse } from './interface';
-import { ClientSession } from '@phading/user_session_service_interface/client_session';
 import { WebHandlerInterface } from '@selfage/service_descriptor/handler_interface';
 
 export abstract class GetEpisodeToPlayHandlerInterface implements WebHandlerInterface {
@@ -7,7 +6,7 @@ export abstract class GetEpisodeToPlayHandlerInterface implements WebHandlerInte
   public abstract handle(
     loggingPrefix: string,
     body: GetEpisodeToPlayRequestBody,
-    auth: ClientSession,
+    sessionStr: string,
   ): Promise<GetEpisodeToPlayResponse>;
 }
 
@@ -16,7 +15,7 @@ export abstract class GetPlayerSettingsHandlerInterface implements WebHandlerInt
   public abstract handle(
     loggingPrefix: string,
     body: GetPlayerSettingsRequestBody,
-    auth: ClientSession,
+    sessionStr: string,
   ): Promise<GetPlayerSettingsResponse>;
 }
 
@@ -25,6 +24,6 @@ export abstract class SavePlayerSettingsHandlerInterface implements WebHandlerIn
   public abstract handle(
     loggingPrefix: string,
     body: SavePlayerSettingsRequestBody,
-    auth: ClientSession,
+    sessionStr: string,
   ): Promise<SavePlayerSettingsResponse>;
 }

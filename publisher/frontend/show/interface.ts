@@ -1,7 +1,6 @@
 import { PrimitiveType, MessageDescriptor } from '@selfage/message/descriptor';
 import { SeasonSnapshot, SEASON_SNAPSHOT } from './season_snapshot';
 import { PrimitveTypeForBody, WebRemoteCallDescriptor } from '@selfage/service_descriptor';
-import { CLIENT_SESSION } from '@phading/user_session_service_interface/client_session';
 
 export interface UploadCoverImageResponse {
   path?: string,
@@ -64,10 +63,7 @@ export let UPLOAD_COVER_IMAGE: WebRemoteCallDescriptor = {
   body: {
     primitiveType: PrimitveTypeForBody.BYTES,
   },
-  auth: {
-    key: "auth",
-    type: CLIENT_SESSION
-  },
+  sessionKey: "sk",
   response: {
     messageType: UPLOAD_COVER_IMAGE_RESPONSE,
   },
@@ -79,10 +75,7 @@ export let CREATE_SEASON: WebRemoteCallDescriptor = {
   body: {
     messageType: CREATE_SEASON_REQUEST_BODY,
   },
-  auth: {
-    key: "auth",
-    type: CLIENT_SESSION
-  },
+  sessionKey: "sk",
   response: {
     messageType: CREATE_SEASON_RESPONSE,
   },
