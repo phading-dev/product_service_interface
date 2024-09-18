@@ -18,36 +18,6 @@
     }]
   }
 }, {
-  "message": {
-    "name": "GetPlayerSettingsRequestBody",
-    "fields": []
-  }
-}, {
-  "message": {
-    "name": "GetPlayerSettingsResponse",
-    "fields": [{
-      "name": "playerSettings",
-      "type": "PlayerSettings",
-      "import": "./consumer/frontend/show/player_settings",
-      "index": 1
-    }]
-  }
-}, {
-  "message": {
-    "name": "SavePlayerSettingsRequestBody",
-    "fields": [{
-      "name": "playerSettings",
-      "type": "PlayerSettings",
-      "import": "./consumer/frontend/show/player_settings",
-      "index": 1
-    }]
-  }
-}, {
-  "message": {
-    "name": "SavePlayerSettingsResponse",
-    "fields": []
-  }
-}, {
   "webService": {
     "name": "ProductConsumerFrontendShowService",
     "remoteCalls": [{
@@ -56,18 +26,6 @@
       "body": "GetEpisodeToPlayRequestBody",
       "sessionKey": "sk",
       "response": "GetEpisodeToPlayResponse"
-    }, {
-      "name": "GetPlayerSettings",
-      "path": "/GetPlayerSettings",
-      "body": "GetPlayerSettingsRequestBody",
-      "sessionKey": "sk",
-      "response": "GetPlayerSettingsResponse"
-    }, {
-      "name": "SavePlayerSettings",
-      "path": "/SavePlayerSettings",
-      "body": "SavePlayerSettingsRequestBody",
-      "sessionKey": "sk",
-      "response": "SavePlayerSettingsResponse"
     }],
     "outputClient": "./consumer/frontend/show/client",
     "outputHandler": "./consumer/frontend/show/handler"
