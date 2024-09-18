@@ -62,7 +62,7 @@ export interface EpisodeSummary {
   episodeId?: string,
   name?: string,
   /* Video length in seconds. */
-  length?: number,
+  videoLength?: number,
   /* Timestamp in seconds. */
   publishedTime?: number,
 }
@@ -78,7 +78,7 @@ export let EPISODE_SUMMARY: MessageDescriptor<EpisodeSummary> = {
     index: 2,
     primitiveType: PrimitiveType.STRING,
   }, {
-    name: 'length',
+    name: 'videoLength',
     index: 3,
     primitiveType: PrimitiveType.NUMBER,
   }, {

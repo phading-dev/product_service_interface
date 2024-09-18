@@ -54,7 +54,7 @@
       "type": "string",
       "index": 2
     }, {
-      "name": "length",
+      "name": "videoLength",
       "type": "number",
       "index": 3,
       "comment": "Video length in seconds."
