@@ -1,0 +1,294 @@
+- message:
+    name: GetSeasonDetailsRequestBody
+    fields:
+      - name: seasonId
+        type: string
+        index: 1
+- message:
+    name: GetSeasonDetailsResponse
+    fields:
+      - name: seasonDetails
+        type: SeasonDetails
+        import: ./publisher/show/frontend/season_details
+        index: 1
+- message:
+    name: CreateSeasonRequestBody
+    fields:
+      - name: name
+        type: string
+        index: 1
+- message:
+    name: CreateSeasonResponse
+    fields:
+      - name: seasonId
+        type: string
+        index: 1
+- message:
+    name: UpdateSeasonRequestBody
+    fields:
+      - name: seasonId
+        type: string
+        index: 1
+      - name: name
+        type: string
+        index: 2
+      - name: description
+        type: string
+        index: 3
+- message:
+    name: UpdateSeasonResponse
+- message:
+    name: UploadCoverImageRequestMetadata
+    fields:
+      - name: seasonId
+        type: string
+        index: 1
+- message:
+    name: UploadCoverImageResponse
+- message:
+    name: UpdateSeasonGradeRequestBody
+    fields:
+      - name: seasonId
+        type: string
+        index: 1
+      - name: grade
+        type: string
+        index: 2
+      - name: effectiveTime # seconds
+        type: number
+        index: 3
+- message:
+    name: UpdateSeasonGradeResponse
+- message:
+    name: DeleteSeasonRequestBody
+    fields:
+      - name: seasonId
+        type: string
+        index: 1
+- message:
+    name: DeleteSeasonResponse
+- message:
+    name: ArchiveSeasonRequestBody
+    fields:
+      - name: seasonId
+        type: string
+        index: 1
+- message:
+    name: ArchiveSeasonResponse
+- message:
+    name: ListSeasonsRequestBody
+    fields:
+      - name: state
+        type: SeasonState
+        import: ./publisher/show/frontend/season_state
+        index: 1
+      - name: lastChangeTimeCursor
+        type: number
+        index: 2
+- message:
+    name: ListSeasonsResponse
+    fields:
+      - name: seasons
+        type: SeasonSummary
+        import: ./publisher/show/frontend/season_summary
+        isArray: true
+        index: 1
+      - name: lastChangeTimeCursor
+        type: number
+        index: 2
+- message:
+    name: CreateEpisodeDraftRequestBody
+    fields:
+      - name: seasonId
+        type: string
+        index: 1
+      - name: episodeName
+        type: string
+        index: 2
+- message:
+    name: CreateEpisodeDraftResponse
+    fields:
+      - name: draft
+        type: EpisodeDraft
+        import: ./publisher/show/frontend/season_details
+        index: 1
+- message:
+    name: UpdateEpisodeDraftRequestBody
+    fields:
+      - name: seasonId
+        type: string
+        index: 1
+      - name: episodeId
+        type: string
+        index: 2
+      - name: name
+        type: string
+        index: 3
+- message:
+    name: UpdateEpisodeDraftResponse
+- message:
+    name: UploadEpisodeVideoMetadata
+    fields:
+      - name: seasonId
+        type: string
+        index: 1
+      - name: episodeId
+        type: string
+        index: 2
+      - name: resumableVideoUpload
+        type: ResumableVideoUpload
+        import: ./publisher/show/frontend/season_details
+        index: 3
+- message:
+    name: UploadEpisodeVideoResponse
+    fields:
+      - name: videoLength # seconds
+        type: number
+        index: 1
+      - name: videoSize # bytes
+        type: number
+        index: 2
+      - name: lastChangeTime # seconds
+        type: number
+        index: 3
+- message:
+    name: DeleteEpisodeDraftRequestBody
+    fields:
+      - name: seasonId
+        type: string
+        index: 1
+      - name: episodeId
+        type: string
+        index: 2
+- message:
+    name: DeleteEpisodeDraftResponse
+- message:
+    name: PublishEpisodeRequestBody
+    fields:
+      - name: seasonId
+        type: string
+        index: 1
+      - name: episodeId
+        type: string
+        index: 2
+      - name: premierTime # seconds
+        type: number
+        index: 3
+- message:
+    name: PublishEpisodeResponse
+    fields:
+      - name: episode
+        type: Episode
+        import: ./publisher/show/frontend/season_details
+        index: 1
+- message:
+    name: UpdateEpisodeOrderRequestBody
+    fields:
+      - name: seasonId
+        type: string
+        index: 1
+      - name: episodeId
+        type: string
+        index: 2
+      - name: toIndex
+        type: number
+        index: 3
+- message:
+    name: UpdateEpisodeOrderResponse
+- message:
+    name: DeleteEpisodeRequestBody
+    fields:
+      - name: seasonId
+        type: string
+        index: 1
+      - name: episodeId
+        type: string
+        index: 2
+- message:
+    name: DeleteEpisodeResponse
+- webService:
+    name: ProductPublisherFrontendShowService
+    remoteCalls:
+      - name: GetSeasonDetails
+        path: /GetSeasonDetails
+        body: GetSeasonDetailsRequestBody
+        sessionKey: sk
+        response: GetSeasonDetailsResponse
+      - name: CreateSeason
+        path: /CreateSeason
+        body: CreateSeasonRequestBody
+        sessionKey: sk
+        response: CreateSeasonResponse
+      - name: UpdateSeason
+        path: /UpdateSeason
+        body: UpdateSeasonRequestBody
+        sessionKey: sk
+        response: UpdateSeasonResponse
+      - name: UploadCoverImage
+        path: /UploadCoverImage
+        metadata:
+          key: mt
+          type: UploadCoverImageRequestMetadata
+        body: bytes
+        sessionKey: sk
+        response: UploadCoverImageResponse
+      - name: UpdateSeasonGrade
+        path: /UpdateSeasonGrade
+        body: UpdateSeasonGradeRequestBody
+        sessionKey: sk
+        response: UpdateSeasonGradeResponse
+      - name: DeleteSeason
+        path: /DeleteSeason
+        body: DeleteSeasonRequestBody
+        sessionKey: sk
+        response: DeleteSeasonResponse
+      - name: ArchiveSeason
+        path: /ArchiveSeason
+        body: ArchiveSeasonRequestBody
+        sessionKey: sk
+        response: ArchiveSeasonResponse
+      - name: ListSeasons
+        path: /ListSeasons
+        body: ListSeasonsRequestBody
+        sessionKey: sk
+        response: ListSeasonsResponse
+      - name: CreateEpisodeDraft
+        path: /CreateEpisodeDraft
+        body: CreateEpisodeDraftRequestBody
+        sessionKey: sk
+        response: CreateEpisodeDraftResponse
+      - name: UpdateEpisodeDraft
+        path: /UpdateEpisodeDraft
+        body: UpdateEpisodeDraftRequestBody
+        sessionKey: sk
+        response: UpdateEpisodeDraftResponse
+      - name: UploadEpisodeVideo
+        path: /UploadEpisodeVideo
+        metadata:
+          key: mt
+          type: UploadEpisodeVideoMetadata
+        body: bytes
+        sessionKey: sk
+        response: UploadEpisodeVideoResponse
+      - name: DeleteEpisodeDraft
+        path: /DeleteEpisodeDraft
+        body: DeleteEpisodeDraftRequestBody
+        sessionKey: sk
+        response: DeleteEpisodeDraftResponse
+      - name: PublishEpisode
+        path: /PublishEpisode
+        body: PublishEpisodeRequestBody
+        sessionKey: sk
+        response: PublishEpisodeResponse
+      - name: UpdateEpisodeOrder
+        path: /UpdateEpisodeOrder
+        body: UpdateEpisodeOrderRequestBody
+        sessionKey: sk
+        response: UpdateEpisodeOrderResponse
+      - name: DeleteEpisode
+        path: /DeleteEpisode
+        body: DeleteEpisodeRequestBody
+        sessionKey: sk
+        response: DeleteEpisodeResponse
+    outputClient: ./publisher/show/frontend/client
+    outputHandler: ./publisher/show/frontend/handler

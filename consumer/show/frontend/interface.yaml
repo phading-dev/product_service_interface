@@ -1,0 +1,73 @@
+- message:
+    name: GetEpisodeToPlayRequestBody
+    fields:
+      - name: seasonId
+        type: string
+        index: 1
+      - name: episodeId
+        type: string
+        index: 2
+- message:
+    name: GetEpisodeToPlayResponse
+    fields:
+      - name: episode
+        type: EpisodeToPlay
+        import: ./consumer/show/frontend/episode_to_play
+        index: 1
+- message:
+    name: GetVideoUrlRequestBody
+    fields:
+      - name: seasonId
+        type: string
+        index: 1
+      - name: episodeId
+        type: string
+        index: 2
+- message:
+    name: GetVideoUrlResponse
+    fields:
+      - name: videoUrl
+        type: string
+        index: 1
+- message:
+    name: GetMoreEpisdoesRequestBody
+    fields:
+      - name: seasonId
+        type: string
+        index: 1
+      - name: indexCursor
+        type: number
+        index: 2
+      - name: next # Next index or prev index
+        type: boolean
+        index: 3
+- message:
+    name: GetMoreEpisdoesResponse
+    fields:
+      - name: episodes
+        type: EpisodeSummary
+        import: ./consumer/show/frontend/episode_to_play
+        index: 1
+      - name: indexCursor
+        type: number
+        index: 2
+- webService:
+    name: ProductConsumerFrontendShowService
+    remoteCalls:
+      - name: GetEpisodeToPlay
+        path: /GetEpisodeToPlay
+        body: GetEpisodeToPlayRequestBody
+        sessionKey: sk
+        response: GetEpisodeToPlayResponse
+      - name: GetVideoUrl
+        path: /GetVideoUrl
+        body: GetVideoUrlRequestBody
+        sessionKey: sk
+        response: GetVideoUrlResponse
+      - name: GetMoreEpisdoes
+        path: /GetMoreEpisdoes
+        body: GetMoreEpisdoesRequestBody
+        sessionKey: sk
+        response: GetMoreEpisdoesResponse
+    outputClient: ./consumer/show/frontend/client
+    outputHandler: ./consumer/show/frontend/handler

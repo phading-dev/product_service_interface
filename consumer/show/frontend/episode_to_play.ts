@@ -2,8 +2,7 @@ import { PrimitiveType, MessageDescriptor } from '@selfage/message/descriptor';
 
 export interface Episode {
   episodeId?: string,
-  videoPath?: string,
-  /* Timestamp in seconds. */
+  videoUrl?: string,
   continueTimestamp?: number,
 }
 
@@ -14,7 +13,7 @@ export let EPISODE: MessageDescriptor<Episode> = {
     index: 1,
     primitiveType: PrimitiveType.STRING,
   }, {
-    name: 'videoPath',
+    name: 'videoUrl',
     index: 2,
     primitiveType: PrimitiveType.STRING,
   }, {
@@ -28,9 +27,8 @@ export interface SeasonDetail {
   seasonId?: string,
   name?: string,
   description?: string,
-  coverImagePath?: string,
-  /* Small number means low quality and price. */
-  grade?: number,
+  coverImageUrl?: string,
+  grade?: string,
 }
 
 export let SEASON_DETAIL: MessageDescriptor<SeasonDetail> = {
@@ -48,23 +46,21 @@ export let SEASON_DETAIL: MessageDescriptor<SeasonDetail> = {
     index: 3,
     primitiveType: PrimitiveType.STRING,
   }, {
-    name: 'coverImagePath',
+    name: 'coverImageUrl',
     index: 4,
     primitiveType: PrimitiveType.STRING,
   }, {
     name: 'grade',
     index: 5,
-    primitiveType: PrimitiveType.NUMBER,
+    primitiveType: PrimitiveType.STRING,
   }],
 };
 
 export interface EpisodeSummary {
   episodeId?: string,
   name?: string,
-  /* Video length in seconds. */
   videoLength?: number,
-  /* Timestamp in seconds. */
-  publishedTime?: number,
+  upcomingAirTime?: number,
 }
 
 export let EPISODE_SUMMARY: MessageDescriptor<EpisodeSummary> = {
@@ -82,7 +78,7 @@ export let EPISODE_SUMMARY: MessageDescriptor<EpisodeSummary> = {
     index: 3,
     primitiveType: PrimitiveType.NUMBER,
   }, {
-    name: 'publishedTime',
+    name: 'upcomingAirTime',
     index: 4,
     primitiveType: PrimitiveType.NUMBER,
   }],
@@ -91,7 +87,7 @@ export let EPISODE_SUMMARY: MessageDescriptor<EpisodeSummary> = {
 export interface PublisherSummary {
   accountId?: string,
   naturalName?: string,
-  avatarSmallPath?: string,
+  avatarSmallUrl?: string,
 }
 
 export let PUBLISHER_SUMMARY: MessageDescriptor<PublisherSummary> = {
@@ -105,7 +101,7 @@ export let PUBLISHER_SUMMARY: MessageDescriptor<PublisherSummary> = {
     index: 2,
     primitiveType: PrimitiveType.STRING,
   }, {
-    name: 'avatarSmallPath',
+    name: 'avatarSmallUrl',
     index: 3,
     primitiveType: PrimitiveType.STRING,
   }],
@@ -115,6 +111,8 @@ export interface EpisodeToPlay {
   season?: SeasonDetail,
   episode?: Episode,
   episodes?: Array<EpisodeSummary>,
+  prevIndexCursor?: number,
+  nextIndexCursor?: number,
   publisher?: PublisherSummary,
 }
 
@@ -134,8 +132,16 @@ export let EPISODE_TO_PLAY: MessageDescriptor<EpisodeToPlay> = {
     messageType: EPISODE_SUMMARY,
     isArray: true,
   }, {
-    name: 'publisher',
+    name: 'prevIndexCursor',
     index: 4,
+    primitiveType: PrimitiveType.NUMBER,
+  }, {
+    name: 'nextIndexCursor',
+    index: 5,
+    primitiveType: PrimitiveType.NUMBER,
+  }, {
+    name: 'publisher',
+    index: 6,
     messageType: PUBLISHER_SUMMARY,
   }],
 };

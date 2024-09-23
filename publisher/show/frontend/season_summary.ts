@@ -1,17 +1,18 @@
 import { PrimitiveType, MessageDescriptor } from '@selfage/message/descriptor';
+import { SeasonState, SEASON_STATE } from './season_state';
 
-export interface SeasonSnapshot {
+export interface SeasonSummary {
   seasonId?: string,
   name?: string,
-  coverImagePath?: string,
+  coverImageUrl?: string,
+  state?: SeasonState,
   grade?: number,
-  episodesCount?: number,
-  /* Timestamp in seconds. */
-  createdTime?: number,
+  totalEpisodes?: number,
+  lastChangeTime?: number,
 }
 
-export let SEASON_SNAPSHOT: MessageDescriptor<SeasonSnapshot> = {
-  name: 'SeasonSnapshot',
+export let SEASON_SUMMARY: MessageDescriptor<SeasonSummary> = {
+  name: 'SeasonSummary',
   fields: [{
     name: 'seasonId',
     index: 1,
@@ -21,20 +22,24 @@ export let SEASON_SNAPSHOT: MessageDescriptor<SeasonSnapshot> = {
     index: 2,
     primitiveType: PrimitiveType.STRING,
   }, {
-    name: 'coverImagePath',
+    name: 'coverImageUrl',
     index: 3,
     primitiveType: PrimitiveType.STRING,
   }, {
-    name: 'grade',
+    name: 'state',
     index: 4,
-    primitiveType: PrimitiveType.NUMBER,
+    enumType: SEASON_STATE,
   }, {
-    name: 'episodesCount',
+    name: 'grade',
     index: 5,
     primitiveType: PrimitiveType.NUMBER,
   }, {
-    name: 'createdTime',
+    name: 'totalEpisodes',
     index: 6,
+    primitiveType: PrimitiveType.NUMBER,
+  }, {
+    name: 'lastChangeTime',
+    index: 7,
     primitiveType: PrimitiveType.NUMBER,
   }],
 };

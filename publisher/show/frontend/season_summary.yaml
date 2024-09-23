@@ -1,0 +1,25 @@
+- message:
+    name: SeasonSummary
+    fields:
+      - name: seasonId
+        type: string
+        index: 1
+      - name: name
+        type: string
+        index: 2
+      - name: coverImageUrl
+        type: string
+        index: 3
+      - name: state
+        type: SeasonState
+        import: ./publisher/show/frontend/season_state
+        index: 4
+      - name: grade
+        type: number
+        index: 5
+      - name: totalEpisodes
+        type: number
+        index: 6
+      - name: lastChangeTime # seconds
+        type: number
+        index: 7
