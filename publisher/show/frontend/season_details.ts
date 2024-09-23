@@ -5,10 +5,8 @@ import { SeasonState, SEASON_STATE } from '../season_state';
 export interface EpisodeDraft {
   episodeId?: string,
   name?: string,
-  createdTime?: number,
-  lastChangeTime?: number,
   resumableVideoUpload?: ResumableVideoUpload,
-  videoUploadCompleted?: boolean,
+  videoUploadedTime?: boolean,
   videoLength?: number,
   videoSize?: number,
 }
@@ -24,28 +22,20 @@ export let EPISODE_DRAFT: MessageDescriptor<EpisodeDraft> = {
     index: 2,
     primitiveType: PrimitiveType.STRING,
   }, {
-    name: 'createdTime',
-    index: 3,
-    primitiveType: PrimitiveType.NUMBER,
-  }, {
-    name: 'lastChangeTime',
-    index: 4,
-    primitiveType: PrimitiveType.NUMBER,
-  }, {
     name: 'resumableVideoUpload',
-    index: 5,
+    index: 3,
     messageType: RESUMABLE_VIDEO_UPLOAD,
   }, {
-    name: 'videoUploadCompleted',
-    index: 6,
+    name: 'videoUploadedTime',
+    index: 4,
     primitiveType: PrimitiveType.BOOLEAN,
   }, {
     name: 'videoLength',
-    index: 7,
+    index: 5,
     primitiveType: PrimitiveType.NUMBER,
   }, {
     name: 'videoSize',
-    index: 8,
+    index: 6,
     primitiveType: PrimitiveType.NUMBER,
   }],
 };

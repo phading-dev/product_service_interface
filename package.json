@@ -1,6 +1,6 @@
 {
   "name": "@phading/product_service_interface",
-  "version": "0.6.4",
+  "version": "0.6.5",
   "description": "The interface of ProductService.",
   "repository": {
     "type": "git",
@@ -15,7 +15,7 @@
   "files": [
     "**/*.d.ts",
     "**/*.js",
-    "**/*.json"
+    "**/*.yaml"
   ],
   "devDependencies": {
     "@selfage/generator_cli": "^3.0.2",

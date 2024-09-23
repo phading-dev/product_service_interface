@@ -7,25 +7,19 @@
       - name: name
         type: string
         index: 2
-      - name: createdTime # seconds
-        type: number
-        index: 3
-      - name: lastChangeTime # seconds
-        type: number
-        index: 4
       - name: resumableVideoUpload
         type: ResumableVideoUpload
         import: ./publisher/show/resumable_video_upload
-        index: 5
-      - name: videoUploadCompleted
+        index: 3
+      - name: videoUploadedTime # seconds
         type: boolean
-        index: 6
+        index: 4
       - name: videoLength # seconds
         type: number
-        index: 7
+        index: 5
       - name: videoSize # bytes
         type: number
-        index: 8
+        index: 6
 - message:
     name: Episode
     fields:
