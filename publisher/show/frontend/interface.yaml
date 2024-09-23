@@ -80,7 +80,7 @@
     fields:
       - name: state
         type: SeasonState
-        import: ./publisher/show/frontend/season_state
+        import: ./publisher/show/season_state
         index: 1
       - name: lastChangeTimeCursor
         type: number

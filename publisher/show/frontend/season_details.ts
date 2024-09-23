@@ -1,5 +1,5 @@
 import { PrimitiveType, MessageDescriptor } from '@selfage/message/descriptor';
-import { SeasonState, SEASON_STATE } from './season_state';
+import { SeasonState, SEASON_STATE } from '../season_state';
 
 export interface ResumableVideoUpload {
   uri?: string,

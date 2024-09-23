@@ -12,7 +12,7 @@
         index: 3
       - name: state
         type: SeasonState
-        import: ./publisher/show/frontend/season_state
+        import: ./publisher/show/season_state
         index: 4
       - name: grade
         type: number
