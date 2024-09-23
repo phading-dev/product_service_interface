@@ -65,7 +65,7 @@
         type: string
         index: 1
       - name: grade
-        type: string
+        type: number
         index: 2
       - name: effectiveTimestamp
         type: number

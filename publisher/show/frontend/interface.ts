@@ -128,7 +128,7 @@ export let UPLOAD_COVER_IMAGE_RESPONSE: MessageDescriptor<UploadCoverImageRespon
 
 export interface UpdateSeasonGradeRequestBody {
   seasonId?: string,
-  grade?: string,
+  grade?: number,
   effectiveTimestamp?: number,
 }
 
@@ -141,7 +141,7 @@ export let UPDATE_SEASON_GRADE_REQUEST_BODY: MessageDescriptor<UpdateSeasonGrade
   }, {
     name: 'grade',
     index: 2,
-    primitiveType: PrimitiveType.STRING,
+    primitiveType: PrimitiveType.NUMBER,
   }, {
     name: 'effectiveTimestamp',
     index: 3,
