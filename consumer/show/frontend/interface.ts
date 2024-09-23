@@ -88,7 +88,7 @@ export let GET_MORE_EPISODES_REQUEST_BODY: MessageDescriptor<GetMoreEpisodesRequ
 };
 
 export interface GetMoreEpisodesResponse {
-  episodes?: EpisodeSummary,
+  episodes?: Array<EpisodeSummary>,
   indexCursor?: number,
 }
 
@@ -98,6 +98,7 @@ export let GET_MORE_EPISODES_RESPONSE: MessageDescriptor<GetMoreEpisodesResponse
     name: 'episodes',
     index: 1,
     messageType: EPISODE_SUMMARY,
+    isArray: true,
   }, {
     name: 'indexCursor',
     index: 2,

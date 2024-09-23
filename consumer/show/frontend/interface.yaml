@@ -47,7 +47,7 @@
       - name: episodes
         type: EpisodeSummary
         import: ./consumer/show/frontend/season_details
-        isArrray: true
+        isArray: true
         index: 1
       - name: indexCursor
         type: number
