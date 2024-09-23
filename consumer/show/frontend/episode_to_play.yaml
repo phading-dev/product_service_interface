@@ -26,7 +26,7 @@
         type: string
         index: 4
       - name: grade
-        type: string
+        type: number
         index: 5
 - message:
     name: EpisodeSummary

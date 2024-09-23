@@ -28,7 +28,7 @@ export interface SeasonDetail {
   name?: string,
   description?: string,
   coverImageUrl?: string,
-  grade?: string,
+  grade?: number,
 }
 
 export let SEASON_DETAIL: MessageDescriptor<SeasonDetail> = {
@@ -52,7 +52,7 @@ export let SEASON_DETAIL: MessageDescriptor<SeasonDetail> = {
   }, {
     name: 'grade',
     index: 5,
-    primitiveType: PrimitiveType.STRING,
+    primitiveType: PrimitiveType.NUMBER,
   }],
 };
 
