@@ -1,14 +1,40 @@
 import { PrimitiveType, MessageDescriptor } from '@selfage/message/descriptor';
-import { EpisodeToPlay, EPISODE_TO_PLAY, EpisodeSummary, EPISODE_SUMMARY } from './episode_to_play';
+import { SeasonDetails, SEASON_DETAILS, EpisodeSummary, EPISODE_SUMMARY } from './season_details';
 import { WebRemoteCallDescriptor } from '@selfage/service_descriptor';
 
-export interface GetEpisodeToPlayRequestBody {
+export interface GetSeasonDetailsRequestBody {
+  seasonId?: string,
+}
+
+export let GET_SEASON_DETAILS_REQUEST_BODY: MessageDescriptor<GetSeasonDetailsRequestBody> = {
+  name: 'GetSeasonDetailsRequestBody',
+  fields: [{
+    name: 'seasonId',
+    index: 1,
+    primitiveType: PrimitiveType.STRING,
+  }],
+};
+
+export interface GetSeasonDetailsResponse {
+  seasonDetails?: SeasonDetails,
+}
+
+export let GET_SEASON_DETAILS_RESPONSE: MessageDescriptor<GetSeasonDetailsResponse> = {
+  name: 'GetSeasonDetailsResponse',
+  fields: [{
+    name: 'seasonDetails',
+    index: 1,
+    messageType: SEASON_DETAILS,
+  }],
+};
+
+export interface GetVideoToPlayRequestBody {
   seasonId?: string,
   episodeId?: string,
 }
 
-export let GET_EPISODE_TO_PLAY_REQUEST_BODY: MessageDescriptor<GetEpisodeToPlayRequestBody> = {
-  name: 'GetEpisodeToPlayRequestBody',
+export let GET_VIDEO_TO_PLAY_REQUEST_BODY: MessageDescriptor<GetVideoToPlayRequestBody> = {
+  name: 'GetVideoToPlayRequestBody',
   fields: [{
     name: 'seasonId',
     index: 1,
@@ -20,47 +46,21 @@ export let GET_EPISODE_TO_PLAY_REQUEST_BODY: MessageDescriptor<GetEpisodeToPlayR
   }],
 };
 
-export interface GetEpisodeToPlayResponse {
-  episode?: EpisodeToPlay,
-}
-
-export let GET_EPISODE_TO_PLAY_RESPONSE: MessageDescriptor<GetEpisodeToPlayResponse> = {
-  name: 'GetEpisodeToPlayResponse',
-  fields: [{
-    name: 'episode',
-    index: 1,
-    messageType: EPISODE_TO_PLAY,
-  }],
-};
-
-export interface GetVideoUrlRequestBody {
-  seasonId?: string,
-  episodeId?: string,
-}
-
-export let GET_VIDEO_URL_REQUEST_BODY: MessageDescriptor<GetVideoUrlRequestBody> = {
-  name: 'GetVideoUrlRequestBody',
-  fields: [{
-    name: 'seasonId',
-    index: 1,
-    primitiveType: PrimitiveType.STRING,
-  }, {
-    name: 'episodeId',
-    index: 2,
-    primitiveType: PrimitiveType.STRING,
-  }],
-};
-
-export interface GetVideoUrlResponse {
+export interface GetVideoToPlayResponse {
   videoUrl?: string,
+  continueTimestamp?: number,
 }
 
-export let GET_VIDEO_URL_RESPONSE: MessageDescriptor<GetVideoUrlResponse> = {
-  name: 'GetVideoUrlResponse',
+export let GET_VIDEO_TO_PLAY_RESPONSE: MessageDescriptor<GetVideoToPlayResponse> = {
+  name: 'GetVideoToPlayResponse',
   fields: [{
     name: 'videoUrl',
     index: 1,
     primitiveType: PrimitiveType.STRING,
+  }, {
+    name: 'continueTimestamp',
+    index: 2,
+    primitiveType: PrimitiveType.NUMBER,
   }],
 };
 
@@ -105,27 +105,27 @@ export let GET_MORE_EPISDOES_RESPONSE: MessageDescriptor<GetMoreEpisdoesResponse
   }],
 };
 
-export let GET_EPISODE_TO_PLAY: WebRemoteCallDescriptor = {
-  name: "GetEpisodeToPlay",
-  path: "/GetEpisodeToPlay",
+export let GET_SEASON_DETAILS: WebRemoteCallDescriptor = {
+  name: "GetSeasonDetails",
+  path: "/GetSeasonDetails",
   body: {
-    messageType: GET_EPISODE_TO_PLAY_REQUEST_BODY,
+    messageType: GET_SEASON_DETAILS_REQUEST_BODY,
   },
   sessionKey: "sk",
   response: {
-    messageType: GET_EPISODE_TO_PLAY_RESPONSE,
+    messageType: GET_SEASON_DETAILS_RESPONSE,
   },
 }
 
-export let GET_VIDEO_URL: WebRemoteCallDescriptor = {
-  name: "GetVideoUrl",
-  path: "/GetVideoUrl",
+export let GET_VIDEO_TO_PLAY: WebRemoteCallDescriptor = {
+  name: "GetVideoToPlay",
+  path: "/GetVideoToPlay",
   body: {
-    messageType: GET_VIDEO_URL_REQUEST_BODY,
+    messageType: GET_VIDEO_TO_PLAY_REQUEST_BODY,
   },
   sessionKey: "sk",
   response: {
-    messageType: GET_VIDEO_URL_RESPONSE,
+    messageType: GET_VIDEO_TO_PLAY_RESPONSE,
   },
 }
 

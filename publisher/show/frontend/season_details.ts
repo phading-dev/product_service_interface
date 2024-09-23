@@ -122,8 +122,6 @@ export interface SeasonDetails {
   lastChangeTime?: number,
   state?: SeasonState,
   publishedTime?: number,
-  drafts?: Array<EpisodeDraft>,
-  episodes?: Array<Episode>,
 }
 
 export let SEASON_DETAILS: MessageDescriptor<SeasonDetails> = {
@@ -168,15 +166,5 @@ export let SEASON_DETAILS: MessageDescriptor<SeasonDetails> = {
     name: 'publishedTime',
     index: 10,
     primitiveType: PrimitiveType.NUMBER,
-  }, {
-    name: 'drafts',
-    index: 11,
-    messageType: EPISODE_DRAFT,
-    isArray: true,
-  }, {
-    name: 'episodes',
-    index: 12,
-    messageType: EPISODE,
-    isArray: true,
   }],
 };

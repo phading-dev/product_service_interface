@@ -1,0 +1,42 @@
+- message:
+    name: EpisodeSummary
+    fields:
+      - name: episodeId
+        type: string
+        index: 1
+      - name: name
+        type: string
+        index: 2
+      - name: index
+        type: number
+        index: 3
+      - name: videoLength # seconds
+        type: number
+        index: 4
+      - name: upcomingPremierTime # seconds
+        type: number
+        index: 5
+- message:
+    name: SeasonDetails
+    fields:
+      - name: seasonId
+        type: string
+        index: 1
+      - name: name
+        type: string
+        index: 2
+      - name: description
+        type: string
+        index: 3
+      - name: coverImageUrl
+        type: string
+        index: 4
+      - name: grade
+        type: number
+        index: 5
+      - name: continueEpisode
+        type: EpisodeSummary
+        index: 6
+      - name: continueTimestamp # seconds
+        type: number
+        index: 7

@@ -1,5 +1,18 @@
 - message:
-    name: GetEpisodeToPlayRequestBody
+    name: GetSeasonDetailsRequestBody
+    fields:
+      - name: seasonId
+        type: string
+        index: 1
+- message:
+    name: GetSeasonDetailsResponse
+    fields:
+      - name: seasonDetails
+        type: SeasonDetails
+        import: ./consumer/show/frontend/season_details
+        index: 1
+- message:
+    name: GetVideoToPlayRequestBody
     fields:
       - name: seasonId
         type: string
@@ -8,27 +21,14 @@
         type: string
         index: 2
 - message:
-    name: GetEpisodeToPlayResponse
-    fields:
-      - name: episode
-        type: EpisodeToPlay
-        import: ./consumer/show/frontend/episode_to_play
-        index: 1
-- message:
-    name: GetVideoUrlRequestBody
-    fields:
-      - name: seasonId
-        type: string
-        index: 1
-      - name: episodeId
-        type: string
-        index: 2
-- message:
-    name: GetVideoUrlResponse
+    name: GetVideoToPlayResponse
     fields:
       - name: videoUrl
         type: string
         index: 1
+      - name: continueTimestamp # seconds
+        type: number
+        index: 2
 - message:
     name: GetMoreEpisdoesRequestBody
     fields:
@@ -46,7 +46,7 @@
     fields:
       - name: episodes
         type: EpisodeSummary
-        import: ./consumer/show/frontend/episode_to_play
+        import: ./consumer/show/frontend/season_details
         index: 1
       - name: indexCursor
         type: number
@@ -54,16 +54,16 @@
 - webService:
     name: ProductConsumerFrontendShowService
     remoteCalls:
-      - name: GetEpisodeToPlay
-        path: /GetEpisodeToPlay
-        body: GetEpisodeToPlayRequestBody
+      - name: GetSeasonDetails
+        path: /GetSeasonDetails
+        body: GetSeasonDetailsRequestBody
         sessionKey: sk
-        response: GetEpisodeToPlayResponse
-      - name: GetVideoUrl
-        path: /GetVideoUrl
-        body: GetVideoUrlRequestBody
+        response: GetSeasonDetailsResponse
+      - name: GetVideoToPlay
+        path: /GetVideoToPlay
+        body: GetVideoToPlayRequestBody
         sessionKey: sk
-        response: GetVideoUrlResponse
+        response: GetVideoToPlayResponse
       - name: GetMoreEpisdoes
         path: /GetMoreEpisdoes
         body: GetMoreEpisdoesRequestBody

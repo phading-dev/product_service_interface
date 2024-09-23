@@ -1,22 +1,22 @@
-import { GetEpisodeToPlayRequestBody, GET_EPISODE_TO_PLAY, GetEpisodeToPlayResponse, GetVideoUrlRequestBody, GET_VIDEO_URL, GetVideoUrlResponse, GetMoreEpisdoesRequestBody, GET_MORE_EPISDOES, GetMoreEpisdoesResponse } from './interface';
+import { GetSeasonDetailsRequestBody, GET_SEASON_DETAILS, GetSeasonDetailsResponse, GetVideoToPlayRequestBody, GET_VIDEO_TO_PLAY, GetVideoToPlayResponse, GetMoreEpisdoesRequestBody, GET_MORE_EPISDOES, GetMoreEpisdoesResponse } from './interface';
 import { WebHandlerInterface } from '@selfage/service_descriptor/handler_interface';
 
-export abstract class GetEpisodeToPlayHandlerInterface implements WebHandlerInterface {
-  public descriptor = GET_EPISODE_TO_PLAY;
+export abstract class GetSeasonDetailsHandlerInterface implements WebHandlerInterface {
+  public descriptor = GET_SEASON_DETAILS;
   public abstract handle(
     loggingPrefix: string,
-    body: GetEpisodeToPlayRequestBody,
+    body: GetSeasonDetailsRequestBody,
     sessionStr: string,
-  ): Promise<GetEpisodeToPlayResponse>;
+  ): Promise<GetSeasonDetailsResponse>;
 }
 
-export abstract class GetVideoUrlHandlerInterface implements WebHandlerInterface {
-  public descriptor = GET_VIDEO_URL;
+export abstract class GetVideoToPlayHandlerInterface implements WebHandlerInterface {
+  public descriptor = GET_VIDEO_TO_PLAY;
   public abstract handle(
     loggingPrefix: string,
-    body: GetVideoUrlRequestBody,
+    body: GetVideoToPlayRequestBody,
     sessionStr: string,
-  ): Promise<GetVideoUrlResponse>;
+  ): Promise<GetVideoToPlayResponse>;
 }
 
 export abstract class GetMoreEpisdoesHandlerInterface implements WebHandlerInterface {

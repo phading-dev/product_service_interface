@@ -93,11 +93,3 @@
       - name: publishedTime # seconds
         type: number
         index: 10
-      - name: drafts
-        type: EpisodeDraft
-        isArray: true
-        index: 11
-      - name: episodes
-        type: Episode
-        isArray: true
-        index: 12

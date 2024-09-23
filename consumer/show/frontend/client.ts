@@ -1,28 +1,28 @@
-import { GetEpisodeToPlayRequestBody, GetEpisodeToPlayResponse, GET_EPISODE_TO_PLAY, GetVideoUrlRequestBody, GetVideoUrlResponse, GET_VIDEO_URL, GetMoreEpisdoesRequestBody, GetMoreEpisdoesResponse, GET_MORE_EPISDOES } from './interface';
+import { GetSeasonDetailsRequestBody, GetSeasonDetailsResponse, GET_SEASON_DETAILS, GetVideoToPlayRequestBody, GetVideoToPlayResponse, GET_VIDEO_TO_PLAY, GetMoreEpisdoesRequestBody, GetMoreEpisdoesResponse, GET_MORE_EPISDOES } from './interface';
 import { WebClientInterface, WebClientOptions } from '@selfage/service_descriptor/client_interface';
 
-export function getEpisodeToPlay(
+export function getSeasonDetails(
   client: WebClientInterface,
-  body: GetEpisodeToPlayRequestBody,
+  body: GetSeasonDetailsRequestBody,
   options?: WebClientOptions,
-): Promise<GetEpisodeToPlayResponse> {
+): Promise<GetSeasonDetailsResponse> {
   return client.send(
     {
-      descriptor: GET_EPISODE_TO_PLAY,
+      descriptor: GET_SEASON_DETAILS,
       body,
     },
     options,
   );
 }
 
-export function getVideoUrl(
+export function getVideoToPlay(
   client: WebClientInterface,
-  body: GetVideoUrlRequestBody,
+  body: GetVideoToPlayRequestBody,
   options?: WebClientOptions,
-): Promise<GetVideoUrlResponse> {
+): Promise<GetVideoToPlayResponse> {
   return client.send(
     {
-      descriptor: GET_VIDEO_URL,
+      descriptor: GET_VIDEO_TO_PLAY,
       body,
     },
     options,

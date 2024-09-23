@@ -20,6 +20,9 @@ export let GET_SEASON_DETAILS_REQUEST_BODY: MessageDescriptor<GetSeasonDetailsRe
 
 export interface GetSeasonDetailsResponse {
   seasonDetails?: SeasonDetails,
+  drafts?: Array<EpisodeDraft>,
+  episodes?: Array<Episode>,
+  indexCursor?: number,
 }
 
 export let GET_SEASON_DETAILS_RESPONSE: MessageDescriptor<GetSeasonDetailsResponse> = {
@@ -28,6 +31,20 @@ export let GET_SEASON_DETAILS_RESPONSE: MessageDescriptor<GetSeasonDetailsRespon
     name: 'seasonDetails',
     index: 1,
     messageType: SEASON_DETAILS,
+  }, {
+    name: 'drafts',
+    index: 2,
+    messageType: EPISODE_DRAFT,
+    isArray: true,
+  }, {
+    name: 'episodes',
+    index: 3,
+    messageType: EPISODE,
+    isArray: true,
+  }, {
+    name: 'indexCursor',
+    index: 4,
+    primitiveType: PrimitiveType.NUMBER,
   }],
 };
 
@@ -353,6 +370,43 @@ export let DELETE_EPISODE_DRAFT_RESPONSE: MessageDescriptor<DeleteEpisodeDraftRe
   fields: [],
 };
 
+export interface GetMoreEpisodeRequestBody {
+  seasonId?: string,
+  indexCursor?: number,
+}
+
+export let GET_MORE_EPISODE_REQUEST_BODY: MessageDescriptor<GetMoreEpisodeRequestBody> = {
+  name: 'GetMoreEpisodeRequestBody',
+  fields: [{
+    name: 'seasonId',
+    index: 1,
+    primitiveType: PrimitiveType.STRING,
+  }, {
+    name: 'indexCursor',
+    index: 2,
+    primitiveType: PrimitiveType.NUMBER,
+  }],
+};
+
+export interface GetMoreEpisodeResponse {
+  episodes?: Array<Episode>,
+  indexCursor?: number,
+}
+
+export let GET_MORE_EPISODE_RESPONSE: MessageDescriptor<GetMoreEpisodeResponse> = {
+  name: 'GetMoreEpisodeResponse',
+  fields: [{
+    name: 'episodes',
+    index: 1,
+    messageType: EPISODE,
+    isArray: true,
+  }, {
+    name: 'indexCursor',
+    index: 2,
+    primitiveType: PrimitiveType.NUMBER,
+  }],
+};
+
 export interface PublishEpisodeRequestBody {
   seasonId?: string,
   episodeId?: string,
@@ -595,6 +649,18 @@ export let DELETE_EPISODE_DRAFT: WebRemoteCallDescriptor = {
   sessionKey: "sk",
   response: {
     messageType: DELETE_EPISODE_DRAFT_RESPONSE,
+  },
+}
+
+export let GET_MORE_EPISODE: WebRemoteCallDescriptor = {
+  name: "GetMoreEpisode",
+  path: "/GetMoreEpisode",
+  body: {
+    messageType: GET_MORE_EPISODE_REQUEST_BODY,
+  },
+  sessionKey: "sk",
+  response: {
+    messageType: GET_MORE_EPISODE_RESPONSE,
   },
 }
 

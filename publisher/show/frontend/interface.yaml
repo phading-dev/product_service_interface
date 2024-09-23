@@ -11,6 +11,19 @@
         type: SeasonDetails
         import: ./publisher/show/frontend/season_details
         index: 1
+      - name: drafts
+        type: EpisodeDraft
+        import: ./publisher/show/frontend/season_details
+        isArray: true
+        index: 2
+      - name: episodes
+        type: Episode
+        import: ./publisher/show/frontend/season_details
+        isArray: true
+        index: 3
+      - name: indexCursor
+        type: number
+        index: 4
 - message:
     name: CreateSeasonRequestBody
     fields:
@@ -163,6 +176,26 @@
 - message:
     name: DeleteEpisodeDraftResponse
 - message:
+    name: GetMoreEpisodeRequestBody
+    fields:
+      - name: seasonId
+        type: string
+        index: 1
+      - name: indexCursor
+        type: number
+        index: 2
+- message:
+    name: GetMoreEpisodeResponse
+    fields:
+      - name: episodes
+        type: Episode
+        import: ./publisher/show/frontend/season_details
+        isArray: true
+        index: 1
+      - name: indexCursor
+        type: number
+        index: 2
+- message:
     name: PublishEpisodeRequestBody
     fields:
       - name: seasonId
@@ -275,6 +308,11 @@
         body: DeleteEpisodeDraftRequestBody
         sessionKey: sk
         response: DeleteEpisodeDraftResponse
+      - name: GetMoreEpisode
+        path: /GetMoreEpisode
+        body: GetMoreEpisodeRequestBody
+        sessionKey: sk
+        response: GetMoreEpisodeResponse
       - name: PublishEpisode
         path: /PublishEpisode
         body: PublishEpisodeRequestBody
