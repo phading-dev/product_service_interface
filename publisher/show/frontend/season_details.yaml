@@ -1,16 +1,4 @@
 - message:
-    name: ResumableVideoUpload
-    fields:
-      - name: uri
-        type: string
-        index: 2
-      - name: crc32c
-        type: string
-        index: 3
-      - name: byteOffset
-        type: number
-        index: 4
-- message:
     name: EpisodeDraft
     fields:
       - name: episodeId
@@ -27,6 +15,7 @@
         index: 4
       - name: resumableVideoUpload
         type: ResumableVideoUpload
+        import: ./publisher/show/resumable_video_upload
         index: 5
       - name: videoUploadCompleted
         type: boolean

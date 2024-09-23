@@ -137,7 +137,7 @@
         index: 2
       - name: resumableVideoUpload
         type: ResumableVideoUpload
-        import: ./publisher/show/frontend/season_details
+        import: ./publisher/show/resumable_video_upload
         index: 3
 - message:
     name: UploadEpisodeVideoResponse

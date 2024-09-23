@@ -1,28 +1,6 @@
 import { PrimitiveType, MessageDescriptor } from '@selfage/message/descriptor';
+import { ResumableVideoUpload, RESUMABLE_VIDEO_UPLOAD } from '../resumable_video_upload';
 import { SeasonState, SEASON_STATE } from '../season_state';
-
-export interface ResumableVideoUpload {
-  uri?: string,
-  crc32c?: string,
-  byteOffset?: number,
-}
-
-export let RESUMABLE_VIDEO_UPLOAD: MessageDescriptor<ResumableVideoUpload> = {
-  name: 'ResumableVideoUpload',
-  fields: [{
-    name: 'uri',
-    index: 2,
-    primitiveType: PrimitiveType.STRING,
-  }, {
-    name: 'crc32c',
-    index: 3,
-    primitiveType: PrimitiveType.STRING,
-  }, {
-    name: 'byteOffset',
-    index: 4,
-    primitiveType: PrimitiveType.NUMBER,
-  }],
-};
 
 export interface EpisodeDraft {
   episodeId?: string,

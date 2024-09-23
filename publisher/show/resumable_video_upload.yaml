@@ -1,0 +1,12 @@
+- message:
+    name: ResumableVideoUpload
+    fields:
+      - name: uri
+        type: string
+        index: 1
+      - name: crc32c
+        type: string
+        index: 2
+      - name: byteOffset
+        type: number
+        index: 3
