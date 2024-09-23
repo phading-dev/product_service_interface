@@ -30,7 +30,7 @@
         type: number
         index: 2
 - message:
-    name: GetMoreEpisdoesRequestBody
+    name: GetMoreEpisodesRequestBody
     fields:
       - name: seasonId
         type: string
@@ -42,7 +42,7 @@
         type: boolean
         index: 3
 - message:
-    name: GetMoreEpisdoesResponse
+    name: GetMoreEpisodesResponse
     fields:
       - name: episodes
         type: EpisodeSummary
@@ -64,10 +64,10 @@
         body: GetVideoToPlayRequestBody
         sessionKey: sk
         response: GetVideoToPlayResponse
-      - name: GetMoreEpisdoes
-        path: /GetMoreEpisdoes
-        body: GetMoreEpisdoesRequestBody
+      - name: GetMoreEpisodes
+        path: /GetMoreEpisodes
+        body: GetMoreEpisodesRequestBody
         sessionKey: sk
-        response: GetMoreEpisdoesResponse
+        response: GetMoreEpisodesResponse
     outputClient: ./consumer/show/frontend/client
     outputHandler: ./consumer/show/frontend/handler

@@ -64,14 +64,14 @@ export let GET_VIDEO_TO_PLAY_RESPONSE: MessageDescriptor<GetVideoToPlayResponse>
   }],
 };
 
-export interface GetMoreEpisdoesRequestBody {
+export interface GetMoreEpisodesRequestBody {
   seasonId?: string,
   indexCursor?: number,
   next?: boolean,
 }
 
-export let GET_MORE_EPISDOES_REQUEST_BODY: MessageDescriptor<GetMoreEpisdoesRequestBody> = {
-  name: 'GetMoreEpisdoesRequestBody',
+export let GET_MORE_EPISODES_REQUEST_BODY: MessageDescriptor<GetMoreEpisodesRequestBody> = {
+  name: 'GetMoreEpisodesRequestBody',
   fields: [{
     name: 'seasonId',
     index: 1,
@@ -87,13 +87,13 @@ export let GET_MORE_EPISDOES_REQUEST_BODY: MessageDescriptor<GetMoreEpisdoesRequ
   }],
 };
 
-export interface GetMoreEpisdoesResponse {
+export interface GetMoreEpisodesResponse {
   episodes?: EpisodeSummary,
   indexCursor?: number,
 }
 
-export let GET_MORE_EPISDOES_RESPONSE: MessageDescriptor<GetMoreEpisdoesResponse> = {
-  name: 'GetMoreEpisdoesResponse',
+export let GET_MORE_EPISODES_RESPONSE: MessageDescriptor<GetMoreEpisodesResponse> = {
+  name: 'GetMoreEpisodesResponse',
   fields: [{
     name: 'episodes',
     index: 1,
@@ -129,14 +129,14 @@ export let GET_VIDEO_TO_PLAY: WebRemoteCallDescriptor = {
   },
 }
 
-export let GET_MORE_EPISDOES: WebRemoteCallDescriptor = {
-  name: "GetMoreEpisdoes",
-  path: "/GetMoreEpisdoes",
+export let GET_MORE_EPISODES: WebRemoteCallDescriptor = {
+  name: "GetMoreEpisodes",
+  path: "/GetMoreEpisodes",
   body: {
-    messageType: GET_MORE_EPISDOES_REQUEST_BODY,
+    messageType: GET_MORE_EPISODES_REQUEST_BODY,
   },
   sessionKey: "sk",
   response: {
-    messageType: GET_MORE_EPISDOES_RESPONSE,
+    messageType: GET_MORE_EPISODES_RESPONSE,
   },
 }
