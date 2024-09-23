@@ -6,7 +6,7 @@ export interface EpisodeDraft {
   episodeId?: string,
   name?: string,
   resumableVideoUpload?: ResumableVideoUpload,
-  videoUploadedTime?: boolean,
+  videoUploadedTimestamp?: number,
   videoLength?: number,
   videoSize?: number,
 }
@@ -26,9 +26,9 @@ export let EPISODE_DRAFT: MessageDescriptor<EpisodeDraft> = {
     index: 3,
     messageType: RESUMABLE_VIDEO_UPLOAD,
   }, {
-    name: 'videoUploadedTime',
+    name: 'videoUploadedTimestamp',
     index: 4,
-    primitiveType: PrimitiveType.BOOLEAN,
+    primitiveType: PrimitiveType.NUMBER,
   }, {
     name: 'videoLength',
     index: 5,
@@ -46,8 +46,8 @@ export interface Episode {
   index?: number,
   videoLength?: number,
   videoSize?: number,
-  publishedTime?: number,
-  premierTime?: number,
+  publishedTimestamps?: number,
+  premierTimestamp?: number,
 }
 
 export let EPISODE: MessageDescriptor<Episode> = {
@@ -73,11 +73,11 @@ export let EPISODE: MessageDescriptor<Episode> = {
     index: 5,
     primitiveType: PrimitiveType.NUMBER,
   }, {
-    name: 'publishedTime',
+    name: 'publishedTimestamps',
     index: 6,
     primitiveType: PrimitiveType.NUMBER,
   }, {
-    name: 'premierTime',
+    name: 'premierTimestamp',
     index: 7,
     primitiveType: PrimitiveType.NUMBER,
   }],
@@ -85,7 +85,7 @@ export let EPISODE: MessageDescriptor<Episode> = {
 
 export interface NextGrade {
   grade?: number,
-  effectiveTime?: number,
+  effectiveTimestamp?: number,
 }
 
 export let NEXT_GRADE: MessageDescriptor<NextGrade> = {
@@ -95,7 +95,7 @@ export let NEXT_GRADE: MessageDescriptor<NextGrade> = {
     index: 1,
     primitiveType: PrimitiveType.NUMBER,
   }, {
-    name: 'effectiveTime',
+    name: 'effectiveTimestamp',
     index: 2,
     primitiveType: PrimitiveType.NUMBER,
   }],
@@ -108,10 +108,11 @@ export interface SeasonDetails {
   coverImageUrl?: string,
   grade?: number,
   nextGrade?: NextGrade,
-  createdTime?: number,
-  lastChangeTime?: number,
+  createdTimestamp?: number,
+  lastChangeTimestamp?: number,
   state?: SeasonState,
-  publishedTime?: number,
+  publishedTimestamp?: number,
+  archivedTimestamp?: number,
 }
 
 export let SEASON_DETAILS: MessageDescriptor<SeasonDetails> = {
@@ -141,11 +142,11 @@ export let SEASON_DETAILS: MessageDescriptor<SeasonDetails> = {
     index: 6,
     messageType: NEXT_GRADE,
   }, {
-    name: 'createdTime',
+    name: 'createdTimestamp',
     index: 7,
     primitiveType: PrimitiveType.NUMBER,
   }, {
-    name: 'lastChangeTime',
+    name: 'lastChangeTimestamp',
     index: 8,
     primitiveType: PrimitiveType.NUMBER,
   }, {
@@ -153,8 +154,12 @@ export let SEASON_DETAILS: MessageDescriptor<SeasonDetails> = {
     index: 9,
     enumType: SEASON_STATE,
   }, {
-    name: 'publishedTime',
+    name: 'publishedTimestamp',
     index: 10,
+    primitiveType: PrimitiveType.NUMBER,
+  }, {
+    name: 'archivedTimestamp',
+    index: 11,
     primitiveType: PrimitiveType.NUMBER,
   }],
 };

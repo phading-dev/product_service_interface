@@ -129,7 +129,7 @@ export let UPLOAD_COVER_IMAGE_RESPONSE: MessageDescriptor<UploadCoverImageRespon
 export interface UpdateSeasonGradeRequestBody {
   seasonId?: string,
   grade?: string,
-  effectiveTime?: number,
+  effectiveTimestamp?: number,
 }
 
 export let UPDATE_SEASON_GRADE_REQUEST_BODY: MessageDescriptor<UpdateSeasonGradeRequestBody> = {
@@ -143,7 +143,7 @@ export let UPDATE_SEASON_GRADE_REQUEST_BODY: MessageDescriptor<UpdateSeasonGrade
     index: 2,
     primitiveType: PrimitiveType.STRING,
   }, {
-    name: 'effectiveTime',
+    name: 'effectiveTimestamp',
     index: 3,
     primitiveType: PrimitiveType.NUMBER,
   }],
@@ -324,7 +324,7 @@ export let UPLOAD_EPISODE_VIDEO_METADATA: MessageDescriptor<UploadEpisodeVideoMe
 export interface UploadEpisodeVideoResponse {
   videoLength?: number,
   videoSize?: number,
-  lastChangeTime?: number,
+  lastChangeTimestamp?: number,
 }
 
 export let UPLOAD_EPISODE_VIDEO_RESPONSE: MessageDescriptor<UploadEpisodeVideoResponse> = {
@@ -338,7 +338,7 @@ export let UPLOAD_EPISODE_VIDEO_RESPONSE: MessageDescriptor<UploadEpisodeVideoRe
     index: 2,
     primitiveType: PrimitiveType.NUMBER,
   }, {
-    name: 'lastChangeTime',
+    name: 'lastChangeTimestamp',
     index: 3,
     primitiveType: PrimitiveType.NUMBER,
   }],

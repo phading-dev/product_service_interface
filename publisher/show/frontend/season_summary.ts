@@ -8,7 +8,7 @@ export interface SeasonSummary {
   state?: SeasonState,
   grade?: number,
   totalEpisodes?: number,
-  lastChangeTime?: number,
+  lastChangeTimestamp?: number,
 }
 
 export let SEASON_SUMMARY: MessageDescriptor<SeasonSummary> = {
@@ -38,7 +38,7 @@ export let SEASON_SUMMARY: MessageDescriptor<SeasonSummary> = {
     index: 6,
     primitiveType: PrimitiveType.NUMBER,
   }, {
-    name: 'lastChangeTime',
+    name: 'lastChangeTimestamp',
     index: 7,
     primitiveType: PrimitiveType.NUMBER,
   }],

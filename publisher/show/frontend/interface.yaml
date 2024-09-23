@@ -67,7 +67,7 @@
       - name: grade
         type: string
         index: 2
-      - name: effectiveTime # seconds
+      - name: effectiveTimestamp
         type: number
         index: 3
 - message:
@@ -161,7 +161,7 @@
       - name: videoSize # bytes
         type: number
         index: 2
-      - name: lastChangeTime # seconds
+      - name: lastChangeTimestamp
         type: number
         index: 3
 - message:

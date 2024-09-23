@@ -11,8 +11,8 @@
         type: ResumableVideoUpload
         import: ./publisher/show/resumable_video_upload
         index: 3
-      - name: videoUploadedTime # seconds
-        type: boolean
+      - name: videoUploadedTimestamp
+        type: number
         index: 4
       - name: videoLength # seconds
         type: number
@@ -38,10 +38,10 @@
       - name: videoSize # bytes
         type: number
         index: 5
-      - name: publishedTime # seconds
+      - name: publishedTimestamps
         type: number
         index: 6
-      - name: premierTime # seconds
+      - name: premierTimestamp
         type: number
         index: 7
 - message:
@@ -50,7 +50,7 @@
       - name: grade
         type: number
         index: 1
-      - name: effectiveTime # seconds
+      - name: effectiveTimestamp
         type: number
         index: 2
 - message:
@@ -74,16 +74,19 @@
       - name: nextGrade
         type: NextGrade
         index: 6
-      - name: createdTime # seconds
+      - name: createdTimestamp
         type: number
         index: 7
-      - name: lastChangeTime # seconds
+      - name: lastChangeTimestamp
         type: number
         index: 8
       - name: state
         type: SeasonState
         import: ./publisher/show/season_state
         index: 9
-      - name: publishedTime # seconds
+      - name: publishedTimestamp
         type: number
         index: 10
+      - name: archivedTimestamp
+        type: number
+        index: 11

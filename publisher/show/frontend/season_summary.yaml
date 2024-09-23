@@ -20,6 +20,6 @@
       - name: totalEpisodes
         type: number
         index: 6
-      - name: lastChangeTime # seconds
+      - name: lastChangeTimestamp
         type: number
         index: 7

@@ -5,7 +5,7 @@ export interface EpisodeSummary {
   name?: string,
   index?: number,
   videoLength?: number,
-  upcomingPremierTime?: number,
+  upcomingPremierTimestamp?: number,
 }
 
 export let EPISODE_SUMMARY: MessageDescriptor<EpisodeSummary> = {
@@ -27,7 +27,7 @@ export let EPISODE_SUMMARY: MessageDescriptor<EpisodeSummary> = {
     index: 4,
     primitiveType: PrimitiveType.NUMBER,
   }, {
-    name: 'upcomingPremierTime',
+    name: 'upcomingPremierTimestamp',
     index: 5,
     primitiveType: PrimitiveType.NUMBER,
   }],
@@ -40,7 +40,7 @@ export interface SeasonDetails {
   coverImageUrl?: string,
   grade?: number,
   continueEpisode?: EpisodeSummary,
-  continueTimestamp?: number,
+  continueTimestampstamp?: number,
 }
 
 export let SEASON_DETAILS: MessageDescriptor<SeasonDetails> = {
@@ -70,7 +70,7 @@ export let SEASON_DETAILS: MessageDescriptor<SeasonDetails> = {
     index: 6,
     messageType: EPISODE_SUMMARY,
   }, {
-    name: 'continueTimestamp',
+    name: 'continueTimestampstamp',
     index: 7,
     primitiveType: PrimitiveType.NUMBER,
   }],
