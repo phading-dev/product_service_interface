@@ -34,9 +34,12 @@
       - name: grade
         type: number
         index: 5
+      - name: totalEpisodes
+        type: number
+        index: 6
       - name: continueEpisode
         type: EpisodeSummary
-        index: 6
+        index: 7
       - name: continueTimestampstamp
         type: number
-        index: 7
+        index: 8

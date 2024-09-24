@@ -39,6 +39,7 @@ export interface SeasonDetails {
   description?: string,
   coverImageUrl?: string,
   grade?: number,
+  totalEpisodes?: number,
   continueEpisode?: EpisodeSummary,
   continueTimestampstamp?: number,
 }
@@ -66,12 +67,16 @@ export let SEASON_DETAILS: MessageDescriptor<SeasonDetails> = {
     index: 5,
     primitiveType: PrimitiveType.NUMBER,
   }, {
-    name: 'continueEpisode',
+    name: 'totalEpisodes',
     index: 6,
+    primitiveType: PrimitiveType.NUMBER,
+  }, {
+    name: 'continueEpisode',
+    index: 7,
     messageType: EPISODE_SUMMARY,
   }, {
     name: 'continueTimestampstamp',
-    index: 7,
+    index: 8,
     primitiveType: PrimitiveType.NUMBER,
   }],
 };

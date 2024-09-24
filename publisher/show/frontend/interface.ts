@@ -370,13 +370,13 @@ export let DELETE_EPISODE_DRAFT_RESPONSE: MessageDescriptor<DeleteEpisodeDraftRe
   fields: [],
 };
 
-export interface GetMoreEpisodeRequestBody {
+export interface GetMoreEpisodesRequestBody {
   seasonId?: string,
   indexCursor?: number,
 }
 
-export let GET_MORE_EPISODE_REQUEST_BODY: MessageDescriptor<GetMoreEpisodeRequestBody> = {
-  name: 'GetMoreEpisodeRequestBody',
+export let GET_MORE_EPISODES_REQUEST_BODY: MessageDescriptor<GetMoreEpisodesRequestBody> = {
+  name: 'GetMoreEpisodesRequestBody',
   fields: [{
     name: 'seasonId',
     index: 1,
@@ -388,13 +388,13 @@ export let GET_MORE_EPISODE_REQUEST_BODY: MessageDescriptor<GetMoreEpisodeReques
   }],
 };
 
-export interface GetMoreEpisodeResponse {
+export interface GetMoreEpisodesResponse {
   episodes?: Array<Episode>,
   indexCursor?: number,
 }
 
-export let GET_MORE_EPISODE_RESPONSE: MessageDescriptor<GetMoreEpisodeResponse> = {
-  name: 'GetMoreEpisodeResponse',
+export let GET_MORE_EPISODES_RESPONSE: MessageDescriptor<GetMoreEpisodesResponse> = {
+  name: 'GetMoreEpisodesResponse',
   fields: [{
     name: 'episodes',
     index: 1,
@@ -652,15 +652,15 @@ export let DELETE_EPISODE_DRAFT: WebRemoteCallDescriptor = {
   },
 }
 
-export let GET_MORE_EPISODE: WebRemoteCallDescriptor = {
-  name: "GetMoreEpisode",
-  path: "/GetMoreEpisode",
+export let GET_MORE_EPISODES: WebRemoteCallDescriptor = {
+  name: "GetMoreEpisodes",
+  path: "/GetMoreEpisodes",
   body: {
-    messageType: GET_MORE_EPISODE_REQUEST_BODY,
+    messageType: GET_MORE_EPISODES_REQUEST_BODY,
   },
   sessionKey: "sk",
   response: {
-    messageType: GET_MORE_EPISODE_RESPONSE,
+    messageType: GET_MORE_EPISODES_RESPONSE,
   },
 }
 

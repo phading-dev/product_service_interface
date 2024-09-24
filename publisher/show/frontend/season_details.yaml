@@ -68,25 +68,28 @@
       - name: coverImageUrl
         type: string
         index: 4
-      - name: grade
+      - name: totalEpisodes
         type: number
         index: 5
+      - name: grade
+        type: number
+        index: 6
       - name: nextGrade
         type: NextGrade
-        index: 6
+        index: 7
       - name: createdTimestamp
         type: number
-        index: 7
+        index: 8
       - name: lastChangeTimestamp
         type: number
-        index: 8
+        index: 9
       - name: state
         type: SeasonState
         import: ./publisher/show/season_state
-        index: 9
+        index: 10
       - name: publishedTimestamp
         type: number
-        index: 10
+        index: 11
       - name: archivedTimestamp
         type: number
-        index: 11
+        index: 12

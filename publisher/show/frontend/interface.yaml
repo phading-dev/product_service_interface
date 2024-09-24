@@ -176,7 +176,7 @@
 - message:
     name: DeleteEpisodeDraftResponse
 - message:
-    name: GetMoreEpisodeRequestBody
+    name: GetMoreEpisodesRequestBody
     fields:
       - name: seasonId
         type: string
@@ -185,7 +185,7 @@
         type: number
         index: 2
 - message:
-    name: GetMoreEpisodeResponse
+    name: GetMoreEpisodesResponse
     fields:
       - name: episodes
         type: Episode
@@ -204,7 +204,7 @@
       - name: episodeId
         type: string
         index: 2
-      - name: premierTime # seconds
+      - name: premierTimestamp
         type: number
         index: 3
 - message:
@@ -308,11 +308,11 @@
         body: DeleteEpisodeDraftRequestBody
         sessionKey: sk
         response: DeleteEpisodeDraftResponse
-      - name: GetMoreEpisode
-        path: /GetMoreEpisode
-        body: GetMoreEpisodeRequestBody
+      - name: GetMoreEpisodes
+        path: /GetMoreEpisodes
+        body: GetMoreEpisodesRequestBody
         sessionKey: sk
-        response: GetMoreEpisodeResponse
+        response: GetMoreEpisodesResponse
       - name: PublishEpisode
         path: /PublishEpisode
         body: PublishEpisodeRequestBody

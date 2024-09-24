@@ -106,6 +106,7 @@ export interface SeasonDetails {
   name?: string,
   description?: string,
   coverImageUrl?: string,
+  totalEpisodes?: number,
   grade?: number,
   nextGrade?: NextGrade,
   createdTimestamp?: number,
@@ -134,32 +135,36 @@ export let SEASON_DETAILS: MessageDescriptor<SeasonDetails> = {
     index: 4,
     primitiveType: PrimitiveType.STRING,
   }, {
-    name: 'grade',
+    name: 'totalEpisodes',
     index: 5,
     primitiveType: PrimitiveType.NUMBER,
   }, {
-    name: 'nextGrade',
+    name: 'grade',
     index: 6,
+    primitiveType: PrimitiveType.NUMBER,
+  }, {
+    name: 'nextGrade',
+    index: 7,
     messageType: NEXT_GRADE,
   }, {
     name: 'createdTimestamp',
-    index: 7,
-    primitiveType: PrimitiveType.NUMBER,
-  }, {
-    name: 'lastChangeTimestamp',
     index: 8,
     primitiveType: PrimitiveType.NUMBER,
   }, {
-    name: 'state',
+    name: 'lastChangeTimestamp',
     index: 9,
+    primitiveType: PrimitiveType.NUMBER,
+  }, {
+    name: 'state',
+    index: 10,
     enumType: SEASON_STATE,
   }, {
     name: 'publishedTimestamp',
-    index: 10,
+    index: 11,
     primitiveType: PrimitiveType.NUMBER,
   }, {
     name: 'archivedTimestamp',
-    index: 11,
+    index: 12,
     primitiveType: PrimitiveType.NUMBER,
   }],
 };
