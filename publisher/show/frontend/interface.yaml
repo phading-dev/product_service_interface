@@ -168,6 +168,17 @@
         type: number
         index: 2
 - message:
+    name: DeleteEpisodeVideoRequestBody
+    fields:
+      - name: seasonId
+        type: number
+        index: 1
+      - name: episodeId
+        type: number
+        index: 2
+- message:
+    name: DeleteEpisodeVideoResponse
+- message:
     name: DeleteEpisodeDraftRequestBody
     fields:
       - name: seasonId
@@ -306,6 +317,10 @@
         body: bytes
         sessionKey: sk
         response: UploadEpisodeVideoResponse
+      - name: DeleteEpisodeVideo
+        path: /DeleteEpisodeVideo
+        body: DeleteEpisodeVideoRequestBody
+        response: DeleteEpisodeVideoResponse
       - name: DeleteEpisodeDraft
         path: /DeleteEpisodeDraft
         body: DeleteEpisodeDraftRequestBody

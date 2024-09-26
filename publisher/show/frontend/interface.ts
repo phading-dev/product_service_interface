@@ -349,6 +349,32 @@ export let UPLOAD_EPISODE_VIDEO_RESPONSE: MessageDescriptor<UploadEpisodeVideoRe
   }],
 };
 
+export interface DeleteEpisodeVideoRequestBody {
+  seasonId?: number,
+  episodeId?: number,
+}
+
+export let DELETE_EPISODE_VIDEO_REQUEST_BODY: MessageDescriptor<DeleteEpisodeVideoRequestBody> = {
+  name: 'DeleteEpisodeVideoRequestBody',
+  fields: [{
+    name: 'seasonId',
+    index: 1,
+    primitiveType: PrimitiveType.NUMBER,
+  }, {
+    name: 'episodeId',
+    index: 2,
+    primitiveType: PrimitiveType.NUMBER,
+  }],
+};
+
+export interface DeleteEpisodeVideoResponse {
+}
+
+export let DELETE_EPISODE_VIDEO_RESPONSE: MessageDescriptor<DeleteEpisodeVideoResponse> = {
+  name: 'DeleteEpisodeVideoResponse',
+  fields: [],
+};
+
 export interface DeleteEpisodeDraftRequestBody {
   seasonId?: string,
   episodeId?: string,
@@ -642,6 +668,17 @@ export let UPLOAD_EPISODE_VIDEO: WebRemoteCallDescriptor = {
   sessionKey: "sk",
   response: {
     messageType: UPLOAD_EPISODE_VIDEO_RESPONSE,
+  },
+}
+
+export let DELETE_EPISODE_VIDEO: WebRemoteCallDescriptor = {
+  name: "DeleteEpisodeVideo",
+  path: "/DeleteEpisodeVideo",
+  body: {
+    messageType: DELETE_EPISODE_VIDEO_REQUEST_BODY,
+  },
+  response: {
+    messageType: DELETE_EPISODE_VIDEO_RESPONSE,
   },
 }
 

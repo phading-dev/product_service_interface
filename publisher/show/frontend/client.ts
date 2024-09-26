@@ -1,4 +1,4 @@
-import { GetSeasonDetailsRequestBody, GetSeasonDetailsResponse, GET_SEASON_DETAILS, CreateSeasonRequestBody, CreateSeasonResponse, CREATE_SEASON, UpdateSeasonRequestBody, UpdateSeasonResponse, UPDATE_SEASON, UploadCoverImageRequestMetadata, UploadCoverImageResponse, UPLOAD_COVER_IMAGE, UpdateSeasonGradeRequestBody, UpdateSeasonGradeResponse, UPDATE_SEASON_GRADE, DeleteSeasonRequestBody, DeleteSeasonResponse, DELETE_SEASON, ArchiveSeasonRequestBody, ArchiveSeasonResponse, ARCHIVE_SEASON, ListSeasonsRequestBody, ListSeasonsResponse, LIST_SEASONS, CreateEpisodeDraftRequestBody, CreateEpisodeDraftResponse, CREATE_EPISODE_DRAFT, UpdateEpisodeDraftRequestBody, UpdateEpisodeDraftResponse, UPDATE_EPISODE_DRAFT, UploadEpisodeVideoMetadata, UploadEpisodeVideoResponse, UPLOAD_EPISODE_VIDEO, DeleteEpisodeDraftRequestBody, DeleteEpisodeDraftResponse, DELETE_EPISODE_DRAFT, GetMoreEpisodesRequestBody, GetMoreEpisodesResponse, GET_MORE_EPISODES, PublishEpisodeRequestBody, PublishEpisodeResponse, PUBLISH_EPISODE, UpdateEpisodeOrderRequestBody, UpdateEpisodeOrderResponse, UPDATE_EPISODE_ORDER, DeleteEpisodeRequestBody, DeleteEpisodeResponse, DELETE_EPISODE } from './interface';
+import { GetSeasonDetailsRequestBody, GetSeasonDetailsResponse, GET_SEASON_DETAILS, CreateSeasonRequestBody, CreateSeasonResponse, CREATE_SEASON, UpdateSeasonRequestBody, UpdateSeasonResponse, UPDATE_SEASON, UploadCoverImageRequestMetadata, UploadCoverImageResponse, UPLOAD_COVER_IMAGE, UpdateSeasonGradeRequestBody, UpdateSeasonGradeResponse, UPDATE_SEASON_GRADE, DeleteSeasonRequestBody, DeleteSeasonResponse, DELETE_SEASON, ArchiveSeasonRequestBody, ArchiveSeasonResponse, ARCHIVE_SEASON, ListSeasonsRequestBody, ListSeasonsResponse, LIST_SEASONS, CreateEpisodeDraftRequestBody, CreateEpisodeDraftResponse, CREATE_EPISODE_DRAFT, UpdateEpisodeDraftRequestBody, UpdateEpisodeDraftResponse, UPDATE_EPISODE_DRAFT, UploadEpisodeVideoMetadata, UploadEpisodeVideoResponse, UPLOAD_EPISODE_VIDEO, DeleteEpisodeVideoRequestBody, DeleteEpisodeVideoResponse, DELETE_EPISODE_VIDEO, DeleteEpisodeDraftRequestBody, DeleteEpisodeDraftResponse, DELETE_EPISODE_DRAFT, GetMoreEpisodesRequestBody, GetMoreEpisodesResponse, GET_MORE_EPISODES, PublishEpisodeRequestBody, PublishEpisodeResponse, PUBLISH_EPISODE, UpdateEpisodeOrderRequestBody, UpdateEpisodeOrderResponse, UPDATE_EPISODE_ORDER, DeleteEpisodeRequestBody, DeleteEpisodeResponse, DELETE_EPISODE } from './interface';
 import { WebClientInterface, WebClientOptions } from '@selfage/service_descriptor/client_interface';
 
 export function getSeasonDetails(
@@ -154,6 +154,20 @@ export function uploadEpisodeVideo(
       descriptor: UPLOAD_EPISODE_VIDEO,
       body,
       metadata,
+    },
+    options,
+  );
+}
+
+export function deleteEpisodeVideo(
+  client: WebClientInterface,
+  body: DeleteEpisodeVideoRequestBody,
+  options?: WebClientOptions,
+): Promise<DeleteEpisodeVideoResponse> {
+  return client.send(
+    {
+      descriptor: DELETE_EPISODE_VIDEO,
+      body,
     },
     options,
   );

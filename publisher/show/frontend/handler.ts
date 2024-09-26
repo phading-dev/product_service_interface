@@ -1,4 +1,4 @@
-import { GetSeasonDetailsRequestBody, GET_SEASON_DETAILS, GetSeasonDetailsResponse, CreateSeasonRequestBody, CREATE_SEASON, CreateSeasonResponse, UpdateSeasonRequestBody, UPDATE_SEASON, UpdateSeasonResponse, UploadCoverImageRequestMetadata, UPLOAD_COVER_IMAGE, UploadCoverImageResponse, UpdateSeasonGradeRequestBody, UPDATE_SEASON_GRADE, UpdateSeasonGradeResponse, DeleteSeasonRequestBody, DELETE_SEASON, DeleteSeasonResponse, ArchiveSeasonRequestBody, ARCHIVE_SEASON, ArchiveSeasonResponse, ListSeasonsRequestBody, LIST_SEASONS, ListSeasonsResponse, CreateEpisodeDraftRequestBody, CREATE_EPISODE_DRAFT, CreateEpisodeDraftResponse, UpdateEpisodeDraftRequestBody, UPDATE_EPISODE_DRAFT, UpdateEpisodeDraftResponse, UploadEpisodeVideoMetadata, UPLOAD_EPISODE_VIDEO, UploadEpisodeVideoResponse, DeleteEpisodeDraftRequestBody, DELETE_EPISODE_DRAFT, DeleteEpisodeDraftResponse, GetMoreEpisodesRequestBody, GET_MORE_EPISODES, GetMoreEpisodesResponse, PublishEpisodeRequestBody, PUBLISH_EPISODE, PublishEpisodeResponse, UpdateEpisodeOrderRequestBody, UPDATE_EPISODE_ORDER, UpdateEpisodeOrderResponse, DeleteEpisodeRequestBody, DELETE_EPISODE, DeleteEpisodeResponse } from './interface';
+import { GetSeasonDetailsRequestBody, GET_SEASON_DETAILS, GetSeasonDetailsResponse, CreateSeasonRequestBody, CREATE_SEASON, CreateSeasonResponse, UpdateSeasonRequestBody, UPDATE_SEASON, UpdateSeasonResponse, UploadCoverImageRequestMetadata, UPLOAD_COVER_IMAGE, UploadCoverImageResponse, UpdateSeasonGradeRequestBody, UPDATE_SEASON_GRADE, UpdateSeasonGradeResponse, DeleteSeasonRequestBody, DELETE_SEASON, DeleteSeasonResponse, ArchiveSeasonRequestBody, ARCHIVE_SEASON, ArchiveSeasonResponse, ListSeasonsRequestBody, LIST_SEASONS, ListSeasonsResponse, CreateEpisodeDraftRequestBody, CREATE_EPISODE_DRAFT, CreateEpisodeDraftResponse, UpdateEpisodeDraftRequestBody, UPDATE_EPISODE_DRAFT, UpdateEpisodeDraftResponse, UploadEpisodeVideoMetadata, UPLOAD_EPISODE_VIDEO, UploadEpisodeVideoResponse, DeleteEpisodeVideoRequestBody, DELETE_EPISODE_VIDEO, DeleteEpisodeVideoResponse, DeleteEpisodeDraftRequestBody, DELETE_EPISODE_DRAFT, DeleteEpisodeDraftResponse, GetMoreEpisodesRequestBody, GET_MORE_EPISODES, GetMoreEpisodesResponse, PublishEpisodeRequestBody, PUBLISH_EPISODE, PublishEpisodeResponse, UpdateEpisodeOrderRequestBody, UPDATE_EPISODE_ORDER, UpdateEpisodeOrderResponse, DeleteEpisodeRequestBody, DELETE_EPISODE, DeleteEpisodeResponse } from './interface';
 import { WebHandlerInterface } from '@selfage/service_descriptor/handler_interface';
 import { Readable } from 'stream';
 
@@ -101,6 +101,14 @@ export abstract class UploadEpisodeVideoHandlerInterface implements WebHandlerIn
     metadata: UploadEpisodeVideoMetadata,
     sessionStr: string,
   ): Promise<UploadEpisodeVideoResponse>;
+}
+
+export abstract class DeleteEpisodeVideoHandlerInterface implements WebHandlerInterface {
+  public descriptor = DELETE_EPISODE_VIDEO;
+  public abstract handle(
+    loggingPrefix: string,
+    body: DeleteEpisodeVideoRequestBody,
+  ): Promise<DeleteEpisodeVideoResponse>;
 }
 
 export abstract class DeleteEpisodeDraftHandlerInterface implements WebHandlerInterface {
