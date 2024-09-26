@@ -350,8 +350,8 @@ export let UPLOAD_EPISODE_VIDEO_RESPONSE: MessageDescriptor<UploadEpisodeVideoRe
 };
 
 export interface DeleteEpisodeVideoRequestBody {
-  seasonId?: number,
-  episodeId?: number,
+  seasonId?: string,
+  episodeId?: string,
 }
 
 export let DELETE_EPISODE_VIDEO_REQUEST_BODY: MessageDescriptor<DeleteEpisodeVideoRequestBody> = {
@@ -359,11 +359,11 @@ export let DELETE_EPISODE_VIDEO_REQUEST_BODY: MessageDescriptor<DeleteEpisodeVid
   fields: [{
     name: 'seasonId',
     index: 1,
-    primitiveType: PrimitiveType.NUMBER,
+    primitiveType: PrimitiveType.STRING,
   }, {
     name: 'episodeId',
     index: 2,
-    primitiveType: PrimitiveType.NUMBER,
+    primitiveType: PrimitiveType.STRING,
   }],
 };
 

@@ -171,10 +171,10 @@
     name: DeleteEpisodeVideoRequestBody
     fields:
       - name: seasonId
-        type: number
+        type: string
         index: 1
       - name: episodeId
-        type: number
+        type: string
         index: 2
 - message:
     name: DeleteEpisodeVideoResponse
