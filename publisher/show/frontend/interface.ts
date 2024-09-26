@@ -677,6 +677,7 @@ export let DELETE_EPISODE_VIDEO: WebRemoteCallDescriptor = {
   body: {
     messageType: DELETE_EPISODE_VIDEO_REQUEST_BODY,
   },
+  sessionKey: "sk",
   response: {
     messageType: DELETE_EPISODE_VIDEO_RESPONSE,
   },

@@ -108,6 +108,7 @@ export abstract class DeleteEpisodeVideoHandlerInterface implements WebHandlerIn
   public abstract handle(
     loggingPrefix: string,
     body: DeleteEpisodeVideoRequestBody,
+    sessionStr: string,
   ): Promise<DeleteEpisodeVideoResponse>;
 }
 

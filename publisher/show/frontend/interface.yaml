@@ -320,6 +320,7 @@
       - name: DeleteEpisodeVideo
         path: /DeleteEpisodeVideo
         body: DeleteEpisodeVideoRequestBody
+        sessionKey: sk
         response: DeleteEpisodeVideoResponse
       - name: DeleteEpisodeDraft
         path: /DeleteEpisodeDraft
