@@ -1,10 +1,12 @@
 import { PrimitiveType, MessageDescriptor } from '@selfage/message/descriptor';
+import { VideoState, VIDEO_STATE } from '../video_state';
 import { ResumableVideoUpload, RESUMABLE_VIDEO_UPLOAD } from '../resumable_video_upload';
 import { SeasonState, SEASON_STATE } from '../season_state';
 
 export interface EpisodeDraft {
   episodeId?: string,
   name?: string,
+  videoState?: VideoState,
   resumableVideoUpload?: ResumableVideoUpload,
   videoUploadedTimestamp?: number,
   videoLength?: number,
@@ -22,20 +24,24 @@ export let EPISODE_DRAFT: MessageDescriptor<EpisodeDraft> = {
     index: 2,
     primitiveType: PrimitiveType.STRING,
   }, {
-    name: 'resumableVideoUpload',
+    name: 'videoState',
     index: 3,
+    enumType: VIDEO_STATE,
+  }, {
+    name: 'resumableVideoUpload',
+    index: 4,
     messageType: RESUMABLE_VIDEO_UPLOAD,
   }, {
     name: 'videoUploadedTimestamp',
-    index: 4,
-    primitiveType: PrimitiveType.NUMBER,
-  }, {
-    name: 'videoLength',
     index: 5,
     primitiveType: PrimitiveType.NUMBER,
   }, {
-    name: 'videoSize',
+    name: 'videoLength',
     index: 6,
+    primitiveType: PrimitiveType.NUMBER,
+  }, {
+    name: 'videoSize',
+    index: 7,
     primitiveType: PrimitiveType.NUMBER,
   }],
 };
