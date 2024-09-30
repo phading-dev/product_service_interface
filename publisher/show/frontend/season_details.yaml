@@ -42,7 +42,7 @@
       - name: videoSize # bytes
         type: number
         index: 5
-      - name: publishedTimestamps
+      - name: publishedTimestamp
         type: number
         index: 6
       - name: premierTimestamp

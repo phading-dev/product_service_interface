@@ -52,7 +52,7 @@ export interface Episode {
   index?: number,
   videoLength?: number,
   videoSize?: number,
-  publishedTimestamps?: number,
+  publishedTimestamp?: number,
   premierTimestamp?: number,
 }
 
@@ -79,7 +79,7 @@ export let EPISODE: MessageDescriptor<Episode> = {
     index: 5,
     primitiveType: PrimitiveType.NUMBER,
   }, {
-    name: 'publishedTimestamps',
+    name: 'publishedTimestamp',
     index: 6,
     primitiveType: PrimitiveType.NUMBER,
   }, {
