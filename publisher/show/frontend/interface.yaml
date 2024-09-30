@@ -228,6 +228,9 @@
         type: Episode
         import: ./publisher/show/frontend/season_details
         index: 1
+      - name: refreshSeason
+        type: boolean
+        index: 2
 - message:
     name: UpdateEpisodeOrderRequestBody
     fields:

@@ -463,6 +463,7 @@ export let PUBLISH_EPISODE_REQUEST_BODY: MessageDescriptor<PublishEpisodeRequest
 
 export interface PublishEpisodeResponse {
   episode?: Episode,
+  refreshSeason?: boolean,
 }
 
 export let PUBLISH_EPISODE_RESPONSE: MessageDescriptor<PublishEpisodeResponse> = {
@@ -471,6 +472,10 @@ export let PUBLISH_EPISODE_RESPONSE: MessageDescriptor<PublishEpisodeResponse> =
     name: 'episode',
     index: 1,
     messageType: EPISODE,
+  }, {
+    name: 'refreshSeason',
+    index: 2,
+    primitiveType: PrimitiveType.BOOLEAN,
   }],
 };
 
