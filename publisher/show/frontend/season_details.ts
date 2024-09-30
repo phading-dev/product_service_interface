@@ -118,8 +118,6 @@ export interface SeasonDetails {
   createdTimestamp?: number,
   lastChangeTimestamp?: number,
   state?: SeasonState,
-  publishedTimestamp?: number,
-  archivedTimestamp?: number,
 }
 
 export let SEASON_DETAILS: MessageDescriptor<SeasonDetails> = {
@@ -164,13 +162,5 @@ export let SEASON_DETAILS: MessageDescriptor<SeasonDetails> = {
     name: 'state',
     index: 10,
     enumType: SEASON_STATE,
-  }, {
-    name: 'publishedTimestamp',
-    index: 11,
-    primitiveType: PrimitiveType.NUMBER,
-  }, {
-    name: 'archivedTimestamp',
-    index: 12,
-    primitiveType: PrimitiveType.NUMBER,
   }],
 };

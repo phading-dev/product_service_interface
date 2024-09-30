@@ -91,9 +91,3 @@
         type: SeasonState
         import: ./publisher/show/season_state
         index: 10
-      - name: publishedTimestamp
-        type: number
-        index: 11
-      - name: archivedTimestamp
-        type: number
-        index: 12
