@@ -3,6 +3,7 @@ import { SeasonDetails, SEASON_DETAILS, EpisodeDraft, EPISODE_DRAFT, Episode, EP
 import { SeasonState, SEASON_STATE } from '../season_state';
 import { SeasonSummary, SEASON_SUMMARY } from './season_summary';
 import { ResumableVideoUpload, RESUMABLE_VIDEO_UPLOAD } from '../resumable_video_upload';
+import { VideoState, VIDEO_STATE } from '../video_state';
 import { WebRemoteCallDescriptor, PrimitveTypeForBody } from '@selfage/service_descriptor';
 
 export interface GetSeasonDetailsRequestBody {
@@ -368,11 +369,21 @@ export let DELETE_EPISODE_VIDEO_REQUEST_BODY: MessageDescriptor<DeleteEpisodeVid
 };
 
 export interface DeleteEpisodeVideoResponse {
+  videoState?: VideoState,
+  resumableVideoUpload?: ResumableVideoUpload,
 }
 
 export let DELETE_EPISODE_VIDEO_RESPONSE: MessageDescriptor<DeleteEpisodeVideoResponse> = {
   name: 'DeleteEpisodeVideoResponse',
-  fields: [],
+  fields: [{
+    name: 'videoState',
+    index: 1,
+    enumType: VIDEO_STATE,
+  }, {
+    name: 'resumableVideoUpload',
+    index: 2,
+    messageType: RESUMABLE_VIDEO_UPLOAD,
+  }],
 };
 
 export interface DeleteEpisodeDraftRequestBody {

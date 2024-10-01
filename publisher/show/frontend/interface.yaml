@@ -178,6 +178,15 @@
         index: 2
 - message:
     name: DeleteEpisodeVideoResponse
+    fields:
+      - name: videoState
+        type: VideoState
+        import: ./publisher/show/video_state
+        index: 1
+      - name: resumableVideoUpload
+        type: ResumableVideoUpload
+        import: ./publisher/show/resumable_video_upload
+        index: 2
 - message:
     name: DeleteEpisodeDraftRequestBody
     fields:
