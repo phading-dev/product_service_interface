@@ -25,7 +25,7 @@
       - name: videoLength # seconds
         type: number
         index: 4
-      - name: upcomingPremierTimestamp
+      - name: premierTimestamp
         type: number
         index: 5
 - message:
