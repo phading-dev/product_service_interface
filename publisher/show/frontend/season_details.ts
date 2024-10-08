@@ -9,7 +9,7 @@ export interface EpisodeDraft {
   videoState?: VideoState,
   resumableVideoUpload?: ResumableVideoUpload,
   videoUploadedTimestamp?: number,
-  videoLength?: number,
+  videoDuration?: number,
   videoSize?: number,
 }
 
@@ -36,7 +36,7 @@ export let EPISODE_DRAFT: MessageDescriptor<EpisodeDraft> = {
     index: 5,
     primitiveType: PrimitiveType.NUMBER,
   }, {
-    name: 'videoLength',
+    name: 'videoDuration',
     index: 6,
     primitiveType: PrimitiveType.NUMBER,
   }, {
@@ -50,7 +50,7 @@ export interface Episode {
   episodeId?: string,
   name?: string,
   index?: number,
-  videoLength?: number,
+  videoDuration?: number,
   videoSize?: number,
   publishedTimestamp?: number,
   premierTimestamp?: number,
@@ -71,7 +71,7 @@ export let EPISODE: MessageDescriptor<Episode> = {
     index: 3,
     primitiveType: PrimitiveType.NUMBER,
   }, {
-    name: 'videoLength',
+    name: 'videoDuration',
     index: 4,
     primitiveType: PrimitiveType.NUMBER,
   }, {

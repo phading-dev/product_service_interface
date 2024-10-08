@@ -22,7 +22,7 @@
       - name: index
         type: number
         index: 3
-      - name: videoLength # seconds
+      - name: videoDuration # seconds
         type: number
         index: 4
       - name: premierTimestamp
