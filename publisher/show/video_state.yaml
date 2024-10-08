@@ -1,9 +1,7 @@
 - enum:
     name: VideoState
     values:
-      - name: EMPTY
+      - name: INCOMPLETE
         value: 1
-      - name: UPLOAD_IN_PROGRESS
-        value: 2
       - name: UPLOADED
-        value: 3
+        value: 2

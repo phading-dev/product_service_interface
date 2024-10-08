@@ -303,7 +303,8 @@ export interface UploadEpisodeVideoMetadata {
   seasonId?: string,
   episodeId?: string,
   resumableVideoUpload?: ResumableVideoUpload,
-  videoLength?: number,
+  videoSize?: number,
+  videoDuration?: number,
   videoContentType?: string,
 }
 
@@ -322,31 +323,40 @@ export let UPLOAD_EPISODE_VIDEO_METADATA: MessageDescriptor<UploadEpisodeVideoMe
     index: 3,
     messageType: RESUMABLE_VIDEO_UPLOAD,
   }, {
-    name: 'videoLength',
+    name: 'videoSize',
     index: 4,
     primitiveType: PrimitiveType.NUMBER,
   }, {
-    name: 'videoContentType',
+    name: 'videoDuration',
     index: 5,
+    primitiveType: PrimitiveType.NUMBER,
+  }, {
+    name: 'videoContentType',
+    index: 6,
     primitiveType: PrimitiveType.STRING,
   }],
 };
 
 export interface UploadEpisodeVideoResponse {
-  videoSize?: number,
+  uploaded?: boolean,
   videoUploadedTimestamp?: number,
+  resumableVideoUpload?: ResumableVideoUpload,
 }
 
 export let UPLOAD_EPISODE_VIDEO_RESPONSE: MessageDescriptor<UploadEpisodeVideoResponse> = {
   name: 'UploadEpisodeVideoResponse',
   fields: [{
-    name: 'videoSize',
+    name: 'uploaded',
     index: 1,
-    primitiveType: PrimitiveType.NUMBER,
+    primitiveType: PrimitiveType.BOOLEAN,
   }, {
     name: 'videoUploadedTimestamp',
     index: 2,
     primitiveType: PrimitiveType.NUMBER,
+  }, {
+    name: 'resumableVideoUpload',
+    index: 3,
+    messageType: RESUMABLE_VIDEO_UPLOAD,
   }],
 };
 

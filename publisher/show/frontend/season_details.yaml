@@ -18,7 +18,7 @@
       - name: videoUploadedTimestamp
         type: number
         index: 5
-      - name: videoLength # seconds
+      - name: videoDuration # seconds
         type: number
         index: 6
       - name: videoSize # bytes
@@ -36,7 +36,7 @@
       - name: index
         type: number
         index: 3
-      - name: videoLength # seconds
+      - name: videoDuration # seconds
         type: number
         index: 4
       - name: videoSize # bytes

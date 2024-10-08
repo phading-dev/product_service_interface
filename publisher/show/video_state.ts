@@ -1,21 +1,17 @@
 import { EnumDescriptor } from '@selfage/message/descriptor';
 
 export enum VideoState {
-  EMPTY = 1,
-  UPLOAD_IN_PROGRESS = 2,
-  UPLOADED = 3,
+  INCOMPLETE = 1,
+  UPLOADED = 2,
 }
 
 export let VIDEO_STATE: EnumDescriptor<VideoState> = {
   name: 'VideoState',
   values: [{
-    name: 'EMPTY',
+    name: 'INCOMPLETE',
     value: 1,
   }, {
-    name: 'UPLOAD_IN_PROGRESS',
-    value: 2,
-  }, {
     name: 'UPLOADED',
-    value: 3,
+    value: 2,
   }]
 }

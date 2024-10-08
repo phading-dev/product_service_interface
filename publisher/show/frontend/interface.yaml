@@ -152,21 +152,28 @@
         type: ResumableVideoUpload
         import: ./publisher/show/resumable_video_upload
         index: 3
-      - name: videoLength # seconds
+      - name: videoSize
         type: number
         index: 4
+      - name: videoDuration # seconds
+        type: number
+        index: 5
       - name: videoContentType
         type: string
-        index: 5
+        index: 6
 - message:
     name: UploadEpisodeVideoResponse
     fields:
-      - name: videoSize # bytes
-        type: number
+      - name: uploaded
+        type: boolean
         index: 1
-      - name: videoUploadedTimestamp
+      - name: videoUploadedTimestamp # Only populated when uploaded
         type: number
         index: 2
+      - name: resumableVideoUpload
+        type: ResumableVideoUpload
+        import: ./publisher/show/resumable_video_upload
+        index: 3
 - message:
     name: DeleteEpisodeVideoRequestBody
     fields:
