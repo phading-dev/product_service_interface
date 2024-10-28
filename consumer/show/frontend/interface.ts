@@ -48,7 +48,7 @@ export let GET_VIDEO_TO_PLAY_REQUEST_BODY: MessageDescriptor<GetVideoToPlayReque
 
 export interface GetVideoToPlayResponse {
   videoUrl?: string,
-  continueTimestamp?: number,
+  continueTimeMs?: number,
 }
 
 export let GET_VIDEO_TO_PLAY_RESPONSE: MessageDescriptor<GetVideoToPlayResponse> = {
@@ -58,7 +58,7 @@ export let GET_VIDEO_TO_PLAY_RESPONSE: MessageDescriptor<GetVideoToPlayResponse>
     index: 1,
     primitiveType: PrimitiveType.STRING,
   }, {
-    name: 'continueTimestamp',
+    name: 'continueTimeMs',
     index: 2,
     primitiveType: PrimitiveType.NUMBER,
   }],

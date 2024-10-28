@@ -15,7 +15,7 @@
         type: ResumableVideoUpload
         import: ./publisher/show/resumable_video_upload
         index: 4
-      - name: videoUploadedTimestamp
+      - name: videoUploadedTimeMs
         type: number
         index: 5
       - name: videoDuration # seconds
@@ -42,10 +42,10 @@
       - name: videoSize # bytes
         type: number
         index: 5
-      - name: publishedTimestamp
+      - name: publishedTimeMs
         type: number
         index: 6
-      - name: premierTimestamp
+      - name: premierTimeMs
         type: number
         index: 7
 - message:
@@ -54,7 +54,7 @@
       - name: grade
         type: number
         index: 1
-      - name: effectiveTimestamp
+      - name: effectiveDate # ISO string
         type: number
         index: 2
 - message:
@@ -81,10 +81,10 @@
       - name: nextGrade
         type: NextGrade
         index: 7
-      - name: createdTimestamp
+      - name: createdTimeMs
         type: number
         index: 8
-      - name: lastChangeTimestamp
+      - name: lastChangeTimeMs
         type: number
         index: 9
       - name: state

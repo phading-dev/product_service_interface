@@ -1,0 +1,27 @@
+- message:
+    name: GetSeasonPublisherAndGradeRequestBody
+    fields:
+      - name: seasonId
+        type: string
+        index: 1
+      - name: date # ISO string
+        type: string
+        index: 2
+- message:
+    name: GetSeasonPublisherAndGradeResponse
+    fields:
+      - name: publisherId
+        type: string
+        index: 1
+      - name: grade
+        type: number
+        index: 2
+- nodeService:
+    name: ProductConsumerShowBackend
+    remoteCalls:
+      - name: GetSeasonPublisherAndGrade
+        path: /GetSeasonPublisherAndGrade
+        body: GetSeasonPublisherAndGradeRequestBody
+        response: GetSeasonPublisherAndGradeResponse
+    outputClient: ./consumer/show/backend/client
+    outputHandler: ./consumer/show/backend/handler

@@ -25,9 +25,18 @@
       - name: videoDuration # seconds
         type: number
         index: 4
-      - name: premierTimestamp
+      - name: premierTimeMs
         type: number
         index: 5
+- message:
+    name: NextGrade
+    fields:
+      - name: grade
+        type: number
+        index: 1
+      - name: effectiveDate # ISO string
+        type: string
+        index: 2
 - message:
     name: SeasonDetails
     fields:
@@ -55,6 +64,9 @@
       - name: continueEpisode
         type: EpisodeSummary
         index: 8
-      - name: continueTimestampstamp
+      - name: continueTimeMs
         type: number
         index: 9
+      - name: nextGrade
+        type: NextGrade
+        index: 10

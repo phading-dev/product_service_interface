@@ -28,7 +28,7 @@ export interface EpisodeSummary {
   name?: string,
   index?: number,
   videoDuration?: number,
-  premierTimestamp?: number,
+  premierTimeMs?: number,
 }
 
 export let EPISODE_SUMMARY: MessageDescriptor<EpisodeSummary> = {
@@ -50,9 +50,27 @@ export let EPISODE_SUMMARY: MessageDescriptor<EpisodeSummary> = {
     index: 4,
     primitiveType: PrimitiveType.NUMBER,
   }, {
-    name: 'premierTimestamp',
+    name: 'premierTimeMs',
     index: 5,
     primitiveType: PrimitiveType.NUMBER,
+  }],
+};
+
+export interface NextGrade {
+  grade?: number,
+  effectiveDate?: string,
+}
+
+export let NEXT_GRADE: MessageDescriptor<NextGrade> = {
+  name: 'NextGrade',
+  fields: [{
+    name: 'grade',
+    index: 1,
+    primitiveType: PrimitiveType.NUMBER,
+  }, {
+    name: 'effectiveDate',
+    index: 2,
+    primitiveType: PrimitiveType.STRING,
   }],
 };
 
@@ -65,7 +83,8 @@ export interface SeasonDetails {
   grade?: number,
   totalEpisodes?: number,
   continueEpisode?: EpisodeSummary,
-  continueTimestampstamp?: number,
+  continueTimeMs?: number,
+  nextGrade?: NextGrade,
 }
 
 export let SEASON_DETAILS: MessageDescriptor<SeasonDetails> = {
@@ -103,8 +122,12 @@ export let SEASON_DETAILS: MessageDescriptor<SeasonDetails> = {
     index: 8,
     messageType: EPISODE_SUMMARY,
   }, {
-    name: 'continueTimestampstamp',
+    name: 'continueTimeMs',
     index: 9,
     primitiveType: PrimitiveType.NUMBER,
+  }, {
+    name: 'nextGrade',
+    index: 10,
+    messageType: NEXT_GRADE,
   }],
 };

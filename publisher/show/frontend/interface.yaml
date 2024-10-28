@@ -67,7 +67,7 @@
       - name: grade
         type: number
         index: 2
-      - name: effectiveTimestamp
+      - name: effectiveDate # ISO string
         type: number
         index: 3
 - message:
@@ -167,7 +167,7 @@
       - name: uploaded
         type: boolean
         index: 1
-      - name: videoUploadedTimestamp # Only populated when uploaded
+      - name: videoUploadedTimeMs # Only populated when uploaded
         type: number
         index: 2
       - name: resumableVideoUpload
@@ -234,7 +234,7 @@
       - name: episodeId
         type: string
         index: 2
-      - name: premierTimestamp
+      - name: premierTimeMs
         type: number
         index: 3
 - message:
@@ -273,7 +273,7 @@
 - message:
     name: DeleteEpisodeResponse
 - webService:
-    name: ProductPublisherFrontendShowService
+    name: ProductPublisherShowFrontendService
     remoteCalls:
       - name: GetSeasonDetails
         path: /GetSeasonDetails

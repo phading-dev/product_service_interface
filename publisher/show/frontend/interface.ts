@@ -130,7 +130,7 @@ export let UPLOAD_COVER_IMAGE_RESPONSE: MessageDescriptor<UploadCoverImageRespon
 export interface UpdateSeasonGradeRequestBody {
   seasonId?: string,
   grade?: number,
-  effectiveTimestamp?: number,
+  effectiveDate?: number,
 }
 
 export let UPDATE_SEASON_GRADE_REQUEST_BODY: MessageDescriptor<UpdateSeasonGradeRequestBody> = {
@@ -144,7 +144,7 @@ export let UPDATE_SEASON_GRADE_REQUEST_BODY: MessageDescriptor<UpdateSeasonGrade
     index: 2,
     primitiveType: PrimitiveType.NUMBER,
   }, {
-    name: 'effectiveTimestamp',
+    name: 'effectiveDate',
     index: 3,
     primitiveType: PrimitiveType.NUMBER,
   }],
@@ -339,7 +339,7 @@ export let UPLOAD_EPISODE_VIDEO_METADATA: MessageDescriptor<UploadEpisodeVideoMe
 
 export interface UploadEpisodeVideoResponse {
   uploaded?: boolean,
-  videoUploadedTimestamp?: number,
+  videoUploadedTimeMs?: number,
   resumableVideoUpload?: ResumableVideoUpload,
 }
 
@@ -350,7 +350,7 @@ export let UPLOAD_EPISODE_VIDEO_RESPONSE: MessageDescriptor<UploadEpisodeVideoRe
     index: 1,
     primitiveType: PrimitiveType.BOOLEAN,
   }, {
-    name: 'videoUploadedTimestamp',
+    name: 'videoUploadedTimeMs',
     index: 2,
     primitiveType: PrimitiveType.NUMBER,
   }, {
@@ -462,7 +462,7 @@ export let GET_MORE_EPISODES_RESPONSE: MessageDescriptor<GetMoreEpisodesResponse
 export interface PublishEpisodeRequestBody {
   seasonId?: string,
   episodeId?: string,
-  premierTimestamp?: number,
+  premierTimeMs?: number,
 }
 
 export let PUBLISH_EPISODE_REQUEST_BODY: MessageDescriptor<PublishEpisodeRequestBody> = {
@@ -476,7 +476,7 @@ export let PUBLISH_EPISODE_REQUEST_BODY: MessageDescriptor<PublishEpisodeRequest
     index: 2,
     primitiveType: PrimitiveType.STRING,
   }, {
-    name: 'premierTimestamp',
+    name: 'premierTimeMs',
     index: 3,
     primitiveType: PrimitiveType.NUMBER,
   }],

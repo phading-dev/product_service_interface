@@ -13,6 +13,6 @@
       - name: totalEpisodes
         type: number
         index: 4
-      - name: lastChangeTimestamp
+      - name: lastChangeTimeMs
         type: number
         index: 5
