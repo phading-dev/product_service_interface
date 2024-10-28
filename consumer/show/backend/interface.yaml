@@ -10,12 +10,15 @@
 - message:
     name: GetSeasonPublisherAndGradeResponse
     fields:
-      - name: publisherId
+      - name: seasonId
         type: string
         index: 1
+      - name: publisherId
+        type: string
+        index: 2
       - name: grade
         type: number
-        index: 2
+        index: 3
 - nodeService:
     name: ProductConsumerShowBackend
     remoteCalls:

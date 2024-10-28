@@ -20,6 +20,7 @@ export let GET_SEASON_PUBLISHER_AND_GRADE_REQUEST_BODY: MessageDescriptor<GetSea
 };
 
 export interface GetSeasonPublisherAndGradeResponse {
+  seasonId?: string,
   publisherId?: string,
   grade?: number,
 }
@@ -27,12 +28,16 @@ export interface GetSeasonPublisherAndGradeResponse {
 export let GET_SEASON_PUBLISHER_AND_GRADE_RESPONSE: MessageDescriptor<GetSeasonPublisherAndGradeResponse> = {
   name: 'GetSeasonPublisherAndGradeResponse',
   fields: [{
-    name: 'publisherId',
+    name: 'seasonId',
     index: 1,
     primitiveType: PrimitiveType.STRING,
   }, {
-    name: 'grade',
+    name: 'publisherId',
     index: 2,
+    primitiveType: PrimitiveType.STRING,
+  }, {
+    name: 'grade',
+    index: 3,
     primitiveType: PrimitiveType.NUMBER,
   }],
 };
