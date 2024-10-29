@@ -22,7 +22,7 @@ export let GET_VIDEO_DURATION_AND_SIZE_REQUEST_BODY: MessageDescriptor<GetVideoD
 export interface GetVideoDurationAndSizeResponse {
   seasonId?: string,
   episodeId?: string,
-  videoDuration?: number,
+  videoDurationSec?: number,
   videoSize?: number,
 }
 
@@ -37,7 +37,7 @@ export let GET_VIDEO_DURATION_AND_SIZE_RESPONSE: MessageDescriptor<GetVideoDurat
     index: 2,
     primitiveType: PrimitiveType.STRING,
   }, {
-    name: 'videoDuration',
+    name: 'videoDurationSec',
     index: 3,
     primitiveType: PrimitiveType.NUMBER,
   }, {

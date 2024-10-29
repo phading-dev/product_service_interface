@@ -155,7 +155,7 @@
       - name: videoSize
         type: number
         index: 4
-      - name: videoDuration # seconds
+      - name: videoDurationSec
         type: number
         index: 5
       - name: videoContentType

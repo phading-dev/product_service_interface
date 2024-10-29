@@ -16,7 +16,7 @@
       - name: episodeId
         type: string
         index: 2
-      - name: videoDuration # seconds
+      - name: videoDurationSec
         type: number
         index: 3
       - name: videoSize # bytes

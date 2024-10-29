@@ -304,7 +304,7 @@ export interface UploadEpisodeVideoMetadata {
   episodeId?: string,
   resumableVideoUpload?: ResumableVideoUpload,
   videoSize?: number,
-  videoDuration?: number,
+  videoDurationSec?: number,
   videoContentType?: string,
 }
 
@@ -327,7 +327,7 @@ export let UPLOAD_EPISODE_VIDEO_METADATA: MessageDescriptor<UploadEpisodeVideoMe
     index: 4,
     primitiveType: PrimitiveType.NUMBER,
   }, {
-    name: 'videoDuration',
+    name: 'videoDurationSec',
     index: 5,
     primitiveType: PrimitiveType.NUMBER,
   }, {
