@@ -20,7 +20,7 @@
         type: number
         index: 3
 - nodeService:
-    name: ProductConsumerShowBackend
+    name: ProductConsumerShowBackendService
     remoteCalls:
       - name: GetSeasonPublisherAndGrade
         path: /GetSeasonPublisherAndGrade

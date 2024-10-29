@@ -1,0 +1,33 @@
+- message:
+    name: GetVideoDurationAndSizeRequestBody
+    fields:
+      - name: seasonId
+        type: string
+        index: 1
+      - name: episodeId
+        type: string
+        index: 2
+- message:
+    name: GetVideoDurationAndSizeResponse
+    fields:
+      - name: seasonId
+        type: string
+        index: 1
+      - name: episodeId
+        type: string
+        index: 2
+      - name: videoDuration # seconds
+        type: number
+        index: 3
+      - name: videoSize # bytes
+        type: number
+        index: 4
+- nodeService:
+    name: ProductPublisherShowBackendService
+    remoteCalls:
+      - name: GetVideoDurationAndSize
+        path: /GetVideoDurationAndSize
+        body: GetVideoDurationAndSizeRequestBody
+        response: GetVideoDurationAndSizeResponse
+    outputClient: ./publisher/show/backend/client
+    outputHandler: ./publisher/show/backend/handler
