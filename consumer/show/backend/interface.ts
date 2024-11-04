@@ -20,7 +20,6 @@ export let GET_SEASON_PUBLISHER_AND_GRADE_REQUEST_BODY: MessageDescriptor<GetSea
 };
 
 export interface GetSeasonPublisherAndGradeResponse {
-  seasonId?: string,
   publisherId?: string,
   grade?: number,
 }
@@ -28,10 +27,6 @@ export interface GetSeasonPublisherAndGradeResponse {
 export let GET_SEASON_PUBLISHER_AND_GRADE_RESPONSE: MessageDescriptor<GetSeasonPublisherAndGradeResponse> = {
   name: 'GetSeasonPublisherAndGradeResponse',
   fields: [{
-    name: 'seasonId',
-    index: 1,
-    primitiveType: PrimitiveType.STRING,
-  }, {
     name: 'publisherId',
     index: 2,
     primitiveType: PrimitiveType.STRING,
@@ -61,8 +56,6 @@ export let GET_VIDEO_DURATION_AND_SIZE_REQUEST_BODY: MessageDescriptor<GetVideoD
 };
 
 export interface GetVideoDurationAndSizeResponse {
-  seasonId?: string,
-  episodeId?: string,
   videoDurationSec?: number,
   videoSize?: number,
 }
@@ -70,14 +63,6 @@ export interface GetVideoDurationAndSizeResponse {
 export let GET_VIDEO_DURATION_AND_SIZE_RESPONSE: MessageDescriptor<GetVideoDurationAndSizeResponse> = {
   name: 'GetVideoDurationAndSizeResponse',
   fields: [{
-    name: 'seasonId',
-    index: 1,
-    primitiveType: PrimitiveType.STRING,
-  }, {
-    name: 'episodeId',
-    index: 2,
-    primitiveType: PrimitiveType.STRING,
-  }, {
     name: 'videoDurationSec',
     index: 3,
     primitiveType: PrimitiveType.NUMBER,
@@ -85,6 +70,32 @@ export let GET_VIDEO_DURATION_AND_SIZE_RESPONSE: MessageDescriptor<GetVideoDurat
     name: 'videoSize',
     index: 4,
     primitiveType: PrimitiveType.NUMBER,
+  }],
+};
+
+export interface GetSeasonNameRequestBody {
+  seaosnId?: string,
+}
+
+export let GET_SEASON_NAME_REQUEST_BODY: MessageDescriptor<GetSeasonNameRequestBody> = {
+  name: 'GetSeasonNameRequestBody',
+  fields: [{
+    name: 'seaosnId',
+    index: 1,
+    primitiveType: PrimitiveType.STRING,
+  }],
+};
+
+export interface GetSeasonNameResponse {
+  seasonName?: string,
+}
+
+export let GET_SEASON_NAME_RESPONSE: MessageDescriptor<GetSeasonNameResponse> = {
+  name: 'GetSeasonNameResponse',
+  fields: [{
+    name: 'seasonName',
+    index: 1,
+    primitiveType: PrimitiveType.STRING,
   }],
 };
 
@@ -107,5 +118,16 @@ export let GET_VIDEO_DURATION_AND_SIZE: NodeRemoteCallDescriptor = {
   },
   response: {
     messageType: GET_VIDEO_DURATION_AND_SIZE_RESPONSE,
+  },
+}
+
+export let GET_SEASON_NAME: NodeRemoteCallDescriptor = {
+  name: "GetSeasonName",
+  path: "/GetSeasonName",
+  body: {
+    messageType: GET_SEASON_NAME_REQUEST_BODY,
+  },
+  response: {
+    messageType: GET_SEASON_NAME_RESPONSE,
   },
 }

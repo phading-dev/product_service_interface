@@ -1,4 +1,4 @@
-import { GetSeasonPublisherAndGradeRequestBody, GetSeasonPublisherAndGradeResponse, GET_SEASON_PUBLISHER_AND_GRADE, GetVideoDurationAndSizeRequestBody, GetVideoDurationAndSizeResponse, GET_VIDEO_DURATION_AND_SIZE } from './interface';
+import { GetSeasonPublisherAndGradeRequestBody, GetSeasonPublisherAndGradeResponse, GET_SEASON_PUBLISHER_AND_GRADE, GetVideoDurationAndSizeRequestBody, GetVideoDurationAndSizeResponse, GET_VIDEO_DURATION_AND_SIZE, GetSeasonNameRequestBody, GetSeasonNameResponse, GET_SEASON_NAME } from './interface';
 import { NodeClientInterface, NodeClientOptions } from '@selfage/service_descriptor/client_interface';
 
 export function getSeasonPublisherAndGrade(
@@ -23,6 +23,20 @@ export function getVideoDurationAndSize(
   return client.send(
     {
       descriptor: GET_VIDEO_DURATION_AND_SIZE,
+      body,
+    },
+    options,
+  );
+}
+
+export function getSeasonName(
+  client: NodeClientInterface,
+  body: GetSeasonNameRequestBody,
+  options?: NodeClientOptions,
+): Promise<GetSeasonNameResponse> {
+  return client.send(
+    {
+      descriptor: GET_SEASON_NAME,
       body,
     },
     options,
