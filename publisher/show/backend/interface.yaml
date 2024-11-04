@@ -1,28 +1,4 @@
 - message:
-    name: GetVideoDurationAndSizeRequestBody
-    fields:
-      - name: seasonId
-        type: string
-        index: 1
-      - name: episodeId
-        type: string
-        index: 2
-- message:
-    name: GetVideoDurationAndSizeResponse
-    fields:
-      - name: seasonId
-        type: string
-        index: 1
-      - name: episodeId
-        type: string
-        index: 2
-      - name: videoDurationSec
-        type: number
-        index: 3
-      - name: videoSize # bytes
-        type: number
-        index: 4
-- message:
     name: GetStorageMeterReadingRequestBody
     fields:
       - name: accountId
@@ -61,10 +37,6 @@
 - nodeService:
     name: ProductPublisherShowBackendService
     remoteCalls:
-      - name: GetVideoDurationAndSize
-        path: /GetVideoDurationAndSize
-        body: GetVideoDurationAndSizeRequestBody
-        response: GetVideoDurationAndSizeResponse
       - name: GetStorageMeterReading
         path: /GetStorageMeterReading
         body: GetStorageMeterReadingRequestBody

@@ -19,6 +19,30 @@
       - name: grade
         type: number
         index: 3
+- message:
+    name: GetVideoDurationAndSizeRequestBody
+    fields:
+      - name: seasonId
+        type: string
+        index: 1
+      - name: episodeId
+        type: string
+        index: 2
+- message:
+    name: GetVideoDurationAndSizeResponse
+    fields:
+      - name: seasonId
+        type: string
+        index: 1
+      - name: episodeId
+        type: string
+        index: 2
+      - name: videoDurationSec
+        type: number
+        index: 3
+      - name: videoSize # bytes
+        type: number
+        index: 4
 - nodeService:
     name: ProductConsumerShowBackendService
     remoteCalls:
@@ -26,5 +50,9 @@
         path: /GetSeasonPublisherAndGrade
         body: GetSeasonPublisherAndGradeRequestBody
         response: GetSeasonPublisherAndGradeResponse
+      - name: GetVideoDurationAndSize
+        path: /GetVideoDurationAndSize
+        body: GetVideoDurationAndSizeRequestBody
+        response: GetVideoDurationAndSizeResponse
     outputClient: ./consumer/show/backend/client
     outputHandler: ./consumer/show/backend/handler
