@@ -74,13 +74,13 @@ export let GET_VIDEO_DURATION_AND_SIZE_RESPONSE: MessageDescriptor<GetVideoDurat
 };
 
 export interface GetSeasonNameRequestBody {
-  seaosnId?: string,
+  seasonId?: string,
 }
 
 export let GET_SEASON_NAME_REQUEST_BODY: MessageDescriptor<GetSeasonNameRequestBody> = {
   name: 'GetSeasonNameRequestBody',
   fields: [{
-    name: 'seaosnId',
+    name: 'seasonId',
     index: 1,
     primitiveType: PrimitiveType.STRING,
   }],
