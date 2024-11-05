@@ -34,6 +34,18 @@
       - name: mb # MiB. Integer. Rounded up.
         type: number
         index: 1
+- message:
+    name: GetSeasonNameRequestBody
+    fields:
+      - name: seasonId
+        type: string
+        index: 1
+- message:
+    name: GetSeasonNameResponse
+    fields:
+      - name: seasonName
+        type: string
+        index: 1
 - nodeService:
     name: ProductPublisherShowBackendService
     remoteCalls:
@@ -45,5 +57,9 @@
         path: /GetUploadMeterReading
         body: GetUploadMeterReadingRequestBody
         response: GetUploadMeterReadingResponse
+      - name: GetSeasonName
+        path: /GetSeasonName
+        body: GetSeasonNameRequestBody
+        response: GetSeasonNameResponse
     outputClient: ./publisher/show/backend/client
     outputHandler: ./publisher/show/backend/handler

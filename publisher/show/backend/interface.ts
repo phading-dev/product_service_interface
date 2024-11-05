@@ -73,6 +73,32 @@ export let GET_UPLOAD_METER_READING_RESPONSE: MessageDescriptor<GetUploadMeterRe
   }],
 };
 
+export interface GetSeasonNameRequestBody {
+  seasonId?: string,
+}
+
+export let GET_SEASON_NAME_REQUEST_BODY: MessageDescriptor<GetSeasonNameRequestBody> = {
+  name: 'GetSeasonNameRequestBody',
+  fields: [{
+    name: 'seasonId',
+    index: 1,
+    primitiveType: PrimitiveType.STRING,
+  }],
+};
+
+export interface GetSeasonNameResponse {
+  seasonName?: string,
+}
+
+export let GET_SEASON_NAME_RESPONSE: MessageDescriptor<GetSeasonNameResponse> = {
+  name: 'GetSeasonNameResponse',
+  fields: [{
+    name: 'seasonName',
+    index: 1,
+    primitiveType: PrimitiveType.STRING,
+  }],
+};
+
 export let GET_STORAGE_METER_READING: NodeRemoteCallDescriptor = {
   name: "GetStorageMeterReading",
   path: "/GetStorageMeterReading",
@@ -92,5 +118,16 @@ export let GET_UPLOAD_METER_READING: NodeRemoteCallDescriptor = {
   },
   response: {
     messageType: GET_UPLOAD_METER_READING_RESPONSE,
+  },
+}
+
+export let GET_SEASON_NAME: NodeRemoteCallDescriptor = {
+  name: "GetSeasonName",
+  path: "/GetSeasonName",
+  body: {
+    messageType: GET_SEASON_NAME_REQUEST_BODY,
+  },
+  response: {
+    messageType: GET_SEASON_NAME_RESPONSE,
   },
 }
