@@ -46,8 +46,44 @@
       - name: seasonName
         type: string
         index: 1
+- message:
+    name: GetStorageMeterReadingRequestBody
+    fields:
+      - name: accountId
+        type: string
+        index: 1
+      - name: startTimeMs
+        type: number
+        index: 2
+      - name: endTimeMs
+        type: number
+        index: 3
+- message:
+    name: GetStorageMeterReadingResponse
+    fields:
+      - name: mbh # MiB x hour. Integer. Rounded up.
+        type: number
+        index: 1
+- message:
+    name: GetUploadMeterReadingRequestBody
+    fields:
+      - name: accountId
+        type: string
+        index: 1
+      - name: startTimeMs
+        type: number
+        index: 2
+      - name: endTimeMs
+        type: number
+        index: 3
+- message:
+    name: GetUploadMeterReadingResponse
+    fields:
+      - name: mb # MiB. Integer. Rounded up.
+        type: number
+        index: 1
 - nodeService:
-    name: ProductConsumerShowBackendService
+    name: ProductShowBackendService
     remoteCalls:
       - name: GetSeasonPublisherAndGrade
         path: /GetSeasonPublisherAndGrade
@@ -61,5 +97,13 @@
         path: /GetSeasonName
         body: GetSeasonNameRequestBody
         response: GetSeasonNameResponse
-    outputClient: ./consumer/show/backend/client
-    outputHandler: ./consumer/show/backend/handler
+      - name: GetStorageMeterReading
+        path: /GetStorageMeterReading
+        body: GetStorageMeterReadingRequestBody
+        response: GetStorageMeterReadingResponse
+      - name: GetUploadMeterReading
+        path: /GetUploadMeterReading
+        body: GetUploadMeterReadingRequestBody
+        response: GetUploadMeterReadingResponse
+    outputClient: ./show/backend/client
+    outputHandler: ./show/backend/handler

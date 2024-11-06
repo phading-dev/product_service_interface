@@ -99,6 +99,78 @@ export let GET_SEASON_NAME_RESPONSE: MessageDescriptor<GetSeasonNameResponse> = 
   }],
 };
 
+export interface GetStorageMeterReadingRequestBody {
+  accountId?: string,
+  startTimeMs?: number,
+  endTimeMs?: number,
+}
+
+export let GET_STORAGE_METER_READING_REQUEST_BODY: MessageDescriptor<GetStorageMeterReadingRequestBody> = {
+  name: 'GetStorageMeterReadingRequestBody',
+  fields: [{
+    name: 'accountId',
+    index: 1,
+    primitiveType: PrimitiveType.STRING,
+  }, {
+    name: 'startTimeMs',
+    index: 2,
+    primitiveType: PrimitiveType.NUMBER,
+  }, {
+    name: 'endTimeMs',
+    index: 3,
+    primitiveType: PrimitiveType.NUMBER,
+  }],
+};
+
+export interface GetStorageMeterReadingResponse {
+  mbh?: number,
+}
+
+export let GET_STORAGE_METER_READING_RESPONSE: MessageDescriptor<GetStorageMeterReadingResponse> = {
+  name: 'GetStorageMeterReadingResponse',
+  fields: [{
+    name: 'mbh',
+    index: 1,
+    primitiveType: PrimitiveType.NUMBER,
+  }],
+};
+
+export interface GetUploadMeterReadingRequestBody {
+  accountId?: string,
+  startTimeMs?: number,
+  endTimeMs?: number,
+}
+
+export let GET_UPLOAD_METER_READING_REQUEST_BODY: MessageDescriptor<GetUploadMeterReadingRequestBody> = {
+  name: 'GetUploadMeterReadingRequestBody',
+  fields: [{
+    name: 'accountId',
+    index: 1,
+    primitiveType: PrimitiveType.STRING,
+  }, {
+    name: 'startTimeMs',
+    index: 2,
+    primitiveType: PrimitiveType.NUMBER,
+  }, {
+    name: 'endTimeMs',
+    index: 3,
+    primitiveType: PrimitiveType.NUMBER,
+  }],
+};
+
+export interface GetUploadMeterReadingResponse {
+  mb?: number,
+}
+
+export let GET_UPLOAD_METER_READING_RESPONSE: MessageDescriptor<GetUploadMeterReadingResponse> = {
+  name: 'GetUploadMeterReadingResponse',
+  fields: [{
+    name: 'mb',
+    index: 1,
+    primitiveType: PrimitiveType.NUMBER,
+  }],
+};
+
 export let GET_SEASON_PUBLISHER_AND_GRADE: NodeRemoteCallDescriptor = {
   name: "GetSeasonPublisherAndGrade",
   path: "/GetSeasonPublisherAndGrade",
@@ -129,5 +201,27 @@ export let GET_SEASON_NAME: NodeRemoteCallDescriptor = {
   },
   response: {
     messageType: GET_SEASON_NAME_RESPONSE,
+  },
+}
+
+export let GET_STORAGE_METER_READING: NodeRemoteCallDescriptor = {
+  name: "GetStorageMeterReading",
+  path: "/GetStorageMeterReading",
+  body: {
+    messageType: GET_STORAGE_METER_READING_REQUEST_BODY,
+  },
+  response: {
+    messageType: GET_STORAGE_METER_READING_RESPONSE,
+  },
+}
+
+export let GET_UPLOAD_METER_READING: NodeRemoteCallDescriptor = {
+  name: "GetUploadMeterReading",
+  path: "/GetUploadMeterReading",
+  body: {
+    messageType: GET_UPLOAD_METER_READING_REQUEST_BODY,
+  },
+  response: {
+    messageType: GET_UPLOAD_METER_READING_RESPONSE,
   },
 }

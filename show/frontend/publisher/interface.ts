@@ -1,9 +1,9 @@
 import { PrimitiveType, MessageDescriptor } from '@selfage/message/descriptor';
 import { SeasonDetails, SEASON_DETAILS, EpisodeDraft, EPISODE_DRAFT, Episode, EPISODE } from './season_details';
-import { SeasonState, SEASON_STATE } from '../season_state';
+import { SeasonState, SEASON_STATE } from '../../season_state';
 import { SeasonSummary, SEASON_SUMMARY } from './season_summary';
-import { ResumableVideoUpload, RESUMABLE_VIDEO_UPLOAD } from '../resumable_video_upload';
-import { VideoState, VIDEO_STATE } from '../video_state';
+import { ResumableVideoUpload, RESUMABLE_VIDEO_UPLOAD } from '../../resumable_video_upload';
+import { VideoState, VIDEO_STATE } from '../../video_state';
 import { WebRemoteCallDescriptor, PrimitveTypeForBody } from '@selfage/service_descriptor';
 
 export interface GetSeasonDetailsRequestBody {

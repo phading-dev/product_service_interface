@@ -9,11 +9,11 @@
         index: 2
       - name: videoState
         type: VideoState
-        import: ./publisher/show/video_state
+        import: ./show/video_state
         index: 3
       - name: resumableVideoUpload
         type: ResumableVideoUpload
-        import: ./publisher/show/resumable_video_upload
+        import: ./show/resumable_video_upload
         index: 4
       - name: videoUploadedTimeMs
         type: number
@@ -89,5 +89,5 @@
         index: 9
       - name: state
         type: SeasonState
-        import: ./publisher/show/season_state
+        import: ./show/season_state
         index: 10

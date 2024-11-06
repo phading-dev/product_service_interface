@@ -9,16 +9,16 @@
     fields:
       - name: seasonDetails
         type: SeasonDetails
-        import: ./publisher/show/frontend/season_details
+        import: ./show/frontend/publisher/season_details
         index: 1
       - name: drafts
         type: EpisodeDraft
-        import: ./publisher/show/frontend/season_details
+        import: ./show/frontend/publisher/season_details
         isArray: true
         index: 2
       - name: episodes
         type: Episode
-        import: ./publisher/show/frontend/season_details
+        import: ./show/frontend/publisher/season_details
         isArray: true
         index: 3
       - name: indexCursor
@@ -93,7 +93,7 @@
     fields:
       - name: state
         type: SeasonState
-        import: ./publisher/show/season_state
+        import: ./show/season_state
         index: 1
       - name: lastChangeTimeCursor
         type: number
@@ -103,7 +103,7 @@
     fields:
       - name: seasons
         type: SeasonSummary
-        import: ./publisher/show/frontend/season_summary
+        import: ./show/frontend/publisher/season_summary
         isArray: true
         index: 1
       - name: lastChangeTimeCursor
@@ -123,7 +123,7 @@
     fields:
       - name: draft
         type: EpisodeDraft
-        import: ./publisher/show/frontend/season_details
+        import: ./show/frontend/publisher/season_details
         index: 1
 - message:
     name: UpdateEpisodeDraftRequestBody
@@ -150,7 +150,7 @@
         index: 2
       - name: resumableVideoUpload
         type: ResumableVideoUpload
-        import: ./publisher/show/resumable_video_upload
+        import: ./show/resumable_video_upload
         index: 3
       - name: videoSize
         type: number
@@ -172,7 +172,7 @@
         index: 2
       - name: resumableVideoUpload
         type: ResumableVideoUpload
-        import: ./publisher/show/resumable_video_upload
+        import: ./show/resumable_video_upload
         index: 3
 - message:
     name: DeleteEpisodeVideoRequestBody
@@ -188,11 +188,11 @@
     fields:
       - name: videoState
         type: VideoState
-        import: ./publisher/show/video_state
+        import: ./show/video_state
         index: 1
       - name: resumableVideoUpload
         type: ResumableVideoUpload
-        import: ./publisher/show/resumable_video_upload
+        import: ./show/resumable_video_upload
         index: 2
 - message:
     name: DeleteEpisodeDraftRequestBody
@@ -219,7 +219,7 @@
     fields:
       - name: episodes
         type: Episode
-        import: ./publisher/show/frontend/season_details
+        import: ./show/frontend/publisher/season_details
         isArray: true
         index: 1
       - name: indexCursor
@@ -242,7 +242,7 @@
     fields:
       - name: episode
         type: Episode
-        import: ./publisher/show/frontend/season_details
+        import: ./show/frontend/publisher/season_details
         index: 1
       - name: refreshSeason
         type: boolean
@@ -273,7 +273,7 @@
 - message:
     name: DeleteEpisodeResponse
 - webService:
-    name: ProductPublisherShowFrontendService
+    name: ProductShowFrontendPublisherService
     remoteCalls:
       - name: GetSeasonDetails
         path: /GetSeasonDetails
@@ -366,5 +366,5 @@
         body: DeleteEpisodeRequestBody
         sessionKey: sk
         response: DeleteEpisodeResponse
-    outputClient: ./publisher/show/frontend/client
-    outputHandler: ./publisher/show/frontend/handler
+    outputClient: ./show/frontend/publisher/client
+    outputHandler: ./show/frontend/publisher/handler

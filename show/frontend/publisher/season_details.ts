@@ -1,7 +1,7 @@
 import { PrimitiveType, MessageDescriptor } from '@selfage/message/descriptor';
-import { VideoState, VIDEO_STATE } from '../video_state';
-import { ResumableVideoUpload, RESUMABLE_VIDEO_UPLOAD } from '../resumable_video_upload';
-import { SeasonState, SEASON_STATE } from '../season_state';
+import { VideoState, VIDEO_STATE } from '../../video_state';
+import { ResumableVideoUpload, RESUMABLE_VIDEO_UPLOAD } from '../../resumable_video_upload';
+import { SeasonState, SEASON_STATE } from '../../season_state';
 
 export interface EpisodeDraft {
   episodeId?: string,

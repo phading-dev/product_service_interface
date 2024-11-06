@@ -9,7 +9,7 @@
     fields:
       - name: seasonDetails
         type: SeasonDetails
-        import: ./consumer/show/frontend/season_details
+        import: ./show/frontend/consumer/season_details
         index: 1
 - message:
     name: GetVideoToPlayRequestBody
@@ -46,14 +46,14 @@
     fields:
       - name: episodes
         type: EpisodeSummary
-        import: ./consumer/show/frontend/season_details
+        import: ./show/frontend/consumer/season_details
         isArray: true
         index: 1
       - name: indexCursor
         type: number
         index: 2
 - webService:
-    name: ProductConsumerShowFrontnedService
+    name: ProductShowFrontnedConsumerService
     remoteCalls:
       - name: GetSeasonDetails
         path: /GetSeasonDetails
@@ -70,5 +70,5 @@
         body: GetMoreEpisodesRequestBody
         sessionKey: sk
         response: GetMoreEpisodesResponse
-    outputClient: ./consumer/show/frontend/client
-    outputHandler: ./consumer/show/frontend/handler
+    outputClient: ./show/frontend/consumer/client
+    outputHandler: ./show/frontend/consumer/handler
