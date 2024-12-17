@@ -1,47 +1,88 @@
 import { PrimitiveType, MessageDescriptor } from '@selfage/message/descriptor';
-import { VideoState, VIDEO_STATE } from '../../video_state';
-import { ResumableVideoUpload, RESUMABLE_VIDEO_UPLOAD } from '../../resumable_video_upload';
 import { SeasonState, SEASON_STATE } from '../../season_state';
 
-export interface EpisodeDraft {
-  episodeId?: string,
+export interface AudioTrack {
   name?: string,
-  videoState?: VideoState,
-  resumableVideoUpload?: ResumableVideoUpload,
-  videoUploadedTimeMs?: number,
-  videoDurationSec?: number,
-  videoSize?: number,
+  isDefault?: boolean,
 }
 
-export let EPISODE_DRAFT: MessageDescriptor<EpisodeDraft> = {
-  name: 'EpisodeDraft',
+export let AUDIO_TRACK: MessageDescriptor<AudioTrack> = {
+  name: 'AudioTrack',
   fields: [{
-    name: 'episodeId',
+    name: 'name',
     index: 1,
     primitiveType: PrimitiveType.STRING,
   }, {
+    name: 'isDefault',
+    index: 2,
+    primitiveType: PrimitiveType.BOOLEAN,
+  }],
+};
+
+export interface SubtitleTrack {
+  name?: string,
+  isDefault?: boolean,
+}
+
+export let SUBTITLE_TRACK: MessageDescriptor<SubtitleTrack> = {
+  name: 'SubtitleTrack',
+  fields: [{
     name: 'name',
+    index: 1,
+    primitiveType: PrimitiveType.STRING,
+  }, {
+    name: 'isDefault',
+    index: 2,
+    primitiveType: PrimitiveType.BOOLEAN,
+  }],
+};
+
+export interface VideoContainer {
+  version?: number,
+  r2RootDirname?: string,
+  r2MasterPlaylistFilename?: string,
+  durationSec?: number,
+  resolution?: string,
+  audioTracks?: Array<AudioTrack>,
+  subtitleTracks?: Array<SubtitleTrack>,
+  totalBytes?: number,
+}
+
+export let VIDEO_CONTAINER: MessageDescriptor<VideoContainer> = {
+  name: 'VideoContainer',
+  fields: [{
+    name: 'version',
+    index: 1,
+    primitiveType: PrimitiveType.NUMBER,
+  }, {
+    name: 'r2RootDirname',
     index: 2,
     primitiveType: PrimitiveType.STRING,
   }, {
-    name: 'videoState',
+    name: 'r2MasterPlaylistFilename',
     index: 3,
-    enumType: VIDEO_STATE,
+    primitiveType: PrimitiveType.STRING,
   }, {
-    name: 'resumableVideoUpload',
+    name: 'durationSec',
     index: 4,
-    messageType: RESUMABLE_VIDEO_UPLOAD,
+    primitiveType: PrimitiveType.NUMBER,
   }, {
-    name: 'videoUploadedTimeMs',
+    name: 'resolution',
     index: 5,
-    primitiveType: PrimitiveType.NUMBER,
+    primitiveType: PrimitiveType.STRING,
   }, {
-    name: 'videoDurationSec',
+    name: 'audioTracks',
     index: 6,
-    primitiveType: PrimitiveType.NUMBER,
+    messageType: AUDIO_TRACK,
+    isArray: true,
   }, {
-    name: 'videoSize',
+    name: 'subtitleTracks',
     index: 7,
+    messageType: SUBTITLE_TRACK,
+    isArray: true,
+  }, {
+    name: 'totalBytes',
+    index: 8,
     primitiveType: PrimitiveType.NUMBER,
   }],
 };
@@ -49,10 +90,9 @@ export let EPISODE_DRAFT: MessageDescriptor<EpisodeDraft> = {
 export interface Episode {
   episodeId?: string,
   name?: string,
-  index?: number,
-  videoDurationSec?: number,
-  videoSize?: number,
-  publishedTimeMs?: number,
+  videoContainerId?: string,
+  videoContainer?: VideoContainer,
+  publishTimeMs?: number,
   premierTimeMs?: number,
 }
 
@@ -67,24 +107,20 @@ export let EPISODE: MessageDescriptor<Episode> = {
     index: 2,
     primitiveType: PrimitiveType.STRING,
   }, {
-    name: 'index',
+    name: 'videoContainerId',
     index: 3,
-    primitiveType: PrimitiveType.NUMBER,
+    primitiveType: PrimitiveType.STRING,
   }, {
-    name: 'videoDurationSec',
+    name: 'videoContainer',
     index: 4,
-    primitiveType: PrimitiveType.NUMBER,
+    messageType: VIDEO_CONTAINER,
   }, {
-    name: 'videoSize',
+    name: 'publishTimeMs',
     index: 5,
     primitiveType: PrimitiveType.NUMBER,
   }, {
-    name: 'publishedTimeMs',
-    index: 6,
-    primitiveType: PrimitiveType.NUMBER,
-  }, {
     name: 'premierTimeMs',
-    index: 7,
+    index: 6,
     primitiveType: PrimitiveType.NUMBER,
   }],
 };

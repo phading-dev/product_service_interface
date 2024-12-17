@@ -1,9 +1,0 @@
-- message:
-    name: ResumableVideoUpload
-    fields:
-      - name: url
-        type: string
-        index: 1
-      - name: byteOffset
-        type: number
-        index: 2

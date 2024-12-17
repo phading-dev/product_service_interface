@@ -1,0 +1,93 @@
+- message:
+    name: GetSeasonPublisherAndGradeRequestBody
+    fields:
+      - name: seasonId
+        type: string
+        index: 1
+      - name: date # ISO string
+        type: string
+        index: 2
+- message:
+    name: GetSeasonPublisherAndGradeResponse
+    fields:
+      - name: publisherId
+        type: string
+        index: 1
+      - name: grade
+        type: number
+        index: 2
+- message:
+    name: GetSeasonNameRequestBody
+    fields:
+      - name: seasonId
+        type: string
+        index: 1
+- message:
+    name: GetSeasonNameResponse
+    fields:
+      - name: seasonName
+        type: string
+        index: 1
+- message:
+    name: ProcessVideoContainerCreatingTaskRequsetBody
+    fields:
+      - name: seasonId
+        type: string
+        index: 1
+      - name: episodeId
+        type: string
+        index: 2
+- message:
+    name: ProcessVideoContainerCreatingTaskResponse
+- message:
+    name: GetVideoContainerCreatingTasksRequestBody
+- message:
+    name: GetVideoContainerCreatingTasksResponse
+    fields:
+      - name: tasks
+        type: ProcessVideoContainerCreatingTaskRequsetBody
+        isArray: true
+        index: 1
+- message:
+    name: SyncEpisodeVideoContainerInfoRequestBody
+    fields:
+      - name: seasonId
+        type: string
+        index: 1
+      - name: episodeId
+        type: string
+        index: 2
+      - name: videoContainerId
+        type: string
+        index: 3
+      - name: videoContainer
+        type: VideoContainer
+        import: ./show/web/publisher/season_details
+        index: 4
+- message:
+    name: SyncEpisodeVideoContainerInfoResponse
+- nodeService:
+    name: ProductShowNodeService
+    remoteCalls:
+      - name: GetSeasonPublisherAndGrade
+        path: /GetSeasonPublisherAndGrade
+        body: GetSeasonPublisherAndGradeRequestBody
+        response: GetSeasonPublisherAndGradeResponse
+      - name: GetSeasonName
+        path: /GetSeasonName
+        body: GetSeasonNameRequestBody
+        response: GetSeasonNameResponse
+      - name: ProcessVideoContainerCreatingTask
+        path: /ProcessVideoContainerCreatingTask
+        body: ProcessVideoContainerCreatingTaskRequsetBody
+        response: ProcessVideoContainerCreatingTaskResponse
+      - name: GetVideoContainerCreatingTasks
+        path: /GetVideoContainerCreatingTasks
+        body: GetVideoContainerCreatingTasksRequestBody
+        response: GetVideoContainerCreatingTasksResponse
+      - name: SyncEpisodeVideoContainerInfo
+        path: /SyncEpisodeVideoContainerInfo
+        body: SyncEpisodeVideoContainerInfoRequestBody
+        response: SyncEpisodeVideoContainerInfoResponse
+    outputClient: ./show/node/client
+    outputHandler: ./show/node/handler
