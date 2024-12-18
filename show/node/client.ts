@@ -1,4 +1,4 @@
-import { GetSeasonPublisherAndGradeRequestBody, GetSeasonPublisherAndGradeResponse, GET_SEASON_PUBLISHER_AND_GRADE, GetSeasonNameRequestBody, GetSeasonNameResponse, GET_SEASON_NAME, ProcessVideoContainerCreatingTaskRequsetBody, ProcessVideoContainerCreatingTaskResponse, PROCESS_VIDEO_CONTAINER_CREATING_TASK, GetVideoContainerCreatingTasksRequestBody, GetVideoContainerCreatingTasksResponse, GET_VIDEO_CONTAINER_CREATING_TASKS, SyncEpisodeVideoContainerInfoRequestBody, SyncEpisodeVideoContainerInfoResponse, SYNC_EPISODE_VIDEO_CONTAINER_INFO } from './interface';
+import { GetSeasonPublisherAndGradeRequestBody, GetSeasonPublisherAndGradeResponse, GET_SEASON_PUBLISHER_AND_GRADE, GetSeasonNameRequestBody, GetSeasonNameResponse, GET_SEASON_NAME, ProcessVideoContainerCreatingTaskRequsetBody, ProcessVideoContainerCreatingTaskResponse, PROCESS_VIDEO_CONTAINER_CREATING_TASK, GetVideoContainerCreatingTasksRequestBody, GetVideoContainerCreatingTasksResponse, GET_VIDEO_CONTAINER_CREATING_TASKS, ProcessVideoContainerDeletingTaskRequsetBody, ProcessVideoContainerDeletingTaskResponse, PROCESS_VIDEO_CONTAINER_DELETING_TASK, GetVideoContainerDeletingTasksRequestBody, GetVideoContainerDeletingTasksResponse, GET_VIDEO_CONTAINER_DELETING_TASKS, SyncEpisodeVideoContainerInfoRequestBody, SyncEpisodeVideoContainerInfoResponse, SYNC_EPISODE_VIDEO_CONTAINER_INFO } from './interface';
 import { NodeClientInterface, NodeClientOptions } from '@selfage/service_descriptor/client_interface';
 
 export function getSeasonPublisherAndGrade(
@@ -51,6 +51,34 @@ export function getVideoContainerCreatingTasks(
   return client.send(
     {
       descriptor: GET_VIDEO_CONTAINER_CREATING_TASKS,
+      body,
+    },
+    options,
+  );
+}
+
+export function processVideoContainerDeletingTask(
+  client: NodeClientInterface,
+  body: ProcessVideoContainerDeletingTaskRequsetBody,
+  options?: NodeClientOptions,
+): Promise<ProcessVideoContainerDeletingTaskResponse> {
+  return client.send(
+    {
+      descriptor: PROCESS_VIDEO_CONTAINER_DELETING_TASK,
+      body,
+    },
+    options,
+  );
+}
+
+export function getVideoContainerDeletingTasks(
+  client: NodeClientInterface,
+  body: GetVideoContainerDeletingTasksRequestBody,
+  options?: NodeClientOptions,
+): Promise<GetVideoContainerDeletingTasksResponse> {
+  return client.send(
+    {
+      descriptor: GET_VIDEO_CONTAINER_DELETING_TASKS,
       body,
     },
     options,

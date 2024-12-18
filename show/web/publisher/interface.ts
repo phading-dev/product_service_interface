@@ -1,5 +1,5 @@
-import { PrimitiveType, MessageDescriptor } from '@selfage/message/descriptor';
-import { SeasonDetails, SEASON_DETAILS, Episode, EPISODE } from './season_details';
+import { PrimitiveType, MessageDescriptor, EnumDescriptor } from '@selfage/message/descriptor';
+import { SeasonDetails, SEASON_DETAILS, Episode, EPISODE } from '../../season_details';
 import { SeasonState, SEASON_STATE } from '../../season_state';
 import { SeasonSummary, SEASON_SUMMARY } from './season_summary';
 import { WebRemoteCallDescriptor, PrimitveTypeForBody } from '@selfage/service_descriptor';
@@ -286,54 +286,6 @@ export let DELETE_EPISODE_RESPONSE: MessageDescriptor<DeleteEpisodeResponse> = {
   fields: [],
 };
 
-export interface ProcessVideoContainerCreatingTaskRequsetBody {
-  seasonId?: string,
-  episodeId?: string,
-}
-
-export let PROCESS_VIDEO_CONTAINER_CREATING_TASK_REQUSET_BODY: MessageDescriptor<ProcessVideoContainerCreatingTaskRequsetBody> = {
-  name: 'ProcessVideoContainerCreatingTaskRequsetBody',
-  fields: [{
-    name: 'seasonId',
-    index: 1,
-    primitiveType: PrimitiveType.STRING,
-  }, {
-    name: 'episodeId',
-    index: 2,
-    primitiveType: PrimitiveType.STRING,
-  }],
-};
-
-export interface ProcessVideoContainerCreatingTaskResponse {
-}
-
-export let PROCESS_VIDEO_CONTAINER_CREATING_TASK_RESPONSE: MessageDescriptor<ProcessVideoContainerCreatingTaskResponse> = {
-  name: 'ProcessVideoContainerCreatingTaskResponse',
-  fields: [],
-};
-
-export interface GetVideoContainerCreatingTasksRequestBody {
-}
-
-export let GET_VIDEO_CONTAINER_CREATING_TASKS_REQUEST_BODY: MessageDescriptor<GetVideoContainerCreatingTasksRequestBody> = {
-  name: 'GetVideoContainerCreatingTasksRequestBody',
-  fields: [],
-};
-
-export interface GetVideoContainerCreatingTasksResponse {
-  tasks?: Array<ProcessVideoContainerCreatingTaskRequsetBody>,
-}
-
-export let GET_VIDEO_CONTAINER_CREATING_TASKS_RESPONSE: MessageDescriptor<GetVideoContainerCreatingTasksResponse> = {
-  name: 'GetVideoContainerCreatingTasksResponse',
-  fields: [{
-    name: 'tasks',
-    index: 1,
-    messageType: PROCESS_VIDEO_CONTAINER_CREATING_TASK_REQUSET_BODY,
-    isArray: true,
-  }],
-};
-
 export interface UpdateEpisodeRequestBody {
   seasonId?: string,
   episodeId?: string,
@@ -461,6 +413,608 @@ export interface PublishEpisodeResponse {
 
 export let PUBLISH_EPISODE_RESPONSE: MessageDescriptor<PublishEpisodeResponse> = {
   name: 'PublishEpisodeResponse',
+  fields: [],
+};
+
+export interface CommitEpisodeStagingDataRequestBody {
+  seasonId?: string,
+  episodeId?: string,
+}
+
+export let COMMIT_EPISODE_STAGING_DATA_REQUEST_BODY: MessageDescriptor<CommitEpisodeStagingDataRequestBody> = {
+  name: 'CommitEpisodeStagingDataRequestBody',
+  fields: [{
+    name: 'seasonId',
+    index: 1,
+    primitiveType: PrimitiveType.STRING,
+  }, {
+    name: 'episodeId',
+    index: 2,
+    primitiveType: PrimitiveType.STRING,
+  }],
+};
+
+export enum ValidationError {
+  NO_VIDEO_TRACK = 1,
+  MORE_THAN_ONE_VIDEO_TRACKS = 2,
+  TOO_MANY_AUDIO_TRACKS = 3,
+  NO_DEFAULT_AUDIO_TRACK = 4,
+  MORE_THAN_ONE_DEFAULT_AUDIO_TRACKS = 5,
+  TOO_MANY_SUBTITLE_TRACKS = 6,
+  NO_DEFAULT_SUBTITLE_TRACK = 7,
+  MORE_THAN_ONE_DEFAULT_SUBTITLE_TRACKS = 8,
+}
+
+export let VALIDATION_ERROR: EnumDescriptor<ValidationError> = {
+  name: 'ValidationError',
+  values: [{
+    name: 'NO_VIDEO_TRACK',
+    value: 1,
+  }, {
+    name: 'MORE_THAN_ONE_VIDEO_TRACKS',
+    value: 2,
+  }, {
+    name: 'TOO_MANY_AUDIO_TRACKS',
+    value: 3,
+  }, {
+    name: 'NO_DEFAULT_AUDIO_TRACK',
+    value: 4,
+  }, {
+    name: 'MORE_THAN_ONE_DEFAULT_AUDIO_TRACKS',
+    value: 5,
+  }, {
+    name: 'TOO_MANY_SUBTITLE_TRACKS',
+    value: 6,
+  }, {
+    name: 'NO_DEFAULT_SUBTITLE_TRACK',
+    value: 7,
+  }, {
+    name: 'MORE_THAN_ONE_DEFAULT_SUBTITLE_TRACKS',
+    value: 8,
+  }]
+}
+
+export interface CommitEpisodeStagingDataResponse {
+  success?: boolean,
+  error?: ValidationError,
+}
+
+export let COMMIT_EPISODE_STAGING_DATA_RESPONSE: MessageDescriptor<CommitEpisodeStagingDataResponse> = {
+  name: 'CommitEpisodeStagingDataResponse',
+  fields: [{
+    name: 'success',
+    index: 1,
+    primitiveType: PrimitiveType.BOOLEAN,
+  }, {
+    name: 'error',
+    index: 2,
+    enumType: VALIDATION_ERROR,
+  }],
+};
+
+export interface StartMediaUploadingRequestBody {
+  seasonId?: string,
+  episodeId?: string,
+  contentLength?: number,
+  fileType?: string,
+}
+
+export let START_MEDIA_UPLOADING_REQUEST_BODY: MessageDescriptor<StartMediaUploadingRequestBody> = {
+  name: 'StartMediaUploadingRequestBody',
+  fields: [{
+    name: 'seasonId',
+    index: 1,
+    primitiveType: PrimitiveType.STRING,
+  }, {
+    name: 'episodeId',
+    index: 2,
+    primitiveType: PrimitiveType.STRING,
+  }, {
+    name: 'contentLength',
+    index: 3,
+    primitiveType: PrimitiveType.NUMBER,
+  }, {
+    name: 'fileType',
+    index: 4,
+    primitiveType: PrimitiveType.STRING,
+  }],
+};
+
+export interface StartMediaUploadingResponse {
+  uploadSessionUrl?: string,
+  byteOffset?: number,
+}
+
+export let START_MEDIA_UPLOADING_RESPONSE: MessageDescriptor<StartMediaUploadingResponse> = {
+  name: 'StartMediaUploadingResponse',
+  fields: [{
+    name: 'uploadSessionUrl',
+    index: 1,
+    primitiveType: PrimitiveType.STRING,
+  }, {
+    name: 'byteOffset',
+    index: 2,
+    primitiveType: PrimitiveType.NUMBER,
+  }],
+};
+
+export interface CompleteMediaUploadingRequestBody {
+  seasonId?: string,
+  episodeId?: string,
+  uploadSessionUrl?: string,
+}
+
+export let COMPLETE_MEDIA_UPLOADING_REQUEST_BODY: MessageDescriptor<CompleteMediaUploadingRequestBody> = {
+  name: 'CompleteMediaUploadingRequestBody',
+  fields: [{
+    name: 'seasonId',
+    index: 1,
+    primitiveType: PrimitiveType.STRING,
+  }, {
+    name: 'episodeId',
+    index: 2,
+    primitiveType: PrimitiveType.STRING,
+  }, {
+    name: 'uploadSessionUrl',
+    index: 3,
+    primitiveType: PrimitiveType.STRING,
+  }],
+};
+
+export interface CompleteMediaUploadingResponse {
+}
+
+export let COMPLETE_MEDIA_UPLOADING_RESPONSE: MessageDescriptor<CompleteMediaUploadingResponse> = {
+  name: 'CompleteMediaUploadingResponse',
+  fields: [],
+};
+
+export interface CancelMediaUploadingRequestBody {
+  seasonId?: string,
+  episodeId?: string,
+}
+
+export let CANCEL_MEDIA_UPLOADING_REQUEST_BODY: MessageDescriptor<CancelMediaUploadingRequestBody> = {
+  name: 'CancelMediaUploadingRequestBody',
+  fields: [{
+    name: 'seasonId',
+    index: 1,
+    primitiveType: PrimitiveType.STRING,
+  }, {
+    name: 'episodeId',
+    index: 2,
+    primitiveType: PrimitiveType.STRING,
+  }],
+};
+
+export interface CancelMediaUploadingResponse {
+}
+
+export let CANCEL_MEDIA_UPLOADING_RESPONSE: MessageDescriptor<CancelMediaUploadingResponse> = {
+  name: 'CancelMediaUploadingResponse',
+  fields: [],
+};
+
+export interface StartSubtitleUploadingRequestBody {
+  seasonId?: string,
+  episodeId?: string,
+  contentLength?: number,
+  fileType?: string,
+}
+
+export let START_SUBTITLE_UPLOADING_REQUEST_BODY: MessageDescriptor<StartSubtitleUploadingRequestBody> = {
+  name: 'StartSubtitleUploadingRequestBody',
+  fields: [{
+    name: 'seasonId',
+    index: 1,
+    primitiveType: PrimitiveType.STRING,
+  }, {
+    name: 'episodeId',
+    index: 2,
+    primitiveType: PrimitiveType.STRING,
+  }, {
+    name: 'contentLength',
+    index: 3,
+    primitiveType: PrimitiveType.NUMBER,
+  }, {
+    name: 'fileType',
+    index: 4,
+    primitiveType: PrimitiveType.STRING,
+  }],
+};
+
+export interface StartSubtitleUploadingResponse {
+  uploadSessionUrl?: string,
+  byteOffset?: number,
+}
+
+export let START_SUBTITLE_UPLOADING_RESPONSE: MessageDescriptor<StartSubtitleUploadingResponse> = {
+  name: 'StartSubtitleUploadingResponse',
+  fields: [{
+    name: 'uploadSessionUrl',
+    index: 1,
+    primitiveType: PrimitiveType.STRING,
+  }, {
+    name: 'byteOffset',
+    index: 2,
+    primitiveType: PrimitiveType.NUMBER,
+  }],
+};
+
+export interface CompleteSubtitleUploadingRequestBody {
+  seasonId?: string,
+  episodeId?: string,
+  uploadSessionUrl?: string,
+}
+
+export let COMPLETE_SUBTITLE_UPLOADING_REQUEST_BODY: MessageDescriptor<CompleteSubtitleUploadingRequestBody> = {
+  name: 'CompleteSubtitleUploadingRequestBody',
+  fields: [{
+    name: 'seasonId',
+    index: 1,
+    primitiveType: PrimitiveType.STRING,
+  }, {
+    name: 'episodeId',
+    index: 2,
+    primitiveType: PrimitiveType.STRING,
+  }, {
+    name: 'uploadSessionUrl',
+    index: 3,
+    primitiveType: PrimitiveType.STRING,
+  }],
+};
+
+export interface CompleteSubtitleUploadingResponse {
+}
+
+export let COMPLETE_SUBTITLE_UPLOADING_RESPONSE: MessageDescriptor<CompleteSubtitleUploadingResponse> = {
+  name: 'CompleteSubtitleUploadingResponse',
+  fields: [],
+};
+
+export interface CancelSubtitleUploadingRequestBody {
+  seasonId?: string,
+  episodeId?: string,
+}
+
+export let CANCEL_SUBTITLE_UPLOADING_REQUEST_BODY: MessageDescriptor<CancelSubtitleUploadingRequestBody> = {
+  name: 'CancelSubtitleUploadingRequestBody',
+  fields: [{
+    name: 'seasonId',
+    index: 1,
+    primitiveType: PrimitiveType.STRING,
+  }, {
+    name: 'episodeId',
+    index: 2,
+    primitiveType: PrimitiveType.STRING,
+  }],
+};
+
+export interface CancelSubtitleUploadingResponse {
+}
+
+export let CANCEL_SUBTITLE_UPLOADING_RESPONSE: MessageDescriptor<CancelSubtitleUploadingResponse> = {
+  name: 'CancelSubtitleUploadingResponse',
+  fields: [],
+};
+
+export interface CancelMediaFormattingRequestBody {
+  seasonId?: string,
+  episodeId?: string,
+}
+
+export let CANCEL_MEDIA_FORMATTING_REQUEST_BODY: MessageDescriptor<CancelMediaFormattingRequestBody> = {
+  name: 'CancelMediaFormattingRequestBody',
+  fields: [{
+    name: 'seasonId',
+    index: 1,
+    primitiveType: PrimitiveType.STRING,
+  }, {
+    name: 'episodeId',
+    index: 2,
+    primitiveType: PrimitiveType.STRING,
+  }],
+};
+
+export interface CancelMediaFormattingResponse {
+}
+
+export let CANCEL_MEDIA_FORMATTING_RESPONSE: MessageDescriptor<CancelMediaFormattingResponse> = {
+  name: 'CancelMediaFormattingResponse',
+  fields: [],
+};
+
+export interface CancelSubtitleFormattingRequestBody {
+  seasonId?: string,
+  episodeId?: string,
+}
+
+export let CANCEL_SUBTITLE_FORMATTING_REQUEST_BODY: MessageDescriptor<CancelSubtitleFormattingRequestBody> = {
+  name: 'CancelSubtitleFormattingRequestBody',
+  fields: [{
+    name: 'seasonId',
+    index: 1,
+    primitiveType: PrimitiveType.STRING,
+  }, {
+    name: 'episodeId',
+    index: 2,
+    primitiveType: PrimitiveType.STRING,
+  }],
+};
+
+export interface CancelSubtitleFormattingResponse {
+}
+
+export let CANCEL_SUBTITLE_FORMATTING_RESPONSE: MessageDescriptor<CancelSubtitleFormattingResponse> = {
+  name: 'CancelSubtitleFormattingResponse',
+  fields: [],
+};
+
+export interface DeleteVideoTrackRequestBody {
+  seasonId?: string,
+  episodeId?: string,
+  r2TrackDirname?: string,
+}
+
+export let DELETE_VIDEO_TRACK_REQUEST_BODY: MessageDescriptor<DeleteVideoTrackRequestBody> = {
+  name: 'DeleteVideoTrackRequestBody',
+  fields: [{
+    name: 'seasonId',
+    index: 1,
+    primitiveType: PrimitiveType.STRING,
+  }, {
+    name: 'episodeId',
+    index: 2,
+    primitiveType: PrimitiveType.STRING,
+  }, {
+    name: 'r2TrackDirname',
+    index: 3,
+    primitiveType: PrimitiveType.STRING,
+  }],
+};
+
+export interface DeleteVideoTrackResponse {
+}
+
+export let DELETE_VIDEO_TRACK_RESPONSE: MessageDescriptor<DeleteVideoTrackResponse> = {
+  name: 'DeleteVideoTrackResponse',
+  fields: [],
+};
+
+export interface DropVideoTrackStagingDataRequestBody {
+  seasonId?: string,
+  episodeId?: string,
+  r2TrackDirname?: string,
+}
+
+export let DROP_VIDEO_TRACK_STAGING_DATA_REQUEST_BODY: MessageDescriptor<DropVideoTrackStagingDataRequestBody> = {
+  name: 'DropVideoTrackStagingDataRequestBody',
+  fields: [{
+    name: 'seasonId',
+    index: 1,
+    primitiveType: PrimitiveType.STRING,
+  }, {
+    name: 'episodeId',
+    index: 2,
+    primitiveType: PrimitiveType.STRING,
+  }, {
+    name: 'r2TrackDirname',
+    index: 3,
+    primitiveType: PrimitiveType.STRING,
+  }],
+};
+
+export interface DropVideoTrackStagingDataResponse {
+}
+
+export let DROP_VIDEO_TRACK_STAGING_DATA_RESPONSE: MessageDescriptor<DropVideoTrackStagingDataResponse> = {
+  name: 'DropVideoTrackStagingDataResponse',
+  fields: [],
+};
+
+export interface UpdateAudioTrackRequestBody {
+  seasonId?: string,
+  episodeId?: string,
+  r2TrackDirname?: string,
+  name?: string,
+  isDefault?: boolean,
+}
+
+export let UPDATE_AUDIO_TRACK_REQUEST_BODY: MessageDescriptor<UpdateAudioTrackRequestBody> = {
+  name: 'UpdateAudioTrackRequestBody',
+  fields: [{
+    name: 'seasonId',
+    index: 1,
+    primitiveType: PrimitiveType.STRING,
+  }, {
+    name: 'episodeId',
+    index: 2,
+    primitiveType: PrimitiveType.STRING,
+  }, {
+    name: 'r2TrackDirname',
+    index: 3,
+    primitiveType: PrimitiveType.STRING,
+  }, {
+    name: 'name',
+    index: 4,
+    primitiveType: PrimitiveType.STRING,
+  }, {
+    name: 'isDefault',
+    index: 5,
+    primitiveType: PrimitiveType.BOOLEAN,
+  }],
+};
+
+export interface UpdateAudioTrackResponse {
+}
+
+export let UPDATE_AUDIO_TRACK_RESPONSE: MessageDescriptor<UpdateAudioTrackResponse> = {
+  name: 'UpdateAudioTrackResponse',
+  fields: [],
+};
+
+export interface DeleteAudioTrackRequestBody {
+  seasonId?: string,
+  episodeId?: string,
+  r2TrackDirname?: string,
+}
+
+export let DELETE_AUDIO_TRACK_REQUEST_BODY: MessageDescriptor<DeleteAudioTrackRequestBody> = {
+  name: 'DeleteAudioTrackRequestBody',
+  fields: [{
+    name: 'seasonId',
+    index: 1,
+    primitiveType: PrimitiveType.STRING,
+  }, {
+    name: 'episodeId',
+    index: 2,
+    primitiveType: PrimitiveType.STRING,
+  }, {
+    name: 'r2TrackDirname',
+    index: 3,
+    primitiveType: PrimitiveType.STRING,
+  }],
+};
+
+export interface DeleteAudioTrackResponse {
+}
+
+export let DELETE_AUDIO_TRACK_RESPONSE: MessageDescriptor<DeleteAudioTrackResponse> = {
+  name: 'DeleteAudioTrackResponse',
+  fields: [],
+};
+
+export interface DropAudioTrackStagingDataRequestBody {
+  seasonId?: string,
+  episodeId?: string,
+  r2TrackDirname?: string,
+}
+
+export let DROP_AUDIO_TRACK_STAGING_DATA_REQUEST_BODY: MessageDescriptor<DropAudioTrackStagingDataRequestBody> = {
+  name: 'DropAudioTrackStagingDataRequestBody',
+  fields: [{
+    name: 'seasonId',
+    index: 1,
+    primitiveType: PrimitiveType.STRING,
+  }, {
+    name: 'episodeId',
+    index: 2,
+    primitiveType: PrimitiveType.STRING,
+  }, {
+    name: 'r2TrackDirname',
+    index: 3,
+    primitiveType: PrimitiveType.STRING,
+  }],
+};
+
+export interface DropAudioTrackStagingDataResponse {
+}
+
+export let DROP_AUDIO_TRACK_STAGING_DATA_RESPONSE: MessageDescriptor<DropAudioTrackStagingDataResponse> = {
+  name: 'DropAudioTrackStagingDataResponse',
+  fields: [],
+};
+
+export interface UpdateSubtitleTrackRequestBody {
+  seasonId?: string,
+  episodeId?: string,
+  r2TrackDirname?: string,
+  name?: string,
+  isDefault?: boolean,
+}
+
+export let UPDATE_SUBTITLE_TRACK_REQUEST_BODY: MessageDescriptor<UpdateSubtitleTrackRequestBody> = {
+  name: 'UpdateSubtitleTrackRequestBody',
+  fields: [{
+    name: 'seasonId',
+    index: 1,
+    primitiveType: PrimitiveType.STRING,
+  }, {
+    name: 'episodeId',
+    index: 2,
+    primitiveType: PrimitiveType.STRING,
+  }, {
+    name: 'r2TrackDirname',
+    index: 3,
+    primitiveType: PrimitiveType.STRING,
+  }, {
+    name: 'name',
+    index: 4,
+    primitiveType: PrimitiveType.STRING,
+  }, {
+    name: 'isDefault',
+    index: 5,
+    primitiveType: PrimitiveType.BOOLEAN,
+  }],
+};
+
+export interface UpdateSubtitleTrackResponse {
+}
+
+export let UPDATE_SUBTITLE_TRACK_RESPONSE: MessageDescriptor<UpdateSubtitleTrackResponse> = {
+  name: 'UpdateSubtitleTrackResponse',
+  fields: [],
+};
+
+export interface DeleteSubtitleTrackRequestBody {
+  seasonId?: string,
+  episodeId?: string,
+  r2TrackDirname?: string,
+}
+
+export let DELETE_SUBTITLE_TRACK_REQUEST_BODY: MessageDescriptor<DeleteSubtitleTrackRequestBody> = {
+  name: 'DeleteSubtitleTrackRequestBody',
+  fields: [{
+    name: 'seasonId',
+    index: 1,
+    primitiveType: PrimitiveType.STRING,
+  }, {
+    name: 'episodeId',
+    index: 2,
+    primitiveType: PrimitiveType.STRING,
+  }, {
+    name: 'r2TrackDirname',
+    index: 3,
+    primitiveType: PrimitiveType.STRING,
+  }],
+};
+
+export interface DeleteSubtitleTrackResponse {
+}
+
+export let DELETE_SUBTITLE_TRACK_RESPONSE: MessageDescriptor<DeleteSubtitleTrackResponse> = {
+  name: 'DeleteSubtitleTrackResponse',
+  fields: [],
+};
+
+export interface DropSubtitleTrackStagingDataRequestBody {
+  seasonId?: string,
+  episodeId?: string,
+  r2TrackDirname?: string,
+}
+
+export let DROP_SUBTITLE_TRACK_STAGING_DATA_REQUEST_BODY: MessageDescriptor<DropSubtitleTrackStagingDataRequestBody> = {
+  name: 'DropSubtitleTrackStagingDataRequestBody',
+  fields: [{
+    name: 'seasonId',
+    index: 1,
+    primitiveType: PrimitiveType.STRING,
+  }, {
+    name: 'episodeId',
+    index: 2,
+    primitiveType: PrimitiveType.STRING,
+  }, {
+    name: 'r2TrackDirname',
+    index: 3,
+    primitiveType: PrimitiveType.STRING,
+  }],
+};
+
+export interface DropSubtitleTrackStagingDataResponse {
+}
+
+export let DROP_SUBTITLE_TRACK_STAGING_DATA_RESPONSE: MessageDescriptor<DropSubtitleTrackStagingDataResponse> = {
+  name: 'DropSubtitleTrackStagingDataResponse',
   fields: [],
 };
 

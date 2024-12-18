@@ -1,5 +1,5 @@
 import { PrimitiveType, MessageDescriptor } from '@selfage/message/descriptor';
-import { VideoContainer, VIDEO_CONTAINER } from '../web/publisher/season_details';
+import { VideoContainer, VIDEO_CONTAINER } from '../season_details';
 import { NodeRemoteCallDescriptor } from '@selfage/service_descriptor';
 
 export interface GetSeasonPublisherAndGradeRequestBody {
@@ -112,6 +112,49 @@ export let GET_VIDEO_CONTAINER_CREATING_TASKS_RESPONSE: MessageDescriptor<GetVid
   }],
 };
 
+export interface ProcessVideoContainerDeletingTaskRequsetBody {
+  videoContainerId?: string,
+}
+
+export let PROCESS_VIDEO_CONTAINER_DELETING_TASK_REQUSET_BODY: MessageDescriptor<ProcessVideoContainerDeletingTaskRequsetBody> = {
+  name: 'ProcessVideoContainerDeletingTaskRequsetBody',
+  fields: [{
+    name: 'videoContainerId',
+    index: 1,
+    primitiveType: PrimitiveType.STRING,
+  }],
+};
+
+export interface ProcessVideoContainerDeletingTaskResponse {
+}
+
+export let PROCESS_VIDEO_CONTAINER_DELETING_TASK_RESPONSE: MessageDescriptor<ProcessVideoContainerDeletingTaskResponse> = {
+  name: 'ProcessVideoContainerDeletingTaskResponse',
+  fields: [],
+};
+
+export interface GetVideoContainerDeletingTasksRequestBody {
+}
+
+export let GET_VIDEO_CONTAINER_DELETING_TASKS_REQUEST_BODY: MessageDescriptor<GetVideoContainerDeletingTasksRequestBody> = {
+  name: 'GetVideoContainerDeletingTasksRequestBody',
+  fields: [],
+};
+
+export interface GetVideoContainerDeletingTasksResponse {
+  tasks?: Array<ProcessVideoContainerDeletingTaskRequsetBody>,
+}
+
+export let GET_VIDEO_CONTAINER_DELETING_TASKS_RESPONSE: MessageDescriptor<GetVideoContainerDeletingTasksResponse> = {
+  name: 'GetVideoContainerDeletingTasksResponse',
+  fields: [{
+    name: 'tasks',
+    index: 1,
+    messageType: PROCESS_VIDEO_CONTAINER_DELETING_TASK_REQUSET_BODY,
+    isArray: true,
+  }],
+};
+
 export interface SyncEpisodeVideoContainerInfoRequestBody {
   seasonId?: string,
   episodeId?: string,
@@ -189,6 +232,28 @@ export let GET_VIDEO_CONTAINER_CREATING_TASKS: NodeRemoteCallDescriptor = {
   },
   response: {
     messageType: GET_VIDEO_CONTAINER_CREATING_TASKS_RESPONSE,
+  },
+}
+
+export let PROCESS_VIDEO_CONTAINER_DELETING_TASK: NodeRemoteCallDescriptor = {
+  name: "ProcessVideoContainerDeletingTask",
+  path: "/ProcessVideoContainerDeletingTask",
+  body: {
+    messageType: PROCESS_VIDEO_CONTAINER_DELETING_TASK_REQUSET_BODY,
+  },
+  response: {
+    messageType: PROCESS_VIDEO_CONTAINER_DELETING_TASK_RESPONSE,
+  },
+}
+
+export let GET_VIDEO_CONTAINER_DELETING_TASKS: NodeRemoteCallDescriptor = {
+  name: "GetVideoContainerDeletingTasks",
+  path: "/GetVideoContainerDeletingTasks",
+  body: {
+    messageType: GET_VIDEO_CONTAINER_DELETING_TASKS_REQUEST_BODY,
+  },
+  response: {
+    messageType: GET_VIDEO_CONTAINER_DELETING_TASKS_RESPONSE,
   },
 }
 

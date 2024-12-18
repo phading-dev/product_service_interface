@@ -49,6 +49,23 @@
         isArray: true
         index: 1
 - message:
+    name: ProcessVideoContainerDeletingTaskRequsetBody
+    fields:
+      - name: videoContainerId
+        type: string
+        index: 1
+- message:
+    name: ProcessVideoContainerDeletingTaskResponse
+- message:
+    name: GetVideoContainerDeletingTasksRequestBody
+- message:
+    name: GetVideoContainerDeletingTasksResponse
+    fields:
+      - name: tasks
+        type: ProcessVideoContainerDeletingTaskRequsetBody
+        isArray: true
+        index: 1
+- message:
     name: SyncEpisodeVideoContainerInfoRequestBody
     fields:
       - name: seasonId
@@ -62,7 +79,7 @@
         index: 3
       - name: videoContainer
         type: VideoContainer
-        import: ./show/web/publisher/season_details
+        import: ./show/season_details
         index: 4
 - message:
     name: SyncEpisodeVideoContainerInfoResponse
@@ -85,6 +102,14 @@
         path: /GetVideoContainerCreatingTasks
         body: GetVideoContainerCreatingTasksRequestBody
         response: GetVideoContainerCreatingTasksResponse
+      - name: ProcessVideoContainerDeletingTask
+        path: /ProcessVideoContainerDeletingTask
+        body: ProcessVideoContainerDeletingTaskRequsetBody
+        response: ProcessVideoContainerDeletingTaskResponse
+      - name: GetVideoContainerDeletingTasks
+        path: /GetVideoContainerDeletingTasks
+        body: GetVideoContainerDeletingTasksRequestBody
+        response: GetVideoContainerDeletingTasksResponse
       - name: SyncEpisodeVideoContainerInfo
         path: /SyncEpisodeVideoContainerInfo
         body: SyncEpisodeVideoContainerInfoRequestBody
