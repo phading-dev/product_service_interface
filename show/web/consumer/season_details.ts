@@ -23,16 +23,18 @@ export let PUBLISHER_SUMMARY: MessageDescriptor<PublisherSummary> = {
   }],
 };
 
-export interface EpisodeSummary {
+export interface Episode {
   episodeId?: string,
   name?: string,
   index?: number,
   videoDurationSec?: number,
+  resolution?: string,
   premierTimeMs?: number,
+  videoUrl?: string,
 }
 
-export let EPISODE_SUMMARY: MessageDescriptor<EpisodeSummary> = {
-  name: 'EpisodeSummary',
+export let EPISODE: MessageDescriptor<Episode> = {
+  name: 'Episode',
   fields: [{
     name: 'episodeId',
     index: 1,
@@ -50,9 +52,17 @@ export let EPISODE_SUMMARY: MessageDescriptor<EpisodeSummary> = {
     index: 4,
     primitiveType: PrimitiveType.NUMBER,
   }, {
-    name: 'premierTimeMs',
+    name: 'resolution',
     index: 5,
+    primitiveType: PrimitiveType.STRING,
+  }, {
+    name: 'premierTimeMs',
+    index: 6,
     primitiveType: PrimitiveType.NUMBER,
+  }, {
+    name: 'videoUrl',
+    index: 7,
+    primitiveType: PrimitiveType.STRING,
   }],
 };
 
@@ -75,14 +85,13 @@ export let NEXT_GRADE: MessageDescriptor<NextGrade> = {
 };
 
 export interface SeasonDetails {
-  seasonId?: string,
   publisher?: PublisherSummary,
   name?: string,
   description?: string,
   coverImageUrl?: string,
   grade?: number,
   totalEpisodes?: number,
-  continueEpisode?: EpisodeSummary,
+  continueEpisode?: Episode,
   continueTimeMs?: number,
   nextGrade?: NextGrade,
 }
@@ -90,44 +99,40 @@ export interface SeasonDetails {
 export let SEASON_DETAILS: MessageDescriptor<SeasonDetails> = {
   name: 'SeasonDetails',
   fields: [{
-    name: 'seasonId',
-    index: 1,
-    primitiveType: PrimitiveType.STRING,
-  }, {
     name: 'publisher',
-    index: 2,
+    index: 1,
     messageType: PUBLISHER_SUMMARY,
   }, {
     name: 'name',
-    index: 3,
+    index: 2,
     primitiveType: PrimitiveType.STRING,
   }, {
     name: 'description',
-    index: 4,
+    index: 3,
     primitiveType: PrimitiveType.STRING,
   }, {
     name: 'coverImageUrl',
-    index: 5,
+    index: 4,
     primitiveType: PrimitiveType.STRING,
   }, {
     name: 'grade',
-    index: 6,
+    index: 5,
     primitiveType: PrimitiveType.NUMBER,
   }, {
     name: 'totalEpisodes',
-    index: 7,
+    index: 6,
     primitiveType: PrimitiveType.NUMBER,
   }, {
     name: 'continueEpisode',
-    index: 8,
-    messageType: EPISODE_SUMMARY,
+    index: 7,
+    messageType: EPISODE,
   }, {
     name: 'continueTimeMs',
-    index: 9,
+    index: 8,
     primitiveType: PrimitiveType.NUMBER,
   }, {
     name: 'nextGrade',
-    index: 10,
+    index: 9,
     messageType: NEXT_GRADE,
   }],
 };

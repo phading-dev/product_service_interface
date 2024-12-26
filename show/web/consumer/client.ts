@@ -1,4 +1,4 @@
-import { GetSeasonDetailsRequestBody, GetSeasonDetailsResponse, GET_SEASON_DETAILS, GetVideoToPlayRequestBody, GetVideoToPlayResponse, GET_VIDEO_TO_PLAY, GetMoreEpisodesRequestBody, GetMoreEpisodesResponse, GET_MORE_EPISODES } from './interface';
+import { GetSeasonDetailsRequestBody, GetSeasonDetailsResponse, GET_SEASON_DETAILS, ListEpisodesRequestBody, ListEpisodesResponse, LIST_EPISODES } from './interface';
 import { WebClientInterface, WebClientOptions } from '@selfage/service_descriptor/client_interface';
 
 export function getSeasonDetails(
@@ -15,28 +15,14 @@ export function getSeasonDetails(
   );
 }
 
-export function getVideoToPlay(
+export function listEpisodes(
   client: WebClientInterface,
-  body: GetVideoToPlayRequestBody,
+  body: ListEpisodesRequestBody,
   options?: WebClientOptions,
-): Promise<GetVideoToPlayResponse> {
+): Promise<ListEpisodesResponse> {
   return client.send(
     {
-      descriptor: GET_VIDEO_TO_PLAY,
-      body,
-    },
-    options,
-  );
-}
-
-export function getMoreEpisodes(
-  client: WebClientInterface,
-  body: GetMoreEpisodesRequestBody,
-  options?: WebClientOptions,
-): Promise<GetMoreEpisodesResponse> {
-  return client.send(
-    {
-      descriptor: GET_MORE_EPISODES,
+      descriptor: LIST_EPISODES,
       body,
     },
     options,

@@ -1,0 +1,19 @@
+- kind: Message
+  name: EpisodeDetails
+  fields:
+    - name: seasonName
+      type: string
+      index: 1
+    - name: episodeName
+      type: string
+      index: 2
+    - name: videoContainer
+      type: VideoContainer
+      import: "@phading/video_service_interface/node/video_container"
+      index: 3
+    - name: publishTimeMs
+      type: number
+      index: 4
+    - name: premierTimeMs
+      type: number
+      index: 5

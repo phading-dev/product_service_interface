@@ -1,554 +1,675 @@
-- message:
-    name: GetSeasonDetailsRequestBody
-    fields:
-      - name: seasonId
-        type: string
-        index: 1
-- message:
-    name: GetSeasonDetailsResponse
-    fields:
-      - name: seasonDetails
-        type: SeasonDetails
-        import: ./show/season_details
-        index: 1
-      - name: episodes
-        type: Episode
-        import: ./show/season_details
-        isArray: true
-        index: 2
-      - name: indexCursor
-        type: number
-        index: 3
-- message:
-    name: CreateSeasonRequestBody
-    fields:
-      - name: name
-        type: string
-        index: 1
-- message:
-    name: CreateSeasonResponse
-    fields:
-      - name: seasonId
-        type: string
-        index: 1
-- message:
-    name: DeleteSeasonRequestBody
-    fields:
-      - name: seasonId
-        type: string
-        index: 1
-- message:
-    name: DeleteSeasonResponse
-- message:
-    name: ArchiveSeasonRequestBody
-    fields:
-      - name: seasonId
-        type: string
-        index: 1
-- message:
-    name: ArchiveSeasonResponse
-- message:
-    name: UpdateSeasonRequestBody
-    fields:
-      - name: seasonId
-        type: string
-        index: 1
-      - name: name
-        type: string
-        index: 2
-      - name: description
-        type: string
-        index: 3
-- message:
-    name: UpdateSeasonResponse
-- message:
-    name: UploadCoverImageRequestMetadata
-    fields:
-      - name: seasonId
-        type: string
-        index: 1
-- message:
-    name: UploadCoverImageResponse
-- message:
-    name: UpdateSeasonGradeRequestBody
-    fields:
-      - name: seasonId
-        type: string
-        index: 1
-      - name: grade
-        type: number
-        index: 2
-      - name: effectiveDate # ISO string
-        type: number
-        index: 3
-- message:
-    name: UpdateSeasonGradeResponse
-- message:
-    name: ListSeasonsRequestBody
-    fields:
-      - name: state
-        type: SeasonState
-        import: ./show/season_state
-        index: 1
-      - name: lastChangeTimeCursor
-        type: number
-        index: 2
-- message:
-    name: ListSeasonsResponse
-    fields:
-      - name: seasons
-        type: SeasonSummary
-        import: ./show/web/publisher/season_summary
-        isArray: true
-        index: 1
-      - name: lastChangeTimeCursor
-        type: number
-        index: 2
-- message:
-    name: CreateEpisodeRequestBody
-    fields:
-      - name: seasonId
-        type: string
-        index: 1
-      - name: episodeName
-        type: string
-        index: 2
-- message:
-    name: CreateEpisodeResponse
-    fields:
-      - name: episode
-        type: Episode
-        import: ./show/season_details
-        index: 1
-- message:
-    name: DeleteEpisodeRequestBody
-    fields:
-      - name: seasonId
-        type: string
-        index: 1
-      - name: episodeId
-        type: string
-        index: 2
-- message:
-    name: DeleteEpisodeResponse
-- message:
-    name: UpdateEpisodeRequestBody
-    fields:
-      - name: seasonId
-        type: string
-        index: 1
-      - name: episodeId
-        type: string
-        index: 2
-      - name: name
-        type: string
-        index: 3
-- message:
-    name: UpdateEpisodeResponse
-- message:
-    name: UpdateEpisodeOrderRequestBody
-    fields:
-      - name: seasonId
-        type: string
-        index: 1
-      - name: episodeId
-        type: string
-        index: 2
-      - name: toIndex
-        type: number
-        index: 3
-- message:
-    name: UpdateEpisodeOrderResponse
-- message:
-    name: ListEpisodesRequestBody
-    fields:
-      - name: seasonId
-        type: string
-        index: 1
-      - name: indexCursor
-        type: number
-        index: 2
-- message:
-    name: ListEpisodesResponse
-    fields:
-      - name: episodes
-        type: Episode
-        import: ./show/season_details
-        isArray: true
-        index: 1
-      - name: indexCursor
-        type: number
-        index: 2
-- message:
-    name: PublishEpisodeRequestBody
-    fields:
-      - name: seasonId
-        type: string
-        index: 1
-      - name: episodeId
-        type: string
-        index: 2
-      - name: premierTimeMs
-        type: number
-        index: 3
-- message:
-    name: PublishEpisodeResponse
-- message:
-    name: CommitEpisodeStagingDataRequestBody
-    fields:
-      - name: seasonId
-        type: string
-        index: 1
-      - name: episodeId
-        type: string
-        index: 2
-- enum:
-    name: ValidationError
-    values:
-      - name: NO_VIDEO_TRACK
-        value: 1
-      - name: MORE_THAN_ONE_VIDEO_TRACKS
-        value: 2
-      - name: TOO_MANY_AUDIO_TRACKS
-        value: 3
-      - name: NO_DEFAULT_AUDIO_TRACK
-        value: 4
-      - name: MORE_THAN_ONE_DEFAULT_AUDIO_TRACKS
-        value: 5
-      - name: TOO_MANY_SUBTITLE_TRACKS
-        value: 6
-      - name: NO_DEFAULT_SUBTITLE_TRACK
-        value: 7
-      - name: MORE_THAN_ONE_DEFAULT_SUBTITLE_TRACKS
-        value: 8
-- message:
-    name: CommitEpisodeStagingDataResponse
-    fields:
-      - name: success
-        type: boolean
-        index: 1
-      - name: error
-        type: ValidationError
-        index: 2
-- message:
-    name: StartMediaUploadingRequestBody
-    fields:
-      - name: seasonId
-        type: string
-        index: 1
-      - name: episodeId
-        type: string
-        index: 2
-      - name: contentLength
-        type: number
-        index: 3
-      - name: fileType
-        type: string
-        index: 4
-- message:
-    name: StartMediaUploadingResponse
-    fields:
-      - name: uploadSessionUrl
-        type: string
-        index: 1
-      - name: byteOffset
-        type: number
-        index: 2
-- message:
-    name: CompleteMediaUploadingRequestBody
-    fields:
-      - name: seasonId
-        type: string
-        index: 1
-      - name: episodeId
-        type: string
-        index: 2
-      - name: uploadSessionUrl
-        type: string
-        index: 3
-- message:
-    name: CompleteMediaUploadingResponse
-- message:
-    name: CancelMediaUploadingRequestBody
-    fields:
-      - name: seasonId
-        type: string
-        index: 1
-      - name: episodeId
-        type: string
-        index: 2
-- message:
-    name: CancelMediaUploadingResponse
-- message:
-    name: StartSubtitleUploadingRequestBody
-    fields:
-      - name: seasonId
-        type: string
-        index: 1
-      - name: episodeId
-        type: string
-        index: 2
-      - name: contentLength
-        type: number
-        index: 3
-      - name: fileType
-        type: string
-        index: 4
-- message:
-    name: StartSubtitleUploadingResponse
-    fields:
-      - name: uploadSessionUrl
-        type: string
-        index: 1
-      - name: byteOffset
-        type: number
-        index: 2
-- message:
-    name: CompleteSubtitleUploadingRequestBody
-    fields:
-      - name: seasonId
-        type: string
-        index: 1
-      - name: episodeId
-        type: string
-        index: 2
-      - name: uploadSessionUrl
-        type: string
-        index: 3
-- message:
-    name: CompleteSubtitleUploadingResponse
-- message:
-    name: CancelSubtitleUploadingRequestBody
-    fields:
-      - name: seasonId
-        type: string
-        index: 1
-      - name: episodeId
-        type: string
-        index: 2
-- message:
-    name: CancelSubtitleUploadingResponse
-- message:
-    name: CancelMediaFormattingRequestBody
-    fields:
-      - name: seasonId
-        type: string
-        index: 1
-      - name: episodeId
-        type: string
-        index: 2
-- message:
-    name: CancelMediaFormattingResponse
-- message:
-    name: CancelSubtitleFormattingRequestBody
-    fields:
-      - name: seasonId
-        type: string
-        index: 1
-      - name: episodeId
-        type: string
-        index: 2
-- message:
-    name: CancelSubtitleFormattingResponse
-- message:
-    name: DeleteVideoTrackRequestBody
-    fields:
-      - name: seasonId
-        type: string
-        index: 1
-      - name: episodeId
-        type: string
-        index: 2
-      - name: r2TrackDirname
-        type: string
-        index: 3
-- message:
-    name: DeleteVideoTrackResponse
-- message:
-    name: DropVideoTrackStagingDataRequestBody
-    fields:
-      - name: seasonId
-        type: string
-        index: 1
-      - name: episodeId
-        type: string
-        index: 2
-      - name: r2TrackDirname
-        type: string
-        index: 3
-- message:
-    name: DropVideoTrackStagingDataResponse
-- message:
-    name: UpdateAudioTrackRequestBody
-    fields:
-      - name: seasonId
-        type: string
-        index: 1
-      - name: episodeId
-        type: string
-        index: 2
-      - name: r2TrackDirname
-        type: string
-        index: 3
-      - name: name
-        type: string
-        index: 4
-      - name: isDefault
-        type: boolean
-        index: 5
-- message:
-    name: UpdateAudioTrackResponse
-- message:
-    name: DeleteAudioTrackRequestBody
-    fields:
-      - name: seasonId
-        type: string
-        index: 1
-      - name: episodeId
-        type: string
-        index: 2
-      - name: r2TrackDirname
-        type: string
-        index: 3
-- message:
-    name: DeleteAudioTrackResponse
-- message:
-    name: DropAudioTrackStagingDataRequestBody
-    fields:
-      - name: seasonId
-        type: string
-        index: 1
-      - name: episodeId
-        type: string
-        index: 2
-      - name: r2TrackDirname
-        type: string
-        index: 3
-- message:
-    name: DropAudioTrackStagingDataResponse
-- message:
-    name: UpdateSubtitleTrackRequestBody
-    fields:
-      - name: seasonId
-        type: string
-        index: 1
-      - name: episodeId
-        type: string
-        index: 2
-      - name: r2TrackDirname
-        type: string
-        index: 3
-      - name: name
-        type: string
-        index: 4
-      - name: isDefault
-        type: boolean
-        index: 5
-- message:
-    name: UpdateSubtitleTrackResponse
-- message:
-    name: DeleteSubtitleTrackRequestBody
-    fields:
-      - name: seasonId
-        type: string
-        index: 1
-      - name: episodeId
-        type: string
-        index: 2
-      - name: r2TrackDirname
-        type: string
-        index: 3
-- message:
-    name: DeleteSubtitleTrackResponse
-- message:
-    name: DropSubtitleTrackStagingDataRequestBody
-    fields:
-      - name: seasonId
-        type: string
-        index: 1
-      - name: episodeId
-        type: string
-        index: 2
-      - name: r2TrackDirname
-        type: string
-        index: 3
-- message:
-    name: DropSubtitleTrackStagingDataResponse
-- webService:
-    name: ProductShowwebPublisherService
-    remoteCalls:
-      - name: GetSeasonDetails
-        path: /GetSeasonDetails
-        body: GetSeasonDetailsRequestBody
-        sessionKey: sk
-        response: GetSeasonDetailsResponse
-      - name: CreateSeason
-        path: /CreateSeason
-        body: CreateSeasonRequestBody
-        sessionKey: sk
-        response: CreateSeasonResponse
-      - name: DeleteSeason
-        path: /DeleteSeason
-        body: DeleteSeasonRequestBody
-        sessionKey: sk
-        response: DeleteSeasonResponse
-      - name: ArchiveSeason
-        path: /ArchiveSeason
-        body: ArchiveSeasonRequestBody
-        sessionKey: sk
-        response: ArchiveSeasonResponse
-      - name: UpdateSeason
-        path: /UpdateSeason
-        body: UpdateSeasonRequestBody
-        sessionKey: sk
-        response: UpdateSeasonResponse
-      - name: UploadCoverImage
-        path: /UploadCoverImage
-        metadata:
-          key: mt
-          type: UploadCoverImageRequestMetadata
-        body: bytes
-        sessionKey: sk
-        response: UploadCoverImageResponse
-      - name: UpdateSeasonGrade
-        path: /UpdateSeasonGrade
-        body: UpdateSeasonGradeRequestBody
-        sessionKey: sk
-        response: UpdateSeasonGradeResponse
-      - name: ListSeasons
-        path: /ListSeasons
-        body: ListSeasonsRequestBody
-        sessionKey: sk
-        response: ListSeasonsResponse
-      - name: CreateEpisode
-        path: /CreateEpisode
-        body: CreateEpisodeRequestBody
-        sessionKey: sk
-        response: CreateEpisodeResponse
-      - name: DeleteEpisode
-        path: /DeleteEpisode
-        body: DeleteEpisodeRequestBody
-        sessionKey: sk
-        response: DeleteEpisodeResponse
-      - name: UpdateEpisode
-        path: /UpdateEpisode
-        body: UpdateEpisodeRequestBody
-        sessionKey: sk
-        response: UpdateEpisodeResponse
-      - name: UpdateEpisodeOrder
-        path: /UpdateEpisodeOrder
-        body: UpdateEpisodeOrderRequestBody
-        sessionKey: sk
-        response: UpdateEpisodeOrderResponse
-      - name: ListEpisodes
-        path: /ListEpisodes
-        body: ListEpisodesRequestBody
-        sessionKey: sk
-        response: ListEpisodesResponse
-      - name: PublishEpisode
-        path: /PublishEpisode
-        body: PublishEpisodeRequestBody
-        sessionKey: sk
-        response: PublishEpisodeResponse
-    outputClient: ./show/web/publisher/client
-    outputHandler: ./show/web/publisher/handler
+- kind: Message
+  name: CreateSeasonRequestBody
+  fields:
+    - name: name
+      type: string
+      index: 1
+- kind: Message
+  name: CreateSeasonResponse
+  fields:
+    - name: seasonId
+      type: string
+      index: 1
+- kind: Message
+  name: DeleteSeasonRequestBody
+  fields:
+    - name: seasonId
+      type: string
+      index: 1
+- kind: Message
+  name: DeleteSeasonResponse
+- kind: Message
+  name: GetSeasonRequestBody
+  fields:
+    - name: seasonId
+      type: string
+      index: 1
+- kind: Message
+  name: GetSeasonResponse
+  fields:
+    - name: seasonDetails
+      type: SeasonDetails
+      import: ./show/web/publisher/season_details
+      index: 1
+- kind: Message
+  name: ArchiveSeasonRequestBody
+  fields:
+    - name: seasonId
+      type: string
+      index: 1
+- kind: Message
+  name: ArchiveSeasonResponse
+- kind: Message
+  name: UpdateSeasonRequestBody
+  fields:
+    - name: seasonId
+      type: string
+      index: 1
+    - name: name
+      type: string
+      index: 2
+    - name: description
+      type: string
+      index: 3
+- kind: Message
+  name: UpdateSeasonResponse
+- kind: Message
+  name: UploadCoverImageRequestMetadata
+  fields:
+    - name: seasonId
+      type: string
+      index: 1
+- kind: Message
+  name: UploadCoverImageResponse
+- kind: Message
+  name: UpdateSeasonGradeRequestBody
+  fields:
+    - name: seasonId
+      type: string
+      index: 1
+    - name: grade
+      type: number
+      index: 2
+    - name: effectiveDate
+      type: string
+      index: 3
+- kind: Message
+  name: UpdateSeasonGradeResponse
+- kind: Message
+  name: ListSeasonsRequestBody
+  fields:
+    - name: state
+      type: SeasonState
+      import: ./show/season_state
+      index: 1
+    - name: lastChangeTimeCursor
+      type: number
+      index: 2
+    - name: limit
+      type: number
+      index: 3
+- kind: Message
+  name: ListSeasonsResponse
+  fields:
+    - name: seasons
+      type: SeasonSummary
+      import: ./show/web/publisher/season_summary
+      isArray: true
+      index: 1
+    - name: lastChangeTimeCursor
+      type: number
+      index: 2
+- kind: Message
+  name: CreateEpisodeRequestBody
+  fields:
+    - name: seasonId
+      type: string
+      index: 1
+    - name: episodeName
+      type: string
+      index: 2
+- kind: Message
+  name: CreateEpisodeResponse
+  fields:
+    - name: episode
+      type: EpisodeSummary
+      import: ./show/web/publisher/episode_summary
+      index: 1
+- kind: Message
+  name: DeleteEpisodeRequestBody
+  fields:
+    - name: seasonId
+      type: string
+      index: 1
+    - name: episodeId
+      type: string
+      index: 2
+- kind: Message
+  name: DeleteEpisodeResponse
+- kind: Message
+  name: GetEpisodeRequestBody
+  fields:
+    - name: seasonId
+      type: string
+      index: 1
+    - name: episodeId
+      type: string
+      index: 2
+- kind: Message
+  name: GetEpisodeResponse
+  fields:
+    - name: episode
+      type: EpisodeDetails
+      import: ./show/web/publisher/episode_details
+      index: 1
+- kind: Message
+  name: UpdateEpisodeRequestBody
+  fields:
+    - name: seasonId
+      type: string
+      index: 1
+    - name: episodeId
+      type: string
+      index: 2
+    - name: name
+      type: string
+      index: 3
+- kind: Message
+  name: UpdateEpisodeResponse
+- kind: Message
+  name: UpdateEpisodeOrderRequestBody
+  fields:
+    - name: seasonId
+      type: string
+      index: 1
+    - name: episodeId
+      type: string
+      index: 2
+    - name: toIndex
+      type: number
+      index: 3
+- kind: Message
+  name: UpdateEpisodeOrderResponse
+- kind: Message
+  name: PublishEpisodeRequestBody
+  fields:
+    - name: seasonId
+      type: string
+      index: 1
+    - name: episodeId
+      type: string
+      index: 2
+    - name: premierTimeMs
+      type: number
+      index: 3
+- kind: Message
+  name: PublishEpisodeResponse
+- kind: Message
+  name: UnpublishEpisodeRequestBody
+  fields:
+    - name: seasonId
+      type: string
+      index: 1
+    - name: episodeId
+      type: string
+      index: 2
+- kind: Message
+  name: UnpublishEpisodeResponse
+- kind: Message
+  name: ListEpisodesRequestBody
+  fields:
+    - name: seasonId
+      type: string
+      index: 1
+    - name: indexCursor
+      type: number
+      index: 2
+    - name: limit
+      type: number
+      index: 3
+- kind: Message
+  name: ListEpisodesResponse
+  fields:
+    - name: episodes
+      type: EpisodeSummary
+      import: ./show/web/publisher/episode_summary
+      isArray: true
+      index: 1
+    - name: indexCursor
+      type: number
+      index: 2
+- kind: Message
+  name: CommitEpisodeStagingDataRequestBody
+  fields:
+    - name: seasonId
+      type: string
+      index: 1
+    - name: episodeId
+      type: string
+      index: 2
+- kind: Enum
+  name: ValidationError
+  values:
+    - name: NO_VIDEO_TRACK
+      value: 1
+    - name: MORE_THAN_ONE_VIDEO_TRACKS
+      value: 2
+    - name: TOO_MANY_AUDIO_TRACKS
+      value: 3
+    - name: NO_DEFAULT_AUDIO_TRACK
+      value: 4
+    - name: MORE_THAN_ONE_DEFAULT_AUDIO_TRACKS
+      value: 5
+    - name: TOO_MANY_SUBTITLE_TRACKS
+      value: 6
+    - name: NO_DEFAULT_SUBTITLE_TRACK
+      value: 7
+    - name: MORE_THAN_ONE_DEFAULT_SUBTITLE_TRACKS
+      value: 8
+- kind: Message
+  name: CommitEpisodeStagingDataResponse
+  fields:
+    - name: success
+      type: boolean
+      index: 1
+    - name: error
+      type: ValidationError
+      index: 2
+- kind: Message
+  name: StartMediaUploadingRequestBody
+  fields:
+    - name: seasonId
+      type: string
+      index: 1
+    - name: episodeId
+      type: string
+      index: 2
+    - name: contentLength
+      type: number
+      index: 3
+    - name: fileType
+      type: string
+      index: 4
+- kind: Message
+  name: StartMediaUploadingResponse
+  fields:
+    - name: uploadSessionUrl
+      type: string
+      index: 1
+    - name: byteOffset
+      type: number
+      index: 2
+- kind: Message
+  name: CompleteMediaUploadingRequestBody
+  fields:
+    - name: seasonId
+      type: string
+      index: 1
+    - name: episodeId
+      type: string
+      index: 2
+    - name: uploadSessionUrl
+      type: string
+      index: 3
+- kind: Message
+  name: CompleteMediaUploadingResponse
+- kind: Message
+  name: CancelMediaUploadingRequestBody
+  fields:
+    - name: seasonId
+      type: string
+      index: 1
+    - name: episodeId
+      type: string
+      index: 2
+- kind: Message
+  name: CancelMediaUploadingResponse
+- kind: Message
+  name: StartSubtitleUploadingRequestBody
+  fields:
+    - name: seasonId
+      type: string
+      index: 1
+    - name: episodeId
+      type: string
+      index: 2
+    - name: contentLength
+      type: number
+      index: 3
+    - name: fileType
+      type: string
+      index: 4
+- kind: Message
+  name: StartSubtitleUploadingResponse
+  fields:
+    - name: uploadSessionUrl
+      type: string
+      index: 1
+    - name: byteOffset
+      type: number
+      index: 2
+- kind: Message
+  name: CompleteSubtitleUploadingRequestBody
+  fields:
+    - name: seasonId
+      type: string
+      index: 1
+    - name: episodeId
+      type: string
+      index: 2
+    - name: uploadSessionUrl
+      type: string
+      index: 3
+- kind: Message
+  name: CompleteSubtitleUploadingResponse
+- kind: Message
+  name: CancelSubtitleUploadingRequestBody
+  fields:
+    - name: seasonId
+      type: string
+      index: 1
+    - name: episodeId
+      type: string
+      index: 2
+- kind: Message
+  name: CancelSubtitleUploadingResponse
+- kind: Message
+  name: CancelMediaFormattingRequestBody
+  fields:
+    - name: seasonId
+      type: string
+      index: 1
+    - name: episodeId
+      type: string
+      index: 2
+- kind: Message
+  name: CancelMediaFormattingResponse
+- kind: Message
+  name: CancelSubtitleFormattingRequestBody
+  fields:
+    - name: seasonId
+      type: string
+      index: 1
+    - name: episodeId
+      type: string
+      index: 2
+- kind: Message
+  name: CancelSubtitleFormattingResponse
+- kind: Message
+  name: DeleteVideoTrackRequestBody
+  fields:
+    - name: seasonId
+      type: string
+      index: 1
+    - name: episodeId
+      type: string
+      index: 2
+    - name: r2TrackDirname
+      type: string
+      index: 3
+- kind: Message
+  name: DeleteVideoTrackResponse
+- kind: Message
+  name: DropVideoTrackStagingDataRequestBody
+  fields:
+    - name: seasonId
+      type: string
+      index: 1
+    - name: episodeId
+      type: string
+      index: 2
+    - name: r2TrackDirname
+      type: string
+      index: 3
+- kind: Message
+  name: DropVideoTrackStagingDataResponse
+- kind: Message
+  name: UpdateAudioTrackRequestBody
+  fields:
+    - name: seasonId
+      type: string
+      index: 1
+    - name: episodeId
+      type: string
+      index: 2
+    - name: r2TrackDirname
+      type: string
+      index: 3
+    - name: name
+      type: string
+      index: 4
+    - name: isDefault
+      type: boolean
+      index: 5
+- kind: Message
+  name: UpdateAudioTrackResponse
+- kind: Message
+  name: DeleteAudioTrackRequestBody
+  fields:
+    - name: seasonId
+      type: string
+      index: 1
+    - name: episodeId
+      type: string
+      index: 2
+    - name: r2TrackDirname
+      type: string
+      index: 3
+- kind: Message
+  name: DeleteAudioTrackResponse
+- kind: Message
+  name: DropAudioTrackStagingDataRequestBody
+  fields:
+    - name: seasonId
+      type: string
+      index: 1
+    - name: episodeId
+      type: string
+      index: 2
+    - name: r2TrackDirname
+      type: string
+      index: 3
+- kind: Message
+  name: DropAudioTrackStagingDataResponse
+- kind: Message
+  name: UpdateSubtitleTrackRequestBody
+  fields:
+    - name: seasonId
+      type: string
+      index: 1
+    - name: episodeId
+      type: string
+      index: 2
+    - name: r2TrackDirname
+      type: string
+      index: 3
+    - name: name
+      type: string
+      index: 4
+    - name: isDefault
+      type: boolean
+      index: 5
+- kind: Message
+  name: UpdateSubtitleTrackResponse
+- kind: Message
+  name: DeleteSubtitleTrackRequestBody
+  fields:
+    - name: seasonId
+      type: string
+      index: 1
+    - name: episodeId
+      type: string
+      index: 2
+    - name: r2TrackDirname
+      type: string
+      index: 3
+- kind: Message
+  name: DeleteSubtitleTrackResponse
+- kind: Message
+  name: DropSubtitleTrackStagingDataRequestBody
+  fields:
+    - name: seasonId
+      type: string
+      index: 1
+    - name: episodeId
+      type: string
+      index: 2
+    - name: r2TrackDirname
+      type: string
+      index: 3
+- kind: Message
+  name: DropSubtitleTrackStagingDataResponse
+
+- kind: WebService
+  name: ProductShowWebPublisherService
+  remoteCalls:
+    - name: GetSeason
+      path: /GetSeason
+      body: GetSeasonRequestBody
+      sessionKey: sk
+      response: GetSeasonResponse
+    - name: CreateSeason
+      path: /CreateSeason
+      body: CreateSeasonRequestBody
+      sessionKey: sk
+      response: CreateSeasonResponse
+    - name: DeleteSeason
+      path: /DeleteSeason
+      body: DeleteSeasonRequestBody
+      sessionKey: sk
+      response: DeleteSeasonResponse
+    - name: ArchiveSeason
+      path: /ArchiveSeason
+      body: ArchiveSeasonRequestBody
+      sessionKey: sk
+      response: ArchiveSeasonResponse
+    - name: UpdateSeason
+      path: /UpdateSeason
+      body: UpdateSeasonRequestBody
+      sessionKey: sk
+      response: UpdateSeasonResponse
+    - name: UploadCoverImage
+      path: /UploadCoverImage
+      metadata:
+        key: mt
+        type: UploadCoverImageRequestMetadata
+      body: bytes
+      sessionKey: sk
+      response: UploadCoverImageResponse
+    - name: UpdateSeasonGrade
+      path: /UpdateSeasonGrade
+      body: UpdateSeasonGradeRequestBody
+      sessionKey: sk
+      response: UpdateSeasonGradeResponse
+    - name: ListSeasons
+      path: /ListSeasons
+      body: ListSeasonsRequestBody
+      sessionKey: sk
+      response: ListSeasonsResponse
+    - name: CreateEpisode
+      path: /CreateEpisode
+      body: CreateEpisodeRequestBody
+      sessionKey: sk
+      response: CreateEpisodeResponse
+    - name: DeleteEpisode
+      path: /DeleteEpisode
+      body: DeleteEpisodeRequestBody
+      sessionKey: sk
+      response: DeleteEpisodeResponse
+    - name: GetEpisode
+      path: /GetEpisode
+      body: GetEpisodeRequestBody
+      sessionKey: sk
+      response: GetEpisodeResponse
+    - name: UpdateEpisode
+      path: /UpdateEpisode
+      body: UpdateEpisodeRequestBody
+      sessionKey: sk
+      response: UpdateEpisodeResponse
+    - name: UpdateEpisodeOrder
+      path: /UpdateEpisodeOrder
+      body: UpdateEpisodeOrderRequestBody
+      sessionKey: sk
+      response: UpdateEpisodeOrderResponse
+    - name: PublishEpisode
+      path: /PublishEpisode
+      body: PublishEpisodeRequestBody
+      sessionKey: sk
+      response: PublishEpisodeResponse
+    - name: UnpublishEpisode
+      path: /UnpublishEpisode
+      body: UnpublishEpisodeRequestBody
+      sessionKey: sk
+      response: UnpublishEpisodeResponse
+    - name: ListEpisodes
+      path: /ListEpisodes
+      body: ListEpisodesRequestBody
+      sessionKey: sk
+      response: ListEpisodesResponse
+    - name: CommitEpisodeStagingData
+      path: /CommitEpisodeStagingData
+      body: CommitEpisodeStagingDataRequestBody
+      sessionKey: sk
+      response: CommitEpisodeStagingDataResponse
+    - name: StartMediaUploading
+      path: /StartMediaUploading
+      body: StartMediaUploadingRequestBody
+      sessionKey: sk
+      response: StartMediaUploadingResponse
+    - name: CompleteMediaUploading
+      path: /CompleteMediaUploading
+      body: CompleteMediaUploadingRequestBody
+      sessionKey: sk
+      response: CompleteMediaUploadingResponse
+    - name: CancelMediaUploading
+      path: /CancelMediaUploading
+      body: CancelMediaUploadingRequestBody
+      sessionKey: sk
+      response: CancelMediaUploadingResponse
+    - name: StartSubtitleUploading
+      path: /StartSubtitleUploading
+      body: StartSubtitleUploadingRequestBody
+      sessionKey: sk
+      response: StartSubtitleUploadingResponse
+    - name: CompleteSubtitleUploading
+      path: /CompleteSubtitleUploading
+      body: CompleteSubtitleUploadingRequestBody
+      sessionKey: sk
+      response: CompleteSubtitleUploadingResponse
+    - name: CancelSubtitleUploading
+      path: /CancelSubtitleUploading
+      body: CancelSubtitleUploadingRequestBody
+      sessionKey: sk
+      response: CancelSubtitleUploadingResponse
+    - name: CancelMediaFormatting
+      path: /CancelMediaFormatting
+      body: CancelMediaFormattingRequestBody
+      sessionKey: sk
+      response: CancelMediaFormattingResponse
+    - name: CancelSubtitleFormatting
+      path: /CancelSubtitleFormatting
+      body: CancelSubtitleFormattingRequestBody
+      sessionKey: sk
+      response: CancelSubtitleFormattingResponse
+    - name: DeleteVideoTrack
+      path: /DeleteVideoTrack
+      body: DeleteVideoTrackRequestBody
+      sessionKey: sk
+      response: DeleteVideoTrackResponse
+    - name: DropVideoTrackStagingData
+      path: /DropVideoTrackStagingData
+      body: DropVideoTrackStagingDataRequestBody
+      sessionKey: sk
+      response: DropVideoTrackStagingDataResponse
+    - name: UpdateAudioTrack
+      path: /UpdateAudioTrack
+      body: UpdateAudioTrackRequestBody
+      sessionKey: sk
+      response: UpdateAudioTrackResponse
+    - name: DeleteAudioTrack
+      path: /DeleteAudioTrack
+      body: DeleteAudioTrackRequestBody
+      sessionKey: sk
+      response: DeleteAudioTrackResponse
+    - name: DropAudioTrackStagingData
+      path: /DropAudioTrackStagingData
+      body: DropAudioTrackStagingDataRequestBody
+      sessionKey: sk
+      response: DropAudioTrackStagingDataResponse
+    - name: UpdateSubtitleTrack
+      path: /UpdateSubtitleTrack
+      body: UpdateSubtitleTrackRequestBody
+      sessionKey: sk
+      response: UpdateSubtitleTrackResponse
+    - name: DeleteSubtitleTrack
+      path: /DeleteSubtitleTrack
+      body: DeleteSubtitleTrackRequestBody
+      sessionKey: sk
+      response: DeleteSubtitleTrackResponse
+    - name: DropSubtitleTrackStagingData
+      path: /DropSubtitleTrackStagingData
+      body: DropSubtitleTrackStagingDataRequestBody
+      sessionKey: sk
+      response: DropSubtitleTrackStagingDataResponse
+  outputClient: ./show/web/publisher/client
+  outputHandler: ./show/web/publisher/handler

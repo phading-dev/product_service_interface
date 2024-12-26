@@ -1,74 +1,72 @@
-- message:
-    name: GetSeasonDetailsRequestBody
-    fields:
-      - name: seasonId
-        type: string
-        index: 1
-- message:
-    name: GetSeasonDetailsResponse
-    fields:
-      - name: seasonDetails
-        type: SeasonDetails
-        import: ./show/web/consumer/season_details
-        index: 1
-- message:
-    name: GetVideoToPlayRequestBody
-    fields:
-      - name: seasonId
-        type: string
-        index: 1
-      - name: episodeId
-        type: string
-        index: 2
-- message:
-    name: GetVideoToPlayResponse
-    fields:
-      - name: videoUrl
-        type: string
-        index: 1
-      - name: continueTimeMs
-        type: number
-        index: 2
-- message:
-    name: GetMoreEpisodesRequestBody
-    fields:
-      - name: seasonId
-        type: string
-        index: 1
-      - name: indexCursor
-        type: number
-        index: 2
-      - name: next # Next index or prev index
-        type: boolean
-        index: 3
-- message:
-    name: GetMoreEpisodesResponse
-    fields:
-      - name: episodes
-        type: EpisodeSummary
-        import: ./show/web/consumer/season_details
-        isArray: true
-        index: 1
-      - name: indexCursor
-        type: number
-        index: 2
-- webService:
-    name: ProductShowFrontnedConsumerService
-    remoteCalls:
-      - name: GetSeasonDetails
-        path: /GetSeasonDetails
-        body: GetSeasonDetailsRequestBody
-        sessionKey: sk
-        response: GetSeasonDetailsResponse
-      - name: GetVideoToPlay
-        path: /GetVideoToPlay
-        body: GetVideoToPlayRequestBody
-        sessionKey: sk
-        response: GetVideoToPlayResponse
-      - name: GetMoreEpisodes
-        path: /GetMoreEpisodes
-        body: GetMoreEpisodesRequestBody
-        sessionKey: sk
-        response: GetMoreEpisodesResponse
-    outputClient: ./show/web/consumer/client
-    outputHandler: ./show/web/consumer/handler
+- kind: Message
+  name: GetSeasonDetailsRequestBody
+  fields:
+    - name: seasonId
+      type: string
+      index: 1
+- kind: Message
+  name: GetSeasonDetailsResponse
+  fields:
+    - name: seasonDetails
+      type: SeasonDetails
+      import: ./show/web/consumer/season_details
+      index: 1
+- kind: Message
+  name: GetVideoToPlayRequestBody
+  fields:
+    - name: seasonId
+      type: string
+      index: 1
+    - name: episodeId
+      type: string
+      index: 2
+- kind: Message
+  name: GetVideoToPlayResponse
+  fields:
+    - name: videoUrl
+      type: string
+      index: 1
+    - name: continueTimeMs
+      type: number
+      index: 2
+- kind: Message
+  name: ListEpisodesRequestBody
+  fields:
+    - name: seasonId
+      type: string
+      index: 1
+    - name: indexCursor
+      type: number
+      index: 2
+    - name: next # Next index or prev index
+      type: boolean
+      index: 3
+    - name: limit
+      type: number
+      index: 4
+- kind: Message
+  name: ListEpisodesResponse
+  fields:
+    - name: episodes
+      type: EpisodeSummary
+      import: ./show/web/consumer/episode_summary
+      isArray: true
+      index: 1
+    - name: indexCursor
+      type: number
+      index: 2
+- kind: WebService
+  name: ProductShowFrontnedConsumerService
+  remoteCalls:
+    - name: GetSeasonDetails
+      path: /GetSeasonDetails
+      body: GetSeasonDetailsRequestBody
+      sessionKey: sk
+      response: GetSeasonDetailsResponse
+    - name: ListEpisodes
+      path: /ListEpisodes
+      body: ListEpisodesRequestBody
+      sessionKey: sk
+      response: ListEpisodesResponse
+  outputClient: ./show/web/consumer/client
+  outputHandler: ./show/web/consumer/handler

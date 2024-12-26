@@ -1,14 +1,40 @@
 import { PrimitiveType, MessageDescriptor } from '@selfage/message/descriptor';
-import { VideoContainer, VIDEO_CONTAINER } from '../season_details';
+import { VideoContainer, VIDEO_CONTAINER } from '../video_container';
 import { NodeRemoteCallDescriptor } from '@selfage/service_descriptor';
 
-export interface GetSeasonPublisherAndGradeRequestBody {
+export interface GetSeasonPublisherRequestBody {
+  seasonId?: string,
+}
+
+export let GET_SEASON_PUBLISHER_REQUEST_BODY: MessageDescriptor<GetSeasonPublisherRequestBody> = {
+  name: 'GetSeasonPublisherRequestBody',
+  fields: [{
+    name: 'seasonId',
+    index: 1,
+    primitiveType: PrimitiveType.STRING,
+  }],
+};
+
+export interface GetSeasonPublisherResponse {
+  publisherId?: string,
+}
+
+export let GET_SEASON_PUBLISHER_RESPONSE: MessageDescriptor<GetSeasonPublisherResponse> = {
+  name: 'GetSeasonPublisherResponse',
+  fields: [{
+    name: 'publisherId',
+    index: 1,
+    primitiveType: PrimitiveType.STRING,
+  }],
+};
+
+export interface GetSeasonGradeRequestBody {
   seasonId?: string,
   date?: string,
 }
 
-export let GET_SEASON_PUBLISHER_AND_GRADE_REQUEST_BODY: MessageDescriptor<GetSeasonPublisherAndGradeRequestBody> = {
-  name: 'GetSeasonPublisherAndGradeRequestBody',
+export let GET_SEASON_GRADE_REQUEST_BODY: MessageDescriptor<GetSeasonGradeRequestBody> = {
+  name: 'GetSeasonGradeRequestBody',
   fields: [{
     name: 'seasonId',
     index: 1,
@@ -20,30 +46,25 @@ export let GET_SEASON_PUBLISHER_AND_GRADE_REQUEST_BODY: MessageDescriptor<GetSea
   }],
 };
 
-export interface GetSeasonPublisherAndGradeResponse {
-  publisherId?: string,
+export interface GetSeasonGradeResponse {
   grade?: number,
 }
 
-export let GET_SEASON_PUBLISHER_AND_GRADE_RESPONSE: MessageDescriptor<GetSeasonPublisherAndGradeResponse> = {
-  name: 'GetSeasonPublisherAndGradeResponse',
+export let GET_SEASON_GRADE_RESPONSE: MessageDescriptor<GetSeasonGradeResponse> = {
+  name: 'GetSeasonGradeResponse',
   fields: [{
-    name: 'publisherId',
-    index: 1,
-    primitiveType: PrimitiveType.STRING,
-  }, {
     name: 'grade',
-    index: 2,
+    index: 1,
     primitiveType: PrimitiveType.NUMBER,
   }],
 };
 
-export interface GetSeasonNameRequestBody {
+export interface GetSeasonRequestBody {
   seasonId?: string,
 }
 
-export let GET_SEASON_NAME_REQUEST_BODY: MessageDescriptor<GetSeasonNameRequestBody> = {
-  name: 'GetSeasonNameRequestBody',
+export let GET_SEASON_REQUEST_BODY: MessageDescriptor<GetSeasonRequestBody> = {
+  name: 'GetSeasonRequestBody',
   fields: [{
     name: 'seasonId',
     index: 1,
@@ -51,26 +72,26 @@ export let GET_SEASON_NAME_REQUEST_BODY: MessageDescriptor<GetSeasonNameRequestB
   }],
 };
 
-export interface GetSeasonNameResponse {
-  seasonName?: string,
+export interface GetSeasonResponse {
+  name?: string,
 }
 
-export let GET_SEASON_NAME_RESPONSE: MessageDescriptor<GetSeasonNameResponse> = {
-  name: 'GetSeasonNameResponse',
+export let GET_SEASON_RESPONSE: MessageDescriptor<GetSeasonResponse> = {
+  name: 'GetSeasonResponse',
   fields: [{
-    name: 'seasonName',
+    name: 'name',
     index: 1,
     primitiveType: PrimitiveType.STRING,
   }],
 };
 
-export interface ProcessVideoContainerCreatingTaskRequsetBody {
+export interface ProcessVideoContainerCreatingTaskRequestBody {
   seasonId?: string,
   episodeId?: string,
 }
 
-export let PROCESS_VIDEO_CONTAINER_CREATING_TASK_REQUSET_BODY: MessageDescriptor<ProcessVideoContainerCreatingTaskRequsetBody> = {
-  name: 'ProcessVideoContainerCreatingTaskRequsetBody',
+export let PROCESS_VIDEO_CONTAINER_CREATING_TASK_REQUEST_BODY: MessageDescriptor<ProcessVideoContainerCreatingTaskRequestBody> = {
+  name: 'ProcessVideoContainerCreatingTaskRequestBody',
   fields: [{
     name: 'seasonId',
     index: 1,
@@ -90,34 +111,34 @@ export let PROCESS_VIDEO_CONTAINER_CREATING_TASK_RESPONSE: MessageDescriptor<Pro
   fields: [],
 };
 
-export interface GetVideoContainerCreatingTasksRequestBody {
+export interface ListVideoContainerCreatingTasksRequestBody {
 }
 
-export let GET_VIDEO_CONTAINER_CREATING_TASKS_REQUEST_BODY: MessageDescriptor<GetVideoContainerCreatingTasksRequestBody> = {
-  name: 'GetVideoContainerCreatingTasksRequestBody',
+export let LIST_VIDEO_CONTAINER_CREATING_TASKS_REQUEST_BODY: MessageDescriptor<ListVideoContainerCreatingTasksRequestBody> = {
+  name: 'ListVideoContainerCreatingTasksRequestBody',
   fields: [],
 };
 
-export interface GetVideoContainerCreatingTasksResponse {
-  tasks?: Array<ProcessVideoContainerCreatingTaskRequsetBody>,
+export interface ListVideoContainerCreatingTasksResponse {
+  tasks?: Array<ProcessVideoContainerCreatingTaskRequestBody>,
 }
 
-export let GET_VIDEO_CONTAINER_CREATING_TASKS_RESPONSE: MessageDescriptor<GetVideoContainerCreatingTasksResponse> = {
-  name: 'GetVideoContainerCreatingTasksResponse',
+export let LIST_VIDEO_CONTAINER_CREATING_TASKS_RESPONSE: MessageDescriptor<ListVideoContainerCreatingTasksResponse> = {
+  name: 'ListVideoContainerCreatingTasksResponse',
   fields: [{
     name: 'tasks',
     index: 1,
-    messageType: PROCESS_VIDEO_CONTAINER_CREATING_TASK_REQUSET_BODY,
+    messageType: PROCESS_VIDEO_CONTAINER_CREATING_TASK_REQUEST_BODY,
     isArray: true,
   }],
 };
 
-export interface ProcessVideoContainerDeletingTaskRequsetBody {
+export interface ProcessVideoContainerDeletingTaskRequestBody {
   videoContainerId?: string,
 }
 
-export let PROCESS_VIDEO_CONTAINER_DELETING_TASK_REQUSET_BODY: MessageDescriptor<ProcessVideoContainerDeletingTaskRequsetBody> = {
-  name: 'ProcessVideoContainerDeletingTaskRequsetBody',
+export let PROCESS_VIDEO_CONTAINER_DELETING_TASK_REQUEST_BODY: MessageDescriptor<ProcessVideoContainerDeletingTaskRequestBody> = {
+  name: 'ProcessVideoContainerDeletingTaskRequestBody',
   fields: [{
     name: 'videoContainerId',
     index: 1,
@@ -133,37 +154,37 @@ export let PROCESS_VIDEO_CONTAINER_DELETING_TASK_RESPONSE: MessageDescriptor<Pro
   fields: [],
 };
 
-export interface GetVideoContainerDeletingTasksRequestBody {
+export interface ListVideoContainerDeletingTasksRequestBody {
 }
 
-export let GET_VIDEO_CONTAINER_DELETING_TASKS_REQUEST_BODY: MessageDescriptor<GetVideoContainerDeletingTasksRequestBody> = {
-  name: 'GetVideoContainerDeletingTasksRequestBody',
+export let LIST_VIDEO_CONTAINER_DELETING_TASKS_REQUEST_BODY: MessageDescriptor<ListVideoContainerDeletingTasksRequestBody> = {
+  name: 'ListVideoContainerDeletingTasksRequestBody',
   fields: [],
 };
 
-export interface GetVideoContainerDeletingTasksResponse {
-  tasks?: Array<ProcessVideoContainerDeletingTaskRequsetBody>,
+export interface ListVideoContainerDeletingTasksResponse {
+  tasks?: Array<ProcessVideoContainerDeletingTaskRequestBody>,
 }
 
-export let GET_VIDEO_CONTAINER_DELETING_TASKS_RESPONSE: MessageDescriptor<GetVideoContainerDeletingTasksResponse> = {
-  name: 'GetVideoContainerDeletingTasksResponse',
+export let LIST_VIDEO_CONTAINER_DELETING_TASKS_RESPONSE: MessageDescriptor<ListVideoContainerDeletingTasksResponse> = {
+  name: 'ListVideoContainerDeletingTasksResponse',
   fields: [{
     name: 'tasks',
     index: 1,
-    messageType: PROCESS_VIDEO_CONTAINER_DELETING_TASK_REQUSET_BODY,
+    messageType: PROCESS_VIDEO_CONTAINER_DELETING_TASK_REQUEST_BODY,
     isArray: true,
   }],
 };
 
-export interface SyncEpisodeVideoContainerInfoRequestBody {
+export interface CacheVideoContainerRequestBody {
   seasonId?: string,
   episodeId?: string,
   videoContainerId?: string,
   videoContainer?: VideoContainer,
 }
 
-export let SYNC_EPISODE_VIDEO_CONTAINER_INFO_REQUEST_BODY: MessageDescriptor<SyncEpisodeVideoContainerInfoRequestBody> = {
-  name: 'SyncEpisodeVideoContainerInfoRequestBody',
+export let CACHE_VIDEO_CONTAINER_REQUEST_BODY: MessageDescriptor<CacheVideoContainerRequestBody> = {
+  name: 'CacheVideoContainerRequestBody',
   fields: [{
     name: 'seasonId',
     index: 1,
@@ -183,33 +204,44 @@ export let SYNC_EPISODE_VIDEO_CONTAINER_INFO_REQUEST_BODY: MessageDescriptor<Syn
   }],
 };
 
-export interface SyncEpisodeVideoContainerInfoResponse {
+export interface CacheVideoContainerResponse {
 }
 
-export let SYNC_EPISODE_VIDEO_CONTAINER_INFO_RESPONSE: MessageDescriptor<SyncEpisodeVideoContainerInfoResponse> = {
-  name: 'SyncEpisodeVideoContainerInfoResponse',
+export let CACHE_VIDEO_CONTAINER_RESPONSE: MessageDescriptor<CacheVideoContainerResponse> = {
+  name: 'CacheVideoContainerResponse',
   fields: [],
 };
 
-export let GET_SEASON_PUBLISHER_AND_GRADE: NodeRemoteCallDescriptor = {
-  name: "GetSeasonPublisherAndGrade",
-  path: "/GetSeasonPublisherAndGrade",
+export let GET_SEASON_PUBLISHER: NodeRemoteCallDescriptor = {
+  name: "GetSeasonPublisher",
+  path: "/GetSeasonPublisher",
   body: {
-    messageType: GET_SEASON_PUBLISHER_AND_GRADE_REQUEST_BODY,
+    messageType: GET_SEASON_PUBLISHER_REQUEST_BODY,
   },
   response: {
-    messageType: GET_SEASON_PUBLISHER_AND_GRADE_RESPONSE,
+    messageType: GET_SEASON_PUBLISHER_RESPONSE,
   },
 }
 
-export let GET_SEASON_NAME: NodeRemoteCallDescriptor = {
-  name: "GetSeasonName",
-  path: "/GetSeasonName",
+export let GET_SEASON_GRADE: NodeRemoteCallDescriptor = {
+  name: "GetSeasonGrade",
+  path: "/GetSeasonGrade",
   body: {
-    messageType: GET_SEASON_NAME_REQUEST_BODY,
+    messageType: GET_SEASON_GRADE_REQUEST_BODY,
   },
   response: {
-    messageType: GET_SEASON_NAME_RESPONSE,
+    messageType: GET_SEASON_GRADE_RESPONSE,
+  },
+}
+
+export let GET_SEASON: NodeRemoteCallDescriptor = {
+  name: "GetSeason",
+  path: "/GetSeason",
+  body: {
+    messageType: GET_SEASON_REQUEST_BODY,
+  },
+  response: {
+    messageType: GET_SEASON_RESPONSE,
   },
 }
 
@@ -217,21 +249,21 @@ export let PROCESS_VIDEO_CONTAINER_CREATING_TASK: NodeRemoteCallDescriptor = {
   name: "ProcessVideoContainerCreatingTask",
   path: "/ProcessVideoContainerCreatingTask",
   body: {
-    messageType: PROCESS_VIDEO_CONTAINER_CREATING_TASK_REQUSET_BODY,
+    messageType: PROCESS_VIDEO_CONTAINER_CREATING_TASK_REQUEST_BODY,
   },
   response: {
     messageType: PROCESS_VIDEO_CONTAINER_CREATING_TASK_RESPONSE,
   },
 }
 
-export let GET_VIDEO_CONTAINER_CREATING_TASKS: NodeRemoteCallDescriptor = {
-  name: "GetVideoContainerCreatingTasks",
-  path: "/GetVideoContainerCreatingTasks",
+export let LIST_VIDEO_CONTAINER_CREATING_TASKS: NodeRemoteCallDescriptor = {
+  name: "ListVideoContainerCreatingTasks",
+  path: "/ListVideoContainerCreatingTasks",
   body: {
-    messageType: GET_VIDEO_CONTAINER_CREATING_TASKS_REQUEST_BODY,
+    messageType: LIST_VIDEO_CONTAINER_CREATING_TASKS_REQUEST_BODY,
   },
   response: {
-    messageType: GET_VIDEO_CONTAINER_CREATING_TASKS_RESPONSE,
+    messageType: LIST_VIDEO_CONTAINER_CREATING_TASKS_RESPONSE,
   },
 }
 
@@ -239,31 +271,31 @@ export let PROCESS_VIDEO_CONTAINER_DELETING_TASK: NodeRemoteCallDescriptor = {
   name: "ProcessVideoContainerDeletingTask",
   path: "/ProcessVideoContainerDeletingTask",
   body: {
-    messageType: PROCESS_VIDEO_CONTAINER_DELETING_TASK_REQUSET_BODY,
+    messageType: PROCESS_VIDEO_CONTAINER_DELETING_TASK_REQUEST_BODY,
   },
   response: {
     messageType: PROCESS_VIDEO_CONTAINER_DELETING_TASK_RESPONSE,
   },
 }
 
-export let GET_VIDEO_CONTAINER_DELETING_TASKS: NodeRemoteCallDescriptor = {
-  name: "GetVideoContainerDeletingTasks",
-  path: "/GetVideoContainerDeletingTasks",
+export let LIST_VIDEO_CONTAINER_DELETING_TASKS: NodeRemoteCallDescriptor = {
+  name: "ListVideoContainerDeletingTasks",
+  path: "/ListVideoContainerDeletingTasks",
   body: {
-    messageType: GET_VIDEO_CONTAINER_DELETING_TASKS_REQUEST_BODY,
+    messageType: LIST_VIDEO_CONTAINER_DELETING_TASKS_REQUEST_BODY,
   },
   response: {
-    messageType: GET_VIDEO_CONTAINER_DELETING_TASKS_RESPONSE,
+    messageType: LIST_VIDEO_CONTAINER_DELETING_TASKS_RESPONSE,
   },
 }
 
-export let SYNC_EPISODE_VIDEO_CONTAINER_INFO: NodeRemoteCallDescriptor = {
-  name: "SyncEpisodeVideoContainerInfo",
-  path: "/SyncEpisodeVideoContainerInfo",
+export let CACHE_VIDEO_CONTAINER: NodeRemoteCallDescriptor = {
+  name: "CacheVideoContainer",
+  path: "/CacheVideoContainer",
   body: {
-    messageType: SYNC_EPISODE_VIDEO_CONTAINER_INFO_REQUEST_BODY,
+    messageType: CACHE_VIDEO_CONTAINER_REQUEST_BODY,
   },
   response: {
-    messageType: SYNC_EPISODE_VIDEO_CONTAINER_INFO_RESPONSE,
+    messageType: CACHE_VIDEO_CONTAINER_RESPONSE,
   },
 }

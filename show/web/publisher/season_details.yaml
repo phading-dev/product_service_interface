@@ -1,0 +1,40 @@
+- kind: Message
+  name: NextGrade
+  fields:
+    - name: grade
+      type: number
+      index: 1
+    - name: effectiveDate # ISO string
+      type: string
+      index: 2
+- kind: Message
+  name: SeasonDetails
+  fields:
+    - name: name
+      type: string
+      index: 1
+    - name: description
+      type: string
+      index: 2
+    - name: coverImageUrl
+      type: string
+      index: 3
+    - name: totalEpisodes
+      type: number
+      index: 4
+    - name: grade
+      type: number
+      index: 5
+    - name: nextGrade
+      type: NextGrade
+      index: 6
+    - name: createdTimeMs
+      type: number
+      index: 7
+    - name: lastChangeTimeMs
+      type: number
+      index: 8
+    - name: state
+      type: SeasonState
+      import: ./show/season_state
+      index: 9

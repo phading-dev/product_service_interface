@@ -1,45 +1,10 @@
 import { PrimitiveType, MessageDescriptor, EnumDescriptor } from '@selfage/message/descriptor';
-import { SeasonDetails, SEASON_DETAILS, Episode, EPISODE } from '../../season_details';
+import { SeasonDetails, SEASON_DETAILS } from './season_details';
 import { SeasonState, SEASON_STATE } from '../../season_state';
 import { SeasonSummary, SEASON_SUMMARY } from './season_summary';
+import { EpisodeSummary, EPISODE_SUMMARY } from './episode_summary';
+import { EpisodeDetails, EPISODE_DETAILS } from './episode_details';
 import { WebRemoteCallDescriptor, PrimitveTypeForBody } from '@selfage/service_descriptor';
-
-export interface GetSeasonDetailsRequestBody {
-  seasonId?: string,
-}
-
-export let GET_SEASON_DETAILS_REQUEST_BODY: MessageDescriptor<GetSeasonDetailsRequestBody> = {
-  name: 'GetSeasonDetailsRequestBody',
-  fields: [{
-    name: 'seasonId',
-    index: 1,
-    primitiveType: PrimitiveType.STRING,
-  }],
-};
-
-export interface GetSeasonDetailsResponse {
-  seasonDetails?: SeasonDetails,
-  episodes?: Array<Episode>,
-  indexCursor?: number,
-}
-
-export let GET_SEASON_DETAILS_RESPONSE: MessageDescriptor<GetSeasonDetailsResponse> = {
-  name: 'GetSeasonDetailsResponse',
-  fields: [{
-    name: 'seasonDetails',
-    index: 1,
-    messageType: SEASON_DETAILS,
-  }, {
-    name: 'episodes',
-    index: 2,
-    messageType: EPISODE,
-    isArray: true,
-  }, {
-    name: 'indexCursor',
-    index: 3,
-    primitiveType: PrimitiveType.NUMBER,
-  }],
-};
 
 export interface CreateSeasonRequestBody {
   name?: string,
@@ -86,6 +51,32 @@ export interface DeleteSeasonResponse {
 export let DELETE_SEASON_RESPONSE: MessageDescriptor<DeleteSeasonResponse> = {
   name: 'DeleteSeasonResponse',
   fields: [],
+};
+
+export interface GetSeasonRequestBody {
+  seasonId?: string,
+}
+
+export let GET_SEASON_REQUEST_BODY: MessageDescriptor<GetSeasonRequestBody> = {
+  name: 'GetSeasonRequestBody',
+  fields: [{
+    name: 'seasonId',
+    index: 1,
+    primitiveType: PrimitiveType.STRING,
+  }],
+};
+
+export interface GetSeasonResponse {
+  seasonDetails?: SeasonDetails,
+}
+
+export let GET_SEASON_RESPONSE: MessageDescriptor<GetSeasonResponse> = {
+  name: 'GetSeasonResponse',
+  fields: [{
+    name: 'seasonDetails',
+    index: 1,
+    messageType: SEASON_DETAILS,
+  }],
 };
 
 export interface ArchiveSeasonRequestBody {
@@ -164,7 +155,7 @@ export let UPLOAD_COVER_IMAGE_RESPONSE: MessageDescriptor<UploadCoverImageRespon
 export interface UpdateSeasonGradeRequestBody {
   seasonId?: string,
   grade?: number,
-  effectiveDate?: number,
+  effectiveDate?: string,
 }
 
 export let UPDATE_SEASON_GRADE_REQUEST_BODY: MessageDescriptor<UpdateSeasonGradeRequestBody> = {
@@ -180,7 +171,7 @@ export let UPDATE_SEASON_GRADE_REQUEST_BODY: MessageDescriptor<UpdateSeasonGrade
   }, {
     name: 'effectiveDate',
     index: 3,
-    primitiveType: PrimitiveType.NUMBER,
+    primitiveType: PrimitiveType.STRING,
   }],
 };
 
@@ -195,6 +186,7 @@ export let UPDATE_SEASON_GRADE_RESPONSE: MessageDescriptor<UpdateSeasonGradeResp
 export interface ListSeasonsRequestBody {
   state?: SeasonState,
   lastChangeTimeCursor?: number,
+  limit?: number,
 }
 
 export let LIST_SEASONS_REQUEST_BODY: MessageDescriptor<ListSeasonsRequestBody> = {
@@ -206,6 +198,10 @@ export let LIST_SEASONS_REQUEST_BODY: MessageDescriptor<ListSeasonsRequestBody> 
   }, {
     name: 'lastChangeTimeCursor',
     index: 2,
+    primitiveType: PrimitiveType.NUMBER,
+  }, {
+    name: 'limit',
+    index: 3,
     primitiveType: PrimitiveType.NUMBER,
   }],
 };
@@ -248,7 +244,7 @@ export let CREATE_EPISODE_REQUEST_BODY: MessageDescriptor<CreateEpisodeRequestBo
 };
 
 export interface CreateEpisodeResponse {
-  episode?: Episode,
+  episode?: EpisodeSummary,
 }
 
 export let CREATE_EPISODE_RESPONSE: MessageDescriptor<CreateEpisodeResponse> = {
@@ -256,7 +252,7 @@ export let CREATE_EPISODE_RESPONSE: MessageDescriptor<CreateEpisodeResponse> = {
   fields: [{
     name: 'episode',
     index: 1,
-    messageType: EPISODE,
+    messageType: EPISODE_SUMMARY,
   }],
 };
 
@@ -284,6 +280,37 @@ export interface DeleteEpisodeResponse {
 export let DELETE_EPISODE_RESPONSE: MessageDescriptor<DeleteEpisodeResponse> = {
   name: 'DeleteEpisodeResponse',
   fields: [],
+};
+
+export interface GetEpisodeRequestBody {
+  seasonId?: string,
+  episodeId?: string,
+}
+
+export let GET_EPISODE_REQUEST_BODY: MessageDescriptor<GetEpisodeRequestBody> = {
+  name: 'GetEpisodeRequestBody',
+  fields: [{
+    name: 'seasonId',
+    index: 1,
+    primitiveType: PrimitiveType.STRING,
+  }, {
+    name: 'episodeId',
+    index: 2,
+    primitiveType: PrimitiveType.STRING,
+  }],
+};
+
+export interface GetEpisodeResponse {
+  episode?: EpisodeDetails,
+}
+
+export let GET_EPISODE_RESPONSE: MessageDescriptor<GetEpisodeResponse> = {
+  name: 'GetEpisodeResponse',
+  fields: [{
+    name: 'episode',
+    index: 1,
+    messageType: EPISODE_DETAILS,
+  }],
 };
 
 export interface UpdateEpisodeRequestBody {
@@ -348,43 +375,6 @@ export let UPDATE_EPISODE_ORDER_RESPONSE: MessageDescriptor<UpdateEpisodeOrderRe
   fields: [],
 };
 
-export interface ListEpisodesRequestBody {
-  seasonId?: string,
-  indexCursor?: number,
-}
-
-export let LIST_EPISODES_REQUEST_BODY: MessageDescriptor<ListEpisodesRequestBody> = {
-  name: 'ListEpisodesRequestBody',
-  fields: [{
-    name: 'seasonId',
-    index: 1,
-    primitiveType: PrimitiveType.STRING,
-  }, {
-    name: 'indexCursor',
-    index: 2,
-    primitiveType: PrimitiveType.NUMBER,
-  }],
-};
-
-export interface ListEpisodesResponse {
-  episodes?: Array<Episode>,
-  indexCursor?: number,
-}
-
-export let LIST_EPISODES_RESPONSE: MessageDescriptor<ListEpisodesResponse> = {
-  name: 'ListEpisodesResponse',
-  fields: [{
-    name: 'episodes',
-    index: 1,
-    messageType: EPISODE,
-    isArray: true,
-  }, {
-    name: 'indexCursor',
-    index: 2,
-    primitiveType: PrimitiveType.NUMBER,
-  }],
-};
-
 export interface PublishEpisodeRequestBody {
   seasonId?: string,
   episodeId?: string,
@@ -414,6 +404,74 @@ export interface PublishEpisodeResponse {
 export let PUBLISH_EPISODE_RESPONSE: MessageDescriptor<PublishEpisodeResponse> = {
   name: 'PublishEpisodeResponse',
   fields: [],
+};
+
+export interface UnpublishEpisodeRequestBody {
+  seasonId?: string,
+  episodeId?: string,
+}
+
+export let UNPUBLISH_EPISODE_REQUEST_BODY: MessageDescriptor<UnpublishEpisodeRequestBody> = {
+  name: 'UnpublishEpisodeRequestBody',
+  fields: [{
+    name: 'seasonId',
+    index: 1,
+    primitiveType: PrimitiveType.STRING,
+  }, {
+    name: 'episodeId',
+    index: 2,
+    primitiveType: PrimitiveType.STRING,
+  }],
+};
+
+export interface UnpublishEpisodeResponse {
+}
+
+export let UNPUBLISH_EPISODE_RESPONSE: MessageDescriptor<UnpublishEpisodeResponse> = {
+  name: 'UnpublishEpisodeResponse',
+  fields: [],
+};
+
+export interface ListEpisodesRequestBody {
+  seasonId?: string,
+  indexCursor?: number,
+  limit?: number,
+}
+
+export let LIST_EPISODES_REQUEST_BODY: MessageDescriptor<ListEpisodesRequestBody> = {
+  name: 'ListEpisodesRequestBody',
+  fields: [{
+    name: 'seasonId',
+    index: 1,
+    primitiveType: PrimitiveType.STRING,
+  }, {
+    name: 'indexCursor',
+    index: 2,
+    primitiveType: PrimitiveType.NUMBER,
+  }, {
+    name: 'limit',
+    index: 3,
+    primitiveType: PrimitiveType.NUMBER,
+  }],
+};
+
+export interface ListEpisodesResponse {
+  episodes?: Array<EpisodeSummary>,
+  indexCursor?: number,
+}
+
+export let LIST_EPISODES_RESPONSE: MessageDescriptor<ListEpisodesResponse> = {
+  name: 'ListEpisodesResponse',
+  fields: [{
+    name: 'episodes',
+    index: 1,
+    messageType: EPISODE_SUMMARY,
+    isArray: true,
+  }, {
+    name: 'indexCursor',
+    index: 2,
+    primitiveType: PrimitiveType.NUMBER,
+  }],
 };
 
 export interface CommitEpisodeStagingDataRequestBody {
@@ -1018,15 +1076,15 @@ export let DROP_SUBTITLE_TRACK_STAGING_DATA_RESPONSE: MessageDescriptor<DropSubt
   fields: [],
 };
 
-export let GET_SEASON_DETAILS: WebRemoteCallDescriptor = {
-  name: "GetSeasonDetails",
-  path: "/GetSeasonDetails",
+export let GET_SEASON: WebRemoteCallDescriptor = {
+  name: "GetSeason",
+  path: "/GetSeason",
   body: {
-    messageType: GET_SEASON_DETAILS_REQUEST_BODY,
+    messageType: GET_SEASON_REQUEST_BODY,
   },
   sessionKey: "sk",
   response: {
-    messageType: GET_SEASON_DETAILS_RESPONSE,
+    messageType: GET_SEASON_RESPONSE,
   },
 }
 
@@ -1142,6 +1200,18 @@ export let DELETE_EPISODE: WebRemoteCallDescriptor = {
   },
 }
 
+export let GET_EPISODE: WebRemoteCallDescriptor = {
+  name: "GetEpisode",
+  path: "/GetEpisode",
+  body: {
+    messageType: GET_EPISODE_REQUEST_BODY,
+  },
+  sessionKey: "sk",
+  response: {
+    messageType: GET_EPISODE_RESPONSE,
+  },
+}
+
 export let UPDATE_EPISODE: WebRemoteCallDescriptor = {
   name: "UpdateEpisode",
   path: "/UpdateEpisode",
@@ -1166,6 +1236,30 @@ export let UPDATE_EPISODE_ORDER: WebRemoteCallDescriptor = {
   },
 }
 
+export let PUBLISH_EPISODE: WebRemoteCallDescriptor = {
+  name: "PublishEpisode",
+  path: "/PublishEpisode",
+  body: {
+    messageType: PUBLISH_EPISODE_REQUEST_BODY,
+  },
+  sessionKey: "sk",
+  response: {
+    messageType: PUBLISH_EPISODE_RESPONSE,
+  },
+}
+
+export let UNPUBLISH_EPISODE: WebRemoteCallDescriptor = {
+  name: "UnpublishEpisode",
+  path: "/UnpublishEpisode",
+  body: {
+    messageType: UNPUBLISH_EPISODE_REQUEST_BODY,
+  },
+  sessionKey: "sk",
+  response: {
+    messageType: UNPUBLISH_EPISODE_RESPONSE,
+  },
+}
+
 export let LIST_EPISODES: WebRemoteCallDescriptor = {
   name: "ListEpisodes",
   path: "/ListEpisodes",
@@ -1178,14 +1272,206 @@ export let LIST_EPISODES: WebRemoteCallDescriptor = {
   },
 }
 
-export let PUBLISH_EPISODE: WebRemoteCallDescriptor = {
-  name: "PublishEpisode",
-  path: "/PublishEpisode",
+export let COMMIT_EPISODE_STAGING_DATA: WebRemoteCallDescriptor = {
+  name: "CommitEpisodeStagingData",
+  path: "/CommitEpisodeStagingData",
   body: {
-    messageType: PUBLISH_EPISODE_REQUEST_BODY,
+    messageType: COMMIT_EPISODE_STAGING_DATA_REQUEST_BODY,
   },
   sessionKey: "sk",
   response: {
-    messageType: PUBLISH_EPISODE_RESPONSE,
+    messageType: COMMIT_EPISODE_STAGING_DATA_RESPONSE,
+  },
+}
+
+export let START_MEDIA_UPLOADING: WebRemoteCallDescriptor = {
+  name: "StartMediaUploading",
+  path: "/StartMediaUploading",
+  body: {
+    messageType: START_MEDIA_UPLOADING_REQUEST_BODY,
+  },
+  sessionKey: "sk",
+  response: {
+    messageType: START_MEDIA_UPLOADING_RESPONSE,
+  },
+}
+
+export let COMPLETE_MEDIA_UPLOADING: WebRemoteCallDescriptor = {
+  name: "CompleteMediaUploading",
+  path: "/CompleteMediaUploading",
+  body: {
+    messageType: COMPLETE_MEDIA_UPLOADING_REQUEST_BODY,
+  },
+  sessionKey: "sk",
+  response: {
+    messageType: COMPLETE_MEDIA_UPLOADING_RESPONSE,
+  },
+}
+
+export let CANCEL_MEDIA_UPLOADING: WebRemoteCallDescriptor = {
+  name: "CancelMediaUploading",
+  path: "/CancelMediaUploading",
+  body: {
+    messageType: CANCEL_MEDIA_UPLOADING_REQUEST_BODY,
+  },
+  sessionKey: "sk",
+  response: {
+    messageType: CANCEL_MEDIA_UPLOADING_RESPONSE,
+  },
+}
+
+export let START_SUBTITLE_UPLOADING: WebRemoteCallDescriptor = {
+  name: "StartSubtitleUploading",
+  path: "/StartSubtitleUploading",
+  body: {
+    messageType: START_SUBTITLE_UPLOADING_REQUEST_BODY,
+  },
+  sessionKey: "sk",
+  response: {
+    messageType: START_SUBTITLE_UPLOADING_RESPONSE,
+  },
+}
+
+export let COMPLETE_SUBTITLE_UPLOADING: WebRemoteCallDescriptor = {
+  name: "CompleteSubtitleUploading",
+  path: "/CompleteSubtitleUploading",
+  body: {
+    messageType: COMPLETE_SUBTITLE_UPLOADING_REQUEST_BODY,
+  },
+  sessionKey: "sk",
+  response: {
+    messageType: COMPLETE_SUBTITLE_UPLOADING_RESPONSE,
+  },
+}
+
+export let CANCEL_SUBTITLE_UPLOADING: WebRemoteCallDescriptor = {
+  name: "CancelSubtitleUploading",
+  path: "/CancelSubtitleUploading",
+  body: {
+    messageType: CANCEL_SUBTITLE_UPLOADING_REQUEST_BODY,
+  },
+  sessionKey: "sk",
+  response: {
+    messageType: CANCEL_SUBTITLE_UPLOADING_RESPONSE,
+  },
+}
+
+export let CANCEL_MEDIA_FORMATTING: WebRemoteCallDescriptor = {
+  name: "CancelMediaFormatting",
+  path: "/CancelMediaFormatting",
+  body: {
+    messageType: CANCEL_MEDIA_FORMATTING_REQUEST_BODY,
+  },
+  sessionKey: "sk",
+  response: {
+    messageType: CANCEL_MEDIA_FORMATTING_RESPONSE,
+  },
+}
+
+export let CANCEL_SUBTITLE_FORMATTING: WebRemoteCallDescriptor = {
+  name: "CancelSubtitleFormatting",
+  path: "/CancelSubtitleFormatting",
+  body: {
+    messageType: CANCEL_SUBTITLE_FORMATTING_REQUEST_BODY,
+  },
+  sessionKey: "sk",
+  response: {
+    messageType: CANCEL_SUBTITLE_FORMATTING_RESPONSE,
+  },
+}
+
+export let DELETE_VIDEO_TRACK: WebRemoteCallDescriptor = {
+  name: "DeleteVideoTrack",
+  path: "/DeleteVideoTrack",
+  body: {
+    messageType: DELETE_VIDEO_TRACK_REQUEST_BODY,
+  },
+  sessionKey: "sk",
+  response: {
+    messageType: DELETE_VIDEO_TRACK_RESPONSE,
+  },
+}
+
+export let DROP_VIDEO_TRACK_STAGING_DATA: WebRemoteCallDescriptor = {
+  name: "DropVideoTrackStagingData",
+  path: "/DropVideoTrackStagingData",
+  body: {
+    messageType: DROP_VIDEO_TRACK_STAGING_DATA_REQUEST_BODY,
+  },
+  sessionKey: "sk",
+  response: {
+    messageType: DROP_VIDEO_TRACK_STAGING_DATA_RESPONSE,
+  },
+}
+
+export let UPDATE_AUDIO_TRACK: WebRemoteCallDescriptor = {
+  name: "UpdateAudioTrack",
+  path: "/UpdateAudioTrack",
+  body: {
+    messageType: UPDATE_AUDIO_TRACK_REQUEST_BODY,
+  },
+  sessionKey: "sk",
+  response: {
+    messageType: UPDATE_AUDIO_TRACK_RESPONSE,
+  },
+}
+
+export let DELETE_AUDIO_TRACK: WebRemoteCallDescriptor = {
+  name: "DeleteAudioTrack",
+  path: "/DeleteAudioTrack",
+  body: {
+    messageType: DELETE_AUDIO_TRACK_REQUEST_BODY,
+  },
+  sessionKey: "sk",
+  response: {
+    messageType: DELETE_AUDIO_TRACK_RESPONSE,
+  },
+}
+
+export let DROP_AUDIO_TRACK_STAGING_DATA: WebRemoteCallDescriptor = {
+  name: "DropAudioTrackStagingData",
+  path: "/DropAudioTrackStagingData",
+  body: {
+    messageType: DROP_AUDIO_TRACK_STAGING_DATA_REQUEST_BODY,
+  },
+  sessionKey: "sk",
+  response: {
+    messageType: DROP_AUDIO_TRACK_STAGING_DATA_RESPONSE,
+  },
+}
+
+export let UPDATE_SUBTITLE_TRACK: WebRemoteCallDescriptor = {
+  name: "UpdateSubtitleTrack",
+  path: "/UpdateSubtitleTrack",
+  body: {
+    messageType: UPDATE_SUBTITLE_TRACK_REQUEST_BODY,
+  },
+  sessionKey: "sk",
+  response: {
+    messageType: UPDATE_SUBTITLE_TRACK_RESPONSE,
+  },
+}
+
+export let DELETE_SUBTITLE_TRACK: WebRemoteCallDescriptor = {
+  name: "DeleteSubtitleTrack",
+  path: "/DeleteSubtitleTrack",
+  body: {
+    messageType: DELETE_SUBTITLE_TRACK_REQUEST_BODY,
+  },
+  sessionKey: "sk",
+  response: {
+    messageType: DELETE_SUBTITLE_TRACK_RESPONSE,
+  },
+}
+
+export let DROP_SUBTITLE_TRACK_STAGING_DATA: WebRemoteCallDescriptor = {
+  name: "DropSubtitleTrackStagingData",
+  path: "/DropSubtitleTrackStagingData",
+  body: {
+    messageType: DROP_SUBTITLE_TRACK_STAGING_DATA_REQUEST_BODY,
+  },
+  sessionKey: "sk",
+  response: {
+    messageType: DROP_SUBTITLE_TRACK_STAGING_DATA_RESPONSE,
   },
 }

@@ -1,118 +1,131 @@
-- message:
-    name: GetSeasonPublisherAndGradeRequestBody
-    fields:
-      - name: seasonId
-        type: string
-        index: 1
-      - name: date # ISO string
-        type: string
-        index: 2
-- message:
-    name: GetSeasonPublisherAndGradeResponse
-    fields:
-      - name: publisherId
-        type: string
-        index: 1
-      - name: grade
-        type: number
-        index: 2
-- message:
-    name: GetSeasonNameRequestBody
-    fields:
-      - name: seasonId
-        type: string
-        index: 1
-- message:
-    name: GetSeasonNameResponse
-    fields:
-      - name: seasonName
-        type: string
-        index: 1
-- message:
-    name: ProcessVideoContainerCreatingTaskRequsetBody
-    fields:
-      - name: seasonId
-        type: string
-        index: 1
-      - name: episodeId
-        type: string
-        index: 2
-- message:
-    name: ProcessVideoContainerCreatingTaskResponse
-- message:
-    name: GetVideoContainerCreatingTasksRequestBody
-- message:
-    name: GetVideoContainerCreatingTasksResponse
-    fields:
-      - name: tasks
-        type: ProcessVideoContainerCreatingTaskRequsetBody
-        isArray: true
-        index: 1
-- message:
-    name: ProcessVideoContainerDeletingTaskRequsetBody
-    fields:
-      - name: videoContainerId
-        type: string
-        index: 1
-- message:
-    name: ProcessVideoContainerDeletingTaskResponse
-- message:
-    name: GetVideoContainerDeletingTasksRequestBody
-- message:
-    name: GetVideoContainerDeletingTasksResponse
-    fields:
-      - name: tasks
-        type: ProcessVideoContainerDeletingTaskRequsetBody
-        isArray: true
-        index: 1
-- message:
-    name: SyncEpisodeVideoContainerInfoRequestBody
-    fields:
-      - name: seasonId
-        type: string
-        index: 1
-      - name: episodeId
-        type: string
-        index: 2
-      - name: videoContainerId
-        type: string
-        index: 3
-      - name: videoContainer
-        type: VideoContainer
-        import: ./show/season_details
-        index: 4
-- message:
-    name: SyncEpisodeVideoContainerInfoResponse
-- nodeService:
-    name: ProductShowNodeService
-    remoteCalls:
-      - name: GetSeasonPublisherAndGrade
-        path: /GetSeasonPublisherAndGrade
-        body: GetSeasonPublisherAndGradeRequestBody
-        response: GetSeasonPublisherAndGradeResponse
-      - name: GetSeasonName
-        path: /GetSeasonName
-        body: GetSeasonNameRequestBody
-        response: GetSeasonNameResponse
-      - name: ProcessVideoContainerCreatingTask
-        path: /ProcessVideoContainerCreatingTask
-        body: ProcessVideoContainerCreatingTaskRequsetBody
-        response: ProcessVideoContainerCreatingTaskResponse
-      - name: GetVideoContainerCreatingTasks
-        path: /GetVideoContainerCreatingTasks
-        body: GetVideoContainerCreatingTasksRequestBody
-        response: GetVideoContainerCreatingTasksResponse
-      - name: ProcessVideoContainerDeletingTask
-        path: /ProcessVideoContainerDeletingTask
-        body: ProcessVideoContainerDeletingTaskRequsetBody
-        response: ProcessVideoContainerDeletingTaskResponse
-      - name: GetVideoContainerDeletingTasks
-        path: /GetVideoContainerDeletingTasks
-        body: GetVideoContainerDeletingTasksRequestBody
-        response: GetVideoContainerDeletingTasksResponse
-      - name: SyncEpisodeVideoContainerInfo
-        path: /SyncEpisodeVideoContainerInfo
-        body: SyncEpisodeVideoContainerInfoRequestBody
-        response: SyncEpisodeVideoContainerInfoResponse
-    outputClient: ./show/node/client
-    outputHandler: ./show/node/handler
+- kind: Message
+  name: GetSeasonPublisherRequestBody
+  fields:
+    - name: seasonId
+      type: string
+      index: 1
+- kind: Message
+  name: GetSeasonPublisherResponse
+  fields:
+    - name: publisherId
+      type: string
+      index: 1
+- kind: Message
+  name: GetSeasonGradeRequestBody
+  fields:
+    - name: seasonId
+      type: string
+      index: 1
+    - name: date # ISO string
+      type: string
+      index: 2
+- kind: Message
+  name: GetSeasonGradeResponse
+  fields:
+    - name: grade
+      type: number
+      index: 1
+- kind: Message
+  name: GetSeasonRequestBody
+  fields:
+    - name: seasonId
+      type: string
+      index: 1
+- kind: Message
+  name: GetSeasonResponse
+  fields:
+    - name: name
+      type: string
+      index: 1
+- kind: Message
+  name: ProcessVideoContainerCreatingTaskRequestBody
+  fields:
+    - name: seasonId
+      type: string
+      index: 1
+    - name: episodeId
+      type: string
+      index: 2
+- kind: Message
+  name: ProcessVideoContainerCreatingTaskResponse
+- kind: Message
+  name: ListVideoContainerCreatingTasksRequestBody
+- kind: Message
+  name: ListVideoContainerCreatingTasksResponse
+  fields:
+    - name: tasks
+      type: ProcessVideoContainerCreatingTaskRequestBody
+      isArray: true
+      index: 1
+- kind: Message
+  name: ProcessVideoContainerDeletingTaskRequestBody
+  fields:
+    - name: videoContainerId
+      type: string
+      index: 1
+- kind: Message
+  name: ProcessVideoContainerDeletingTaskResponse
+- kind: Message
+  name: ListVideoContainerDeletingTasksRequestBody
+- kind: Message
+  name: ListVideoContainerDeletingTasksResponse
+  fields:
+    - name: tasks
+      type: ProcessVideoContainerDeletingTaskRequestBody
+      isArray: true
+      index: 1
+- kind: Message
+  name: CacheVideoContainerRequestBody
+  fields:
+    - name: seasonId
+      type: string
+      index: 1
+    - name: episodeId
+      type: string
+      index: 2
+    - name: videoContainerId
+      type: string
+      index: 3
+    - name: videoContainer
+      type: VideoContainer
+      import: ./show/video_container
+      index: 4
+- kind: Message
+  name: CacheVideoContainerResponse
+- kind: NodeService
+  name: ProductShowNodeService
+  remoteCalls:
+    - name: GetSeasonPublisher
+      path: /GetSeasonPublisher
+      body: GetSeasonPublisherRequestBody
+      response: GetSeasonPublisherResponse
+    - name: GetSeasonGrade
+      path: /GetSeasonGrade
+      body: GetSeasonGradeRequestBody
+      response: GetSeasonGradeResponse
+    - name: GetSeason
+      path: /GetSeason
+      body: GetSeasonRequestBody
+      response: GetSeasonResponse
+    - name: ProcessVideoContainerCreatingTask
+      path: /ProcessVideoContainerCreatingTask
+      body: ProcessVideoContainerCreatingTaskRequestBody
+      response: ProcessVideoContainerCreatingTaskResponse
+    - name: ListVideoContainerCreatingTasks
+      path: /ListVideoContainerCreatingTasks
+      body: ListVideoContainerCreatingTasksRequestBody
+      response: ListVideoContainerCreatingTasksResponse
+    - name: ProcessVideoContainerDeletingTask
+      path: /ProcessVideoContainerDeletingTask
+      body: ProcessVideoContainerDeletingTaskRequestBody
+      response: ProcessVideoContainerDeletingTaskResponse
+    - name: ListVideoContainerDeletingTasks
+      path: /ListVideoContainerDeletingTasks
+      body: ListVideoContainerDeletingTasksRequestBody
+      response: ListVideoContainerDeletingTasksResponse
+    - name: CacheVideoContainer
+      path: /CacheVideoContainer
+      body: CacheVideoContainerRequestBody
+      response: CacheVideoContainerResponse
+  outputClient: ./show/node/client
+  outputHandler: ./show/node/handler

@@ -1,5 +1,6 @@
 import { PrimitiveType, MessageDescriptor } from '@selfage/message/descriptor';
-import { SeasonDetails, SEASON_DETAILS, EpisodeSummary, EPISODE_SUMMARY } from './season_details';
+import { SeasonDetails, SEASON_DETAILS } from './season_details';
+import { EpisodeSummary, EPISODE_SUMMARY } from './episode_summary';
 import { WebRemoteCallDescriptor } from '@selfage/service_descriptor';
 
 export interface GetSeasonDetailsRequestBody {
@@ -64,14 +65,15 @@ export let GET_VIDEO_TO_PLAY_RESPONSE: MessageDescriptor<GetVideoToPlayResponse>
   }],
 };
 
-export interface GetMoreEpisodesRequestBody {
+export interface ListEpisodesRequestBody {
   seasonId?: string,
   indexCursor?: number,
   next?: boolean,
+  limit?: number,
 }
 
-export let GET_MORE_EPISODES_REQUEST_BODY: MessageDescriptor<GetMoreEpisodesRequestBody> = {
-  name: 'GetMoreEpisodesRequestBody',
+export let LIST_EPISODES_REQUEST_BODY: MessageDescriptor<ListEpisodesRequestBody> = {
+  name: 'ListEpisodesRequestBody',
   fields: [{
     name: 'seasonId',
     index: 1,
@@ -84,16 +86,20 @@ export let GET_MORE_EPISODES_REQUEST_BODY: MessageDescriptor<GetMoreEpisodesRequ
     name: 'next',
     index: 3,
     primitiveType: PrimitiveType.BOOLEAN,
+  }, {
+    name: 'limit',
+    index: 4,
+    primitiveType: PrimitiveType.NUMBER,
   }],
 };
 
-export interface GetMoreEpisodesResponse {
+export interface ListEpisodesResponse {
   episodes?: Array<EpisodeSummary>,
   indexCursor?: number,
 }
 
-export let GET_MORE_EPISODES_RESPONSE: MessageDescriptor<GetMoreEpisodesResponse> = {
-  name: 'GetMoreEpisodesResponse',
+export let LIST_EPISODES_RESPONSE: MessageDescriptor<ListEpisodesResponse> = {
+  name: 'ListEpisodesResponse',
   fields: [{
     name: 'episodes',
     index: 1,
@@ -118,26 +124,14 @@ export let GET_SEASON_DETAILS: WebRemoteCallDescriptor = {
   },
 }
 
-export let GET_VIDEO_TO_PLAY: WebRemoteCallDescriptor = {
-  name: "GetVideoToPlay",
-  path: "/GetVideoToPlay",
+export let LIST_EPISODES: WebRemoteCallDescriptor = {
+  name: "ListEpisodes",
+  path: "/ListEpisodes",
   body: {
-    messageType: GET_VIDEO_TO_PLAY_REQUEST_BODY,
+    messageType: LIST_EPISODES_REQUEST_BODY,
   },
   sessionKey: "sk",
   response: {
-    messageType: GET_VIDEO_TO_PLAY_RESPONSE,
-  },
-}
-
-export let GET_MORE_EPISODES: WebRemoteCallDescriptor = {
-  name: "GetMoreEpisodes",
-  path: "/GetMoreEpisodes",
-  body: {
-    messageType: GET_MORE_EPISODES_REQUEST_BODY,
-  },
-  sessionKey: "sk",
-  response: {
-    messageType: GET_MORE_EPISODES_RESPONSE,
+    messageType: LIST_EPISODES_RESPONSE,
   },
 }
