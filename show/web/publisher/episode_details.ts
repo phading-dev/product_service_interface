@@ -4,6 +4,7 @@ import { VideoContainer, VIDEO_CONTAINER } from '@phading/video_service_interfac
 export interface EpisodeDetails {
   seasonName?: string,
   episodeName?: string,
+  episodeIndex?: number,
   videoContainer?: VideoContainer,
   publishTimeMs?: number,
   premierTimeMs?: number,
@@ -20,16 +21,20 @@ export let EPISODE_DETAILS: MessageDescriptor<EpisodeDetails> = {
     index: 2,
     primitiveType: PrimitiveType.STRING,
   }, {
-    name: 'videoContainer',
+    name: 'episodeIndex',
     index: 3,
+    primitiveType: PrimitiveType.NUMBER,
+  }, {
+    name: 'videoContainer',
+    index: 4,
     messageType: VIDEO_CONTAINER,
   }, {
     name: 'publishTimeMs',
-    index: 4,
+    index: 5,
     primitiveType: PrimitiveType.NUMBER,
   }, {
     name: 'premierTimeMs',
-    index: 5,
+    index: 6,
     primitiveType: PrimitiveType.NUMBER,
   }],
 };

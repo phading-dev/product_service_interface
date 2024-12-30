@@ -1,4 +1,4 @@
-import { GetSeasonPublisherRequestBody, GetSeasonPublisherResponse, GET_SEASON_PUBLISHER, GetSeasonGradeRequestBody, GetSeasonGradeResponse, GET_SEASON_GRADE, GetSeasonRequestBody, GetSeasonResponse, GET_SEASON, ProcessVideoContainerCreatingTaskRequestBody, ProcessVideoContainerCreatingTaskResponse, PROCESS_VIDEO_CONTAINER_CREATING_TASK, ListVideoContainerCreatingTasksRequestBody, ListVideoContainerCreatingTasksResponse, LIST_VIDEO_CONTAINER_CREATING_TASKS, ProcessVideoContainerDeletingTaskRequestBody, ProcessVideoContainerDeletingTaskResponse, PROCESS_VIDEO_CONTAINER_DELETING_TASK, ListVideoContainerDeletingTasksRequestBody, ListVideoContainerDeletingTasksResponse, LIST_VIDEO_CONTAINER_DELETING_TASKS, CacheVideoContainerRequestBody, CacheVideoContainerResponse, CACHE_VIDEO_CONTAINER } from './interface';
+import { GetSeasonPublisherRequestBody, GetSeasonPublisherResponse, GET_SEASON_PUBLISHER, GetSeasonGradeRequestBody, GetSeasonGradeResponse, GET_SEASON_GRADE, ProcessVideoContainerCreatingTaskRequestBody, ProcessVideoContainerCreatingTaskResponse, PROCESS_VIDEO_CONTAINER_CREATING_TASK, ListVideoContainerCreatingTasksRequestBody, ListVideoContainerCreatingTasksResponse, LIST_VIDEO_CONTAINER_CREATING_TASKS, ProcessVideoContainerDeletingTaskRequestBody, ProcessVideoContainerDeletingTaskResponse, PROCESS_VIDEO_CONTAINER_DELETING_TASK, ListVideoContainerDeletingTasksRequestBody, ListVideoContainerDeletingTasksResponse, LIST_VIDEO_CONTAINER_DELETING_TASKS, ProcessCoverImageDeletingTaskRequestBody, ProcessCoverImageDeletingTaskResponse, PROCESS_COVER_IMAGE_DELETING_TASK, ListCoverImageDeletingTasksRequestBody, ListCoverImageDeletingTasksResponse, LIST_COVER_IMAGE_DELETING_TASKS, CacheVideoContainerRequestBody, CacheVideoContainerResponse, CACHE_VIDEO_CONTAINER } from './interface';
 import { NodeClientInterface, NodeClientOptions } from '@selfage/service_descriptor/client_interface';
 
 export function getSeasonPublisher(
@@ -23,20 +23,6 @@ export function getSeasonGrade(
   return client.send(
     {
       descriptor: GET_SEASON_GRADE,
-      body,
-    },
-    options,
-  );
-}
-
-export function getSeason(
-  client: NodeClientInterface,
-  body: GetSeasonRequestBody,
-  options?: NodeClientOptions,
-): Promise<GetSeasonResponse> {
-  return client.send(
-    {
-      descriptor: GET_SEASON,
       body,
     },
     options,
@@ -93,6 +79,34 @@ export function listVideoContainerDeletingTasks(
   return client.send(
     {
       descriptor: LIST_VIDEO_CONTAINER_DELETING_TASKS,
+      body,
+    },
+    options,
+  );
+}
+
+export function processCoverImageDeletingTask(
+  client: NodeClientInterface,
+  body: ProcessCoverImageDeletingTaskRequestBody,
+  options?: NodeClientOptions,
+): Promise<ProcessCoverImageDeletingTaskResponse> {
+  return client.send(
+    {
+      descriptor: PROCESS_COVER_IMAGE_DELETING_TASK,
+      body,
+    },
+    options,
+  );
+}
+
+export function listCoverImageDeletingTasks(
+  client: NodeClientInterface,
+  body: ListCoverImageDeletingTasksRequestBody,
+  options?: NodeClientOptions,
+): Promise<ListCoverImageDeletingTasksResponse> {
+  return client.send(
+    {
+      descriptor: LIST_COVER_IMAGE_DELETING_TASKS,
       body,
     },
     options,

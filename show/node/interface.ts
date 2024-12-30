@@ -59,32 +59,6 @@ export let GET_SEASON_GRADE_RESPONSE: MessageDescriptor<GetSeasonGradeResponse> 
   }],
 };
 
-export interface GetSeasonRequestBody {
-  seasonId?: string,
-}
-
-export let GET_SEASON_REQUEST_BODY: MessageDescriptor<GetSeasonRequestBody> = {
-  name: 'GetSeasonRequestBody',
-  fields: [{
-    name: 'seasonId',
-    index: 1,
-    primitiveType: PrimitiveType.STRING,
-  }],
-};
-
-export interface GetSeasonResponse {
-  name?: string,
-}
-
-export let GET_SEASON_RESPONSE: MessageDescriptor<GetSeasonResponse> = {
-  name: 'GetSeasonResponse',
-  fields: [{
-    name: 'name',
-    index: 1,
-    primitiveType: PrimitiveType.STRING,
-  }],
-};
-
 export interface ProcessVideoContainerCreatingTaskRequestBody {
   seasonId?: string,
   episodeId?: string,
@@ -176,6 +150,49 @@ export let LIST_VIDEO_CONTAINER_DELETING_TASKS_RESPONSE: MessageDescriptor<ListV
   }],
 };
 
+export interface ProcessCoverImageDeletingTaskRequestBody {
+  r2Filename?: string,
+}
+
+export let PROCESS_COVER_IMAGE_DELETING_TASK_REQUEST_BODY: MessageDescriptor<ProcessCoverImageDeletingTaskRequestBody> = {
+  name: 'ProcessCoverImageDeletingTaskRequestBody',
+  fields: [{
+    name: 'r2Filename',
+    index: 1,
+    primitiveType: PrimitiveType.STRING,
+  }],
+};
+
+export interface ProcessCoverImageDeletingTaskResponse {
+}
+
+export let PROCESS_COVER_IMAGE_DELETING_TASK_RESPONSE: MessageDescriptor<ProcessCoverImageDeletingTaskResponse> = {
+  name: 'ProcessCoverImageDeletingTaskResponse',
+  fields: [],
+};
+
+export interface ListCoverImageDeletingTasksRequestBody {
+}
+
+export let LIST_COVER_IMAGE_DELETING_TASKS_REQUEST_BODY: MessageDescriptor<ListCoverImageDeletingTasksRequestBody> = {
+  name: 'ListCoverImageDeletingTasksRequestBody',
+  fields: [],
+};
+
+export interface ListCoverImageDeletingTasksResponse {
+  tasks?: Array<ProcessCoverImageDeletingTaskRequestBody>,
+}
+
+export let LIST_COVER_IMAGE_DELETING_TASKS_RESPONSE: MessageDescriptor<ListCoverImageDeletingTasksResponse> = {
+  name: 'ListCoverImageDeletingTasksResponse',
+  fields: [{
+    name: 'tasks',
+    index: 1,
+    messageType: PROCESS_COVER_IMAGE_DELETING_TASK_REQUEST_BODY,
+    isArray: true,
+  }],
+};
+
 export interface CacheVideoContainerRequestBody {
   seasonId?: string,
   episodeId?: string,
@@ -234,17 +251,6 @@ export let GET_SEASON_GRADE: NodeRemoteCallDescriptor = {
   },
 }
 
-export let GET_SEASON: NodeRemoteCallDescriptor = {
-  name: "GetSeason",
-  path: "/GetSeason",
-  body: {
-    messageType: GET_SEASON_REQUEST_BODY,
-  },
-  response: {
-    messageType: GET_SEASON_RESPONSE,
-  },
-}
-
 export let PROCESS_VIDEO_CONTAINER_CREATING_TASK: NodeRemoteCallDescriptor = {
   name: "ProcessVideoContainerCreatingTask",
   path: "/ProcessVideoContainerCreatingTask",
@@ -286,6 +292,28 @@ export let LIST_VIDEO_CONTAINER_DELETING_TASKS: NodeRemoteCallDescriptor = {
   },
   response: {
     messageType: LIST_VIDEO_CONTAINER_DELETING_TASKS_RESPONSE,
+  },
+}
+
+export let PROCESS_COVER_IMAGE_DELETING_TASK: NodeRemoteCallDescriptor = {
+  name: "ProcessCoverImageDeletingTask",
+  path: "/ProcessCoverImageDeletingTask",
+  body: {
+    messageType: PROCESS_COVER_IMAGE_DELETING_TASK_REQUEST_BODY,
+  },
+  response: {
+    messageType: PROCESS_COVER_IMAGE_DELETING_TASK_RESPONSE,
+  },
+}
+
+export let LIST_COVER_IMAGE_DELETING_TASKS: NodeRemoteCallDescriptor = {
+  name: "ListCoverImageDeletingTasks",
+  path: "/ListCoverImageDeletingTasks",
+  body: {
+    messageType: LIST_COVER_IMAGE_DELETING_TASKS_REQUEST_BODY,
+  },
+  response: {
+    messageType: LIST_COVER_IMAGE_DELETING_TASKS_RESPONSE,
   },
 }
 

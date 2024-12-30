@@ -435,6 +435,7 @@ export let UNPUBLISH_EPISODE_RESPONSE: MessageDescriptor<UnpublishEpisodeRespons
 export interface ListEpisodesRequestBody {
   seasonId?: string,
   indexCursor?: number,
+  next?: boolean,
   limit?: number,
 }
 
@@ -449,8 +450,12 @@ export let LIST_EPISODES_REQUEST_BODY: MessageDescriptor<ListEpisodesRequestBody
     index: 2,
     primitiveType: PrimitiveType.NUMBER,
   }, {
-    name: 'limit',
+    name: 'next',
     index: 3,
+    primitiveType: PrimitiveType.BOOLEAN,
+  }, {
+    name: 'limit',
+    index: 4,
     primitiveType: PrimitiveType.NUMBER,
   }],
 };

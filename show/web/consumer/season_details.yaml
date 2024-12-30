@@ -1,40 +1,4 @@
 - kind: Message
-  name: PublisherSummary
-  fields:
-    - name: accountId
-      type: string
-      index: 1
-    - name: name
-      type: string
-      index: 2
-    - name: avatarSmallUrl
-      type: string
-      index: 3
-- kind: Message
-  name: Episode
-  fields:
-    - name: episodeId
-      type: string
-      index: 1
-    - name: name
-      type: string
-      index: 2
-    - name: index
-      type: number
-      index: 3
-    - name: videoDurationSec
-      type: number
-      index: 4
-    - name: resolution
-      type: string
-      index: 5
-    - name: premierTimeMs
-      type: number
-      index: 6
-    - name: videoUrl
-      type: string
-      index: 7
-- kind: Message
   name: NextGrade
   fields:
     - name: grade
@@ -46,8 +10,8 @@
 - kind: Message
   name: SeasonDetails
   fields:
-    - name: publisher
-      type: PublisherSummary
+    - name: publisherId
+      type: string
       index: 1
     - name: name
       type: string
@@ -61,15 +25,9 @@
     - name: grade
       type: number
       index: 5
-    - name: totalEpisodes
-      type: number
-      index: 6
-    - name: continueEpisode
-      type: Episode
-      index: 7
-    - name: continueTimeMs
-      type: number
-      index: 8
     - name: nextGrade
       type: NextGrade
-      index: 9
+      index: 6
+    - name: totalEpisodes
+      type: number
+      index: 7

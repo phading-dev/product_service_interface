@@ -1,5 +1,6 @@
 import { PrimitiveType, MessageDescriptor } from '@selfage/message/descriptor';
 import { SeasonDetails, SEASON_DETAILS } from './season_details';
+import { EpisodeDetails, EPISODE_DETAILS } from './episode_details';
 import { EpisodeSummary, EPISODE_SUMMARY } from './episode_summary';
 import { WebRemoteCallDescriptor } from '@selfage/service_descriptor';
 
@@ -29,13 +30,13 @@ export let GET_SEASON_DETAILS_RESPONSE: MessageDescriptor<GetSeasonDetailsRespon
   }],
 };
 
-export interface GetVideoToPlayRequestBody {
+export interface GetEpisodeDetailsRequestBody {
   seasonId?: string,
   episodeId?: string,
 }
 
-export let GET_VIDEO_TO_PLAY_REQUEST_BODY: MessageDescriptor<GetVideoToPlayRequestBody> = {
-  name: 'GetVideoToPlayRequestBody',
+export let GET_EPISODE_DETAILS_REQUEST_BODY: MessageDescriptor<GetEpisodeDetailsRequestBody> = {
+  name: 'GetEpisodeDetailsRequestBody',
   fields: [{
     name: 'seasonId',
     index: 1,
@@ -47,21 +48,16 @@ export let GET_VIDEO_TO_PLAY_REQUEST_BODY: MessageDescriptor<GetVideoToPlayReque
   }],
 };
 
-export interface GetVideoToPlayResponse {
-  videoUrl?: string,
-  continueTimeMs?: number,
+export interface GetEpisodeDetailsResponse {
+  episodeDetails?: EpisodeDetails,
 }
 
-export let GET_VIDEO_TO_PLAY_RESPONSE: MessageDescriptor<GetVideoToPlayResponse> = {
-  name: 'GetVideoToPlayResponse',
+export let GET_EPISODE_DETAILS_RESPONSE: MessageDescriptor<GetEpisodeDetailsResponse> = {
+  name: 'GetEpisodeDetailsResponse',
   fields: [{
-    name: 'videoUrl',
+    name: 'episodeDetails',
     index: 1,
-    primitiveType: PrimitiveType.STRING,
-  }, {
-    name: 'continueTimeMs',
-    index: 2,
-    primitiveType: PrimitiveType.NUMBER,
+    messageType: EPISODE_DETAILS,
   }],
 };
 
@@ -121,6 +117,18 @@ export let GET_SEASON_DETAILS: WebRemoteCallDescriptor = {
   sessionKey: "sk",
   response: {
     messageType: GET_SEASON_DETAILS_RESPONSE,
+  },
+}
+
+export let GET_EPISODE_DETAILS: WebRemoteCallDescriptor = {
+  name: "GetEpisodeDetails",
+  path: "/GetEpisodeDetails",
+  body: {
+    messageType: GET_EPISODE_DETAILS_REQUEST_BODY,
+  },
+  sessionKey: "sk",
+  response: {
+    messageType: GET_EPISODE_DETAILS_RESPONSE,
   },
 }
 

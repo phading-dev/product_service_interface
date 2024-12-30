@@ -26,18 +26,6 @@
       type: number
       index: 1
 - kind: Message
-  name: GetSeasonRequestBody
-  fields:
-    - name: seasonId
-      type: string
-      index: 1
-- kind: Message
-  name: GetSeasonResponse
-  fields:
-    - name: name
-      type: string
-      index: 1
-- kind: Message
   name: ProcessVideoContainerCreatingTaskRequestBody
   fields:
     - name: seasonId
@@ -75,6 +63,23 @@
       isArray: true
       index: 1
 - kind: Message
+  name: ProcessCoverImageDeletingTaskRequestBody
+  fields:
+    - name: r2Filename
+      type: string
+      index: 1
+- kind: Message
+  name: ProcessCoverImageDeletingTaskResponse
+- kind: Message
+  name: ListCoverImageDeletingTasksRequestBody
+- kind: Message
+  name: ListCoverImageDeletingTasksResponse
+  fields:
+    - name: tasks
+      type: ProcessCoverImageDeletingTaskRequestBody
+      isArray: true
+      index: 1
+- kind: Message
   name: CacheVideoContainerRequestBody
   fields:
     - name: seasonId
@@ -103,10 +108,6 @@
       path: /GetSeasonGrade
       body: GetSeasonGradeRequestBody
       response: GetSeasonGradeResponse
-    - name: GetSeason
-      path: /GetSeason
-      body: GetSeasonRequestBody
-      response: GetSeasonResponse
     - name: ProcessVideoContainerCreatingTask
       path: /ProcessVideoContainerCreatingTask
       body: ProcessVideoContainerCreatingTaskRequestBody
@@ -123,6 +124,14 @@
       path: /ListVideoContainerDeletingTasks
       body: ListVideoContainerDeletingTasksRequestBody
       response: ListVideoContainerDeletingTasksResponse
+    - name: ProcessCoverImageDeletingTask
+      path: /ProcessCoverImageDeletingTask
+      body: ProcessCoverImageDeletingTaskRequestBody
+      response: ProcessCoverImageDeletingTaskResponse
+    - name: ListCoverImageDeletingTasks
+      path: /ListCoverImageDeletingTasks
+      body: ListCoverImageDeletingTasksRequestBody
+      response: ListCoverImageDeletingTasksResponse
     - name: CacheVideoContainer
       path: /CacheVideoContainer
       body: CacheVideoContainerRequestBody

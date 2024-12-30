@@ -12,7 +12,7 @@
       import: ./show/web/consumer/season_details
       index: 1
 - kind: Message
-  name: GetVideoToPlayRequestBody
+  name: GetEpisodeDetailsRequestBody
   fields:
     - name: seasonId
       type: string
@@ -21,14 +21,12 @@
       type: string
       index: 2
 - kind: Message
-  name: GetVideoToPlayResponse
+  name: GetEpisodeDetailsResponse
   fields:
-    - name: videoUrl
-      type: string
+    - name: episodeDetails
+      type: EpisodeDetails
+      import: ./show/web/consumer/episode_details
       index: 1
-    - name: continueTimeMs
-      type: number
-      index: 2
 - kind: Message
   name: ListEpisodesRequestBody
   fields:
@@ -63,6 +61,11 @@
       body: GetSeasonDetailsRequestBody
       sessionKey: sk
       response: GetSeasonDetailsResponse
+    - name: GetEpisodeDetails
+      path: /GetEpisodeDetails
+      body: GetEpisodeDetailsRequestBody
+      sessionKey: sk
+      response: GetEpisodeDetailsResponse
     - name: ListEpisodes
       path: /ListEpisodes
       body: ListEpisodesRequestBody

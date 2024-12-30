@@ -1,17 +1,18 @@
 import { PrimitiveType, MessageDescriptor } from '@selfage/message/descriptor';
 
-export interface EpisodeSummary {
-  episodeId?: string,
-  index?: number,
+export interface EpisodeDetails {
   name?: string,
+  index?: number,
   videoDurationSec?: number,
+  resolution?: string,
   premierTimeMs?: number,
+  videoUrl?: string,
 }
 
-export let EPISODE_SUMMARY: MessageDescriptor<EpisodeSummary> = {
-  name: 'EpisodeSummary',
+export let EPISODE_DETAILS: MessageDescriptor<EpisodeDetails> = {
+  name: 'EpisodeDetails',
   fields: [{
-    name: 'episodeId',
+    name: 'name',
     index: 1,
     primitiveType: PrimitiveType.STRING,
   }, {
@@ -19,16 +20,20 @@ export let EPISODE_SUMMARY: MessageDescriptor<EpisodeSummary> = {
     index: 2,
     primitiveType: PrimitiveType.NUMBER,
   }, {
-    name: 'name',
-    index: 3,
-    primitiveType: PrimitiveType.STRING,
-  }, {
     name: 'videoDurationSec',
-    index: 4,
+    index: 3,
     primitiveType: PrimitiveType.NUMBER,
+  }, {
+    name: 'resolution',
+    index: 4,
+    primitiveType: PrimitiveType.STRING,
   }, {
     name: 'premierTimeMs',
     index: 5,
     primitiveType: PrimitiveType.NUMBER,
+  }, {
+    name: 'videoUrl',
+    index: 6,
+    primitiveType: PrimitiveType.STRING,
   }],
 };
