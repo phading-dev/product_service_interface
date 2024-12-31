@@ -196,7 +196,6 @@ export let LIST_COVER_IMAGE_DELETING_TASKS_RESPONSE: MessageDescriptor<ListCover
 export interface CacheVideoContainerRequestBody {
   seasonId?: string,
   episodeId?: string,
-  videoContainerId?: string,
   videoContainer?: VideoContainer,
 }
 
@@ -211,12 +210,8 @@ export let CACHE_VIDEO_CONTAINER_REQUEST_BODY: MessageDescriptor<CacheVideoConta
     index: 2,
     primitiveType: PrimitiveType.STRING,
   }, {
-    name: 'videoContainerId',
-    index: 3,
-    primitiveType: PrimitiveType.STRING,
-  }, {
     name: 'videoContainer',
-    index: 4,
+    index: 3,
     messageType: VIDEO_CONTAINER,
   }],
 };

@@ -88,13 +88,10 @@
     - name: episodeId
       type: string
       index: 2
-    - name: videoContainerId
-      type: string
-      index: 3
     - name: videoContainer
       type: VideoContainer
       import: ./show/video_container
-      index: 4
+      index: 3
 - kind: Message
   name: CacheVideoContainerResponse
 - kind: NodeService
