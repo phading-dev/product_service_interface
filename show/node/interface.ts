@@ -1,6 +1,7 @@
 import { PrimitiveType, MessageDescriptor } from '@selfage/message/descriptor';
 import { VideoContainer, VIDEO_CONTAINER } from '../video_container';
-import { NodeRemoteCallDescriptor } from '@selfage/service_descriptor';
+import { PRODUCT_NODE_SERVICE } from '../../service';
+import { RemoteCallDescriptor } from '@selfage/service_descriptor';
 
 export interface GetSeasonPublisherRequestBody {
   seasonId?: string,
@@ -224,8 +225,9 @@ export let CACHE_VIDEO_CONTAINER_RESPONSE: MessageDescriptor<CacheVideoContainer
   fields: [],
 };
 
-export let GET_SEASON_PUBLISHER: NodeRemoteCallDescriptor = {
+export let GET_SEASON_PUBLISHER: RemoteCallDescriptor = {
   name: "GetSeasonPublisher",
+  service: PRODUCT_NODE_SERVICE,
   path: "/GetSeasonPublisher",
   body: {
     messageType: GET_SEASON_PUBLISHER_REQUEST_BODY,
@@ -235,8 +237,9 @@ export let GET_SEASON_PUBLISHER: NodeRemoteCallDescriptor = {
   },
 }
 
-export let GET_SEASON_GRADE: NodeRemoteCallDescriptor = {
+export let GET_SEASON_GRADE: RemoteCallDescriptor = {
   name: "GetSeasonGrade",
+  service: PRODUCT_NODE_SERVICE,
   path: "/GetSeasonGrade",
   body: {
     messageType: GET_SEASON_GRADE_REQUEST_BODY,
@@ -246,8 +249,9 @@ export let GET_SEASON_GRADE: NodeRemoteCallDescriptor = {
   },
 }
 
-export let PROCESS_VIDEO_CONTAINER_CREATING_TASK: NodeRemoteCallDescriptor = {
+export let PROCESS_VIDEO_CONTAINER_CREATING_TASK: RemoteCallDescriptor = {
   name: "ProcessVideoContainerCreatingTask",
+  service: PRODUCT_NODE_SERVICE,
   path: "/ProcessVideoContainerCreatingTask",
   body: {
     messageType: PROCESS_VIDEO_CONTAINER_CREATING_TASK_REQUEST_BODY,
@@ -257,8 +261,9 @@ export let PROCESS_VIDEO_CONTAINER_CREATING_TASK: NodeRemoteCallDescriptor = {
   },
 }
 
-export let LIST_VIDEO_CONTAINER_CREATING_TASKS: NodeRemoteCallDescriptor = {
+export let LIST_VIDEO_CONTAINER_CREATING_TASKS: RemoteCallDescriptor = {
   name: "ListVideoContainerCreatingTasks",
+  service: PRODUCT_NODE_SERVICE,
   path: "/ListVideoContainerCreatingTasks",
   body: {
     messageType: LIST_VIDEO_CONTAINER_CREATING_TASKS_REQUEST_BODY,
@@ -268,8 +273,9 @@ export let LIST_VIDEO_CONTAINER_CREATING_TASKS: NodeRemoteCallDescriptor = {
   },
 }
 
-export let PROCESS_VIDEO_CONTAINER_DELETING_TASK: NodeRemoteCallDescriptor = {
+export let PROCESS_VIDEO_CONTAINER_DELETING_TASK: RemoteCallDescriptor = {
   name: "ProcessVideoContainerDeletingTask",
+  service: PRODUCT_NODE_SERVICE,
   path: "/ProcessVideoContainerDeletingTask",
   body: {
     messageType: PROCESS_VIDEO_CONTAINER_DELETING_TASK_REQUEST_BODY,
@@ -279,8 +285,9 @@ export let PROCESS_VIDEO_CONTAINER_DELETING_TASK: NodeRemoteCallDescriptor = {
   },
 }
 
-export let LIST_VIDEO_CONTAINER_DELETING_TASKS: NodeRemoteCallDescriptor = {
+export let LIST_VIDEO_CONTAINER_DELETING_TASKS: RemoteCallDescriptor = {
   name: "ListVideoContainerDeletingTasks",
+  service: PRODUCT_NODE_SERVICE,
   path: "/ListVideoContainerDeletingTasks",
   body: {
     messageType: LIST_VIDEO_CONTAINER_DELETING_TASKS_REQUEST_BODY,
@@ -290,8 +297,9 @@ export let LIST_VIDEO_CONTAINER_DELETING_TASKS: NodeRemoteCallDescriptor = {
   },
 }
 
-export let PROCESS_COVER_IMAGE_DELETING_TASK: NodeRemoteCallDescriptor = {
+export let PROCESS_COVER_IMAGE_DELETING_TASK: RemoteCallDescriptor = {
   name: "ProcessCoverImageDeletingTask",
+  service: PRODUCT_NODE_SERVICE,
   path: "/ProcessCoverImageDeletingTask",
   body: {
     messageType: PROCESS_COVER_IMAGE_DELETING_TASK_REQUEST_BODY,
@@ -301,8 +309,9 @@ export let PROCESS_COVER_IMAGE_DELETING_TASK: NodeRemoteCallDescriptor = {
   },
 }
 
-export let LIST_COVER_IMAGE_DELETING_TASKS: NodeRemoteCallDescriptor = {
+export let LIST_COVER_IMAGE_DELETING_TASKS: RemoteCallDescriptor = {
   name: "ListCoverImageDeletingTasks",
+  service: PRODUCT_NODE_SERVICE,
   path: "/ListCoverImageDeletingTasks",
   body: {
     messageType: LIST_COVER_IMAGE_DELETING_TASKS_REQUEST_BODY,
@@ -312,8 +321,9 @@ export let LIST_COVER_IMAGE_DELETING_TASKS: NodeRemoteCallDescriptor = {
   },
 }
 
-export let CACHE_VIDEO_CONTAINER: NodeRemoteCallDescriptor = {
+export let CACHE_VIDEO_CONTAINER: RemoteCallDescriptor = {
   name: "CacheVideoContainer",
+  service: PRODUCT_NODE_SERVICE,
   path: "/CacheVideoContainer",
   body: {
     messageType: CACHE_VIDEO_CONTAINER_REQUEST_BODY,

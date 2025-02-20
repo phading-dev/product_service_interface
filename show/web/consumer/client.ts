@@ -1,44 +1,29 @@
 import { GetSeasonDetailsRequestBody, GetSeasonDetailsResponse, GET_SEASON_DETAILS, GetEpisodeDetailsRequestBody, GetEpisodeDetailsResponse, GET_EPISODE_DETAILS, ListEpisodesRequestBody, ListEpisodesResponse, LIST_EPISODES } from './interface';
-import { WebClientInterface, WebClientOptions } from '@selfage/service_descriptor/client_interface';
+import { ClientRequestInterface } from '@selfage/service_descriptor/client_request_interface';
 
-export function getSeasonDetails(
-  client: WebClientInterface,
+export function newGetSeasonDetailsRequest(
   body: GetSeasonDetailsRequestBody,
-  options?: WebClientOptions,
-): Promise<GetSeasonDetailsResponse> {
-  return client.send(
-    {
-      descriptor: GET_SEASON_DETAILS,
-      body,
-    },
-    options,
-  );
+): ClientRequestInterface<GetSeasonDetailsResponse> {
+  return {
+    descriptor: GET_SEASON_DETAILS,
+    body,
+  };
 }
 
-export function getEpisodeDetails(
-  client: WebClientInterface,
+export function newGetEpisodeDetailsRequest(
   body: GetEpisodeDetailsRequestBody,
-  options?: WebClientOptions,
-): Promise<GetEpisodeDetailsResponse> {
-  return client.send(
-    {
-      descriptor: GET_EPISODE_DETAILS,
-      body,
-    },
-    options,
-  );
+): ClientRequestInterface<GetEpisodeDetailsResponse> {
+  return {
+    descriptor: GET_EPISODE_DETAILS,
+    body,
+  };
 }
 
-export function listEpisodes(
-  client: WebClientInterface,
+export function newListEpisodesRequest(
   body: ListEpisodesRequestBody,
-  options?: WebClientOptions,
-): Promise<ListEpisodesResponse> {
-  return client.send(
-    {
-      descriptor: LIST_EPISODES,
-      body,
-    },
-    options,
-  );
+): ClientRequestInterface<ListEpisodesResponse> {
+  return {
+    descriptor: LIST_EPISODES,
+    body,
+  };
 }

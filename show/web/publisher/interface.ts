@@ -4,7 +4,8 @@ import { SeasonState, SEASON_STATE } from '../../season_state';
 import { SeasonSummary, SEASON_SUMMARY } from './season_summary';
 import { EpisodeSummary, EPISODE_SUMMARY } from './episode_summary';
 import { EpisodeDetails, EPISODE_DETAILS } from './episode_details';
-import { WebRemoteCallDescriptor, PrimitveTypeForBody } from '@selfage/service_descriptor';
+import { PRODUCT_WEB_SERVICE } from '../../../service';
+import { RemoteCallDescriptor, PrimitveTypeForBody } from '@selfage/service_descriptor';
 
 export interface CreateSeasonRequestBody {
   name?: string,
@@ -1081,68 +1082,74 @@ export let DROP_SUBTITLE_TRACK_STAGING_DATA_RESPONSE: MessageDescriptor<DropSubt
   fields: [],
 };
 
-export let GET_SEASON: WebRemoteCallDescriptor = {
+export let GET_SEASON: RemoteCallDescriptor = {
   name: "GetSeason",
+  service: PRODUCT_WEB_SERVICE,
   path: "/GetSeason",
   body: {
     messageType: GET_SEASON_REQUEST_BODY,
   },
-  sessionKey: "sk",
+  authKey: "sk",
   response: {
     messageType: GET_SEASON_RESPONSE,
   },
 }
 
-export let CREATE_SEASON: WebRemoteCallDescriptor = {
+export let CREATE_SEASON: RemoteCallDescriptor = {
   name: "CreateSeason",
+  service: PRODUCT_WEB_SERVICE,
   path: "/CreateSeason",
   body: {
     messageType: CREATE_SEASON_REQUEST_BODY,
   },
-  sessionKey: "sk",
+  authKey: "sk",
   response: {
     messageType: CREATE_SEASON_RESPONSE,
   },
 }
 
-export let DELETE_SEASON: WebRemoteCallDescriptor = {
+export let DELETE_SEASON: RemoteCallDescriptor = {
   name: "DeleteSeason",
+  service: PRODUCT_WEB_SERVICE,
   path: "/DeleteSeason",
   body: {
     messageType: DELETE_SEASON_REQUEST_BODY,
   },
-  sessionKey: "sk",
+  authKey: "sk",
   response: {
     messageType: DELETE_SEASON_RESPONSE,
   },
 }
 
-export let ARCHIVE_SEASON: WebRemoteCallDescriptor = {
+export let ARCHIVE_SEASON: RemoteCallDescriptor = {
   name: "ArchiveSeason",
+  service: PRODUCT_WEB_SERVICE,
   path: "/ArchiveSeason",
   body: {
     messageType: ARCHIVE_SEASON_REQUEST_BODY,
   },
-  sessionKey: "sk",
+  authKey: "sk",
   response: {
     messageType: ARCHIVE_SEASON_RESPONSE,
   },
 }
 
-export let UPDATE_SEASON: WebRemoteCallDescriptor = {
+export let UPDATE_SEASON: RemoteCallDescriptor = {
   name: "UpdateSeason",
+  service: PRODUCT_WEB_SERVICE,
   path: "/UpdateSeason",
   body: {
     messageType: UPDATE_SEASON_REQUEST_BODY,
   },
-  sessionKey: "sk",
+  authKey: "sk",
   response: {
     messageType: UPDATE_SEASON_RESPONSE,
   },
 }
 
-export let UPLOAD_COVER_IMAGE: WebRemoteCallDescriptor = {
+export let UPLOAD_COVER_IMAGE: RemoteCallDescriptor = {
   name: "UploadCoverImage",
+  service: PRODUCT_WEB_SERVICE,
   path: "/UploadCoverImage",
   body: {
     primitiveType: PrimitveTypeForBody.BYTES,
@@ -1151,331 +1158,358 @@ export let UPLOAD_COVER_IMAGE: WebRemoteCallDescriptor = {
     key: "mt",
     type: UPLOAD_COVER_IMAGE_REQUEST_METADATA,
   },
-  sessionKey: "sk",
+  authKey: "sk",
   response: {
     messageType: UPLOAD_COVER_IMAGE_RESPONSE,
   },
 }
 
-export let UPDATE_SEASON_GRADE: WebRemoteCallDescriptor = {
+export let UPDATE_SEASON_GRADE: RemoteCallDescriptor = {
   name: "UpdateSeasonGrade",
+  service: PRODUCT_WEB_SERVICE,
   path: "/UpdateSeasonGrade",
   body: {
     messageType: UPDATE_SEASON_GRADE_REQUEST_BODY,
   },
-  sessionKey: "sk",
+  authKey: "sk",
   response: {
     messageType: UPDATE_SEASON_GRADE_RESPONSE,
   },
 }
 
-export let LIST_SEASONS: WebRemoteCallDescriptor = {
+export let LIST_SEASONS: RemoteCallDescriptor = {
   name: "ListSeasons",
+  service: PRODUCT_WEB_SERVICE,
   path: "/ListSeasons",
   body: {
     messageType: LIST_SEASONS_REQUEST_BODY,
   },
-  sessionKey: "sk",
+  authKey: "sk",
   response: {
     messageType: LIST_SEASONS_RESPONSE,
   },
 }
 
-export let CREATE_EPISODE: WebRemoteCallDescriptor = {
+export let CREATE_EPISODE: RemoteCallDescriptor = {
   name: "CreateEpisode",
+  service: PRODUCT_WEB_SERVICE,
   path: "/CreateEpisode",
   body: {
     messageType: CREATE_EPISODE_REQUEST_BODY,
   },
-  sessionKey: "sk",
+  authKey: "sk",
   response: {
     messageType: CREATE_EPISODE_RESPONSE,
   },
 }
 
-export let DELETE_EPISODE: WebRemoteCallDescriptor = {
+export let DELETE_EPISODE: RemoteCallDescriptor = {
   name: "DeleteEpisode",
+  service: PRODUCT_WEB_SERVICE,
   path: "/DeleteEpisode",
   body: {
     messageType: DELETE_EPISODE_REQUEST_BODY,
   },
-  sessionKey: "sk",
+  authKey: "sk",
   response: {
     messageType: DELETE_EPISODE_RESPONSE,
   },
 }
 
-export let GET_EPISODE: WebRemoteCallDescriptor = {
+export let GET_EPISODE: RemoteCallDescriptor = {
   name: "GetEpisode",
+  service: PRODUCT_WEB_SERVICE,
   path: "/GetEpisode",
   body: {
     messageType: GET_EPISODE_REQUEST_BODY,
   },
-  sessionKey: "sk",
+  authKey: "sk",
   response: {
     messageType: GET_EPISODE_RESPONSE,
   },
 }
 
-export let UPDATE_EPISODE: WebRemoteCallDescriptor = {
+export let UPDATE_EPISODE: RemoteCallDescriptor = {
   name: "UpdateEpisode",
+  service: PRODUCT_WEB_SERVICE,
   path: "/UpdateEpisode",
   body: {
     messageType: UPDATE_EPISODE_REQUEST_BODY,
   },
-  sessionKey: "sk",
+  authKey: "sk",
   response: {
     messageType: UPDATE_EPISODE_RESPONSE,
   },
 }
 
-export let UPDATE_EPISODE_ORDER: WebRemoteCallDescriptor = {
+export let UPDATE_EPISODE_ORDER: RemoteCallDescriptor = {
   name: "UpdateEpisodeOrder",
+  service: PRODUCT_WEB_SERVICE,
   path: "/UpdateEpisodeOrder",
   body: {
     messageType: UPDATE_EPISODE_ORDER_REQUEST_BODY,
   },
-  sessionKey: "sk",
+  authKey: "sk",
   response: {
     messageType: UPDATE_EPISODE_ORDER_RESPONSE,
   },
 }
 
-export let PUBLISH_EPISODE: WebRemoteCallDescriptor = {
+export let PUBLISH_EPISODE: RemoteCallDescriptor = {
   name: "PublishEpisode",
+  service: PRODUCT_WEB_SERVICE,
   path: "/PublishEpisode",
   body: {
     messageType: PUBLISH_EPISODE_REQUEST_BODY,
   },
-  sessionKey: "sk",
+  authKey: "sk",
   response: {
     messageType: PUBLISH_EPISODE_RESPONSE,
   },
 }
 
-export let UNPUBLISH_EPISODE: WebRemoteCallDescriptor = {
+export let UNPUBLISH_EPISODE: RemoteCallDescriptor = {
   name: "UnpublishEpisode",
+  service: PRODUCT_WEB_SERVICE,
   path: "/UnpublishEpisode",
   body: {
     messageType: UNPUBLISH_EPISODE_REQUEST_BODY,
   },
-  sessionKey: "sk",
+  authKey: "sk",
   response: {
     messageType: UNPUBLISH_EPISODE_RESPONSE,
   },
 }
 
-export let LIST_EPISODES: WebRemoteCallDescriptor = {
+export let LIST_EPISODES: RemoteCallDescriptor = {
   name: "ListEpisodes",
+  service: PRODUCT_WEB_SERVICE,
   path: "/ListEpisodes",
   body: {
     messageType: LIST_EPISODES_REQUEST_BODY,
   },
-  sessionKey: "sk",
+  authKey: "sk",
   response: {
     messageType: LIST_EPISODES_RESPONSE,
   },
 }
 
-export let COMMIT_EPISODE_STAGING_DATA: WebRemoteCallDescriptor = {
+export let COMMIT_EPISODE_STAGING_DATA: RemoteCallDescriptor = {
   name: "CommitEpisodeStagingData",
+  service: PRODUCT_WEB_SERVICE,
   path: "/CommitEpisodeStagingData",
   body: {
     messageType: COMMIT_EPISODE_STAGING_DATA_REQUEST_BODY,
   },
-  sessionKey: "sk",
+  authKey: "sk",
   response: {
     messageType: COMMIT_EPISODE_STAGING_DATA_RESPONSE,
   },
 }
 
-export let START_MEDIA_UPLOADING: WebRemoteCallDescriptor = {
+export let START_MEDIA_UPLOADING: RemoteCallDescriptor = {
   name: "StartMediaUploading",
+  service: PRODUCT_WEB_SERVICE,
   path: "/StartMediaUploading",
   body: {
     messageType: START_MEDIA_UPLOADING_REQUEST_BODY,
   },
-  sessionKey: "sk",
+  authKey: "sk",
   response: {
     messageType: START_MEDIA_UPLOADING_RESPONSE,
   },
 }
 
-export let COMPLETE_MEDIA_UPLOADING: WebRemoteCallDescriptor = {
+export let COMPLETE_MEDIA_UPLOADING: RemoteCallDescriptor = {
   name: "CompleteMediaUploading",
+  service: PRODUCT_WEB_SERVICE,
   path: "/CompleteMediaUploading",
   body: {
     messageType: COMPLETE_MEDIA_UPLOADING_REQUEST_BODY,
   },
-  sessionKey: "sk",
+  authKey: "sk",
   response: {
     messageType: COMPLETE_MEDIA_UPLOADING_RESPONSE,
   },
 }
 
-export let CANCEL_MEDIA_UPLOADING: WebRemoteCallDescriptor = {
+export let CANCEL_MEDIA_UPLOADING: RemoteCallDescriptor = {
   name: "CancelMediaUploading",
+  service: PRODUCT_WEB_SERVICE,
   path: "/CancelMediaUploading",
   body: {
     messageType: CANCEL_MEDIA_UPLOADING_REQUEST_BODY,
   },
-  sessionKey: "sk",
+  authKey: "sk",
   response: {
     messageType: CANCEL_MEDIA_UPLOADING_RESPONSE,
   },
 }
 
-export let START_SUBTITLE_UPLOADING: WebRemoteCallDescriptor = {
+export let START_SUBTITLE_UPLOADING: RemoteCallDescriptor = {
   name: "StartSubtitleUploading",
+  service: PRODUCT_WEB_SERVICE,
   path: "/StartSubtitleUploading",
   body: {
     messageType: START_SUBTITLE_UPLOADING_REQUEST_BODY,
   },
-  sessionKey: "sk",
+  authKey: "sk",
   response: {
     messageType: START_SUBTITLE_UPLOADING_RESPONSE,
   },
 }
 
-export let COMPLETE_SUBTITLE_UPLOADING: WebRemoteCallDescriptor = {
+export let COMPLETE_SUBTITLE_UPLOADING: RemoteCallDescriptor = {
   name: "CompleteSubtitleUploading",
+  service: PRODUCT_WEB_SERVICE,
   path: "/CompleteSubtitleUploading",
   body: {
     messageType: COMPLETE_SUBTITLE_UPLOADING_REQUEST_BODY,
   },
-  sessionKey: "sk",
+  authKey: "sk",
   response: {
     messageType: COMPLETE_SUBTITLE_UPLOADING_RESPONSE,
   },
 }
 
-export let CANCEL_SUBTITLE_UPLOADING: WebRemoteCallDescriptor = {
+export let CANCEL_SUBTITLE_UPLOADING: RemoteCallDescriptor = {
   name: "CancelSubtitleUploading",
+  service: PRODUCT_WEB_SERVICE,
   path: "/CancelSubtitleUploading",
   body: {
     messageType: CANCEL_SUBTITLE_UPLOADING_REQUEST_BODY,
   },
-  sessionKey: "sk",
+  authKey: "sk",
   response: {
     messageType: CANCEL_SUBTITLE_UPLOADING_RESPONSE,
   },
 }
 
-export let CANCEL_MEDIA_FORMATTING: WebRemoteCallDescriptor = {
+export let CANCEL_MEDIA_FORMATTING: RemoteCallDescriptor = {
   name: "CancelMediaFormatting",
+  service: PRODUCT_WEB_SERVICE,
   path: "/CancelMediaFormatting",
   body: {
     messageType: CANCEL_MEDIA_FORMATTING_REQUEST_BODY,
   },
-  sessionKey: "sk",
+  authKey: "sk",
   response: {
     messageType: CANCEL_MEDIA_FORMATTING_RESPONSE,
   },
 }
 
-export let CANCEL_SUBTITLE_FORMATTING: WebRemoteCallDescriptor = {
+export let CANCEL_SUBTITLE_FORMATTING: RemoteCallDescriptor = {
   name: "CancelSubtitleFormatting",
+  service: PRODUCT_WEB_SERVICE,
   path: "/CancelSubtitleFormatting",
   body: {
     messageType: CANCEL_SUBTITLE_FORMATTING_REQUEST_BODY,
   },
-  sessionKey: "sk",
+  authKey: "sk",
   response: {
     messageType: CANCEL_SUBTITLE_FORMATTING_RESPONSE,
   },
 }
 
-export let DELETE_VIDEO_TRACK: WebRemoteCallDescriptor = {
+export let DELETE_VIDEO_TRACK: RemoteCallDescriptor = {
   name: "DeleteVideoTrack",
+  service: PRODUCT_WEB_SERVICE,
   path: "/DeleteVideoTrack",
   body: {
     messageType: DELETE_VIDEO_TRACK_REQUEST_BODY,
   },
-  sessionKey: "sk",
+  authKey: "sk",
   response: {
     messageType: DELETE_VIDEO_TRACK_RESPONSE,
   },
 }
 
-export let DROP_VIDEO_TRACK_STAGING_DATA: WebRemoteCallDescriptor = {
+export let DROP_VIDEO_TRACK_STAGING_DATA: RemoteCallDescriptor = {
   name: "DropVideoTrackStagingData",
+  service: PRODUCT_WEB_SERVICE,
   path: "/DropVideoTrackStagingData",
   body: {
     messageType: DROP_VIDEO_TRACK_STAGING_DATA_REQUEST_BODY,
   },
-  sessionKey: "sk",
+  authKey: "sk",
   response: {
     messageType: DROP_VIDEO_TRACK_STAGING_DATA_RESPONSE,
   },
 }
 
-export let UPDATE_AUDIO_TRACK: WebRemoteCallDescriptor = {
+export let UPDATE_AUDIO_TRACK: RemoteCallDescriptor = {
   name: "UpdateAudioTrack",
+  service: PRODUCT_WEB_SERVICE,
   path: "/UpdateAudioTrack",
   body: {
     messageType: UPDATE_AUDIO_TRACK_REQUEST_BODY,
   },
-  sessionKey: "sk",
+  authKey: "sk",
   response: {
     messageType: UPDATE_AUDIO_TRACK_RESPONSE,
   },
 }
 
-export let DELETE_AUDIO_TRACK: WebRemoteCallDescriptor = {
+export let DELETE_AUDIO_TRACK: RemoteCallDescriptor = {
   name: "DeleteAudioTrack",
+  service: PRODUCT_WEB_SERVICE,
   path: "/DeleteAudioTrack",
   body: {
     messageType: DELETE_AUDIO_TRACK_REQUEST_BODY,
   },
-  sessionKey: "sk",
+  authKey: "sk",
   response: {
     messageType: DELETE_AUDIO_TRACK_RESPONSE,
   },
 }
 
-export let DROP_AUDIO_TRACK_STAGING_DATA: WebRemoteCallDescriptor = {
+export let DROP_AUDIO_TRACK_STAGING_DATA: RemoteCallDescriptor = {
   name: "DropAudioTrackStagingData",
+  service: PRODUCT_WEB_SERVICE,
   path: "/DropAudioTrackStagingData",
   body: {
     messageType: DROP_AUDIO_TRACK_STAGING_DATA_REQUEST_BODY,
   },
-  sessionKey: "sk",
+  authKey: "sk",
   response: {
     messageType: DROP_AUDIO_TRACK_STAGING_DATA_RESPONSE,
   },
 }
 
-export let UPDATE_SUBTITLE_TRACK: WebRemoteCallDescriptor = {
+export let UPDATE_SUBTITLE_TRACK: RemoteCallDescriptor = {
   name: "UpdateSubtitleTrack",
+  service: PRODUCT_WEB_SERVICE,
   path: "/UpdateSubtitleTrack",
   body: {
     messageType: UPDATE_SUBTITLE_TRACK_REQUEST_BODY,
   },
-  sessionKey: "sk",
+  authKey: "sk",
   response: {
     messageType: UPDATE_SUBTITLE_TRACK_RESPONSE,
   },
 }
 
-export let DELETE_SUBTITLE_TRACK: WebRemoteCallDescriptor = {
+export let DELETE_SUBTITLE_TRACK: RemoteCallDescriptor = {
   name: "DeleteSubtitleTrack",
+  service: PRODUCT_WEB_SERVICE,
   path: "/DeleteSubtitleTrack",
   body: {
     messageType: DELETE_SUBTITLE_TRACK_REQUEST_BODY,
   },
-  sessionKey: "sk",
+  authKey: "sk",
   response: {
     messageType: DELETE_SUBTITLE_TRACK_RESPONSE,
   },
 }
 
-export let DROP_SUBTITLE_TRACK_STAGING_DATA: WebRemoteCallDescriptor = {
+export let DROP_SUBTITLE_TRACK_STAGING_DATA: RemoteCallDescriptor = {
   name: "DropSubtitleTrackStagingData",
+  service: PRODUCT_WEB_SERVICE,
   path: "/DropSubtitleTrackStagingData",
   body: {
     messageType: DROP_SUBTITLE_TRACK_STAGING_DATA_REQUEST_BODY,
   },
-  sessionKey: "sk",
+  authKey: "sk",
   response: {
     messageType: DROP_SUBTITLE_TRACK_STAGING_DATA_RESPONSE,
   },

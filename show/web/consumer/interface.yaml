@@ -53,23 +53,25 @@
     - name: indexCursor
       type: number
       index: 2
-- kind: WebService
-  name: ProductShowFrontnedConsumerService
-  remoteCalls:
+- kind: RemoteCallsGroup
+  name: ProductShowWebConsumerRemoteCalls
+  service: ProductWebService
+  importService: ./service
+  calls:
     - name: GetSeasonDetails
       path: /GetSeasonDetails
       body: GetSeasonDetailsRequestBody
-      sessionKey: sk
+      authKey: sk
       response: GetSeasonDetailsResponse
     - name: GetEpisodeDetails
       path: /GetEpisodeDetails
       body: GetEpisodeDetailsRequestBody
-      sessionKey: sk
+      authKey: sk
       response: GetEpisodeDetailsResponse
     - name: ListEpisodes
       path: /ListEpisodes
       body: ListEpisodesRequestBody
-      sessionKey: sk
+      authKey: sk
       response: ListEpisodesResponse
   outputClient: ./show/web/consumer/client
   outputHandler: ./show/web/consumer/handler

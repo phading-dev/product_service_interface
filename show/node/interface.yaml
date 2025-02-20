@@ -94,9 +94,11 @@
       index: 3
 - kind: Message
   name: CacheVideoContainerResponse
-- kind: NodeService
-  name: ProductShowNodeService
-  remoteCalls:
+- kind: RemoteCallsGroup
+  name: ProductShowNodeRemoteCalls
+  service: ProductNodeService
+  importService: ./service
+  calls:
     - name: GetSeasonPublisher
       path: /GetSeasonPublisher
       body: GetSeasonPublisherRequestBody

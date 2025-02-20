@@ -502,33 +502,35 @@
       index: 3
 - kind: Message
   name: DropSubtitleTrackStagingDataResponse
-- kind: WebService
-  name: ProductShowWebPublisherService
-  remoteCalls:
+- kind: RemoteCallsGroup
+  name: ProductShowWebPublisherRemoteCalls
+  service: ProductWebService
+  importService: ./service
+  calls:
     - name: GetSeason
       path: /GetSeason
       body: GetSeasonRequestBody
-      sessionKey: sk
+      authKey: sk
       response: GetSeasonResponse
     - name: CreateSeason
       path: /CreateSeason
       body: CreateSeasonRequestBody
-      sessionKey: sk
+      authKey: sk
       response: CreateSeasonResponse
     - name: DeleteSeason
       path: /DeleteSeason
       body: DeleteSeasonRequestBody
-      sessionKey: sk
+      authKey: sk
       response: DeleteSeasonResponse
     - name: ArchiveSeason
       path: /ArchiveSeason
       body: ArchiveSeasonRequestBody
-      sessionKey: sk
+      authKey: sk
       response: ArchiveSeasonResponse
     - name: UpdateSeason
       path: /UpdateSeason
       body: UpdateSeasonRequestBody
-      sessionKey: sk
+      authKey: sk
       response: UpdateSeasonResponse
     - name: UploadCoverImage
       path: /UploadCoverImage
@@ -536,142 +538,142 @@
         key: mt
         type: UploadCoverImageRequestMetadata
       body: bytes
-      sessionKey: sk
+      authKey: sk
       response: UploadCoverImageResponse
     - name: UpdateSeasonGrade
       path: /UpdateSeasonGrade
       body: UpdateSeasonGradeRequestBody
-      sessionKey: sk
+      authKey: sk
       response: UpdateSeasonGradeResponse
     - name: ListSeasons
       path: /ListSeasons
       body: ListSeasonsRequestBody
-      sessionKey: sk
+      authKey: sk
       response: ListSeasonsResponse
     - name: CreateEpisode
       path: /CreateEpisode
       body: CreateEpisodeRequestBody
-      sessionKey: sk
+      authKey: sk
       response: CreateEpisodeResponse
     - name: DeleteEpisode
       path: /DeleteEpisode
       body: DeleteEpisodeRequestBody
-      sessionKey: sk
+      authKey: sk
       response: DeleteEpisodeResponse
     - name: GetEpisode
       path: /GetEpisode
       body: GetEpisodeRequestBody
-      sessionKey: sk
+      authKey: sk
       response: GetEpisodeResponse
     - name: UpdateEpisode
       path: /UpdateEpisode
       body: UpdateEpisodeRequestBody
-      sessionKey: sk
+      authKey: sk
       response: UpdateEpisodeResponse
     - name: UpdateEpisodeOrder
       path: /UpdateEpisodeOrder
       body: UpdateEpisodeOrderRequestBody
-      sessionKey: sk
+      authKey: sk
       response: UpdateEpisodeOrderResponse
     - name: PublishEpisode
       path: /PublishEpisode
       body: PublishEpisodeRequestBody
-      sessionKey: sk
+      authKey: sk
       response: PublishEpisodeResponse
     - name: UnpublishEpisode
       path: /UnpublishEpisode
       body: UnpublishEpisodeRequestBody
-      sessionKey: sk
+      authKey: sk
       response: UnpublishEpisodeResponse
     - name: ListEpisodes
       path: /ListEpisodes
       body: ListEpisodesRequestBody
-      sessionKey: sk
+      authKey: sk
       response: ListEpisodesResponse
     - name: CommitEpisodeStagingData
       path: /CommitEpisodeStagingData
       body: CommitEpisodeStagingDataRequestBody
-      sessionKey: sk
+      authKey: sk
       response: CommitEpisodeStagingDataResponse
     - name: StartMediaUploading
       path: /StartMediaUploading
       body: StartMediaUploadingRequestBody
-      sessionKey: sk
+      authKey: sk
       response: StartMediaUploadingResponse
     - name: CompleteMediaUploading
       path: /CompleteMediaUploading
       body: CompleteMediaUploadingRequestBody
-      sessionKey: sk
+      authKey: sk
       response: CompleteMediaUploadingResponse
     - name: CancelMediaUploading
       path: /CancelMediaUploading
       body: CancelMediaUploadingRequestBody
-      sessionKey: sk
+      authKey: sk
       response: CancelMediaUploadingResponse
     - name: StartSubtitleUploading
       path: /StartSubtitleUploading
       body: StartSubtitleUploadingRequestBody
-      sessionKey: sk
+      authKey: sk
       response: StartSubtitleUploadingResponse
     - name: CompleteSubtitleUploading
       path: /CompleteSubtitleUploading
       body: CompleteSubtitleUploadingRequestBody
-      sessionKey: sk
+      authKey: sk
       response: CompleteSubtitleUploadingResponse
     - name: CancelSubtitleUploading
       path: /CancelSubtitleUploading
       body: CancelSubtitleUploadingRequestBody
-      sessionKey: sk
+      authKey: sk
       response: CancelSubtitleUploadingResponse
     - name: CancelMediaFormatting
       path: /CancelMediaFormatting
       body: CancelMediaFormattingRequestBody
-      sessionKey: sk
+      authKey: sk
       response: CancelMediaFormattingResponse
     - name: CancelSubtitleFormatting
       path: /CancelSubtitleFormatting
       body: CancelSubtitleFormattingRequestBody
-      sessionKey: sk
+      authKey: sk
       response: CancelSubtitleFormattingResponse
     - name: DeleteVideoTrack
       path: /DeleteVideoTrack
       body: DeleteVideoTrackRequestBody
-      sessionKey: sk
+      authKey: sk
       response: DeleteVideoTrackResponse
     - name: DropVideoTrackStagingData
       path: /DropVideoTrackStagingData
       body: DropVideoTrackStagingDataRequestBody
-      sessionKey: sk
+      authKey: sk
       response: DropVideoTrackStagingDataResponse
     - name: UpdateAudioTrack
       path: /UpdateAudioTrack
       body: UpdateAudioTrackRequestBody
-      sessionKey: sk
+      authKey: sk
       response: UpdateAudioTrackResponse
     - name: DeleteAudioTrack
       path: /DeleteAudioTrack
       body: DeleteAudioTrackRequestBody
-      sessionKey: sk
+      authKey: sk
       response: DeleteAudioTrackResponse
     - name: DropAudioTrackStagingData
       path: /DropAudioTrackStagingData
       body: DropAudioTrackStagingDataRequestBody
-      sessionKey: sk
+      authKey: sk
       response: DropAudioTrackStagingDataResponse
     - name: UpdateSubtitleTrack
       path: /UpdateSubtitleTrack
       body: UpdateSubtitleTrackRequestBody
-      sessionKey: sk
+      authKey: sk
       response: UpdateSubtitleTrackResponse
     - name: DeleteSubtitleTrack
       path: /DeleteSubtitleTrack
       body: DeleteSubtitleTrackRequestBody
-      sessionKey: sk
+      authKey: sk
       response: DeleteSubtitleTrackResponse
     - name: DropSubtitleTrackStagingData
       path: /DropSubtitleTrackStagingData
       body: DropSubtitleTrackStagingDataRequestBody
-      sessionKey: sk
+      authKey: sk
       response: DropSubtitleTrackStagingDataResponse
   outputClient: ./show/web/publisher/client
   outputHandler: ./show/web/publisher/handler

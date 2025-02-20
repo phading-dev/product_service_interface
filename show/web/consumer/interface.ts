@@ -2,7 +2,8 @@ import { PrimitiveType, MessageDescriptor } from '@selfage/message/descriptor';
 import { SeasonDetails, SEASON_DETAILS } from './season_details';
 import { EpisodeDetails, EPISODE_DETAILS } from './episode_details';
 import { EpisodeSummary, EPISODE_SUMMARY } from './episode_summary';
-import { WebRemoteCallDescriptor } from '@selfage/service_descriptor';
+import { PRODUCT_WEB_SERVICE } from '../../../service';
+import { RemoteCallDescriptor } from '@selfage/service_descriptor';
 
 export interface GetSeasonDetailsRequestBody {
   seasonId?: string,
@@ -108,37 +109,40 @@ export let LIST_EPISODES_RESPONSE: MessageDescriptor<ListEpisodesResponse> = {
   }],
 };
 
-export let GET_SEASON_DETAILS: WebRemoteCallDescriptor = {
+export let GET_SEASON_DETAILS: RemoteCallDescriptor = {
   name: "GetSeasonDetails",
+  service: PRODUCT_WEB_SERVICE,
   path: "/GetSeasonDetails",
   body: {
     messageType: GET_SEASON_DETAILS_REQUEST_BODY,
   },
-  sessionKey: "sk",
+  authKey: "sk",
   response: {
     messageType: GET_SEASON_DETAILS_RESPONSE,
   },
 }
 
-export let GET_EPISODE_DETAILS: WebRemoteCallDescriptor = {
+export let GET_EPISODE_DETAILS: RemoteCallDescriptor = {
   name: "GetEpisodeDetails",
+  service: PRODUCT_WEB_SERVICE,
   path: "/GetEpisodeDetails",
   body: {
     messageType: GET_EPISODE_DETAILS_REQUEST_BODY,
   },
-  sessionKey: "sk",
+  authKey: "sk",
   response: {
     messageType: GET_EPISODE_DETAILS_RESPONSE,
   },
 }
 
-export let LIST_EPISODES: WebRemoteCallDescriptor = {
+export let LIST_EPISODES: RemoteCallDescriptor = {
   name: "ListEpisodes",
+  service: PRODUCT_WEB_SERVICE,
   path: "/ListEpisodes",
   body: {
     messageType: LIST_EPISODES_REQUEST_BODY,
   },
-  sessionKey: "sk",
+  authKey: "sk",
   response: {
     messageType: LIST_EPISODES_RESPONSE,
   },

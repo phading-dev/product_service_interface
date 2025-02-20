@@ -1,0 +1,6 @@
+- kind: Service
+  name: ProductNodeService
+  path: /p/n
+- kind: Service
+  name: ProductWebService
+  path: /p/w

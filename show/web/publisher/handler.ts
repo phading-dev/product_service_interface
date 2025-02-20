@@ -1,301 +1,301 @@
 import { GetSeasonRequestBody, GET_SEASON, GetSeasonResponse, CreateSeasonRequestBody, CREATE_SEASON, CreateSeasonResponse, DeleteSeasonRequestBody, DELETE_SEASON, DeleteSeasonResponse, ArchiveSeasonRequestBody, ARCHIVE_SEASON, ArchiveSeasonResponse, UpdateSeasonRequestBody, UPDATE_SEASON, UpdateSeasonResponse, UploadCoverImageRequestMetadata, UPLOAD_COVER_IMAGE, UploadCoverImageResponse, UpdateSeasonGradeRequestBody, UPDATE_SEASON_GRADE, UpdateSeasonGradeResponse, ListSeasonsRequestBody, LIST_SEASONS, ListSeasonsResponse, CreateEpisodeRequestBody, CREATE_EPISODE, CreateEpisodeResponse, DeleteEpisodeRequestBody, DELETE_EPISODE, DeleteEpisodeResponse, GetEpisodeRequestBody, GET_EPISODE, GetEpisodeResponse, UpdateEpisodeRequestBody, UPDATE_EPISODE, UpdateEpisodeResponse, UpdateEpisodeOrderRequestBody, UPDATE_EPISODE_ORDER, UpdateEpisodeOrderResponse, PublishEpisodeRequestBody, PUBLISH_EPISODE, PublishEpisodeResponse, UnpublishEpisodeRequestBody, UNPUBLISH_EPISODE, UnpublishEpisodeResponse, ListEpisodesRequestBody, LIST_EPISODES, ListEpisodesResponse, CommitEpisodeStagingDataRequestBody, COMMIT_EPISODE_STAGING_DATA, CommitEpisodeStagingDataResponse, StartMediaUploadingRequestBody, START_MEDIA_UPLOADING, StartMediaUploadingResponse, CompleteMediaUploadingRequestBody, COMPLETE_MEDIA_UPLOADING, CompleteMediaUploadingResponse, CancelMediaUploadingRequestBody, CANCEL_MEDIA_UPLOADING, CancelMediaUploadingResponse, StartSubtitleUploadingRequestBody, START_SUBTITLE_UPLOADING, StartSubtitleUploadingResponse, CompleteSubtitleUploadingRequestBody, COMPLETE_SUBTITLE_UPLOADING, CompleteSubtitleUploadingResponse, CancelSubtitleUploadingRequestBody, CANCEL_SUBTITLE_UPLOADING, CancelSubtitleUploadingResponse, CancelMediaFormattingRequestBody, CANCEL_MEDIA_FORMATTING, CancelMediaFormattingResponse, CancelSubtitleFormattingRequestBody, CANCEL_SUBTITLE_FORMATTING, CancelSubtitleFormattingResponse, DeleteVideoTrackRequestBody, DELETE_VIDEO_TRACK, DeleteVideoTrackResponse, DropVideoTrackStagingDataRequestBody, DROP_VIDEO_TRACK_STAGING_DATA, DropVideoTrackStagingDataResponse, UpdateAudioTrackRequestBody, UPDATE_AUDIO_TRACK, UpdateAudioTrackResponse, DeleteAudioTrackRequestBody, DELETE_AUDIO_TRACK, DeleteAudioTrackResponse, DropAudioTrackStagingDataRequestBody, DROP_AUDIO_TRACK_STAGING_DATA, DropAudioTrackStagingDataResponse, UpdateSubtitleTrackRequestBody, UPDATE_SUBTITLE_TRACK, UpdateSubtitleTrackResponse, DeleteSubtitleTrackRequestBody, DELETE_SUBTITLE_TRACK, DeleteSubtitleTrackResponse, DropSubtitleTrackStagingDataRequestBody, DROP_SUBTITLE_TRACK_STAGING_DATA, DropSubtitleTrackStagingDataResponse } from './interface';
-import { WebHandlerInterface } from '@selfage/service_descriptor/handler_interface';
+import { RemoteCallHandlerInterface } from '@selfage/service_descriptor/remote_call_handler_interface';
 import { Readable } from 'stream';
 
-export abstract class GetSeasonHandlerInterface implements WebHandlerInterface {
+export abstract class GetSeasonHandlerInterface implements RemoteCallHandlerInterface {
   public descriptor = GET_SEASON;
   public abstract handle(
     loggingPrefix: string,
     body: GetSeasonRequestBody,
-    sessionStr: string,
+    authStr: string,
   ): Promise<GetSeasonResponse>;
 }
 
-export abstract class CreateSeasonHandlerInterface implements WebHandlerInterface {
+export abstract class CreateSeasonHandlerInterface implements RemoteCallHandlerInterface {
   public descriptor = CREATE_SEASON;
   public abstract handle(
     loggingPrefix: string,
     body: CreateSeasonRequestBody,
-    sessionStr: string,
+    authStr: string,
   ): Promise<CreateSeasonResponse>;
 }
 
-export abstract class DeleteSeasonHandlerInterface implements WebHandlerInterface {
+export abstract class DeleteSeasonHandlerInterface implements RemoteCallHandlerInterface {
   public descriptor = DELETE_SEASON;
   public abstract handle(
     loggingPrefix: string,
     body: DeleteSeasonRequestBody,
-    sessionStr: string,
+    authStr: string,
   ): Promise<DeleteSeasonResponse>;
 }
 
-export abstract class ArchiveSeasonHandlerInterface implements WebHandlerInterface {
+export abstract class ArchiveSeasonHandlerInterface implements RemoteCallHandlerInterface {
   public descriptor = ARCHIVE_SEASON;
   public abstract handle(
     loggingPrefix: string,
     body: ArchiveSeasonRequestBody,
-    sessionStr: string,
+    authStr: string,
   ): Promise<ArchiveSeasonResponse>;
 }
 
-export abstract class UpdateSeasonHandlerInterface implements WebHandlerInterface {
+export abstract class UpdateSeasonHandlerInterface implements RemoteCallHandlerInterface {
   public descriptor = UPDATE_SEASON;
   public abstract handle(
     loggingPrefix: string,
     body: UpdateSeasonRequestBody,
-    sessionStr: string,
+    authStr: string,
   ): Promise<UpdateSeasonResponse>;
 }
 
-export abstract class UploadCoverImageHandlerInterface implements WebHandlerInterface {
+export abstract class UploadCoverImageHandlerInterface implements RemoteCallHandlerInterface {
   public descriptor = UPLOAD_COVER_IMAGE;
   public abstract handle(
     loggingPrefix: string,
     body: Readable,
     metadata: UploadCoverImageRequestMetadata,
-    sessionStr: string,
+    authStr: string,
   ): Promise<UploadCoverImageResponse>;
 }
 
-export abstract class UpdateSeasonGradeHandlerInterface implements WebHandlerInterface {
+export abstract class UpdateSeasonGradeHandlerInterface implements RemoteCallHandlerInterface {
   public descriptor = UPDATE_SEASON_GRADE;
   public abstract handle(
     loggingPrefix: string,
     body: UpdateSeasonGradeRequestBody,
-    sessionStr: string,
+    authStr: string,
   ): Promise<UpdateSeasonGradeResponse>;
 }
 
-export abstract class ListSeasonsHandlerInterface implements WebHandlerInterface {
+export abstract class ListSeasonsHandlerInterface implements RemoteCallHandlerInterface {
   public descriptor = LIST_SEASONS;
   public abstract handle(
     loggingPrefix: string,
     body: ListSeasonsRequestBody,
-    sessionStr: string,
+    authStr: string,
   ): Promise<ListSeasonsResponse>;
 }
 
-export abstract class CreateEpisodeHandlerInterface implements WebHandlerInterface {
+export abstract class CreateEpisodeHandlerInterface implements RemoteCallHandlerInterface {
   public descriptor = CREATE_EPISODE;
   public abstract handle(
     loggingPrefix: string,
     body: CreateEpisodeRequestBody,
-    sessionStr: string,
+    authStr: string,
   ): Promise<CreateEpisodeResponse>;
 }
 
-export abstract class DeleteEpisodeHandlerInterface implements WebHandlerInterface {
+export abstract class DeleteEpisodeHandlerInterface implements RemoteCallHandlerInterface {
   public descriptor = DELETE_EPISODE;
   public abstract handle(
     loggingPrefix: string,
     body: DeleteEpisodeRequestBody,
-    sessionStr: string,
+    authStr: string,
   ): Promise<DeleteEpisodeResponse>;
 }
 
-export abstract class GetEpisodeHandlerInterface implements WebHandlerInterface {
+export abstract class GetEpisodeHandlerInterface implements RemoteCallHandlerInterface {
   public descriptor = GET_EPISODE;
   public abstract handle(
     loggingPrefix: string,
     body: GetEpisodeRequestBody,
-    sessionStr: string,
+    authStr: string,
   ): Promise<GetEpisodeResponse>;
 }
 
-export abstract class UpdateEpisodeHandlerInterface implements WebHandlerInterface {
+export abstract class UpdateEpisodeHandlerInterface implements RemoteCallHandlerInterface {
   public descriptor = UPDATE_EPISODE;
   public abstract handle(
     loggingPrefix: string,
     body: UpdateEpisodeRequestBody,
-    sessionStr: string,
+    authStr: string,
   ): Promise<UpdateEpisodeResponse>;
 }
 
-export abstract class UpdateEpisodeOrderHandlerInterface implements WebHandlerInterface {
+export abstract class UpdateEpisodeOrderHandlerInterface implements RemoteCallHandlerInterface {
   public descriptor = UPDATE_EPISODE_ORDER;
   public abstract handle(
     loggingPrefix: string,
     body: UpdateEpisodeOrderRequestBody,
-    sessionStr: string,
+    authStr: string,
   ): Promise<UpdateEpisodeOrderResponse>;
 }
 
-export abstract class PublishEpisodeHandlerInterface implements WebHandlerInterface {
+export abstract class PublishEpisodeHandlerInterface implements RemoteCallHandlerInterface {
   public descriptor = PUBLISH_EPISODE;
   public abstract handle(
     loggingPrefix: string,
     body: PublishEpisodeRequestBody,
-    sessionStr: string,
+    authStr: string,
   ): Promise<PublishEpisodeResponse>;
 }
 
-export abstract class UnpublishEpisodeHandlerInterface implements WebHandlerInterface {
+export abstract class UnpublishEpisodeHandlerInterface implements RemoteCallHandlerInterface {
   public descriptor = UNPUBLISH_EPISODE;
   public abstract handle(
     loggingPrefix: string,
     body: UnpublishEpisodeRequestBody,
-    sessionStr: string,
+    authStr: string,
   ): Promise<UnpublishEpisodeResponse>;
 }
 
-export abstract class ListEpisodesHandlerInterface implements WebHandlerInterface {
+export abstract class ListEpisodesHandlerInterface implements RemoteCallHandlerInterface {
   public descriptor = LIST_EPISODES;
   public abstract handle(
     loggingPrefix: string,
     body: ListEpisodesRequestBody,
-    sessionStr: string,
+    authStr: string,
   ): Promise<ListEpisodesResponse>;
 }
 
-export abstract class CommitEpisodeStagingDataHandlerInterface implements WebHandlerInterface {
+export abstract class CommitEpisodeStagingDataHandlerInterface implements RemoteCallHandlerInterface {
   public descriptor = COMMIT_EPISODE_STAGING_DATA;
   public abstract handle(
     loggingPrefix: string,
     body: CommitEpisodeStagingDataRequestBody,
-    sessionStr: string,
+    authStr: string,
   ): Promise<CommitEpisodeStagingDataResponse>;
 }
 
-export abstract class StartMediaUploadingHandlerInterface implements WebHandlerInterface {
+export abstract class StartMediaUploadingHandlerInterface implements RemoteCallHandlerInterface {
   public descriptor = START_MEDIA_UPLOADING;
   public abstract handle(
     loggingPrefix: string,
     body: StartMediaUploadingRequestBody,
-    sessionStr: string,
+    authStr: string,
   ): Promise<StartMediaUploadingResponse>;
 }
 
-export abstract class CompleteMediaUploadingHandlerInterface implements WebHandlerInterface {
+export abstract class CompleteMediaUploadingHandlerInterface implements RemoteCallHandlerInterface {
   public descriptor = COMPLETE_MEDIA_UPLOADING;
   public abstract handle(
     loggingPrefix: string,
     body: CompleteMediaUploadingRequestBody,
-    sessionStr: string,
+    authStr: string,
   ): Promise<CompleteMediaUploadingResponse>;
 }
 
-export abstract class CancelMediaUploadingHandlerInterface implements WebHandlerInterface {
+export abstract class CancelMediaUploadingHandlerInterface implements RemoteCallHandlerInterface {
   public descriptor = CANCEL_MEDIA_UPLOADING;
   public abstract handle(
     loggingPrefix: string,
     body: CancelMediaUploadingRequestBody,
-    sessionStr: string,
+    authStr: string,
   ): Promise<CancelMediaUploadingResponse>;
 }
 
-export abstract class StartSubtitleUploadingHandlerInterface implements WebHandlerInterface {
+export abstract class StartSubtitleUploadingHandlerInterface implements RemoteCallHandlerInterface {
   public descriptor = START_SUBTITLE_UPLOADING;
   public abstract handle(
     loggingPrefix: string,
     body: StartSubtitleUploadingRequestBody,
-    sessionStr: string,
+    authStr: string,
   ): Promise<StartSubtitleUploadingResponse>;
 }
 
-export abstract class CompleteSubtitleUploadingHandlerInterface implements WebHandlerInterface {
+export abstract class CompleteSubtitleUploadingHandlerInterface implements RemoteCallHandlerInterface {
   public descriptor = COMPLETE_SUBTITLE_UPLOADING;
   public abstract handle(
     loggingPrefix: string,
     body: CompleteSubtitleUploadingRequestBody,
-    sessionStr: string,
+    authStr: string,
   ): Promise<CompleteSubtitleUploadingResponse>;
 }
 
-export abstract class CancelSubtitleUploadingHandlerInterface implements WebHandlerInterface {
+export abstract class CancelSubtitleUploadingHandlerInterface implements RemoteCallHandlerInterface {
   public descriptor = CANCEL_SUBTITLE_UPLOADING;
   public abstract handle(
     loggingPrefix: string,
     body: CancelSubtitleUploadingRequestBody,
-    sessionStr: string,
+    authStr: string,
   ): Promise<CancelSubtitleUploadingResponse>;
 }
 
-export abstract class CancelMediaFormattingHandlerInterface implements WebHandlerInterface {
+export abstract class CancelMediaFormattingHandlerInterface implements RemoteCallHandlerInterface {
   public descriptor = CANCEL_MEDIA_FORMATTING;
   public abstract handle(
     loggingPrefix: string,
     body: CancelMediaFormattingRequestBody,
-    sessionStr: string,
+    authStr: string,
   ): Promise<CancelMediaFormattingResponse>;
 }
 
-export abstract class CancelSubtitleFormattingHandlerInterface implements WebHandlerInterface {
+export abstract class CancelSubtitleFormattingHandlerInterface implements RemoteCallHandlerInterface {
   public descriptor = CANCEL_SUBTITLE_FORMATTING;
   public abstract handle(
     loggingPrefix: string,
     body: CancelSubtitleFormattingRequestBody,
-    sessionStr: string,
+    authStr: string,
   ): Promise<CancelSubtitleFormattingResponse>;
 }
 
-export abstract class DeleteVideoTrackHandlerInterface implements WebHandlerInterface {
+export abstract class DeleteVideoTrackHandlerInterface implements RemoteCallHandlerInterface {
   public descriptor = DELETE_VIDEO_TRACK;
   public abstract handle(
     loggingPrefix: string,
     body: DeleteVideoTrackRequestBody,
-    sessionStr: string,
+    authStr: string,
   ): Promise<DeleteVideoTrackResponse>;
 }
 
-export abstract class DropVideoTrackStagingDataHandlerInterface implements WebHandlerInterface {
+export abstract class DropVideoTrackStagingDataHandlerInterface implements RemoteCallHandlerInterface {
   public descriptor = DROP_VIDEO_TRACK_STAGING_DATA;
   public abstract handle(
     loggingPrefix: string,
     body: DropVideoTrackStagingDataRequestBody,
-    sessionStr: string,
+    authStr: string,
   ): Promise<DropVideoTrackStagingDataResponse>;
 }
 
-export abstract class UpdateAudioTrackHandlerInterface implements WebHandlerInterface {
+export abstract class UpdateAudioTrackHandlerInterface implements RemoteCallHandlerInterface {
   public descriptor = UPDATE_AUDIO_TRACK;
   public abstract handle(
     loggingPrefix: string,
     body: UpdateAudioTrackRequestBody,
-    sessionStr: string,
+    authStr: string,
   ): Promise<UpdateAudioTrackResponse>;
 }
 
-export abstract class DeleteAudioTrackHandlerInterface implements WebHandlerInterface {
+export abstract class DeleteAudioTrackHandlerInterface implements RemoteCallHandlerInterface {
   public descriptor = DELETE_AUDIO_TRACK;
   public abstract handle(
     loggingPrefix: string,
     body: DeleteAudioTrackRequestBody,
-    sessionStr: string,
+    authStr: string,
   ): Promise<DeleteAudioTrackResponse>;
 }
 
-export abstract class DropAudioTrackStagingDataHandlerInterface implements WebHandlerInterface {
+export abstract class DropAudioTrackStagingDataHandlerInterface implements RemoteCallHandlerInterface {
   public descriptor = DROP_AUDIO_TRACK_STAGING_DATA;
   public abstract handle(
     loggingPrefix: string,
     body: DropAudioTrackStagingDataRequestBody,
-    sessionStr: string,
+    authStr: string,
   ): Promise<DropAudioTrackStagingDataResponse>;
 }
 
-export abstract class UpdateSubtitleTrackHandlerInterface implements WebHandlerInterface {
+export abstract class UpdateSubtitleTrackHandlerInterface implements RemoteCallHandlerInterface {
   public descriptor = UPDATE_SUBTITLE_TRACK;
   public abstract handle(
     loggingPrefix: string,
     body: UpdateSubtitleTrackRequestBody,
-    sessionStr: string,
+    authStr: string,
   ): Promise<UpdateSubtitleTrackResponse>;
 }
 
-export abstract class DeleteSubtitleTrackHandlerInterface implements WebHandlerInterface {
+export abstract class DeleteSubtitleTrackHandlerInterface implements RemoteCallHandlerInterface {
   public descriptor = DELETE_SUBTITLE_TRACK;
   public abstract handle(
     loggingPrefix: string,
     body: DeleteSubtitleTrackRequestBody,
-    sessionStr: string,
+    authStr: string,
   ): Promise<DeleteSubtitleTrackResponse>;
 }
 
-export abstract class DropSubtitleTrackStagingDataHandlerInterface implements WebHandlerInterface {
+export abstract class DropSubtitleTrackStagingDataHandlerInterface implements RemoteCallHandlerInterface {
   public descriptor = DROP_SUBTITLE_TRACK_STAGING_DATA;
   public abstract handle(
     loggingPrefix: string,
     body: DropSubtitleTrackStagingDataRequestBody,
-    sessionStr: string,
+    authStr: string,
   ): Promise<DropSubtitleTrackStagingDataResponse>;
 }

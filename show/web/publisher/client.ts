@@ -1,466 +1,301 @@
 import { GetSeasonRequestBody, GetSeasonResponse, GET_SEASON, CreateSeasonRequestBody, CreateSeasonResponse, CREATE_SEASON, DeleteSeasonRequestBody, DeleteSeasonResponse, DELETE_SEASON, ArchiveSeasonRequestBody, ArchiveSeasonResponse, ARCHIVE_SEASON, UpdateSeasonRequestBody, UpdateSeasonResponse, UPDATE_SEASON, UploadCoverImageRequestMetadata, UploadCoverImageResponse, UPLOAD_COVER_IMAGE, UpdateSeasonGradeRequestBody, UpdateSeasonGradeResponse, UPDATE_SEASON_GRADE, ListSeasonsRequestBody, ListSeasonsResponse, LIST_SEASONS, CreateEpisodeRequestBody, CreateEpisodeResponse, CREATE_EPISODE, DeleteEpisodeRequestBody, DeleteEpisodeResponse, DELETE_EPISODE, GetEpisodeRequestBody, GetEpisodeResponse, GET_EPISODE, UpdateEpisodeRequestBody, UpdateEpisodeResponse, UPDATE_EPISODE, UpdateEpisodeOrderRequestBody, UpdateEpisodeOrderResponse, UPDATE_EPISODE_ORDER, PublishEpisodeRequestBody, PublishEpisodeResponse, PUBLISH_EPISODE, UnpublishEpisodeRequestBody, UnpublishEpisodeResponse, UNPUBLISH_EPISODE, ListEpisodesRequestBody, ListEpisodesResponse, LIST_EPISODES, CommitEpisodeStagingDataRequestBody, CommitEpisodeStagingDataResponse, COMMIT_EPISODE_STAGING_DATA, StartMediaUploadingRequestBody, StartMediaUploadingResponse, START_MEDIA_UPLOADING, CompleteMediaUploadingRequestBody, CompleteMediaUploadingResponse, COMPLETE_MEDIA_UPLOADING, CancelMediaUploadingRequestBody, CancelMediaUploadingResponse, CANCEL_MEDIA_UPLOADING, StartSubtitleUploadingRequestBody, StartSubtitleUploadingResponse, START_SUBTITLE_UPLOADING, CompleteSubtitleUploadingRequestBody, CompleteSubtitleUploadingResponse, COMPLETE_SUBTITLE_UPLOADING, CancelSubtitleUploadingRequestBody, CancelSubtitleUploadingResponse, CANCEL_SUBTITLE_UPLOADING, CancelMediaFormattingRequestBody, CancelMediaFormattingResponse, CANCEL_MEDIA_FORMATTING, CancelSubtitleFormattingRequestBody, CancelSubtitleFormattingResponse, CANCEL_SUBTITLE_FORMATTING, DeleteVideoTrackRequestBody, DeleteVideoTrackResponse, DELETE_VIDEO_TRACK, DropVideoTrackStagingDataRequestBody, DropVideoTrackStagingDataResponse, DROP_VIDEO_TRACK_STAGING_DATA, UpdateAudioTrackRequestBody, UpdateAudioTrackResponse, UPDATE_AUDIO_TRACK, DeleteAudioTrackRequestBody, DeleteAudioTrackResponse, DELETE_AUDIO_TRACK, DropAudioTrackStagingDataRequestBody, DropAudioTrackStagingDataResponse, DROP_AUDIO_TRACK_STAGING_DATA, UpdateSubtitleTrackRequestBody, UpdateSubtitleTrackResponse, UPDATE_SUBTITLE_TRACK, DeleteSubtitleTrackRequestBody, DeleteSubtitleTrackResponse, DELETE_SUBTITLE_TRACK, DropSubtitleTrackStagingDataRequestBody, DropSubtitleTrackStagingDataResponse, DROP_SUBTITLE_TRACK_STAGING_DATA } from './interface';
-import { WebClientInterface, WebClientOptions } from '@selfage/service_descriptor/client_interface';
+import { ClientRequestInterface } from '@selfage/service_descriptor/client_request_interface';
 
-export function getSeason(
-  client: WebClientInterface,
+export function newGetSeasonRequest(
   body: GetSeasonRequestBody,
-  options?: WebClientOptions,
-): Promise<GetSeasonResponse> {
-  return client.send(
-    {
-      descriptor: GET_SEASON,
-      body,
-    },
-    options,
-  );
+): ClientRequestInterface<GetSeasonResponse> {
+  return {
+    descriptor: GET_SEASON,
+    body,
+  };
 }
 
-export function createSeason(
-  client: WebClientInterface,
+export function newCreateSeasonRequest(
   body: CreateSeasonRequestBody,
-  options?: WebClientOptions,
-): Promise<CreateSeasonResponse> {
-  return client.send(
-    {
-      descriptor: CREATE_SEASON,
-      body,
-    },
-    options,
-  );
+): ClientRequestInterface<CreateSeasonResponse> {
+  return {
+    descriptor: CREATE_SEASON,
+    body,
+  };
 }
 
-export function deleteSeason(
-  client: WebClientInterface,
+export function newDeleteSeasonRequest(
   body: DeleteSeasonRequestBody,
-  options?: WebClientOptions,
-): Promise<DeleteSeasonResponse> {
-  return client.send(
-    {
-      descriptor: DELETE_SEASON,
-      body,
-    },
-    options,
-  );
+): ClientRequestInterface<DeleteSeasonResponse> {
+  return {
+    descriptor: DELETE_SEASON,
+    body,
+  };
 }
 
-export function archiveSeason(
-  client: WebClientInterface,
+export function newArchiveSeasonRequest(
   body: ArchiveSeasonRequestBody,
-  options?: WebClientOptions,
-): Promise<ArchiveSeasonResponse> {
-  return client.send(
-    {
-      descriptor: ARCHIVE_SEASON,
-      body,
-    },
-    options,
-  );
+): ClientRequestInterface<ArchiveSeasonResponse> {
+  return {
+    descriptor: ARCHIVE_SEASON,
+    body,
+  };
 }
 
-export function updateSeason(
-  client: WebClientInterface,
+export function newUpdateSeasonRequest(
   body: UpdateSeasonRequestBody,
-  options?: WebClientOptions,
-): Promise<UpdateSeasonResponse> {
-  return client.send(
-    {
-      descriptor: UPDATE_SEASON,
-      body,
-    },
-    options,
-  );
+): ClientRequestInterface<UpdateSeasonResponse> {
+  return {
+    descriptor: UPDATE_SEASON,
+    body,
+  };
 }
 
-export function uploadCoverImage(
-  client: WebClientInterface,
+export function newUploadCoverImageRequest(
   body: Blob,
   metadata: UploadCoverImageRequestMetadata,
-  options?: WebClientOptions,
-): Promise<UploadCoverImageResponse> {
-  return client.send(
-    {
-      descriptor: UPLOAD_COVER_IMAGE,
-      body,
+): ClientRequestInterface<UploadCoverImageResponse> {
+  return {
+    descriptor: UPLOAD_COVER_IMAGE,
+    body,
       metadata,
-    },
-    options,
-  );
+  };
 }
 
-export function updateSeasonGrade(
-  client: WebClientInterface,
+export function newUpdateSeasonGradeRequest(
   body: UpdateSeasonGradeRequestBody,
-  options?: WebClientOptions,
-): Promise<UpdateSeasonGradeResponse> {
-  return client.send(
-    {
-      descriptor: UPDATE_SEASON_GRADE,
-      body,
-    },
-    options,
-  );
+): ClientRequestInterface<UpdateSeasonGradeResponse> {
+  return {
+    descriptor: UPDATE_SEASON_GRADE,
+    body,
+  };
 }
 
-export function listSeasons(
-  client: WebClientInterface,
+export function newListSeasonsRequest(
   body: ListSeasonsRequestBody,
-  options?: WebClientOptions,
-): Promise<ListSeasonsResponse> {
-  return client.send(
-    {
-      descriptor: LIST_SEASONS,
-      body,
-    },
-    options,
-  );
+): ClientRequestInterface<ListSeasonsResponse> {
+  return {
+    descriptor: LIST_SEASONS,
+    body,
+  };
 }
 
-export function createEpisode(
-  client: WebClientInterface,
+export function newCreateEpisodeRequest(
   body: CreateEpisodeRequestBody,
-  options?: WebClientOptions,
-): Promise<CreateEpisodeResponse> {
-  return client.send(
-    {
-      descriptor: CREATE_EPISODE,
-      body,
-    },
-    options,
-  );
+): ClientRequestInterface<CreateEpisodeResponse> {
+  return {
+    descriptor: CREATE_EPISODE,
+    body,
+  };
 }
 
-export function deleteEpisode(
-  client: WebClientInterface,
+export function newDeleteEpisodeRequest(
   body: DeleteEpisodeRequestBody,
-  options?: WebClientOptions,
-): Promise<DeleteEpisodeResponse> {
-  return client.send(
-    {
-      descriptor: DELETE_EPISODE,
-      body,
-    },
-    options,
-  );
+): ClientRequestInterface<DeleteEpisodeResponse> {
+  return {
+    descriptor: DELETE_EPISODE,
+    body,
+  };
 }
 
-export function getEpisode(
-  client: WebClientInterface,
+export function newGetEpisodeRequest(
   body: GetEpisodeRequestBody,
-  options?: WebClientOptions,
-): Promise<GetEpisodeResponse> {
-  return client.send(
-    {
-      descriptor: GET_EPISODE,
-      body,
-    },
-    options,
-  );
+): ClientRequestInterface<GetEpisodeResponse> {
+  return {
+    descriptor: GET_EPISODE,
+    body,
+  };
 }
 
-export function updateEpisode(
-  client: WebClientInterface,
+export function newUpdateEpisodeRequest(
   body: UpdateEpisodeRequestBody,
-  options?: WebClientOptions,
-): Promise<UpdateEpisodeResponse> {
-  return client.send(
-    {
-      descriptor: UPDATE_EPISODE,
-      body,
-    },
-    options,
-  );
+): ClientRequestInterface<UpdateEpisodeResponse> {
+  return {
+    descriptor: UPDATE_EPISODE,
+    body,
+  };
 }
 
-export function updateEpisodeOrder(
-  client: WebClientInterface,
+export function newUpdateEpisodeOrderRequest(
   body: UpdateEpisodeOrderRequestBody,
-  options?: WebClientOptions,
-): Promise<UpdateEpisodeOrderResponse> {
-  return client.send(
-    {
-      descriptor: UPDATE_EPISODE_ORDER,
-      body,
-    },
-    options,
-  );
+): ClientRequestInterface<UpdateEpisodeOrderResponse> {
+  return {
+    descriptor: UPDATE_EPISODE_ORDER,
+    body,
+  };
 }
 
-export function publishEpisode(
-  client: WebClientInterface,
+export function newPublishEpisodeRequest(
   body: PublishEpisodeRequestBody,
-  options?: WebClientOptions,
-): Promise<PublishEpisodeResponse> {
-  return client.send(
-    {
-      descriptor: PUBLISH_EPISODE,
-      body,
-    },
-    options,
-  );
+): ClientRequestInterface<PublishEpisodeResponse> {
+  return {
+    descriptor: PUBLISH_EPISODE,
+    body,
+  };
 }
 
-export function unpublishEpisode(
-  client: WebClientInterface,
+export function newUnpublishEpisodeRequest(
   body: UnpublishEpisodeRequestBody,
-  options?: WebClientOptions,
-): Promise<UnpublishEpisodeResponse> {
-  return client.send(
-    {
-      descriptor: UNPUBLISH_EPISODE,
-      body,
-    },
-    options,
-  );
+): ClientRequestInterface<UnpublishEpisodeResponse> {
+  return {
+    descriptor: UNPUBLISH_EPISODE,
+    body,
+  };
 }
 
-export function listEpisodes(
-  client: WebClientInterface,
+export function newListEpisodesRequest(
   body: ListEpisodesRequestBody,
-  options?: WebClientOptions,
-): Promise<ListEpisodesResponse> {
-  return client.send(
-    {
-      descriptor: LIST_EPISODES,
-      body,
-    },
-    options,
-  );
+): ClientRequestInterface<ListEpisodesResponse> {
+  return {
+    descriptor: LIST_EPISODES,
+    body,
+  };
 }
 
-export function commitEpisodeStagingData(
-  client: WebClientInterface,
+export function newCommitEpisodeStagingDataRequest(
   body: CommitEpisodeStagingDataRequestBody,
-  options?: WebClientOptions,
-): Promise<CommitEpisodeStagingDataResponse> {
-  return client.send(
-    {
-      descriptor: COMMIT_EPISODE_STAGING_DATA,
-      body,
-    },
-    options,
-  );
+): ClientRequestInterface<CommitEpisodeStagingDataResponse> {
+  return {
+    descriptor: COMMIT_EPISODE_STAGING_DATA,
+    body,
+  };
 }
 
-export function startMediaUploading(
-  client: WebClientInterface,
+export function newStartMediaUploadingRequest(
   body: StartMediaUploadingRequestBody,
-  options?: WebClientOptions,
-): Promise<StartMediaUploadingResponse> {
-  return client.send(
-    {
-      descriptor: START_MEDIA_UPLOADING,
-      body,
-    },
-    options,
-  );
+): ClientRequestInterface<StartMediaUploadingResponse> {
+  return {
+    descriptor: START_MEDIA_UPLOADING,
+    body,
+  };
 }
 
-export function completeMediaUploading(
-  client: WebClientInterface,
+export function newCompleteMediaUploadingRequest(
   body: CompleteMediaUploadingRequestBody,
-  options?: WebClientOptions,
-): Promise<CompleteMediaUploadingResponse> {
-  return client.send(
-    {
-      descriptor: COMPLETE_MEDIA_UPLOADING,
-      body,
-    },
-    options,
-  );
+): ClientRequestInterface<CompleteMediaUploadingResponse> {
+  return {
+    descriptor: COMPLETE_MEDIA_UPLOADING,
+    body,
+  };
 }
 
-export function cancelMediaUploading(
-  client: WebClientInterface,
+export function newCancelMediaUploadingRequest(
   body: CancelMediaUploadingRequestBody,
-  options?: WebClientOptions,
-): Promise<CancelMediaUploadingResponse> {
-  return client.send(
-    {
-      descriptor: CANCEL_MEDIA_UPLOADING,
-      body,
-    },
-    options,
-  );
+): ClientRequestInterface<CancelMediaUploadingResponse> {
+  return {
+    descriptor: CANCEL_MEDIA_UPLOADING,
+    body,
+  };
 }
 
-export function startSubtitleUploading(
-  client: WebClientInterface,
+export function newStartSubtitleUploadingRequest(
   body: StartSubtitleUploadingRequestBody,
-  options?: WebClientOptions,
-): Promise<StartSubtitleUploadingResponse> {
-  return client.send(
-    {
-      descriptor: START_SUBTITLE_UPLOADING,
-      body,
-    },
-    options,
-  );
+): ClientRequestInterface<StartSubtitleUploadingResponse> {
+  return {
+    descriptor: START_SUBTITLE_UPLOADING,
+    body,
+  };
 }
 
-export function completeSubtitleUploading(
-  client: WebClientInterface,
+export function newCompleteSubtitleUploadingRequest(
   body: CompleteSubtitleUploadingRequestBody,
-  options?: WebClientOptions,
-): Promise<CompleteSubtitleUploadingResponse> {
-  return client.send(
-    {
-      descriptor: COMPLETE_SUBTITLE_UPLOADING,
-      body,
-    },
-    options,
-  );
+): ClientRequestInterface<CompleteSubtitleUploadingResponse> {
+  return {
+    descriptor: COMPLETE_SUBTITLE_UPLOADING,
+    body,
+  };
 }
 
-export function cancelSubtitleUploading(
-  client: WebClientInterface,
+export function newCancelSubtitleUploadingRequest(
   body: CancelSubtitleUploadingRequestBody,
-  options?: WebClientOptions,
-): Promise<CancelSubtitleUploadingResponse> {
-  return client.send(
-    {
-      descriptor: CANCEL_SUBTITLE_UPLOADING,
-      body,
-    },
-    options,
-  );
+): ClientRequestInterface<CancelSubtitleUploadingResponse> {
+  return {
+    descriptor: CANCEL_SUBTITLE_UPLOADING,
+    body,
+  };
 }
 
-export function cancelMediaFormatting(
-  client: WebClientInterface,
+export function newCancelMediaFormattingRequest(
   body: CancelMediaFormattingRequestBody,
-  options?: WebClientOptions,
-): Promise<CancelMediaFormattingResponse> {
-  return client.send(
-    {
-      descriptor: CANCEL_MEDIA_FORMATTING,
-      body,
-    },
-    options,
-  );
+): ClientRequestInterface<CancelMediaFormattingResponse> {
+  return {
+    descriptor: CANCEL_MEDIA_FORMATTING,
+    body,
+  };
 }
 
-export function cancelSubtitleFormatting(
-  client: WebClientInterface,
+export function newCancelSubtitleFormattingRequest(
   body: CancelSubtitleFormattingRequestBody,
-  options?: WebClientOptions,
-): Promise<CancelSubtitleFormattingResponse> {
-  return client.send(
-    {
-      descriptor: CANCEL_SUBTITLE_FORMATTING,
-      body,
-    },
-    options,
-  );
+): ClientRequestInterface<CancelSubtitleFormattingResponse> {
+  return {
+    descriptor: CANCEL_SUBTITLE_FORMATTING,
+    body,
+  };
 }
 
-export function deleteVideoTrack(
-  client: WebClientInterface,
+export function newDeleteVideoTrackRequest(
   body: DeleteVideoTrackRequestBody,
-  options?: WebClientOptions,
-): Promise<DeleteVideoTrackResponse> {
-  return client.send(
-    {
-      descriptor: DELETE_VIDEO_TRACK,
-      body,
-    },
-    options,
-  );
+): ClientRequestInterface<DeleteVideoTrackResponse> {
+  return {
+    descriptor: DELETE_VIDEO_TRACK,
+    body,
+  };
 }
 
-export function dropVideoTrackStagingData(
-  client: WebClientInterface,
+export function newDropVideoTrackStagingDataRequest(
   body: DropVideoTrackStagingDataRequestBody,
-  options?: WebClientOptions,
-): Promise<DropVideoTrackStagingDataResponse> {
-  return client.send(
-    {
-      descriptor: DROP_VIDEO_TRACK_STAGING_DATA,
-      body,
-    },
-    options,
-  );
+): ClientRequestInterface<DropVideoTrackStagingDataResponse> {
+  return {
+    descriptor: DROP_VIDEO_TRACK_STAGING_DATA,
+    body,
+  };
 }
 
-export function updateAudioTrack(
-  client: WebClientInterface,
+export function newUpdateAudioTrackRequest(
   body: UpdateAudioTrackRequestBody,
-  options?: WebClientOptions,
-): Promise<UpdateAudioTrackResponse> {
-  return client.send(
-    {
-      descriptor: UPDATE_AUDIO_TRACK,
-      body,
-    },
-    options,
-  );
+): ClientRequestInterface<UpdateAudioTrackResponse> {
+  return {
+    descriptor: UPDATE_AUDIO_TRACK,
+    body,
+  };
 }
 
-export function deleteAudioTrack(
-  client: WebClientInterface,
+export function newDeleteAudioTrackRequest(
   body: DeleteAudioTrackRequestBody,
-  options?: WebClientOptions,
-): Promise<DeleteAudioTrackResponse> {
-  return client.send(
-    {
-      descriptor: DELETE_AUDIO_TRACK,
-      body,
-    },
-    options,
-  );
+): ClientRequestInterface<DeleteAudioTrackResponse> {
+  return {
+    descriptor: DELETE_AUDIO_TRACK,
+    body,
+  };
 }
 
-export function dropAudioTrackStagingData(
-  client: WebClientInterface,
+export function newDropAudioTrackStagingDataRequest(
   body: DropAudioTrackStagingDataRequestBody,
-  options?: WebClientOptions,
-): Promise<DropAudioTrackStagingDataResponse> {
-  return client.send(
-    {
-      descriptor: DROP_AUDIO_TRACK_STAGING_DATA,
-      body,
-    },
-    options,
-  );
+): ClientRequestInterface<DropAudioTrackStagingDataResponse> {
+  return {
+    descriptor: DROP_AUDIO_TRACK_STAGING_DATA,
+    body,
+  };
 }
 
-export function updateSubtitleTrack(
-  client: WebClientInterface,
+export function newUpdateSubtitleTrackRequest(
   body: UpdateSubtitleTrackRequestBody,
-  options?: WebClientOptions,
-): Promise<UpdateSubtitleTrackResponse> {
-  return client.send(
-    {
-      descriptor: UPDATE_SUBTITLE_TRACK,
-      body,
-    },
-    options,
-  );
+): ClientRequestInterface<UpdateSubtitleTrackResponse> {
+  return {
+    descriptor: UPDATE_SUBTITLE_TRACK,
+    body,
+  };
 }
 
-export function deleteSubtitleTrack(
-  client: WebClientInterface,
+export function newDeleteSubtitleTrackRequest(
   body: DeleteSubtitleTrackRequestBody,
-  options?: WebClientOptions,
-): Promise<DeleteSubtitleTrackResponse> {
-  return client.send(
-    {
-      descriptor: DELETE_SUBTITLE_TRACK,
-      body,
-    },
-    options,
-  );
+): ClientRequestInterface<DeleteSubtitleTrackResponse> {
+  return {
+    descriptor: DELETE_SUBTITLE_TRACK,
+    body,
+  };
 }
 
-export function dropSubtitleTrackStagingData(
-  client: WebClientInterface,
+export function newDropSubtitleTrackStagingDataRequest(
   body: DropSubtitleTrackStagingDataRequestBody,
-  options?: WebClientOptions,
-): Promise<DropSubtitleTrackStagingDataResponse> {
-  return client.send(
-    {
-      descriptor: DROP_SUBTITLE_TRACK_STAGING_DATA,
-      body,
-    },
-    options,
-  );
+): ClientRequestInterface<DropSubtitleTrackStagingDataResponse> {
+  return {
+    descriptor: DROP_SUBTITLE_TRACK_STAGING_DATA,
+    body,
+  };
 }
