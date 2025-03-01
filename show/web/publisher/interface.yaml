@@ -510,27 +510,27 @@
     - name: GetSeason
       path: /GetSeason
       body: GetSeasonRequestBody
-      authKey: sk
+      authKey: a
       response: GetSeasonResponse
     - name: CreateSeason
       path: /CreateSeason
       body: CreateSeasonRequestBody
-      authKey: sk
+      authKey: a
       response: CreateSeasonResponse
     - name: DeleteSeason
       path: /DeleteSeason
       body: DeleteSeasonRequestBody
-      authKey: sk
+      authKey: a
       response: DeleteSeasonResponse
     - name: ArchiveSeason
       path: /ArchiveSeason
       body: ArchiveSeasonRequestBody
-      authKey: sk
+      authKey: a
       response: ArchiveSeasonResponse
     - name: UpdateSeason
       path: /UpdateSeason
       body: UpdateSeasonRequestBody
-      authKey: sk
+      authKey: a
       response: UpdateSeasonResponse
     - name: UploadCoverImage
       path: /UploadCoverImage
@@ -538,142 +538,142 @@
         key: mt
         type: UploadCoverImageRequestMetadata
       body: bytes
-      authKey: sk
+      authKey: a
       response: UploadCoverImageResponse
     - name: UpdateSeasonGrade
       path: /UpdateSeasonGrade
       body: UpdateSeasonGradeRequestBody
-      authKey: sk
+      authKey: a
       response: UpdateSeasonGradeResponse
     - name: ListSeasons
       path: /ListSeasons
       body: ListSeasonsRequestBody
-      authKey: sk
+      authKey: a
       response: ListSeasonsResponse
     - name: CreateEpisode
       path: /CreateEpisode
       body: CreateEpisodeRequestBody
-      authKey: sk
+      authKey: a
       response: CreateEpisodeResponse
     - name: DeleteEpisode
       path: /DeleteEpisode
       body: DeleteEpisodeRequestBody
-      authKey: sk
+      authKey: a
       response: DeleteEpisodeResponse
     - name: GetEpisode
       path: /GetEpisode
       body: GetEpisodeRequestBody
-      authKey: sk
+      authKey: a
       response: GetEpisodeResponse
     - name: UpdateEpisode
       path: /UpdateEpisode
       body: UpdateEpisodeRequestBody
-      authKey: sk
+      authKey: a
       response: UpdateEpisodeResponse
     - name: UpdateEpisodeOrder
       path: /UpdateEpisodeOrder
       body: UpdateEpisodeOrderRequestBody
-      authKey: sk
+      authKey: a
       response: UpdateEpisodeOrderResponse
     - name: PublishEpisode
       path: /PublishEpisode
       body: PublishEpisodeRequestBody
-      authKey: sk
+      authKey: a
       response: PublishEpisodeResponse
     - name: UnpublishEpisode
       path: /UnpublishEpisode
       body: UnpublishEpisodeRequestBody
-      authKey: sk
+      authKey: a
       response: UnpublishEpisodeResponse
     - name: ListEpisodes
       path: /ListEpisodes
       body: ListEpisodesRequestBody
-      authKey: sk
+      authKey: a
       response: ListEpisodesResponse
     - name: CommitEpisodeStagingData
       path: /CommitEpisodeStagingData
       body: CommitEpisodeStagingDataRequestBody
-      authKey: sk
+      authKey: a
       response: CommitEpisodeStagingDataResponse
     - name: StartMediaUploading
       path: /StartMediaUploading
       body: StartMediaUploadingRequestBody
-      authKey: sk
+      authKey: a
       response: StartMediaUploadingResponse
     - name: CompleteMediaUploading
       path: /CompleteMediaUploading
       body: CompleteMediaUploadingRequestBody
-      authKey: sk
+      authKey: a
       response: CompleteMediaUploadingResponse
     - name: CancelMediaUploading
       path: /CancelMediaUploading
       body: CancelMediaUploadingRequestBody
-      authKey: sk
+      authKey: a
       response: CancelMediaUploadingResponse
     - name: StartSubtitleUploading
       path: /StartSubtitleUploading
       body: StartSubtitleUploadingRequestBody
-      authKey: sk
+      authKey: a
       response: StartSubtitleUploadingResponse
     - name: CompleteSubtitleUploading
       path: /CompleteSubtitleUploading
       body: CompleteSubtitleUploadingRequestBody
-      authKey: sk
+      authKey: a
       response: CompleteSubtitleUploadingResponse
     - name: CancelSubtitleUploading
       path: /CancelSubtitleUploading
       body: CancelSubtitleUploadingRequestBody
-      authKey: sk
+      authKey: a
       response: CancelSubtitleUploadingResponse
     - name: CancelMediaFormatting
       path: /CancelMediaFormatting
       body: CancelMediaFormattingRequestBody
-      authKey: sk
+      authKey: a
       response: CancelMediaFormattingResponse
     - name: CancelSubtitleFormatting
       path: /CancelSubtitleFormatting
       body: CancelSubtitleFormattingRequestBody
-      authKey: sk
+      authKey: a
       response: CancelSubtitleFormattingResponse
     - name: DeleteVideoTrack
       path: /DeleteVideoTrack
       body: DeleteVideoTrackRequestBody
-      authKey: sk
+      authKey: a
       response: DeleteVideoTrackResponse
     - name: DropVideoTrackStagingData
       path: /DropVideoTrackStagingData
       body: DropVideoTrackStagingDataRequestBody
-      authKey: sk
+      authKey: a
       response: DropVideoTrackStagingDataResponse
     - name: UpdateAudioTrack
       path: /UpdateAudioTrack
       body: UpdateAudioTrackRequestBody
-      authKey: sk
+      authKey: a
       response: UpdateAudioTrackResponse
     - name: DeleteAudioTrack
       path: /DeleteAudioTrack
       body: DeleteAudioTrackRequestBody
-      authKey: sk
+      authKey: a
       response: DeleteAudioTrackResponse
     - name: DropAudioTrackStagingData
       path: /DropAudioTrackStagingData
       body: DropAudioTrackStagingDataRequestBody
-      authKey: sk
+      authKey: a
       response: DropAudioTrackStagingDataResponse
     - name: UpdateSubtitleTrack
       path: /UpdateSubtitleTrack
       body: UpdateSubtitleTrackRequestBody
-      authKey: sk
+      authKey: a
       response: UpdateSubtitleTrackResponse
     - name: DeleteSubtitleTrack
       path: /DeleteSubtitleTrack
       body: DeleteSubtitleTrackRequestBody
-      authKey: sk
+      authKey: a
       response: DeleteSubtitleTrackResponse
     - name: DropSubtitleTrackStagingData
       path: /DropSubtitleTrackStagingData
       body: DropSubtitleTrackStagingDataRequestBody
-      authKey: sk
+      authKey: a
       response: DropSubtitleTrackStagingDataResponse
   outputClient: ./show/web/publisher/client
   outputHandler: ./show/web/publisher/handler

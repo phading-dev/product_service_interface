@@ -61,17 +61,17 @@
     - name: GetSeasonDetails
       path: /GetSeasonDetails
       body: GetSeasonDetailsRequestBody
-      authKey: sk
+      authKey: a
       response: GetSeasonDetailsResponse
     - name: GetEpisodeDetails
       path: /GetEpisodeDetails
       body: GetEpisodeDetailsRequestBody
-      authKey: sk
+      authKey: a
       response: GetEpisodeDetailsResponse
     - name: ListEpisodes
       path: /ListEpisodes
       body: ListEpisodesRequestBody
-      authKey: sk
+      authKey: a
       response: ListEpisodesResponse
   outputClient: ./show/web/consumer/client
   outputHandler: ./show/web/consumer/handler

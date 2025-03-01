@@ -116,7 +116,7 @@ export let GET_SEASON_DETAILS: RemoteCallDescriptor = {
   body: {
     messageType: GET_SEASON_DETAILS_REQUEST_BODY,
   },
-  authKey: "sk",
+  authKey: "a",
   response: {
     messageType: GET_SEASON_DETAILS_RESPONSE,
   },
@@ -129,7 +129,7 @@ export let GET_EPISODE_DETAILS: RemoteCallDescriptor = {
   body: {
     messageType: GET_EPISODE_DETAILS_REQUEST_BODY,
   },
-  authKey: "sk",
+  authKey: "a",
   response: {
     messageType: GET_EPISODE_DETAILS_RESPONSE,
   },
@@ -142,7 +142,7 @@ export let LIST_EPISODES: RemoteCallDescriptor = {
   body: {
     messageType: LIST_EPISODES_REQUEST_BODY,
   },
-  authKey: "sk",
+  authKey: "a",
   response: {
     messageType: LIST_EPISODES_RESPONSE,
   },

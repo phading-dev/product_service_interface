@@ -1089,7 +1089,7 @@ export let GET_SEASON: RemoteCallDescriptor = {
   body: {
     messageType: GET_SEASON_REQUEST_BODY,
   },
-  authKey: "sk",
+  authKey: "a",
   response: {
     messageType: GET_SEASON_RESPONSE,
   },
@@ -1102,7 +1102,7 @@ export let CREATE_SEASON: RemoteCallDescriptor = {
   body: {
     messageType: CREATE_SEASON_REQUEST_BODY,
   },
-  authKey: "sk",
+  authKey: "a",
   response: {
     messageType: CREATE_SEASON_RESPONSE,
   },
@@ -1115,7 +1115,7 @@ export let DELETE_SEASON: RemoteCallDescriptor = {
   body: {
     messageType: DELETE_SEASON_REQUEST_BODY,
   },
-  authKey: "sk",
+  authKey: "a",
   response: {
     messageType: DELETE_SEASON_RESPONSE,
   },
@@ -1128,7 +1128,7 @@ export let ARCHIVE_SEASON: RemoteCallDescriptor = {
   body: {
     messageType: ARCHIVE_SEASON_REQUEST_BODY,
   },
-  authKey: "sk",
+  authKey: "a",
   response: {
     messageType: ARCHIVE_SEASON_RESPONSE,
   },
@@ -1141,7 +1141,7 @@ export let UPDATE_SEASON: RemoteCallDescriptor = {
   body: {
     messageType: UPDATE_SEASON_REQUEST_BODY,
   },
-  authKey: "sk",
+  authKey: "a",
   response: {
     messageType: UPDATE_SEASON_RESPONSE,
   },
@@ -1158,7 +1158,7 @@ export let UPLOAD_COVER_IMAGE: RemoteCallDescriptor = {
     key: "mt",
     type: UPLOAD_COVER_IMAGE_REQUEST_METADATA,
   },
-  authKey: "sk",
+  authKey: "a",
   response: {
     messageType: UPLOAD_COVER_IMAGE_RESPONSE,
   },
@@ -1171,7 +1171,7 @@ export let UPDATE_SEASON_GRADE: RemoteCallDescriptor = {
   body: {
     messageType: UPDATE_SEASON_GRADE_REQUEST_BODY,
   },
-  authKey: "sk",
+  authKey: "a",
   response: {
     messageType: UPDATE_SEASON_GRADE_RESPONSE,
   },
@@ -1184,7 +1184,7 @@ export let LIST_SEASONS: RemoteCallDescriptor = {
   body: {
     messageType: LIST_SEASONS_REQUEST_BODY,
   },
-  authKey: "sk",
+  authKey: "a",
   response: {
     messageType: LIST_SEASONS_RESPONSE,
   },
@@ -1197,7 +1197,7 @@ export let CREATE_EPISODE: RemoteCallDescriptor = {
   body: {
     messageType: CREATE_EPISODE_REQUEST_BODY,
   },
-  authKey: "sk",
+  authKey: "a",
   response: {
     messageType: CREATE_EPISODE_RESPONSE,
   },
@@ -1210,7 +1210,7 @@ export let DELETE_EPISODE: RemoteCallDescriptor = {
   body: {
     messageType: DELETE_EPISODE_REQUEST_BODY,
   },
-  authKey: "sk",
+  authKey: "a",
   response: {
     messageType: DELETE_EPISODE_RESPONSE,
   },
@@ -1223,7 +1223,7 @@ export let GET_EPISODE: RemoteCallDescriptor = {
   body: {
     messageType: GET_EPISODE_REQUEST_BODY,
   },
-  authKey: "sk",
+  authKey: "a",
   response: {
     messageType: GET_EPISODE_RESPONSE,
   },
@@ -1236,7 +1236,7 @@ export let UPDATE_EPISODE: RemoteCallDescriptor = {
   body: {
     messageType: UPDATE_EPISODE_REQUEST_BODY,
   },
-  authKey: "sk",
+  authKey: "a",
   response: {
     messageType: UPDATE_EPISODE_RESPONSE,
   },
@@ -1249,7 +1249,7 @@ export let UPDATE_EPISODE_ORDER: RemoteCallDescriptor = {
   body: {
     messageType: UPDATE_EPISODE_ORDER_REQUEST_BODY,
   },
-  authKey: "sk",
+  authKey: "a",
   response: {
     messageType: UPDATE_EPISODE_ORDER_RESPONSE,
   },
@@ -1262,7 +1262,7 @@ export let PUBLISH_EPISODE: RemoteCallDescriptor = {
   body: {
     messageType: PUBLISH_EPISODE_REQUEST_BODY,
   },
-  authKey: "sk",
+  authKey: "a",
   response: {
     messageType: PUBLISH_EPISODE_RESPONSE,
   },
@@ -1275,7 +1275,7 @@ export let UNPUBLISH_EPISODE: RemoteCallDescriptor = {
   body: {
     messageType: UNPUBLISH_EPISODE_REQUEST_BODY,
   },
-  authKey: "sk",
+  authKey: "a",
   response: {
     messageType: UNPUBLISH_EPISODE_RESPONSE,
   },
@@ -1288,7 +1288,7 @@ export let LIST_EPISODES: RemoteCallDescriptor = {
   body: {
     messageType: LIST_EPISODES_REQUEST_BODY,
   },
-  authKey: "sk",
+  authKey: "a",
   response: {
     messageType: LIST_EPISODES_RESPONSE,
   },
@@ -1301,7 +1301,7 @@ export let COMMIT_EPISODE_STAGING_DATA: RemoteCallDescriptor = {
   body: {
     messageType: COMMIT_EPISODE_STAGING_DATA_REQUEST_BODY,
   },
-  authKey: "sk",
+  authKey: "a",
   response: {
     messageType: COMMIT_EPISODE_STAGING_DATA_RESPONSE,
   },
@@ -1314,7 +1314,7 @@ export let START_MEDIA_UPLOADING: RemoteCallDescriptor = {
   body: {
     messageType: START_MEDIA_UPLOADING_REQUEST_BODY,
   },
-  authKey: "sk",
+  authKey: "a",
   response: {
     messageType: START_MEDIA_UPLOADING_RESPONSE,
   },
@@ -1327,7 +1327,7 @@ export let COMPLETE_MEDIA_UPLOADING: RemoteCallDescriptor = {
   body: {
     messageType: COMPLETE_MEDIA_UPLOADING_REQUEST_BODY,
   },
-  authKey: "sk",
+  authKey: "a",
   response: {
     messageType: COMPLETE_MEDIA_UPLOADING_RESPONSE,
   },
@@ -1340,7 +1340,7 @@ export let CANCEL_MEDIA_UPLOADING: RemoteCallDescriptor = {
   body: {
     messageType: CANCEL_MEDIA_UPLOADING_REQUEST_BODY,
   },
-  authKey: "sk",
+  authKey: "a",
   response: {
     messageType: CANCEL_MEDIA_UPLOADING_RESPONSE,
   },
@@ -1353,7 +1353,7 @@ export let START_SUBTITLE_UPLOADING: RemoteCallDescriptor = {
   body: {
     messageType: START_SUBTITLE_UPLOADING_REQUEST_BODY,
   },
-  authKey: "sk",
+  authKey: "a",
   response: {
     messageType: START_SUBTITLE_UPLOADING_RESPONSE,
   },
@@ -1366,7 +1366,7 @@ export let COMPLETE_SUBTITLE_UPLOADING: RemoteCallDescriptor = {
   body: {
     messageType: COMPLETE_SUBTITLE_UPLOADING_REQUEST_BODY,
   },
-  authKey: "sk",
+  authKey: "a",
   response: {
     messageType: COMPLETE_SUBTITLE_UPLOADING_RESPONSE,
   },
@@ -1379,7 +1379,7 @@ export let CANCEL_SUBTITLE_UPLOADING: RemoteCallDescriptor = {
   body: {
     messageType: CANCEL_SUBTITLE_UPLOADING_REQUEST_BODY,
   },
-  authKey: "sk",
+  authKey: "a",
   response: {
     messageType: CANCEL_SUBTITLE_UPLOADING_RESPONSE,
   },
@@ -1392,7 +1392,7 @@ export let CANCEL_MEDIA_FORMATTING: RemoteCallDescriptor = {
   body: {
     messageType: CANCEL_MEDIA_FORMATTING_REQUEST_BODY,
   },
-  authKey: "sk",
+  authKey: "a",
   response: {
     messageType: CANCEL_MEDIA_FORMATTING_RESPONSE,
   },
@@ -1405,7 +1405,7 @@ export let CANCEL_SUBTITLE_FORMATTING: RemoteCallDescriptor = {
   body: {
     messageType: CANCEL_SUBTITLE_FORMATTING_REQUEST_BODY,
   },
-  authKey: "sk",
+  authKey: "a",
   response: {
     messageType: CANCEL_SUBTITLE_FORMATTING_RESPONSE,
   },
@@ -1418,7 +1418,7 @@ export let DELETE_VIDEO_TRACK: RemoteCallDescriptor = {
   body: {
     messageType: DELETE_VIDEO_TRACK_REQUEST_BODY,
   },
-  authKey: "sk",
+  authKey: "a",
   response: {
     messageType: DELETE_VIDEO_TRACK_RESPONSE,
   },
@@ -1431,7 +1431,7 @@ export let DROP_VIDEO_TRACK_STAGING_DATA: RemoteCallDescriptor = {
   body: {
     messageType: DROP_VIDEO_TRACK_STAGING_DATA_REQUEST_BODY,
   },
-  authKey: "sk",
+  authKey: "a",
   response: {
     messageType: DROP_VIDEO_TRACK_STAGING_DATA_RESPONSE,
   },
@@ -1444,7 +1444,7 @@ export let UPDATE_AUDIO_TRACK: RemoteCallDescriptor = {
   body: {
     messageType: UPDATE_AUDIO_TRACK_REQUEST_BODY,
   },
-  authKey: "sk",
+  authKey: "a",
   response: {
     messageType: UPDATE_AUDIO_TRACK_RESPONSE,
   },
@@ -1457,7 +1457,7 @@ export let DELETE_AUDIO_TRACK: RemoteCallDescriptor = {
   body: {
     messageType: DELETE_AUDIO_TRACK_REQUEST_BODY,
   },
-  authKey: "sk",
+  authKey: "a",
   response: {
     messageType: DELETE_AUDIO_TRACK_RESPONSE,
   },
@@ -1470,7 +1470,7 @@ export let DROP_AUDIO_TRACK_STAGING_DATA: RemoteCallDescriptor = {
   body: {
     messageType: DROP_AUDIO_TRACK_STAGING_DATA_REQUEST_BODY,
   },
-  authKey: "sk",
+  authKey: "a",
   response: {
     messageType: DROP_AUDIO_TRACK_STAGING_DATA_RESPONSE,
   },
@@ -1483,7 +1483,7 @@ export let UPDATE_SUBTITLE_TRACK: RemoteCallDescriptor = {
   body: {
     messageType: UPDATE_SUBTITLE_TRACK_REQUEST_BODY,
   },
-  authKey: "sk",
+  authKey: "a",
   response: {
     messageType: UPDATE_SUBTITLE_TRACK_RESPONSE,
   },
@@ -1496,7 +1496,7 @@ export let DELETE_SUBTITLE_TRACK: RemoteCallDescriptor = {
   body: {
     messageType: DELETE_SUBTITLE_TRACK_REQUEST_BODY,
   },
-  authKey: "sk",
+  authKey: "a",
   response: {
     messageType: DELETE_SUBTITLE_TRACK_RESPONSE,
   },
@@ -1509,7 +1509,7 @@ export let DROP_SUBTITLE_TRACK_STAGING_DATA: RemoteCallDescriptor = {
   body: {
     messageType: DROP_SUBTITLE_TRACK_STAGING_DATA_REQUEST_BODY,
   },
-  authKey: "sk",
+  authKey: "a",
   response: {
     messageType: DROP_SUBTITLE_TRACK_STAGING_DATA_RESPONSE,
   },
