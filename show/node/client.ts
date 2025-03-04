@@ -1,4 +1,4 @@
-import { GetSeasonPublisherRequestBody, GetSeasonPublisherResponse, GET_SEASON_PUBLISHER, GetSeasonGradeRequestBody, GetSeasonGradeResponse, GET_SEASON_GRADE, ProcessVideoContainerCreatingTaskRequestBody, ProcessVideoContainerCreatingTaskResponse, PROCESS_VIDEO_CONTAINER_CREATING_TASK, ListVideoContainerCreatingTasksRequestBody, ListVideoContainerCreatingTasksResponse, LIST_VIDEO_CONTAINER_CREATING_TASKS, ProcessVideoContainerDeletingTaskRequestBody, ProcessVideoContainerDeletingTaskResponse, PROCESS_VIDEO_CONTAINER_DELETING_TASK, ListVideoContainerDeletingTasksRequestBody, ListVideoContainerDeletingTasksResponse, LIST_VIDEO_CONTAINER_DELETING_TASKS, ProcessCoverImageDeletingTaskRequestBody, ProcessCoverImageDeletingTaskResponse, PROCESS_COVER_IMAGE_DELETING_TASK, ListCoverImageDeletingTasksRequestBody, ListCoverImageDeletingTasksResponse, LIST_COVER_IMAGE_DELETING_TASKS, CacheVideoContainerRequestBody, CacheVideoContainerResponse, CACHE_VIDEO_CONTAINER } from './interface';
+import { GetSeasonPublisherRequestBody, GetSeasonPublisherResponse, GET_SEASON_PUBLISHER, GetSeasonGradeRequestBody, GetSeasonGradeResponse, GET_SEASON_GRADE, CacheVideoContainerRequestBody, CacheVideoContainerResponse, CACHE_VIDEO_CONTAINER, CheckPresenceOfSeasonRequestBody, CheckPresenceOfSeasonResponse, CHECK_PRESENCE_OF_SEASON, CheckPresenceOfEpisodeRequestBody, CheckPresenceOfEpisodeResponse, CHECK_PRESENCE_OF_EPISODE, ProcessVideoContainerCreatingTaskRequestBody, ProcessVideoContainerCreatingTaskResponse, PROCESS_VIDEO_CONTAINER_CREATING_TASK, ListVideoContainerCreatingTasksRequestBody, ListVideoContainerCreatingTasksResponse, LIST_VIDEO_CONTAINER_CREATING_TASKS, ProcessVideoContainerDeletingTaskRequestBody, ProcessVideoContainerDeletingTaskResponse, PROCESS_VIDEO_CONTAINER_DELETING_TASK, ListVideoContainerDeletingTasksRequestBody, ListVideoContainerDeletingTasksResponse, LIST_VIDEO_CONTAINER_DELETING_TASKS, ProcessCoverImageDeletingTaskRequestBody, ProcessCoverImageDeletingTaskResponse, PROCESS_COVER_IMAGE_DELETING_TASK, ListCoverImageDeletingTasksRequestBody, ListCoverImageDeletingTasksResponse, LIST_COVER_IMAGE_DELETING_TASKS } from './interface';
 import { ClientRequestInterface } from '@selfage/service_descriptor/client_request_interface';
 
 export function newGetSeasonPublisherRequest(
@@ -15,6 +15,33 @@ export function newGetSeasonGradeRequest(
 ): ClientRequestInterface<GetSeasonGradeResponse> {
   return {
     descriptor: GET_SEASON_GRADE,
+    body,
+  };
+}
+
+export function newCacheVideoContainerRequest(
+  body: CacheVideoContainerRequestBody,
+): ClientRequestInterface<CacheVideoContainerResponse> {
+  return {
+    descriptor: CACHE_VIDEO_CONTAINER,
+    body,
+  };
+}
+
+export function newCheckPresenceOfSeasonRequest(
+  body: CheckPresenceOfSeasonRequestBody,
+): ClientRequestInterface<CheckPresenceOfSeasonResponse> {
+  return {
+    descriptor: CHECK_PRESENCE_OF_SEASON,
+    body,
+  };
+}
+
+export function newCheckPresenceOfEpisodeRequest(
+  body: CheckPresenceOfEpisodeRequestBody,
+): ClientRequestInterface<CheckPresenceOfEpisodeResponse> {
+  return {
+    descriptor: CHECK_PRESENCE_OF_EPISODE,
     body,
   };
 }
@@ -69,15 +96,6 @@ export function newListCoverImageDeletingTasksRequest(
 ): ClientRequestInterface<ListCoverImageDeletingTasksResponse> {
   return {
     descriptor: LIST_COVER_IMAGE_DELETING_TASKS,
-    body,
-  };
-}
-
-export function newCacheVideoContainerRequest(
-  body: CacheVideoContainerRequestBody,
-): ClientRequestInterface<CacheVideoContainerResponse> {
-  return {
-    descriptor: CACHE_VIDEO_CONTAINER,
     body,
   };
 }

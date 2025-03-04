@@ -26,6 +26,48 @@
       type: number
       index: 1
 - kind: Message
+  name: CacheVideoContainerRequestBody
+  fields:
+    - name: seasonId
+      type: string
+      index: 1
+    - name: episodeId
+      type: string
+      index: 2
+    - name: videoContainer
+      type: VideoContainer
+      import: ./show/video_container
+      index: 3
+- kind: Message
+  name: CacheVideoContainerResponse
+- kind: Message
+  name: CheckPresenceOfSeasonRequestBody
+  fields:
+    - name: seasonId
+      type: string
+      index: 1
+- kind: Message
+  name: CheckPresenceOfSeasonResponse
+  fields:
+    - name: present
+      type: boolean
+      index: 1
+- kind: Message
+  name: CheckPresenceOfEpisodeRequestBody
+  fields:
+    - name: seasonId
+      type: string
+      index: 1
+    - name: episodeId
+      type: string
+      index: 2
+- kind: Message
+  name: CheckPresenceOfEpisodeResponse
+  fields:
+    - name: present
+      type: boolean
+      index: 1
+- kind: Message
   name: ProcessVideoContainerCreatingTaskRequestBody
   fields:
     - name: seasonId
@@ -79,21 +121,6 @@
       type: ProcessCoverImageDeletingTaskRequestBody
       isArray: true
       index: 1
-- kind: Message
-  name: CacheVideoContainerRequestBody
-  fields:
-    - name: seasonId
-      type: string
-      index: 1
-    - name: episodeId
-      type: string
-      index: 2
-    - name: videoContainer
-      type: VideoContainer
-      import: ./show/video_container
-      index: 3
-- kind: Message
-  name: CacheVideoContainerResponse
 - kind: RemoteCallsGroup
   name: ProductShowNodeRemoteCalls
   service: ProductNodeService
@@ -107,6 +134,18 @@
       path: /GetSeasonGrade
       body: GetSeasonGradeRequestBody
       response: GetSeasonGradeResponse
+    - name: CacheVideoContainer
+      path: /CacheVideoContainer
+      body: CacheVideoContainerRequestBody
+      response: CacheVideoContainerResponse
+    - name: CheckPresenceOfSeason
+      path: /CheckPresenceOfSeason
+      body: CheckPresenceOfSeasonRequestBody
+      response: CheckPresenceOfSeasonResponse
+    - name: CheckPresenceOfEpisode
+      path: /CheckPresenceOfEpisode
+      body: CheckPresenceOfEpisodeRequestBody
+      response: CheckPresenceOfEpisodeResponse
     - name: ProcessVideoContainerCreatingTask
       path: /ProcessVideoContainerCreatingTask
       body: ProcessVideoContainerCreatingTaskRequestBody
@@ -131,9 +170,5 @@
       path: /ListCoverImageDeletingTasks
       body: ListCoverImageDeletingTasksRequestBody
       response: ListCoverImageDeletingTasksResponse
-    - name: CacheVideoContainer
-      path: /CacheVideoContainer
-      body: CacheVideoContainerRequestBody
-      response: CacheVideoContainerResponse
   outputClient: ./show/node/client
   outputHandler: ./show/node/handler

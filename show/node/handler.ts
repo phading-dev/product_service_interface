@@ -1,4 +1,4 @@
-import { GetSeasonPublisherRequestBody, GET_SEASON_PUBLISHER, GetSeasonPublisherResponse, GetSeasonGradeRequestBody, GET_SEASON_GRADE, GetSeasonGradeResponse, ProcessVideoContainerCreatingTaskRequestBody, PROCESS_VIDEO_CONTAINER_CREATING_TASK, ProcessVideoContainerCreatingTaskResponse, ListVideoContainerCreatingTasksRequestBody, LIST_VIDEO_CONTAINER_CREATING_TASKS, ListVideoContainerCreatingTasksResponse, ProcessVideoContainerDeletingTaskRequestBody, PROCESS_VIDEO_CONTAINER_DELETING_TASK, ProcessVideoContainerDeletingTaskResponse, ListVideoContainerDeletingTasksRequestBody, LIST_VIDEO_CONTAINER_DELETING_TASKS, ListVideoContainerDeletingTasksResponse, ProcessCoverImageDeletingTaskRequestBody, PROCESS_COVER_IMAGE_DELETING_TASK, ProcessCoverImageDeletingTaskResponse, ListCoverImageDeletingTasksRequestBody, LIST_COVER_IMAGE_DELETING_TASKS, ListCoverImageDeletingTasksResponse, CacheVideoContainerRequestBody, CACHE_VIDEO_CONTAINER, CacheVideoContainerResponse } from './interface';
+import { GetSeasonPublisherRequestBody, GET_SEASON_PUBLISHER, GetSeasonPublisherResponse, GetSeasonGradeRequestBody, GET_SEASON_GRADE, GetSeasonGradeResponse, CacheVideoContainerRequestBody, CACHE_VIDEO_CONTAINER, CacheVideoContainerResponse, CheckPresenceOfSeasonRequestBody, CHECK_PRESENCE_OF_SEASON, CheckPresenceOfSeasonResponse, CheckPresenceOfEpisodeRequestBody, CHECK_PRESENCE_OF_EPISODE, CheckPresenceOfEpisodeResponse, ProcessVideoContainerCreatingTaskRequestBody, PROCESS_VIDEO_CONTAINER_CREATING_TASK, ProcessVideoContainerCreatingTaskResponse, ListVideoContainerCreatingTasksRequestBody, LIST_VIDEO_CONTAINER_CREATING_TASKS, ListVideoContainerCreatingTasksResponse, ProcessVideoContainerDeletingTaskRequestBody, PROCESS_VIDEO_CONTAINER_DELETING_TASK, ProcessVideoContainerDeletingTaskResponse, ListVideoContainerDeletingTasksRequestBody, LIST_VIDEO_CONTAINER_DELETING_TASKS, ListVideoContainerDeletingTasksResponse, ProcessCoverImageDeletingTaskRequestBody, PROCESS_COVER_IMAGE_DELETING_TASK, ProcessCoverImageDeletingTaskResponse, ListCoverImageDeletingTasksRequestBody, LIST_COVER_IMAGE_DELETING_TASKS, ListCoverImageDeletingTasksResponse } from './interface';
 import { RemoteCallHandlerInterface } from '@selfage/service_descriptor/remote_call_handler_interface';
 
 export abstract class GetSeasonPublisherHandlerInterface implements RemoteCallHandlerInterface {
@@ -15,6 +15,30 @@ export abstract class GetSeasonGradeHandlerInterface implements RemoteCallHandle
     loggingPrefix: string,
     body: GetSeasonGradeRequestBody,
   ): Promise<GetSeasonGradeResponse>;
+}
+
+export abstract class CacheVideoContainerHandlerInterface implements RemoteCallHandlerInterface {
+  public descriptor = CACHE_VIDEO_CONTAINER;
+  public abstract handle(
+    loggingPrefix: string,
+    body: CacheVideoContainerRequestBody,
+  ): Promise<CacheVideoContainerResponse>;
+}
+
+export abstract class CheckPresenceOfSeasonHandlerInterface implements RemoteCallHandlerInterface {
+  public descriptor = CHECK_PRESENCE_OF_SEASON;
+  public abstract handle(
+    loggingPrefix: string,
+    body: CheckPresenceOfSeasonRequestBody,
+  ): Promise<CheckPresenceOfSeasonResponse>;
+}
+
+export abstract class CheckPresenceOfEpisodeHandlerInterface implements RemoteCallHandlerInterface {
+  public descriptor = CHECK_PRESENCE_OF_EPISODE;
+  public abstract handle(
+    loggingPrefix: string,
+    body: CheckPresenceOfEpisodeRequestBody,
+  ): Promise<CheckPresenceOfEpisodeResponse>;
 }
 
 export abstract class ProcessVideoContainerCreatingTaskHandlerInterface implements RemoteCallHandlerInterface {
@@ -63,12 +87,4 @@ export abstract class ListCoverImageDeletingTasksHandlerInterface implements Rem
     loggingPrefix: string,
     body: ListCoverImageDeletingTasksRequestBody,
   ): Promise<ListCoverImageDeletingTasksResponse>;
-}
-
-export abstract class CacheVideoContainerHandlerInterface implements RemoteCallHandlerInterface {
-  public descriptor = CACHE_VIDEO_CONTAINER;
-  public abstract handle(
-    loggingPrefix: string,
-    body: CacheVideoContainerRequestBody,
-  ): Promise<CacheVideoContainerResponse>;
 }

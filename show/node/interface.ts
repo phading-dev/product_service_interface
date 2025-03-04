@@ -60,6 +60,94 @@ export let GET_SEASON_GRADE_RESPONSE: MessageDescriptor<GetSeasonGradeResponse> 
   }],
 };
 
+export interface CacheVideoContainerRequestBody {
+  seasonId?: string,
+  episodeId?: string,
+  videoContainer?: VideoContainer,
+}
+
+export let CACHE_VIDEO_CONTAINER_REQUEST_BODY: MessageDescriptor<CacheVideoContainerRequestBody> = {
+  name: 'CacheVideoContainerRequestBody',
+  fields: [{
+    name: 'seasonId',
+    index: 1,
+    primitiveType: PrimitiveType.STRING,
+  }, {
+    name: 'episodeId',
+    index: 2,
+    primitiveType: PrimitiveType.STRING,
+  }, {
+    name: 'videoContainer',
+    index: 3,
+    messageType: VIDEO_CONTAINER,
+  }],
+};
+
+export interface CacheVideoContainerResponse {
+}
+
+export let CACHE_VIDEO_CONTAINER_RESPONSE: MessageDescriptor<CacheVideoContainerResponse> = {
+  name: 'CacheVideoContainerResponse',
+  fields: [],
+};
+
+export interface CheckPresenceOfSeasonRequestBody {
+  seasonId?: string,
+}
+
+export let CHECK_PRESENCE_OF_SEASON_REQUEST_BODY: MessageDescriptor<CheckPresenceOfSeasonRequestBody> = {
+  name: 'CheckPresenceOfSeasonRequestBody',
+  fields: [{
+    name: 'seasonId',
+    index: 1,
+    primitiveType: PrimitiveType.STRING,
+  }],
+};
+
+export interface CheckPresenceOfSeasonResponse {
+  present?: boolean,
+}
+
+export let CHECK_PRESENCE_OF_SEASON_RESPONSE: MessageDescriptor<CheckPresenceOfSeasonResponse> = {
+  name: 'CheckPresenceOfSeasonResponse',
+  fields: [{
+    name: 'present',
+    index: 1,
+    primitiveType: PrimitiveType.BOOLEAN,
+  }],
+};
+
+export interface CheckPresenceOfEpisodeRequestBody {
+  seasonId?: string,
+  episodeId?: string,
+}
+
+export let CHECK_PRESENCE_OF_EPISODE_REQUEST_BODY: MessageDescriptor<CheckPresenceOfEpisodeRequestBody> = {
+  name: 'CheckPresenceOfEpisodeRequestBody',
+  fields: [{
+    name: 'seasonId',
+    index: 1,
+    primitiveType: PrimitiveType.STRING,
+  }, {
+    name: 'episodeId',
+    index: 2,
+    primitiveType: PrimitiveType.STRING,
+  }],
+};
+
+export interface CheckPresenceOfEpisodeResponse {
+  present?: boolean,
+}
+
+export let CHECK_PRESENCE_OF_EPISODE_RESPONSE: MessageDescriptor<CheckPresenceOfEpisodeResponse> = {
+  name: 'CheckPresenceOfEpisodeResponse',
+  fields: [{
+    name: 'present',
+    index: 1,
+    primitiveType: PrimitiveType.BOOLEAN,
+  }],
+};
+
 export interface ProcessVideoContainerCreatingTaskRequestBody {
   seasonId?: string,
   episodeId?: string,
@@ -194,37 +282,6 @@ export let LIST_COVER_IMAGE_DELETING_TASKS_RESPONSE: MessageDescriptor<ListCover
   }],
 };
 
-export interface CacheVideoContainerRequestBody {
-  seasonId?: string,
-  episodeId?: string,
-  videoContainer?: VideoContainer,
-}
-
-export let CACHE_VIDEO_CONTAINER_REQUEST_BODY: MessageDescriptor<CacheVideoContainerRequestBody> = {
-  name: 'CacheVideoContainerRequestBody',
-  fields: [{
-    name: 'seasonId',
-    index: 1,
-    primitiveType: PrimitiveType.STRING,
-  }, {
-    name: 'episodeId',
-    index: 2,
-    primitiveType: PrimitiveType.STRING,
-  }, {
-    name: 'videoContainer',
-    index: 3,
-    messageType: VIDEO_CONTAINER,
-  }],
-};
-
-export interface CacheVideoContainerResponse {
-}
-
-export let CACHE_VIDEO_CONTAINER_RESPONSE: MessageDescriptor<CacheVideoContainerResponse> = {
-  name: 'CacheVideoContainerResponse',
-  fields: [],
-};
-
 export let GET_SEASON_PUBLISHER: RemoteCallDescriptor = {
   name: "GetSeasonPublisher",
   service: PRODUCT_NODE_SERVICE,
@@ -246,6 +303,42 @@ export let GET_SEASON_GRADE: RemoteCallDescriptor = {
   },
   response: {
     messageType: GET_SEASON_GRADE_RESPONSE,
+  },
+}
+
+export let CACHE_VIDEO_CONTAINER: RemoteCallDescriptor = {
+  name: "CacheVideoContainer",
+  service: PRODUCT_NODE_SERVICE,
+  path: "/CacheVideoContainer",
+  body: {
+    messageType: CACHE_VIDEO_CONTAINER_REQUEST_BODY,
+  },
+  response: {
+    messageType: CACHE_VIDEO_CONTAINER_RESPONSE,
+  },
+}
+
+export let CHECK_PRESENCE_OF_SEASON: RemoteCallDescriptor = {
+  name: "CheckPresenceOfSeason",
+  service: PRODUCT_NODE_SERVICE,
+  path: "/CheckPresenceOfSeason",
+  body: {
+    messageType: CHECK_PRESENCE_OF_SEASON_REQUEST_BODY,
+  },
+  response: {
+    messageType: CHECK_PRESENCE_OF_SEASON_RESPONSE,
+  },
+}
+
+export let CHECK_PRESENCE_OF_EPISODE: RemoteCallDescriptor = {
+  name: "CheckPresenceOfEpisode",
+  service: PRODUCT_NODE_SERVICE,
+  path: "/CheckPresenceOfEpisode",
+  body: {
+    messageType: CHECK_PRESENCE_OF_EPISODE_REQUEST_BODY,
+  },
+  response: {
+    messageType: CHECK_PRESENCE_OF_EPISODE_RESPONSE,
   },
 }
 
@@ -318,17 +411,5 @@ export let LIST_COVER_IMAGE_DELETING_TASKS: RemoteCallDescriptor = {
   },
   response: {
     messageType: LIST_COVER_IMAGE_DELETING_TASKS_RESPONSE,
-  },
-}
-
-export let CACHE_VIDEO_CONTAINER: RemoteCallDescriptor = {
-  name: "CacheVideoContainer",
-  service: PRODUCT_NODE_SERVICE,
-  path: "/CacheVideoContainer",
-  body: {
-    messageType: CACHE_VIDEO_CONTAINER_REQUEST_BODY,
-  },
-  response: {
-    messageType: CACHE_VIDEO_CONTAINER_RESPONSE,
   },
 }
