@@ -53,6 +53,37 @@
     - name: indexCursor
       type: number
       index: 2
+- kind: Message
+  name: RateSeasonRequestBody
+  fields:
+    - name: seasonId
+      type: string
+      index: 1
+    - name: rating
+      type: number
+      index: 2
+- kind: Message
+  name: RateSeasonResponse
+- kind: Message
+  name: UnrateSeasonRequestBody
+  fields:
+    - name: seasonId
+      type: string
+      index: 1
+- kind: Message
+  name: UnrateSeasonResponse
+- kind: Message
+  name: GetIndividualSeasonRatingRequestBody
+  fields:
+    - name: seasonId
+      type: string
+      index: 1
+- kind: Message
+  name: GetIndividualSeasonRatingResponse
+  fields:
+    - name: rating
+      type: number
+      index: 1
 - kind: RemoteCallsGroup
   name: ProductShowWebConsumerRemoteCalls
   service: ProductWebService
@@ -73,5 +104,20 @@
       body: ListEpisodesRequestBody
       authKey: a
       response: ListEpisodesResponse
+    - name: RateSeason
+      path: /RateSeason
+      body: RateSeasonRequestBody
+      authKey: a
+      response: RateSeasonResponse
+    - name: UnrateSeason
+      path: /UnrateSeason
+      body: UnrateSeasonRequestBody
+      authKey: a
+      response: UnrateSeasonResponse
+    - name: GetIndividualSeasonRating
+      path: /GetIndividualSeasonRating
+      body: GetIndividualSeasonRatingRequestBody
+      authKey: a
+      response: GetIndividualSeasonRatingResponse
   outputClient: ./show/web/consumer/client
   outputHandler: ./show/web/consumer/handler
