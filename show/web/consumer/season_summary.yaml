@@ -1,0 +1,21 @@
+- kind: Message
+  name: SeasonSummary
+  fields:
+    - name: seasonId
+      type: string
+      index: 1
+    - name: publisherId
+      type: string
+      index: 2
+    - name: name
+      type: string
+      index: 3
+    - name: coverImageUrl
+      type: string
+      index: 4
+    - name: totalEpisodes
+      type: number
+      index: 5
+    - name: averageRating
+      type: number
+      index: 6

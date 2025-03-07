@@ -31,6 +31,6 @@
     - name: totalEpisodes
       type: number
       index: 7
-    - name: averagedRating
+    - name: averageRating
       type: number
       index: 8

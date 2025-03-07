@@ -1,4 +1,4 @@
-import { GetSeasonDetailsRequestBody, GetSeasonDetailsResponse, GET_SEASON_DETAILS, GetEpisodeDetailsRequestBody, GetEpisodeDetailsResponse, GET_EPISODE_DETAILS, ListEpisodesRequestBody, ListEpisodesResponse, LIST_EPISODES, RateSeasonRequestBody, RateSeasonResponse, RATE_SEASON, UnrateSeasonRequestBody, UnrateSeasonResponse, UNRATE_SEASON, GetIndividualSeasonRatingRequestBody, GetIndividualSeasonRatingResponse, GET_INDIVIDUAL_SEASON_RATING } from './interface';
+import { GetSeasonDetailsRequestBody, GetSeasonDetailsResponse, GET_SEASON_DETAILS, GetEpisodeDetailsRequestBody, GetEpisodeDetailsResponse, GET_EPISODE_DETAILS, ListEpisodesRequestBody, ListEpisodesResponse, LIST_EPISODES, ListSeasonsByRecentPublishTimeRequestBody, ListSeasonsByRecentPublishTimeResponse, LIST_SEASONS_BY_RECENT_PUBLISH_TIME, ListSeasonsByRatingRequestBody, ListSeasonsByRatingResponse, LIST_SEASONS_BY_RATING, RateSeasonRequestBody, RateSeasonResponse, RATE_SEASON, UnrateSeasonRequestBody, UnrateSeasonResponse, UNRATE_SEASON, GetIndividualSeasonRatingRequestBody, GetIndividualSeasonRatingResponse, GET_INDIVIDUAL_SEASON_RATING } from './interface';
 import { ClientRequestInterface } from '@selfage/service_descriptor/client_request_interface';
 
 export function newGetSeasonDetailsRequest(
@@ -24,6 +24,24 @@ export function newListEpisodesRequest(
 ): ClientRequestInterface<ListEpisodesResponse> {
   return {
     descriptor: LIST_EPISODES,
+    body,
+  };
+}
+
+export function newListSeasonsByRecentPublishTimeRequest(
+  body: ListSeasonsByRecentPublishTimeRequestBody,
+): ClientRequestInterface<ListSeasonsByRecentPublishTimeResponse> {
+  return {
+    descriptor: LIST_SEASONS_BY_RECENT_PUBLISH_TIME,
+    body,
+  };
+}
+
+export function newListSeasonsByRatingRequest(
+  body: ListSeasonsByRatingRequestBody,
+): ClientRequestInterface<ListSeasonsByRatingResponse> {
+  return {
+    descriptor: LIST_SEASONS_BY_RATING,
     body,
   };
 }

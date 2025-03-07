@@ -54,6 +54,52 @@
       type: number
       index: 2
 - kind: Message
+  name: ListSeasonsByRecentPublishTimeRequestBody
+  fields:
+    - name: publishTimeCursor
+      type: number
+      index: 1
+    - name: limit
+      type: number
+      index: 2
+- kind: Message
+  name: ListSeasonsByRecentPublishTimeResponse
+  fields:
+    - name: seasons
+      type: SeasonSummary
+      import: ./show/web/consumer/season_summary
+      isArray: true
+      index: 1
+    - name: publishTimeCursor
+      type: number
+      index: 2
+- kind: Message
+  name: ListSeasonsByRatingRequestBody
+  fields:
+    - name: ratingCursor
+      type: number
+      index: 1
+    - name: updatedTimeCursor
+      type: number
+      index: 2
+    - name: limit
+      type: number
+      index: 3
+- kind: Message
+  name: ListSeasonsByRatingResponse
+  fields:
+    - name: seasons
+      type: SeasonSummary
+      import: ./show/web/consumer/season_summary
+      isArray: true
+      index: 1
+    - name: ratingCursor
+      type: number
+      index: 2
+    - name: updatedTimeCursor
+      type: number
+      index: 3
+- kind: Message
   name: RateSeasonRequestBody
   fields:
     - name: seasonId
@@ -104,6 +150,16 @@
       body: ListEpisodesRequestBody
       authKey: a
       response: ListEpisodesResponse
+    - name: ListSeasonsByRecentPublishTime
+      path: /ListSeasonsByRecentPublishTime
+      body: ListSeasonsByRecentPublishTimeRequestBody
+      authKey: a
+      response: ListSeasonsByRecentPublishTimeResponse
+    - name: ListSeasonsByRating
+      path: /ListSeasonsByRating
+      body: ListSeasonsByRatingRequestBody
+      authKey: a
+      response: ListSeasonsByRatingResponse
     - name: RateSeason
       path: /RateSeason
       body: RateSeasonRequestBody

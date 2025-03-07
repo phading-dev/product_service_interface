@@ -2,6 +2,7 @@ import { PrimitiveType, MessageDescriptor } from '@selfage/message/descriptor';
 import { SeasonDetails, SEASON_DETAILS } from './season_details';
 import { EpisodeDetails, EPISODE_DETAILS } from './episode_details';
 import { EpisodeSummary, EPISODE_SUMMARY } from './episode_summary';
+import { SeasonSummary, SEASON_SUMMARY } from './season_summary';
 import { PRODUCT_WEB_SERVICE } from '../../../service';
 import { RemoteCallDescriptor } from '@selfage/service_descriptor';
 
@@ -105,6 +106,90 @@ export let LIST_EPISODES_RESPONSE: MessageDescriptor<ListEpisodesResponse> = {
   }, {
     name: 'indexCursor',
     index: 2,
+    primitiveType: PrimitiveType.NUMBER,
+  }],
+};
+
+export interface ListSeasonsByRecentPublishTimeRequestBody {
+  publishTimeCursor?: number,
+  limit?: number,
+}
+
+export let LIST_SEASONS_BY_RECENT_PUBLISH_TIME_REQUEST_BODY: MessageDescriptor<ListSeasonsByRecentPublishTimeRequestBody> = {
+  name: 'ListSeasonsByRecentPublishTimeRequestBody',
+  fields: [{
+    name: 'publishTimeCursor',
+    index: 1,
+    primitiveType: PrimitiveType.NUMBER,
+  }, {
+    name: 'limit',
+    index: 2,
+    primitiveType: PrimitiveType.NUMBER,
+  }],
+};
+
+export interface ListSeasonsByRecentPublishTimeResponse {
+  seasons?: Array<SeasonSummary>,
+  publishTimeCursor?: number,
+}
+
+export let LIST_SEASONS_BY_RECENT_PUBLISH_TIME_RESPONSE: MessageDescriptor<ListSeasonsByRecentPublishTimeResponse> = {
+  name: 'ListSeasonsByRecentPublishTimeResponse',
+  fields: [{
+    name: 'seasons',
+    index: 1,
+    messageType: SEASON_SUMMARY,
+    isArray: true,
+  }, {
+    name: 'publishTimeCursor',
+    index: 2,
+    primitiveType: PrimitiveType.NUMBER,
+  }],
+};
+
+export interface ListSeasonsByRatingRequestBody {
+  ratingCursor?: number,
+  updatedTimeCursor?: number,
+  limit?: number,
+}
+
+export let LIST_SEASONS_BY_RATING_REQUEST_BODY: MessageDescriptor<ListSeasonsByRatingRequestBody> = {
+  name: 'ListSeasonsByRatingRequestBody',
+  fields: [{
+    name: 'ratingCursor',
+    index: 1,
+    primitiveType: PrimitiveType.NUMBER,
+  }, {
+    name: 'updatedTimeCursor',
+    index: 2,
+    primitiveType: PrimitiveType.NUMBER,
+  }, {
+    name: 'limit',
+    index: 3,
+    primitiveType: PrimitiveType.NUMBER,
+  }],
+};
+
+export interface ListSeasonsByRatingResponse {
+  seasons?: Array<SeasonSummary>,
+  ratingCursor?: number,
+  updatedTimeCursor?: number,
+}
+
+export let LIST_SEASONS_BY_RATING_RESPONSE: MessageDescriptor<ListSeasonsByRatingResponse> = {
+  name: 'ListSeasonsByRatingResponse',
+  fields: [{
+    name: 'seasons',
+    index: 1,
+    messageType: SEASON_SUMMARY,
+    isArray: true,
+  }, {
+    name: 'ratingCursor',
+    index: 2,
+    primitiveType: PrimitiveType.NUMBER,
+  }, {
+    name: 'updatedTimeCursor',
+    index: 3,
     primitiveType: PrimitiveType.NUMBER,
   }],
 };
@@ -218,6 +303,32 @@ export let LIST_EPISODES: RemoteCallDescriptor = {
   authKey: "a",
   response: {
     messageType: LIST_EPISODES_RESPONSE,
+  },
+}
+
+export let LIST_SEASONS_BY_RECENT_PUBLISH_TIME: RemoteCallDescriptor = {
+  name: "ListSeasonsByRecentPublishTime",
+  service: PRODUCT_WEB_SERVICE,
+  path: "/ListSeasonsByRecentPublishTime",
+  body: {
+    messageType: LIST_SEASONS_BY_RECENT_PUBLISH_TIME_REQUEST_BODY,
+  },
+  authKey: "a",
+  response: {
+    messageType: LIST_SEASONS_BY_RECENT_PUBLISH_TIME_RESPONSE,
+  },
+}
+
+export let LIST_SEASONS_BY_RATING: RemoteCallDescriptor = {
+  name: "ListSeasonsByRating",
+  service: PRODUCT_WEB_SERVICE,
+  path: "/ListSeasonsByRating",
+  body: {
+    messageType: LIST_SEASONS_BY_RATING_REQUEST_BODY,
+  },
+  authKey: "a",
+  response: {
+    messageType: LIST_SEASONS_BY_RATING_RESPONSE,
   },
 }
 
