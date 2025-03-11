@@ -38,3 +38,6 @@
       type: SeasonState
       import: ./show/season_state
       index: 9
+    - name: averageRating
+      type: number
+      index: 10

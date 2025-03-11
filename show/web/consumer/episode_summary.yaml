@@ -16,3 +16,6 @@
     - name: premierTimeMs
       type: number
       index: 5
+    - name: continueTimeMs
+      type: number
+      index: 6

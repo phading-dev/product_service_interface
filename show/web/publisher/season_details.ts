@@ -29,6 +29,7 @@ export interface SeasonDetails {
   createdTimeMs?: number,
   lastChangeTimeMs?: number,
   state?: SeasonState,
+  averageRating?: number,
 }
 
 export let SEASON_DETAILS: MessageDescriptor<SeasonDetails> = {
@@ -69,5 +70,9 @@ export let SEASON_DETAILS: MessageDescriptor<SeasonDetails> = {
     name: 'state',
     index: 9,
     enumType: SEASON_STATE,
+  }, {
+    name: 'averageRating',
+    index: 10,
+    primitiveType: PrimitiveType.NUMBER,
   }],
 };

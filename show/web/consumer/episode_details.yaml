@@ -1,11 +1,11 @@
 - kind: Message
   name: EpisodeDetails
   fields:
-    - name: name
-      type: string
-      index: 1
     - name: index
       type: number
+      index: 1
+    - name: name
+      type: string
       index: 2
     - name: videoDurationSec
       type: number

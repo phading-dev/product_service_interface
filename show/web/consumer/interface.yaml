@@ -54,23 +54,36 @@
       type: number
       index: 2
 - kind: Message
-  name: ListSeasonsByRecentPublishTimeRequestBody
+  name: GetContinueEpisodeRequestBody
   fields:
-    - name: publishTimeCursor
+    - name: seasonId
+      type: string
+      index: 1
+- kind: Message
+  name: GetContinueEpisodeResponse
+  fields:
+    - name: episode
+      type: EpisodeSummary
+      import: ./show/web/consumer/episode_summary
+      index: 1
+- kind: Message
+  name: ListSeasonsByRecentPremierTimeRequestBody
+  fields:
+    - name: premierTimeCursor
       type: number
       index: 1
     - name: limit
       type: number
       index: 2
 - kind: Message
-  name: ListSeasonsByRecentPublishTimeResponse
+  name: ListSeasonsByRecentPremierTimeResponse
   fields:
     - name: seasons
       type: SeasonSummary
       import: ./show/web/consumer/season_summary
       isArray: true
       index: 1
-    - name: publishTimeCursor
+    - name: premierTimeCursor
       type: number
       index: 2
 - kind: Message
@@ -99,6 +112,20 @@
     - name: updatedTimeCursor
       type: number
       index: 3
+- kind: Message
+  name: ListContinueWatchingSeasonsRequestBody
+  fields:
+    - name: limit
+      type: number
+      index: 1
+- kind: Message
+  name: ListContinueWatchingSeasonsResponse
+  fields:
+    - name: continues
+      type: ContinueSeason
+      import: ./show/web/consumer/season_summary
+      isArray: true
+      index: 1
 - kind: Message
   name: RateSeasonRequestBody
   fields:
@@ -150,16 +177,26 @@
       body: ListEpisodesRequestBody
       authKey: a
       response: ListEpisodesResponse
-    - name: ListSeasonsByRecentPublishTime
-      path: /ListSeasonsByRecentPublishTime
-      body: ListSeasonsByRecentPublishTimeRequestBody
+    - name: GetContinueEpisode
+      path: /GetContinueEpisode
+      body: GetContinueEpisodeRequestBody
       authKey: a
-      response: ListSeasonsByRecentPublishTimeResponse
+      response: GetContinueEpisodeResponse
+    - name: ListSeasonsByRecentPremierTime
+      path: /ListSeasonsByRecentPremierTime
+      body: ListSeasonsByRecentPremierTimeRequestBody
+      authKey: a
+      response: ListSeasonsByRecentPremierTimeResponse
     - name: ListSeasonsByRating
       path: /ListSeasonsByRating
       body: ListSeasonsByRatingRequestBody
       authKey: a
       response: ListSeasonsByRatingResponse
+    - name: ListContinueWatchingSeasons
+      path: /ListContinueWatchingSeasons
+      body: ListContinueWatchingSeasonsRequestBody
+      authKey: a
+      response: ListContinueWatchingSeasonsResponse
     - name: RateSeason
       path: /RateSeason
       body: RateSeasonRequestBody

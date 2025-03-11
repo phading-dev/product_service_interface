@@ -13,9 +13,22 @@
     - name: coverImageUrl
       type: string
       index: 4
-    - name: totalEpisodes
+    - name: grade
       type: number
       index: 5
-    - name: averageRating
+    - name: totalEpisodes
       type: number
       index: 6
+    - name: averageRating
+      type: number
+      index: 7
+- kind: Message
+  name: ContinueSeason
+  fields:
+    - name: season
+      type: SeasonSummary
+      index: 1
+    - name: episode
+      type: EpisodeSummary
+      import: ./show/web/consumer/episode_summary
+      index: 2

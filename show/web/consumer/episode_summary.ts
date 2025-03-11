@@ -6,6 +6,7 @@ export interface EpisodeSummary {
   name?: string,
   videoDurationSec?: number,
   premierTimeMs?: number,
+  continueTimeMs?: number,
 }
 
 export let EPISODE_SUMMARY: MessageDescriptor<EpisodeSummary> = {
@@ -29,6 +30,10 @@ export let EPISODE_SUMMARY: MessageDescriptor<EpisodeSummary> = {
   }, {
     name: 'premierTimeMs',
     index: 5,
+    primitiveType: PrimitiveType.NUMBER,
+  }, {
+    name: 'continueTimeMs',
+    index: 6,
     primitiveType: PrimitiveType.NUMBER,
   }],
 };

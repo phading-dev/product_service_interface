@@ -6,6 +6,7 @@ export interface SeasonSummary {
   coverImageUrl?: string,
   totalEpisodes?: number,
   lastChangeTimeMs?: number,
+  averageRating?: number,
 }
 
 export let SEASON_SUMMARY: MessageDescriptor<SeasonSummary> = {
@@ -29,6 +30,10 @@ export let SEASON_SUMMARY: MessageDescriptor<SeasonSummary> = {
   }, {
     name: 'lastChangeTimeMs',
     index: 5,
+    primitiveType: PrimitiveType.NUMBER,
+  }, {
+    name: 'averageRating',
+    index: 6,
     primitiveType: PrimitiveType.NUMBER,
   }],
 };

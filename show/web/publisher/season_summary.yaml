@@ -16,3 +16,6 @@
     - name: lastChangeTimeMs
       type: number
       index: 5
+    - name: averageRating
+      type: number
+      index: 6
