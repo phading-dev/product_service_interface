@@ -100,6 +100,29 @@
       type: number
       index: 2
 - kind: Message
+  name: SearchSeasonsRequestBody
+  fields:
+    - name: query
+      type: string
+      index: 1
+    - name: limit
+      type: number
+      index: 2
+    - name: scoreCursor
+      type: number
+      index: 3
+- kind: Message
+  name: SearchSeasonsResponse
+  fields:
+    - name: seasons
+      type: SeasonSummary
+      import: ./show/web/publisher/season_summary
+      isArray: true
+      index: 1
+    - name: scoreCursor
+      type: number
+      index: 2
+- kind: Message
   name: CreateEpisodeRequestBody
   fields:
     - name: seasonId
@@ -550,6 +573,11 @@
       body: ListSeasonsRequestBody
       authKey: a
       response: ListSeasonsResponse
+    - name: SearchSeasons
+      path: /SearchSeasons
+      body: SearchSeasonsRequestBody
+      authKey: a
+      response: SearchSeasonsResponse
     - name: CreateEpisode
       path: /CreateEpisode
       body: CreateEpisodeRequestBody

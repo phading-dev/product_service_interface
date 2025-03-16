@@ -127,6 +127,29 @@
       isArray: true
       index: 1
 - kind: Message
+  name: SearchSeasonsRequestBody
+  fields:
+    - name: query
+      type: string
+      index: 1
+    - name: limit
+      type: number
+      index: 2
+    - name: scoreCursor
+      type: number
+      index: 3
+- kind: Message
+  name: SearchSeasonsResponse
+  fields:
+    - name: seasons
+      type: SeasonSummary
+      import: ./show/web/consumer/season_summary
+      isArray: true
+      index: 1
+    - name: scoreCursor
+      type: number
+      index: 2
+- kind: Message
   name: RateSeasonRequestBody
   fields:
     - name: seasonId
@@ -197,6 +220,11 @@
       body: ListContinueWatchingSeasonsRequestBody
       authKey: a
       response: ListContinueWatchingSeasonsResponse
+    - name: SearchSeasons
+      path: /SearchSeasons
+      body: SearchSeasonsRequestBody
+      authKey: a
+      response: SearchSeasonsResponse
     - name: RateSeason
       path: /RateSeason
       body: RateSeasonRequestBody

@@ -247,6 +247,48 @@ export let LIST_CONTINUE_WATCHING_SEASONS_RESPONSE: MessageDescriptor<ListContin
   }],
 };
 
+export interface SearchSeasonsRequestBody {
+  query?: string,
+  limit?: number,
+  scoreCursor?: number,
+}
+
+export let SEARCH_SEASONS_REQUEST_BODY: MessageDescriptor<SearchSeasonsRequestBody> = {
+  name: 'SearchSeasonsRequestBody',
+  fields: [{
+    name: 'query',
+    index: 1,
+    primitiveType: PrimitiveType.STRING,
+  }, {
+    name: 'limit',
+    index: 2,
+    primitiveType: PrimitiveType.NUMBER,
+  }, {
+    name: 'scoreCursor',
+    index: 3,
+    primitiveType: PrimitiveType.NUMBER,
+  }],
+};
+
+export interface SearchSeasonsResponse {
+  seasons?: Array<SeasonSummary>,
+  scoreCursor?: number,
+}
+
+export let SEARCH_SEASONS_RESPONSE: MessageDescriptor<SearchSeasonsResponse> = {
+  name: 'SearchSeasonsResponse',
+  fields: [{
+    name: 'seasons',
+    index: 1,
+    messageType: SEASON_SUMMARY,
+    isArray: true,
+  }, {
+    name: 'scoreCursor',
+    index: 2,
+    primitiveType: PrimitiveType.NUMBER,
+  }],
+};
+
 export interface RateSeasonRequestBody {
   seasonId?: string,
   rating?: number,
@@ -408,6 +450,19 @@ export let LIST_CONTINUE_WATCHING_SEASONS: RemoteCallDescriptor = {
   authKey: "a",
   response: {
     messageType: LIST_CONTINUE_WATCHING_SEASONS_RESPONSE,
+  },
+}
+
+export let SEARCH_SEASONS: RemoteCallDescriptor = {
+  name: "SearchSeasons",
+  service: PRODUCT_WEB_SERVICE,
+  path: "/SearchSeasons",
+  body: {
+    messageType: SEARCH_SEASONS_REQUEST_BODY,
+  },
+  authKey: "a",
+  response: {
+    messageType: SEARCH_SEASONS_RESPONSE,
   },
 }
 
