@@ -1,8 +1,6 @@
 import { PrimitiveType, MessageDescriptor } from '@selfage/message/descriptor';
-import { SeasonDetails, SEASON_DETAILS } from './season_details';
-import { EpisodeDetails, EPISODE_DETAILS } from './episode_details';
-import { EpisodeSummary, EPISODE_SUMMARY } from './episode_summary';
-import { SeasonSummary, SEASON_SUMMARY, ContinueSeason, CONTINUE_SEASON } from './season_summary';
+import { SeasonDetails, SEASON_DETAILS, EpisodeDetails, EPISODE_DETAILS } from './details';
+import { EpisodeSummary, EPISODE_SUMMARY, SeasonSummary, SEASON_SUMMARY, ContinueSeason, CONTINUE_SEASON } from './summary';
 import { PRODUCT_WEB_SERVICE } from '../../../service';
 import { RemoteCallDescriptor } from '@selfage/service_descriptor';
 
@@ -137,19 +135,24 @@ export let GET_CONTINUE_EPISODE_RESPONSE: MessageDescriptor<GetContinueEpisodeRe
 };
 
 export interface ListSeasonsByRecentPremierTimeRequestBody {
-  premierTimeCursor?: number,
   limit?: number,
+  premierTimeCursor?: number,
+  createdTimeCursor?: number,
 }
 
 export let LIST_SEASONS_BY_RECENT_PREMIER_TIME_REQUEST_BODY: MessageDescriptor<ListSeasonsByRecentPremierTimeRequestBody> = {
   name: 'ListSeasonsByRecentPremierTimeRequestBody',
   fields: [{
-    name: 'premierTimeCursor',
+    name: 'limit',
     index: 1,
     primitiveType: PrimitiveType.NUMBER,
   }, {
-    name: 'limit',
+    name: 'premierTimeCursor',
     index: 2,
+    primitiveType: PrimitiveType.NUMBER,
+  }, {
+    name: 'createdTimeCursor',
+    index: 3,
     primitiveType: PrimitiveType.NUMBER,
   }],
 };
@@ -157,6 +160,7 @@ export let LIST_SEASONS_BY_RECENT_PREMIER_TIME_REQUEST_BODY: MessageDescriptor<L
 export interface ListSeasonsByRecentPremierTimeResponse {
   seasons?: Array<SeasonSummary>,
   premierTimeCursor?: number,
+  createdTimeCursor?: number,
 }
 
 export let LIST_SEASONS_BY_RECENT_PREMIER_TIME_RESPONSE: MessageDescriptor<ListSeasonsByRecentPremierTimeResponse> = {
@@ -170,27 +174,31 @@ export let LIST_SEASONS_BY_RECENT_PREMIER_TIME_RESPONSE: MessageDescriptor<ListS
     name: 'premierTimeCursor',
     index: 2,
     primitiveType: PrimitiveType.NUMBER,
+  }, {
+    name: 'createdTimeCursor',
+    index: 3,
+    primitiveType: PrimitiveType.NUMBER,
   }],
 };
 
 export interface ListSeasonsByRatingRequestBody {
-  ratingCursor?: number,
-  updatedTimeCursor?: number,
   limit?: number,
+  ratingCursor?: number,
+  createdTimeCursor?: number,
 }
 
 export let LIST_SEASONS_BY_RATING_REQUEST_BODY: MessageDescriptor<ListSeasonsByRatingRequestBody> = {
   name: 'ListSeasonsByRatingRequestBody',
   fields: [{
-    name: 'ratingCursor',
+    name: 'limit',
     index: 1,
     primitiveType: PrimitiveType.NUMBER,
   }, {
-    name: 'updatedTimeCursor',
+    name: 'ratingCursor',
     index: 2,
     primitiveType: PrimitiveType.NUMBER,
   }, {
-    name: 'limit',
+    name: 'createdTimeCursor',
     index: 3,
     primitiveType: PrimitiveType.NUMBER,
   }],
@@ -199,7 +207,7 @@ export let LIST_SEASONS_BY_RATING_REQUEST_BODY: MessageDescriptor<ListSeasonsByR
 export interface ListSeasonsByRatingResponse {
   seasons?: Array<SeasonSummary>,
   ratingCursor?: number,
-  updatedTimeCursor?: number,
+  createdTimeCursor?: number,
 }
 
 export let LIST_SEASONS_BY_RATING_RESPONSE: MessageDescriptor<ListSeasonsByRatingResponse> = {
@@ -214,7 +222,7 @@ export let LIST_SEASONS_BY_RATING_RESPONSE: MessageDescriptor<ListSeasonsByRatin
     index: 2,
     primitiveType: PrimitiveType.NUMBER,
   }, {
-    name: 'updatedTimeCursor',
+    name: 'createdTimeCursor',
     index: 3,
     primitiveType: PrimitiveType.NUMBER,
   }],
@@ -251,6 +259,7 @@ export interface SearchSeasonsRequestBody {
   query?: string,
   limit?: number,
   scoreCursor?: number,
+  createdTimeCursor?: number,
 }
 
 export let SEARCH_SEASONS_REQUEST_BODY: MessageDescriptor<SearchSeasonsRequestBody> = {
@@ -267,12 +276,17 @@ export let SEARCH_SEASONS_REQUEST_BODY: MessageDescriptor<SearchSeasonsRequestBo
     name: 'scoreCursor',
     index: 3,
     primitiveType: PrimitiveType.NUMBER,
+  }, {
+    name: 'createdTimeCursor',
+    index: 4,
+    primitiveType: PrimitiveType.NUMBER,
   }],
 };
 
 export interface SearchSeasonsResponse {
   seasons?: Array<SeasonSummary>,
   scoreCursor?: number,
+  createdTimeCursor?: number,
 }
 
 export let SEARCH_SEASONS_RESPONSE: MessageDescriptor<SearchSeasonsResponse> = {
@@ -285,6 +299,10 @@ export let SEARCH_SEASONS_RESPONSE: MessageDescriptor<SearchSeasonsResponse> = {
   }, {
     name: 'scoreCursor',
     index: 2,
+    primitiveType: PrimitiveType.NUMBER,
+  }, {
+    name: 'createdTimeCursor',
+    index: 3,
     primitiveType: PrimitiveType.NUMBER,
   }],
 };

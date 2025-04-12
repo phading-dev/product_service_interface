@@ -9,7 +9,7 @@
   fields:
     - name: seasonDetails
       type: SeasonDetails
-      import: ./show/web/consumer/season_details
+      import: ./show/web/consumer/details
       index: 1
 - kind: Message
   name: GetEpisodeDetailsRequestBody
@@ -25,7 +25,7 @@
   fields:
     - name: episodeDetails
       type: EpisodeDetails
-      import: ./show/web/consumer/episode_details
+      import: ./show/web/consumer/details
       index: 1
 - kind: Message
   name: ListEpisodesRequestBody
@@ -47,7 +47,7 @@
   fields:
     - name: episodes
       type: EpisodeSummary
-      import: ./show/web/consumer/episode_summary
+      import: ./show/web/consumer/summary
       isArray: true
       index: 1
     - name: indexCursor
@@ -64,38 +64,44 @@
   fields:
     - name: episode
       type: EpisodeSummary
-      import: ./show/web/consumer/episode_summary
+      import: ./show/web/consumer/summary
       index: 1
 - kind: Message
   name: ListSeasonsByRecentPremierTimeRequestBody
   fields:
-    - name: premierTimeCursor
-      type: number
-      index: 1
     - name: limit
       type: number
+      index: 1
+    - name: premierTimeCursor
+      type: number
       index: 2
+    - name: createdTimeCursor
+      type: number
+      index: 3
 - kind: Message
   name: ListSeasonsByRecentPremierTimeResponse
   fields:
     - name: seasons
       type: SeasonSummary
-      import: ./show/web/consumer/season_summary
+      import: ./show/web/consumer/summary
       isArray: true
       index: 1
     - name: premierTimeCursor
       type: number
       index: 2
+    - name: createdTimeCursor
+      type: number
+      index: 3
 - kind: Message
   name: ListSeasonsByRatingRequestBody
   fields:
-    - name: ratingCursor
+    - name: limit
       type: number
       index: 1
-    - name: updatedTimeCursor
+    - name: ratingCursor
       type: number
       index: 2
-    - name: limit
+    - name: createdTimeCursor
       type: number
       index: 3
 - kind: Message
@@ -103,13 +109,13 @@
   fields:
     - name: seasons
       type: SeasonSummary
-      import: ./show/web/consumer/season_summary
+      import: ./show/web/consumer/summary
       isArray: true
       index: 1
     - name: ratingCursor
       type: number
       index: 2
-    - name: updatedTimeCursor
+    - name: createdTimeCursor
       type: number
       index: 3
 - kind: Message
@@ -123,7 +129,7 @@
   fields:
     - name: continues
       type: ContinueSeason
-      import: ./show/web/consumer/season_summary
+      import: ./show/web/consumer/summary
       isArray: true
       index: 1
 - kind: Message
@@ -138,17 +144,23 @@
     - name: scoreCursor
       type: number
       index: 3
+    - name: createdTimeCursor
+      type: number
+      index: 4
 - kind: Message
   name: SearchSeasonsResponse
   fields:
     - name: seasons
       type: SeasonSummary
-      import: ./show/web/consumer/season_summary
+      import: ./show/web/consumer/summary
       isArray: true
       index: 1
     - name: scoreCursor
       type: number
       index: 2
+    - name: createdTimeCursor
+      type: number
+      index: 3
 - kind: Message
   name: RateSeasonRequestBody
   fields:

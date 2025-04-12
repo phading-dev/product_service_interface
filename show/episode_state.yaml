@@ -1,0 +1,7 @@
+- kind: Enum
+  name: EpisodeState
+  values:
+    - name: DRAFT
+      value: 1
+    - name: PUBLISHED
+      value: 2

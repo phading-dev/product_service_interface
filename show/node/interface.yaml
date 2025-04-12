@@ -121,6 +121,26 @@
       type: ProcessCoverImageDeletingTaskRequestBody
       isArray: true
       index: 1
+- kind: Message
+  name: ProcessSeasonRecentPremierTimeUpdatingTaskRequestBody
+  fields:
+    - name: seasonId
+      type: string
+      index: 1
+    - name: episodeId
+      type: string
+      index: 2
+- kind: Message
+  name: ProcessSeasonRecentPremierTimeUpdatingTaskResponse
+- kind: Message
+  name: ListSeasonRecentPremierTimeUpdatingTasksRequestBody
+- kind: Message
+  name: ListSeasonRecentPremierTimeUpdatingTasksResponse
+  fields:
+    - name: tasks
+      type: ProcessSeasonRecentPremierTimeUpdatingTaskRequestBody
+      isArray: true
+      index: 1
 - kind: RemoteCallsGroup
   name: ProductShowNodeRemoteCalls
   service: ProductNodeService
@@ -170,5 +190,13 @@
       path: /ListCoverImageDeletingTasks
       body: ListCoverImageDeletingTasksRequestBody
       response: ListCoverImageDeletingTasksResponse
+    - name: ProcessSeasonRecentPremierTimeUpdatingTask
+      path: /ProcessSeasonRecentPremierTimeUpdatingTask
+      body: ProcessSeasonRecentPremierTimeUpdatingTaskRequestBody
+      response: ProcessSeasonRecentPremierTimeUpdatingTaskResponse
+    - name: ListSeasonRecentPremierTimeUpdatingTasks
+      path: /ListSeasonRecentPremierTimeUpdatingTasks
+      body: ListSeasonRecentPremierTimeUpdatingTasksRequestBody
+      response: ListSeasonRecentPremierTimeUpdatingTasksResponse
   outputClient: ./show/node/client
   outputHandler: ./show/node/handler

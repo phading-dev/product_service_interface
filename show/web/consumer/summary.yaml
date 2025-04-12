@@ -1,4 +1,25 @@
 - kind: Message
+  name: EpisodeSummary
+  fields:
+    - name: episodeId
+      type: string
+      index: 1
+    - name: index
+      type: number
+      index: 2
+    - name: name
+      type: string
+      index: 3
+    - name: videoDurationSec
+      type: number
+      index: 4
+    - name: premierTimeMs
+      type: number
+      index: 5
+    - name: continueTimeMs
+      type: number
+      index: 6
+- kind: Message
   name: SeasonSummary
   fields:
     - name: seasonId
@@ -22,6 +43,9 @@
     - name: averageRating
       type: number
       index: 7
+    - name: raterCount
+      type: number
+      index: 8
 - kind: Message
   name: ContinueSeason
   fields:
@@ -30,5 +54,4 @@
       index: 1
     - name: episode
       type: EpisodeSummary
-      import: ./show/web/consumer/episode_summary
       index: 2

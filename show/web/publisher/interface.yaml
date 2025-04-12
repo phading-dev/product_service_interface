@@ -29,7 +29,7 @@
   fields:
     - name: seasonDetails
       type: SeasonDetails
-      import: ./show/web/publisher/season_details
+      import: ./show/web/publisher/details
       index: 1
 - kind: Message
   name: ArchiveSeasonRequestBody
@@ -93,7 +93,7 @@
   fields:
     - name: seasons
       type: SeasonSummary
-      import: ./show/web/publisher/season_summary
+      import: ./show/web/publisher/summary
       isArray: true
       index: 1
     - name: lastChangeTimeCursor
@@ -111,17 +111,23 @@
     - name: scoreCursor
       type: number
       index: 3
+    - name: createdTimeCursor
+      type: number
+      index: 4
 - kind: Message
   name: SearchSeasonsResponse
   fields:
     - name: seasons
       type: SeasonSummary
-      import: ./show/web/publisher/season_summary
+      import: ./show/web/publisher/summary
       isArray: true
       index: 1
     - name: scoreCursor
       type: number
       index: 2
+    - name: createdTimeCursor
+      type: number
+      index: 3
 - kind: Message
   name: CreateEpisodeRequestBody
   fields:
@@ -136,7 +142,7 @@
   fields:
     - name: episode
       type: EpisodeSummary
-      import: ./show/web/publisher/episode_summary
+      import: ./show/web/publisher/summary
       index: 1
 - kind: Message
   name: DeleteEpisodeRequestBody
@@ -163,7 +169,7 @@
   fields:
     - name: episode
       type: EpisodeDetails
-      import: ./show/web/publisher/episode_details
+      import: ./show/web/publisher/details
       index: 1
 - kind: Message
   name: UpdateEpisodeRequestBody
@@ -238,7 +244,7 @@
   fields:
     - name: episodes
       type: EpisodeSummary
-      import: ./show/web/publisher/episode_summary
+      import: ./show/web/publisher/summary
       isArray: true
       index: 1
     - name: indexCursor

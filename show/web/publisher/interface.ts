@@ -1,9 +1,7 @@
 import { PrimitiveType, MessageDescriptor, EnumDescriptor } from '@selfage/message/descriptor';
-import { SeasonDetails, SEASON_DETAILS } from './season_details';
+import { SeasonDetails, SEASON_DETAILS, EpisodeDetails, EPISODE_DETAILS } from './details';
 import { SeasonState, SEASON_STATE } from '../../season_state';
-import { SeasonSummary, SEASON_SUMMARY } from './season_summary';
-import { EpisodeSummary, EPISODE_SUMMARY } from './episode_summary';
-import { EpisodeDetails, EPISODE_DETAILS } from './episode_details';
+import { SeasonSummary, SEASON_SUMMARY, EpisodeSummary, EPISODE_SUMMARY } from './summary';
 import { PRODUCT_WEB_SERVICE } from '../../../service';
 import { RemoteCallDescriptor, PrimitveTypeForBody } from '@selfage/service_descriptor';
 
@@ -230,6 +228,7 @@ export interface SearchSeasonsRequestBody {
   query?: string,
   limit?: number,
   scoreCursor?: number,
+  createdTimeCursor?: number,
 }
 
 export let SEARCH_SEASONS_REQUEST_BODY: MessageDescriptor<SearchSeasonsRequestBody> = {
@@ -246,12 +245,17 @@ export let SEARCH_SEASONS_REQUEST_BODY: MessageDescriptor<SearchSeasonsRequestBo
     name: 'scoreCursor',
     index: 3,
     primitiveType: PrimitiveType.NUMBER,
+  }, {
+    name: 'createdTimeCursor',
+    index: 4,
+    primitiveType: PrimitiveType.NUMBER,
   }],
 };
 
 export interface SearchSeasonsResponse {
   seasons?: Array<SeasonSummary>,
   scoreCursor?: number,
+  createdTimeCursor?: number,
 }
 
 export let SEARCH_SEASONS_RESPONSE: MessageDescriptor<SearchSeasonsResponse> = {
@@ -264,6 +268,10 @@ export let SEARCH_SEASONS_RESPONSE: MessageDescriptor<SearchSeasonsResponse> = {
   }, {
     name: 'scoreCursor',
     index: 2,
+    primitiveType: PrimitiveType.NUMBER,
+  }, {
+    name: 'createdTimeCursor',
+    index: 3,
     primitiveType: PrimitiveType.NUMBER,
   }],
 };

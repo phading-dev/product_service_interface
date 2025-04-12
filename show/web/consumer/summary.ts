@@ -1,5 +1,42 @@
 import { PrimitiveType, MessageDescriptor } from '@selfage/message/descriptor';
-import { EpisodeSummary, EPISODE_SUMMARY } from './episode_summary';
+
+export interface EpisodeSummary {
+  episodeId?: string,
+  index?: number,
+  name?: string,
+  videoDurationSec?: number,
+  premierTimeMs?: number,
+  continueTimeMs?: number,
+}
+
+export let EPISODE_SUMMARY: MessageDescriptor<EpisodeSummary> = {
+  name: 'EpisodeSummary',
+  fields: [{
+    name: 'episodeId',
+    index: 1,
+    primitiveType: PrimitiveType.STRING,
+  }, {
+    name: 'index',
+    index: 2,
+    primitiveType: PrimitiveType.NUMBER,
+  }, {
+    name: 'name',
+    index: 3,
+    primitiveType: PrimitiveType.STRING,
+  }, {
+    name: 'videoDurationSec',
+    index: 4,
+    primitiveType: PrimitiveType.NUMBER,
+  }, {
+    name: 'premierTimeMs',
+    index: 5,
+    primitiveType: PrimitiveType.NUMBER,
+  }, {
+    name: 'continueTimeMs',
+    index: 6,
+    primitiveType: PrimitiveType.NUMBER,
+  }],
+};
 
 export interface SeasonSummary {
   seasonId?: string,
@@ -9,6 +46,7 @@ export interface SeasonSummary {
   grade?: number,
   totalEpisodes?: number,
   averageRating?: number,
+  raterCount?: number,
 }
 
 export let SEASON_SUMMARY: MessageDescriptor<SeasonSummary> = {
@@ -40,6 +78,10 @@ export let SEASON_SUMMARY: MessageDescriptor<SeasonSummary> = {
   }, {
     name: 'averageRating',
     index: 7,
+    primitiveType: PrimitiveType.NUMBER,
+  }, {
+    name: 'raterCount',
+    index: 8,
     primitiveType: PrimitiveType.NUMBER,
   }],
 };
