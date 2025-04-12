@@ -46,7 +46,7 @@ export interface SeasonSummary {
   grade?: number,
   totalEpisodes?: number,
   averageRating?: number,
-  raterCount?: number,
+  ratingsCount?: number,
 }
 
 export let SEASON_SUMMARY: MessageDescriptor<SeasonSummary> = {
@@ -80,7 +80,7 @@ export let SEASON_SUMMARY: MessageDescriptor<SeasonSummary> = {
     index: 7,
     primitiveType: PrimitiveType.NUMBER,
   }, {
-    name: 'raterCount',
+    name: 'ratingsCount',
     index: 8,
     primitiveType: PrimitiveType.NUMBER,
   }],

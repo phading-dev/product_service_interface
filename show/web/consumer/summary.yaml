@@ -43,7 +43,7 @@
     - name: averageRating
       type: number
       index: 7
-    - name: raterCount
+    - name: ratingsCount
       type: number
       index: 8
 - kind: Message
