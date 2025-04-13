@@ -5,7 +5,7 @@ export interface EpisodeDetails {
   name?: string,
   videoDurationSec?: number,
   resolution?: string,
-  premierTimeMs?: number,
+  premiereTimeMs?: number,
   videoUrl?: string,
 }
 
@@ -28,7 +28,7 @@ export let EPISODE_DETAILS: MessageDescriptor<EpisodeDetails> = {
     index: 4,
     primitiveType: PrimitiveType.STRING,
   }, {
-    name: 'premierTimeMs',
+    name: 'premiereTimeMs',
     index: 5,
     primitiveType: PrimitiveType.NUMBER,
   }, {

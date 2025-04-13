@@ -9,7 +9,7 @@ export interface EpisodeDetails {
   episodeIndex?: number,
   videoContainer?: VideoContainer,
   state?: EpisodeState,
-  premierTimeMs?: number,
+  premiereTimeMs?: number,
 }
 
 export let EPISODE_DETAILS: MessageDescriptor<EpisodeDetails> = {
@@ -35,7 +35,7 @@ export let EPISODE_DETAILS: MessageDescriptor<EpisodeDetails> = {
     index: 5,
     enumType: EPISODE_STATE,
   }, {
-    name: 'premierTimeMs',
+    name: 'premiereTimeMs',
     index: 6,
     primitiveType: PrimitiveType.NUMBER,
   }],
