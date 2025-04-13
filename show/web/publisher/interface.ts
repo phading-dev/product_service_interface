@@ -429,7 +429,7 @@ export let UPDATE_EPISODE_ORDER_RESPONSE: MessageDescriptor<UpdateEpisodeOrderRe
 export interface PublishEpisodeRequestBody {
   seasonId?: string,
   episodeId?: string,
-  premierTimeMs?: number,
+  premiereTimeMs?: number,
 }
 
 export let PUBLISH_EPISODE_REQUEST_BODY: MessageDescriptor<PublishEpisodeRequestBody> = {
@@ -443,7 +443,7 @@ export let PUBLISH_EPISODE_REQUEST_BODY: MessageDescriptor<PublishEpisodeRequest
     index: 2,
     primitiveType: PrimitiveType.STRING,
   }, {
-    name: 'premierTimeMs',
+    name: 'premiereTimeMs',
     index: 3,
     primitiveType: PrimitiveType.NUMBER,
   }],

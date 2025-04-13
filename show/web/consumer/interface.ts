@@ -136,7 +136,7 @@ export let GET_CONTINUE_EPISODE_RESPONSE: MessageDescriptor<GetContinueEpisodeRe
 
 export interface ListSeasonsByRecentPremiereTimeRequestBody {
   limit?: number,
-  PremiereTimeCursor?: number,
+  premiereTimeCursor?: number,
   createdTimeCursor?: number,
 }
 
@@ -147,7 +147,7 @@ export let LIST_SEASONS_BY_RECENT_PREMIERE_TIME_REQUEST_BODY: MessageDescriptor<
     index: 1,
     primitiveType: PrimitiveType.NUMBER,
   }, {
-    name: 'PremiereTimeCursor',
+    name: 'premiereTimeCursor',
     index: 2,
     primitiveType: PrimitiveType.NUMBER,
   }, {
@@ -159,7 +159,7 @@ export let LIST_SEASONS_BY_RECENT_PREMIERE_TIME_REQUEST_BODY: MessageDescriptor<
 
 export interface ListSeasonsByRecentPremiereTimeResponse {
   seasons?: Array<SeasonSummary>,
-  PremiereTimeCursor?: number,
+  premiereTimeCursor?: number,
   createdTimeCursor?: number,
 }
 
@@ -171,7 +171,7 @@ export let LIST_SEASONS_BY_RECENT_PREMIERE_TIME_RESPONSE: MessageDescriptor<List
     messageType: SEASON_SUMMARY,
     isArray: true,
   }, {
-    name: 'PremiereTimeCursor',
+    name: 'premiereTimeCursor',
     index: 2,
     primitiveType: PrimitiveType.NUMBER,
   }, {

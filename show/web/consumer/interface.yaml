@@ -72,7 +72,7 @@
     - name: limit
       type: number
       index: 1
-    - name: PremiereTimeCursor
+    - name: premiereTimeCursor
       type: number
       index: 2
     - name: createdTimeCursor
@@ -86,7 +86,7 @@
       import: ./show/web/consumer/summary
       isArray: true
       index: 1
-    - name: PremiereTimeCursor
+    - name: premiereTimeCursor
       type: number
       index: 2
     - name: createdTimeCursor
