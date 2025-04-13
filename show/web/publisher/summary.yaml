@@ -18,7 +18,7 @@
       type: EpisodeState
       import: ./show/episode_state
       index: 5
-    - name: premierTimeMs
+    - name: premiereTimeMs
       type: number
       index: 6
 - kind: Message

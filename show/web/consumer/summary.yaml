@@ -13,7 +13,7 @@
     - name: videoDurationSec
       type: number
       index: 4
-    - name: premierTimeMs
+    - name: premiereTimeMs
       type: number
       index: 5
     - name: continueTimeMs
