@@ -134,20 +134,20 @@ export let GET_CONTINUE_EPISODE_RESPONSE: MessageDescriptor<GetContinueEpisodeRe
   }],
 };
 
-export interface ListSeasonsByRecentPremierTimeRequestBody {
+export interface ListSeasonsByRecentPremiereTimeRequestBody {
   limit?: number,
-  premierTimeCursor?: number,
+  PremiereTimeCursor?: number,
   createdTimeCursor?: number,
 }
 
-export let LIST_SEASONS_BY_RECENT_PREMIER_TIME_REQUEST_BODY: MessageDescriptor<ListSeasonsByRecentPremierTimeRequestBody> = {
-  name: 'ListSeasonsByRecentPremierTimeRequestBody',
+export let LIST_SEASONS_BY_RECENT_PREMIERE_TIME_REQUEST_BODY: MessageDescriptor<ListSeasonsByRecentPremiereTimeRequestBody> = {
+  name: 'ListSeasonsByRecentPremiereTimeRequestBody',
   fields: [{
     name: 'limit',
     index: 1,
     primitiveType: PrimitiveType.NUMBER,
   }, {
-    name: 'premierTimeCursor',
+    name: 'PremiereTimeCursor',
     index: 2,
     primitiveType: PrimitiveType.NUMBER,
   }, {
@@ -157,21 +157,21 @@ export let LIST_SEASONS_BY_RECENT_PREMIER_TIME_REQUEST_BODY: MessageDescriptor<L
   }],
 };
 
-export interface ListSeasonsByRecentPremierTimeResponse {
+export interface ListSeasonsByRecentPremiereTimeResponse {
   seasons?: Array<SeasonSummary>,
-  premierTimeCursor?: number,
+  PremiereTimeCursor?: number,
   createdTimeCursor?: number,
 }
 
-export let LIST_SEASONS_BY_RECENT_PREMIER_TIME_RESPONSE: MessageDescriptor<ListSeasonsByRecentPremierTimeResponse> = {
-  name: 'ListSeasonsByRecentPremierTimeResponse',
+export let LIST_SEASONS_BY_RECENT_PREMIERE_TIME_RESPONSE: MessageDescriptor<ListSeasonsByRecentPremiereTimeResponse> = {
+  name: 'ListSeasonsByRecentPremiereTimeResponse',
   fields: [{
     name: 'seasons',
     index: 1,
     messageType: SEASON_SUMMARY,
     isArray: true,
   }, {
-    name: 'premierTimeCursor',
+    name: 'PremiereTimeCursor',
     index: 2,
     primitiveType: PrimitiveType.NUMBER,
   }, {
@@ -432,16 +432,16 @@ export let GET_CONTINUE_EPISODE: RemoteCallDescriptor = {
   },
 }
 
-export let LIST_SEASONS_BY_RECENT_PREMIER_TIME: RemoteCallDescriptor = {
-  name: "ListSeasonsByRecentPremierTime",
+export let LIST_SEASONS_BY_RECENT_PREMIERE_TIME: RemoteCallDescriptor = {
+  name: "ListSeasonsByRecentPremiereTime",
   service: PRODUCT_WEB_SERVICE,
-  path: "/ListSeasonsByRecentPremierTime",
+  path: "/ListSeasonsByRecentPremiereTime",
   body: {
-    messageType: LIST_SEASONS_BY_RECENT_PREMIER_TIME_REQUEST_BODY,
+    messageType: LIST_SEASONS_BY_RECENT_PREMIERE_TIME_REQUEST_BODY,
   },
   authKey: "a",
   response: {
-    messageType: LIST_SEASONS_BY_RECENT_PREMIER_TIME_RESPONSE,
+    messageType: LIST_SEASONS_BY_RECENT_PREMIERE_TIME_RESPONSE,
   },
 }
 

@@ -1,4 +1,4 @@
-import { GetSeasonDetailsRequestBody, GET_SEASON_DETAILS, GetSeasonDetailsResponse, GetEpisodeDetailsRequestBody, GET_EPISODE_DETAILS, GetEpisodeDetailsResponse, ListEpisodesRequestBody, LIST_EPISODES, ListEpisodesResponse, GetContinueEpisodeRequestBody, GET_CONTINUE_EPISODE, GetContinueEpisodeResponse, ListSeasonsByRecentPremierTimeRequestBody, LIST_SEASONS_BY_RECENT_PREMIER_TIME, ListSeasonsByRecentPremierTimeResponse, ListSeasonsByRatingRequestBody, LIST_SEASONS_BY_RATING, ListSeasonsByRatingResponse, ListContinueWatchingSeasonsRequestBody, LIST_CONTINUE_WATCHING_SEASONS, ListContinueWatchingSeasonsResponse, SearchSeasonsRequestBody, SEARCH_SEASONS, SearchSeasonsResponse, RateSeasonRequestBody, RATE_SEASON, RateSeasonResponse, UnrateSeasonRequestBody, UNRATE_SEASON, UnrateSeasonResponse, GetIndividualSeasonRatingRequestBody, GET_INDIVIDUAL_SEASON_RATING, GetIndividualSeasonRatingResponse } from './interface';
+import { GetSeasonDetailsRequestBody, GET_SEASON_DETAILS, GetSeasonDetailsResponse, GetEpisodeDetailsRequestBody, GET_EPISODE_DETAILS, GetEpisodeDetailsResponse, ListEpisodesRequestBody, LIST_EPISODES, ListEpisodesResponse, GetContinueEpisodeRequestBody, GET_CONTINUE_EPISODE, GetContinueEpisodeResponse, ListSeasonsByRecentPremiereTimeRequestBody, LIST_SEASONS_BY_RECENT_PREMIERE_TIME, ListSeasonsByRecentPremiereTimeResponse, ListSeasonsByRatingRequestBody, LIST_SEASONS_BY_RATING, ListSeasonsByRatingResponse, ListContinueWatchingSeasonsRequestBody, LIST_CONTINUE_WATCHING_SEASONS, ListContinueWatchingSeasonsResponse, SearchSeasonsRequestBody, SEARCH_SEASONS, SearchSeasonsResponse, RateSeasonRequestBody, RATE_SEASON, RateSeasonResponse, UnrateSeasonRequestBody, UNRATE_SEASON, UnrateSeasonResponse, GetIndividualSeasonRatingRequestBody, GET_INDIVIDUAL_SEASON_RATING, GetIndividualSeasonRatingResponse } from './interface';
 import { RemoteCallHandlerInterface } from '@selfage/service_descriptor/remote_call_handler_interface';
 
 export abstract class GetSeasonDetailsHandlerInterface implements RemoteCallHandlerInterface {
@@ -37,13 +37,13 @@ export abstract class GetContinueEpisodeHandlerInterface implements RemoteCallHa
   ): Promise<GetContinueEpisodeResponse>;
 }
 
-export abstract class ListSeasonsByRecentPremierTimeHandlerInterface implements RemoteCallHandlerInterface {
-  public descriptor = LIST_SEASONS_BY_RECENT_PREMIER_TIME;
+export abstract class ListSeasonsByRecentPremiereTimeHandlerInterface implements RemoteCallHandlerInterface {
+  public descriptor = LIST_SEASONS_BY_RECENT_PREMIERE_TIME;
   public abstract handle(
     loggingPrefix: string,
-    body: ListSeasonsByRecentPremierTimeRequestBody,
+    body: ListSeasonsByRecentPremiereTimeRequestBody,
     authStr: string,
-  ): Promise<ListSeasonsByRecentPremierTimeResponse>;
+  ): Promise<ListSeasonsByRecentPremiereTimeResponse>;
 }
 
 export abstract class ListSeasonsByRatingHandlerInterface implements RemoteCallHandlerInterface {

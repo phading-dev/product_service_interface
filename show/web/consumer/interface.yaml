@@ -67,26 +67,26 @@
       import: ./show/web/consumer/summary
       index: 1
 - kind: Message
-  name: ListSeasonsByRecentPremierTimeRequestBody
+  name: ListSeasonsByRecentPremiereTimeRequestBody
   fields:
     - name: limit
       type: number
       index: 1
-    - name: premierTimeCursor
+    - name: PremiereTimeCursor
       type: number
       index: 2
     - name: createdTimeCursor
       type: number
       index: 3
 - kind: Message
-  name: ListSeasonsByRecentPremierTimeResponse
+  name: ListSeasonsByRecentPremiereTimeResponse
   fields:
     - name: seasons
       type: SeasonSummary
       import: ./show/web/consumer/summary
       isArray: true
       index: 1
-    - name: premierTimeCursor
+    - name: PremiereTimeCursor
       type: number
       index: 2
     - name: createdTimeCursor
@@ -217,11 +217,11 @@
       body: GetContinueEpisodeRequestBody
       authKey: a
       response: GetContinueEpisodeResponse
-    - name: ListSeasonsByRecentPremierTime
-      path: /ListSeasonsByRecentPremierTime
-      body: ListSeasonsByRecentPremierTimeRequestBody
+    - name: ListSeasonsByRecentPremiereTime
+      path: /ListSeasonsByRecentPremiereTime
+      body: ListSeasonsByRecentPremiereTimeRequestBody
       authKey: a
-      response: ListSeasonsByRecentPremierTimeResponse
+      response: ListSeasonsByRecentPremiereTimeResponse
     - name: ListSeasonsByRating
       path: /ListSeasonsByRating
       body: ListSeasonsByRatingRequestBody

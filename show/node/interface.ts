@@ -282,13 +282,13 @@ export let LIST_COVER_IMAGE_DELETING_TASKS_RESPONSE: MessageDescriptor<ListCover
   }],
 };
 
-export interface ProcessSeasonRecentPremierTimeUpdatingTaskRequestBody {
+export interface ProcessSeasonRecentPremiereTimeUpdatingTaskRequestBody {
   seasonId?: string,
   episodeId?: string,
 }
 
-export let PROCESS_SEASON_RECENT_PREMIER_TIME_UPDATING_TASK_REQUEST_BODY: MessageDescriptor<ProcessSeasonRecentPremierTimeUpdatingTaskRequestBody> = {
-  name: 'ProcessSeasonRecentPremierTimeUpdatingTaskRequestBody',
+export let PROCESS_SEASON_RECENT_PREMIERE_TIME_UPDATING_TASK_REQUEST_BODY: MessageDescriptor<ProcessSeasonRecentPremiereTimeUpdatingTaskRequestBody> = {
+  name: 'ProcessSeasonRecentPremiereTimeUpdatingTaskRequestBody',
   fields: [{
     name: 'seasonId',
     index: 1,
@@ -300,32 +300,32 @@ export let PROCESS_SEASON_RECENT_PREMIER_TIME_UPDATING_TASK_REQUEST_BODY: Messag
   }],
 };
 
-export interface ProcessSeasonRecentPremierTimeUpdatingTaskResponse {
+export interface ProcessSeasonRecentPremiereTimeUpdatingTaskResponse {
 }
 
-export let PROCESS_SEASON_RECENT_PREMIER_TIME_UPDATING_TASK_RESPONSE: MessageDescriptor<ProcessSeasonRecentPremierTimeUpdatingTaskResponse> = {
-  name: 'ProcessSeasonRecentPremierTimeUpdatingTaskResponse',
+export let PROCESS_SEASON_RECENT_PREMIERE_TIME_UPDATING_TASK_RESPONSE: MessageDescriptor<ProcessSeasonRecentPremiereTimeUpdatingTaskResponse> = {
+  name: 'ProcessSeasonRecentPremiereTimeUpdatingTaskResponse',
   fields: [],
 };
 
-export interface ListSeasonRecentPremierTimeUpdatingTasksRequestBody {
+export interface ListSeasonRecentPremiereTimeUpdatingTasksRequestBody {
 }
 
-export let LIST_SEASON_RECENT_PREMIER_TIME_UPDATING_TASKS_REQUEST_BODY: MessageDescriptor<ListSeasonRecentPremierTimeUpdatingTasksRequestBody> = {
-  name: 'ListSeasonRecentPremierTimeUpdatingTasksRequestBody',
+export let LIST_SEASON_RECENT_PREMIERE_TIME_UPDATING_TASKS_REQUEST_BODY: MessageDescriptor<ListSeasonRecentPremiereTimeUpdatingTasksRequestBody> = {
+  name: 'ListSeasonRecentPremiereTimeUpdatingTasksRequestBody',
   fields: [],
 };
 
-export interface ListSeasonRecentPremierTimeUpdatingTasksResponse {
-  tasks?: Array<ProcessSeasonRecentPremierTimeUpdatingTaskRequestBody>,
+export interface ListSeasonRecentPremiereTimeUpdatingTasksResponse {
+  tasks?: Array<ProcessSeasonRecentPremiereTimeUpdatingTaskRequestBody>,
 }
 
-export let LIST_SEASON_RECENT_PREMIER_TIME_UPDATING_TASKS_RESPONSE: MessageDescriptor<ListSeasonRecentPremierTimeUpdatingTasksResponse> = {
-  name: 'ListSeasonRecentPremierTimeUpdatingTasksResponse',
+export let LIST_SEASON_RECENT_PREMIERE_TIME_UPDATING_TASKS_RESPONSE: MessageDescriptor<ListSeasonRecentPremiereTimeUpdatingTasksResponse> = {
+  name: 'ListSeasonRecentPremiereTimeUpdatingTasksResponse',
   fields: [{
     name: 'tasks',
     index: 1,
-    messageType: PROCESS_SEASON_RECENT_PREMIER_TIME_UPDATING_TASK_REQUEST_BODY,
+    messageType: PROCESS_SEASON_RECENT_PREMIERE_TIME_UPDATING_TASK_REQUEST_BODY,
     isArray: true,
   }],
 };
@@ -462,26 +462,26 @@ export let LIST_COVER_IMAGE_DELETING_TASKS: RemoteCallDescriptor = {
   },
 }
 
-export let PROCESS_SEASON_RECENT_PREMIER_TIME_UPDATING_TASK: RemoteCallDescriptor = {
-  name: "ProcessSeasonRecentPremierTimeUpdatingTask",
+export let PROCESS_SEASON_RECENT_PREMIERE_TIME_UPDATING_TASK: RemoteCallDescriptor = {
+  name: "ProcessSeasonRecentPremiereTimeUpdatingTask",
   service: PRODUCT_NODE_SERVICE,
-  path: "/ProcessSeasonRecentPremierTimeUpdatingTask",
+  path: "/ProcessSeasonRecentPremiereTimeUpdatingTask",
   body: {
-    messageType: PROCESS_SEASON_RECENT_PREMIER_TIME_UPDATING_TASK_REQUEST_BODY,
+    messageType: PROCESS_SEASON_RECENT_PREMIERE_TIME_UPDATING_TASK_REQUEST_BODY,
   },
   response: {
-    messageType: PROCESS_SEASON_RECENT_PREMIER_TIME_UPDATING_TASK_RESPONSE,
+    messageType: PROCESS_SEASON_RECENT_PREMIERE_TIME_UPDATING_TASK_RESPONSE,
   },
 }
 
-export let LIST_SEASON_RECENT_PREMIER_TIME_UPDATING_TASKS: RemoteCallDescriptor = {
-  name: "ListSeasonRecentPremierTimeUpdatingTasks",
+export let LIST_SEASON_RECENT_PREMIERE_TIME_UPDATING_TASKS: RemoteCallDescriptor = {
+  name: "ListSeasonRecentPremiereTimeUpdatingTasks",
   service: PRODUCT_NODE_SERVICE,
-  path: "/ListSeasonRecentPremierTimeUpdatingTasks",
+  path: "/ListSeasonRecentPremiereTimeUpdatingTasks",
   body: {
-    messageType: LIST_SEASON_RECENT_PREMIER_TIME_UPDATING_TASKS_REQUEST_BODY,
+    messageType: LIST_SEASON_RECENT_PREMIERE_TIME_UPDATING_TASKS_REQUEST_BODY,
   },
   response: {
-    messageType: LIST_SEASON_RECENT_PREMIER_TIME_UPDATING_TASKS_RESPONSE,
+    messageType: LIST_SEASON_RECENT_PREMIERE_TIME_UPDATING_TASKS_RESPONSE,
   },
 }

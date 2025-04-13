@@ -122,7 +122,7 @@
       isArray: true
       index: 1
 - kind: Message
-  name: ProcessSeasonRecentPremierTimeUpdatingTaskRequestBody
+  name: ProcessSeasonRecentPremiereTimeUpdatingTaskRequestBody
   fields:
     - name: seasonId
       type: string
@@ -131,14 +131,14 @@
       type: string
       index: 2
 - kind: Message
-  name: ProcessSeasonRecentPremierTimeUpdatingTaskResponse
+  name: ProcessSeasonRecentPremiereTimeUpdatingTaskResponse
 - kind: Message
-  name: ListSeasonRecentPremierTimeUpdatingTasksRequestBody
+  name: ListSeasonRecentPremiereTimeUpdatingTasksRequestBody
 - kind: Message
-  name: ListSeasonRecentPremierTimeUpdatingTasksResponse
+  name: ListSeasonRecentPremiereTimeUpdatingTasksResponse
   fields:
     - name: tasks
-      type: ProcessSeasonRecentPremierTimeUpdatingTaskRequestBody
+      type: ProcessSeasonRecentPremiereTimeUpdatingTaskRequestBody
       isArray: true
       index: 1
 - kind: RemoteCallsGroup
@@ -190,13 +190,13 @@
       path: /ListCoverImageDeletingTasks
       body: ListCoverImageDeletingTasksRequestBody
       response: ListCoverImageDeletingTasksResponse
-    - name: ProcessSeasonRecentPremierTimeUpdatingTask
-      path: /ProcessSeasonRecentPremierTimeUpdatingTask
-      body: ProcessSeasonRecentPremierTimeUpdatingTaskRequestBody
-      response: ProcessSeasonRecentPremierTimeUpdatingTaskResponse
-    - name: ListSeasonRecentPremierTimeUpdatingTasks
-      path: /ListSeasonRecentPremierTimeUpdatingTasks
-      body: ListSeasonRecentPremierTimeUpdatingTasksRequestBody
-      response: ListSeasonRecentPremierTimeUpdatingTasksResponse
+    - name: ProcessSeasonRecentPremiereTimeUpdatingTask
+      path: /ProcessSeasonRecentPremiereTimeUpdatingTask
+      body: ProcessSeasonRecentPremiereTimeUpdatingTaskRequestBody
+      response: ProcessSeasonRecentPremiereTimeUpdatingTaskResponse
+    - name: ListSeasonRecentPremiereTimeUpdatingTasks
+      path: /ListSeasonRecentPremiereTimeUpdatingTasks
+      body: ListSeasonRecentPremiereTimeUpdatingTasksRequestBody
+      response: ListSeasonRecentPremiereTimeUpdatingTasksResponse
   outputClient: ./show/node/client
   outputHandler: ./show/node/handler
