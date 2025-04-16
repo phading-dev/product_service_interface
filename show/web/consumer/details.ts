@@ -65,6 +65,7 @@ export interface SeasonDetails {
   nextGrade?: NextGrade,
   totalEpisodes?: number,
   averageRating?: number,
+  ratingsCount?: number,
 }
 
 export let SEASON_DETAILS: MessageDescriptor<SeasonDetails> = {
@@ -100,6 +101,10 @@ export let SEASON_DETAILS: MessageDescriptor<SeasonDetails> = {
   }, {
     name: 'averageRating',
     index: 8,
+    primitiveType: PrimitiveType.NUMBER,
+  }, {
+    name: 'ratingsCount',
+    index: 9,
     primitiveType: PrimitiveType.NUMBER,
   }],
 };

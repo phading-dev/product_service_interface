@@ -55,3 +55,6 @@
     - name: averageRating
       type: number
       index: 8
+    - name: ratingsCount
+      type: number
+      index: 9
