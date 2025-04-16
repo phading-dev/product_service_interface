@@ -255,6 +255,110 @@ export let LIST_CONTINUE_WATCHING_SEASONS_RESPONSE: MessageDescriptor<ListContin
   }],
 };
 
+export interface ListSeasonsByRecentPremiereTimeAndPublisherRequestBody {
+  publisherId?: string,
+  limit?: number,
+  premiereTimeCursor?: number,
+  createdTimeCursor?: number,
+}
+
+export let LIST_SEASONS_BY_RECENT_PREMIERE_TIME_AND_PUBLISHER_REQUEST_BODY: MessageDescriptor<ListSeasonsByRecentPremiereTimeAndPublisherRequestBody> = {
+  name: 'ListSeasonsByRecentPremiereTimeAndPublisherRequestBody',
+  fields: [{
+    name: 'publisherId',
+    index: 1,
+    primitiveType: PrimitiveType.STRING,
+  }, {
+    name: 'limit',
+    index: 2,
+    primitiveType: PrimitiveType.NUMBER,
+  }, {
+    name: 'premiereTimeCursor',
+    index: 3,
+    primitiveType: PrimitiveType.NUMBER,
+  }, {
+    name: 'createdTimeCursor',
+    index: 4,
+    primitiveType: PrimitiveType.NUMBER,
+  }],
+};
+
+export interface ListSeasonsByRecentPremiereTimeAndPublisherResponse {
+  seasons?: Array<SeasonSummary>,
+  premiereTimeCursor?: number,
+  createdTimeCursor?: number,
+}
+
+export let LIST_SEASONS_BY_RECENT_PREMIERE_TIME_AND_PUBLISHER_RESPONSE: MessageDescriptor<ListSeasonsByRecentPremiereTimeAndPublisherResponse> = {
+  name: 'ListSeasonsByRecentPremiereTimeAndPublisherResponse',
+  fields: [{
+    name: 'seasons',
+    index: 1,
+    messageType: SEASON_SUMMARY,
+    isArray: true,
+  }, {
+    name: 'premiereTimeCursor',
+    index: 2,
+    primitiveType: PrimitiveType.NUMBER,
+  }, {
+    name: 'createdTimeCursor',
+    index: 3,
+    primitiveType: PrimitiveType.NUMBER,
+  }],
+};
+
+export interface ListSeasonsByRatingAndPublisherRequestBody {
+  publisherId?: string,
+  limit?: number,
+  ratingCursor?: number,
+  createdTimeCursor?: number,
+}
+
+export let LIST_SEASONS_BY_RATING_AND_PUBLISHER_REQUEST_BODY: MessageDescriptor<ListSeasonsByRatingAndPublisherRequestBody> = {
+  name: 'ListSeasonsByRatingAndPublisherRequestBody',
+  fields: [{
+    name: 'publisherId',
+    index: 1,
+    primitiveType: PrimitiveType.STRING,
+  }, {
+    name: 'limit',
+    index: 2,
+    primitiveType: PrimitiveType.NUMBER,
+  }, {
+    name: 'ratingCursor',
+    index: 3,
+    primitiveType: PrimitiveType.NUMBER,
+  }, {
+    name: 'createdTimeCursor',
+    index: 4,
+    primitiveType: PrimitiveType.NUMBER,
+  }],
+};
+
+export interface ListSeasonsByRatingAndPublisherResponse {
+  seasons?: Array<SeasonSummary>,
+  ratingCursor?: number,
+  createdTimeCursor?: number,
+}
+
+export let LIST_SEASONS_BY_RATING_AND_PUBLISHER_RESPONSE: MessageDescriptor<ListSeasonsByRatingAndPublisherResponse> = {
+  name: 'ListSeasonsByRatingAndPublisherResponse',
+  fields: [{
+    name: 'seasons',
+    index: 1,
+    messageType: SEASON_SUMMARY,
+    isArray: true,
+  }, {
+    name: 'ratingCursor',
+    index: 2,
+    primitiveType: PrimitiveType.NUMBER,
+  }, {
+    name: 'createdTimeCursor',
+    index: 3,
+    primitiveType: PrimitiveType.NUMBER,
+  }],
+};
+
 export interface SearchSeasonsRequestBody {
   query?: string,
   limit?: number,
@@ -468,6 +572,32 @@ export let LIST_CONTINUE_WATCHING_SEASONS: RemoteCallDescriptor = {
   authKey: "a",
   response: {
     messageType: LIST_CONTINUE_WATCHING_SEASONS_RESPONSE,
+  },
+}
+
+export let LIST_SEASONS_BY_RECENT_PREMIERE_TIME_AND_PUBLISHER: RemoteCallDescriptor = {
+  name: "ListSeasonsByRecentPremiereTimeAndPublisher",
+  service: PRODUCT_WEB_SERVICE,
+  path: "/ListSeasonsByRecentPremiereTimeAndPublisher",
+  body: {
+    messageType: LIST_SEASONS_BY_RECENT_PREMIERE_TIME_AND_PUBLISHER_REQUEST_BODY,
+  },
+  authKey: "a",
+  response: {
+    messageType: LIST_SEASONS_BY_RECENT_PREMIERE_TIME_AND_PUBLISHER_RESPONSE,
+  },
+}
+
+export let LIST_SEASONS_BY_RATING_AND_PUBLISHER: RemoteCallDescriptor = {
+  name: "ListSeasonsByRatingAndPublisher",
+  service: PRODUCT_WEB_SERVICE,
+  path: "/ListSeasonsByRatingAndPublisher",
+  body: {
+    messageType: LIST_SEASONS_BY_RATING_AND_PUBLISHER_REQUEST_BODY,
+  },
+  authKey: "a",
+  response: {
+    messageType: LIST_SEASONS_BY_RATING_AND_PUBLISHER_RESPONSE,
   },
 }
 

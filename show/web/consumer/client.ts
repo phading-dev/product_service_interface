@@ -1,4 +1,4 @@
-import { GetSeasonDetailsRequestBody, GetSeasonDetailsResponse, GET_SEASON_DETAILS, GetEpisodeDetailsRequestBody, GetEpisodeDetailsResponse, GET_EPISODE_DETAILS, ListEpisodesRequestBody, ListEpisodesResponse, LIST_EPISODES, GetContinueEpisodeRequestBody, GetContinueEpisodeResponse, GET_CONTINUE_EPISODE, ListSeasonsByRecentPremiereTimeRequestBody, ListSeasonsByRecentPremiereTimeResponse, LIST_SEASONS_BY_RECENT_PREMIERE_TIME, ListSeasonsByRatingRequestBody, ListSeasonsByRatingResponse, LIST_SEASONS_BY_RATING, ListContinueWatchingSeasonsRequestBody, ListContinueWatchingSeasonsResponse, LIST_CONTINUE_WATCHING_SEASONS, SearchSeasonsRequestBody, SearchSeasonsResponse, SEARCH_SEASONS, RateSeasonRequestBody, RateSeasonResponse, RATE_SEASON, UnrateSeasonRequestBody, UnrateSeasonResponse, UNRATE_SEASON, GetIndividualSeasonRatingRequestBody, GetIndividualSeasonRatingResponse, GET_INDIVIDUAL_SEASON_RATING } from './interface';
+import { GetSeasonDetailsRequestBody, GetSeasonDetailsResponse, GET_SEASON_DETAILS, GetEpisodeDetailsRequestBody, GetEpisodeDetailsResponse, GET_EPISODE_DETAILS, ListEpisodesRequestBody, ListEpisodesResponse, LIST_EPISODES, GetContinueEpisodeRequestBody, GetContinueEpisodeResponse, GET_CONTINUE_EPISODE, ListSeasonsByRecentPremiereTimeRequestBody, ListSeasonsByRecentPremiereTimeResponse, LIST_SEASONS_BY_RECENT_PREMIERE_TIME, ListSeasonsByRatingRequestBody, ListSeasonsByRatingResponse, LIST_SEASONS_BY_RATING, ListContinueWatchingSeasonsRequestBody, ListContinueWatchingSeasonsResponse, LIST_CONTINUE_WATCHING_SEASONS, ListSeasonsByRecentPremiereTimeAndPublisherRequestBody, ListSeasonsByRecentPremiereTimeAndPublisherResponse, LIST_SEASONS_BY_RECENT_PREMIERE_TIME_AND_PUBLISHER, ListSeasonsByRatingAndPublisherRequestBody, ListSeasonsByRatingAndPublisherResponse, LIST_SEASONS_BY_RATING_AND_PUBLISHER, SearchSeasonsRequestBody, SearchSeasonsResponse, SEARCH_SEASONS, RateSeasonRequestBody, RateSeasonResponse, RATE_SEASON, UnrateSeasonRequestBody, UnrateSeasonResponse, UNRATE_SEASON, GetIndividualSeasonRatingRequestBody, GetIndividualSeasonRatingResponse, GET_INDIVIDUAL_SEASON_RATING } from './interface';
 import { ClientRequestInterface } from '@selfage/service_descriptor/client_request_interface';
 
 export function newGetSeasonDetailsRequest(
@@ -60,6 +60,24 @@ export function newListContinueWatchingSeasonsRequest(
 ): ClientRequestInterface<ListContinueWatchingSeasonsResponse> {
   return {
     descriptor: LIST_CONTINUE_WATCHING_SEASONS,
+    body,
+  };
+}
+
+export function newListSeasonsByRecentPremiereTimeAndPublisherRequest(
+  body: ListSeasonsByRecentPremiereTimeAndPublisherRequestBody,
+): ClientRequestInterface<ListSeasonsByRecentPremiereTimeAndPublisherResponse> {
+  return {
+    descriptor: LIST_SEASONS_BY_RECENT_PREMIERE_TIME_AND_PUBLISHER,
+    body,
+  };
+}
+
+export function newListSeasonsByRatingAndPublisherRequest(
+  body: ListSeasonsByRatingAndPublisherRequestBody,
+): ClientRequestInterface<ListSeasonsByRatingAndPublisherResponse> {
+  return {
+    descriptor: LIST_SEASONS_BY_RATING_AND_PUBLISHER,
     body,
   };
 }
