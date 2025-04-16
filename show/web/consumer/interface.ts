@@ -1,6 +1,6 @@
 import { PrimitiveType, MessageDescriptor } from '@selfage/message/descriptor';
 import { SeasonDetails, SEASON_DETAILS, EpisodeDetails, EPISODE_DETAILS } from './details';
-import { EpisodeSummary, EPISODE_SUMMARY, SeasonSummary, SEASON_SUMMARY, ContinueSeason, CONTINUE_SEASON } from './summary';
+import { SeasonAndEpisodeSummary, SEASON_AND_EPISODE_SUMMARY, EpisodeSummary, EPISODE_SUMMARY, ContinueEpisode, CONTINUE_EPISODE, SeasonSummary, SEASON_SUMMARY, ContinueSeason, CONTINUE_SEASON } from './summary';
 import { PRODUCT_WEB_SERVICE } from '../../../service';
 import { RemoteCallDescriptor } from '@selfage/service_descriptor';
 
@@ -58,6 +58,37 @@ export let GET_EPISODE_DETAILS_RESPONSE: MessageDescriptor<GetEpisodeDetailsResp
     name: 'episodeDetails',
     index: 1,
     messageType: EPISODE_DETAILS,
+  }],
+};
+
+export interface GetSeasonAndEpisodeSummaryRequestBody {
+  seasonId?: string,
+  episodeId?: string,
+}
+
+export let GET_SEASON_AND_EPISODE_SUMMARY_REQUEST_BODY: MessageDescriptor<GetSeasonAndEpisodeSummaryRequestBody> = {
+  name: 'GetSeasonAndEpisodeSummaryRequestBody',
+  fields: [{
+    name: 'seasonId',
+    index: 1,
+    primitiveType: PrimitiveType.STRING,
+  }, {
+    name: 'episodeId',
+    index: 2,
+    primitiveType: PrimitiveType.STRING,
+  }],
+};
+
+export interface GetSeasonAndEpisodeSummaryResponse {
+  summary?: SeasonAndEpisodeSummary,
+}
+
+export let GET_SEASON_AND_EPISODE_SUMMARY_RESPONSE: MessageDescriptor<GetSeasonAndEpisodeSummaryResponse> = {
+  name: 'GetSeasonAndEpisodeSummaryResponse',
+  fields: [{
+    name: 'summary',
+    index: 1,
+    messageType: SEASON_AND_EPISODE_SUMMARY,
   }],
 };
 
@@ -122,15 +153,15 @@ export let GET_CONTINUE_EPISODE_REQUEST_BODY: MessageDescriptor<GetContinueEpiso
 };
 
 export interface GetContinueEpisodeResponse {
-  episode?: EpisodeSummary,
+  continue?: ContinueEpisode,
 }
 
 export let GET_CONTINUE_EPISODE_RESPONSE: MessageDescriptor<GetContinueEpisodeResponse> = {
   name: 'GetContinueEpisodeResponse',
   fields: [{
-    name: 'episode',
+    name: 'continue',
     index: 1,
-    messageType: EPISODE_SUMMARY,
+    messageType: CONTINUE_EPISODE,
   }],
 };
 
@@ -507,6 +538,19 @@ export let GET_EPISODE_DETAILS: RemoteCallDescriptor = {
   authKey: "a",
   response: {
     messageType: GET_EPISODE_DETAILS_RESPONSE,
+  },
+}
+
+export let GET_SEASON_AND_EPISODE_SUMMARY: RemoteCallDescriptor = {
+  name: "GetSeasonAndEpisodeSummary",
+  service: PRODUCT_WEB_SERVICE,
+  path: "/GetSeasonAndEpisodeSummary",
+  body: {
+    messageType: GET_SEASON_AND_EPISODE_SUMMARY_REQUEST_BODY,
+  },
+  authKey: "a",
+  response: {
+    messageType: GET_SEASON_AND_EPISODE_SUMMARY_RESPONSE,
   },
 }
 

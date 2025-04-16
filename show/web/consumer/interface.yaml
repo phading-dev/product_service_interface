@@ -28,6 +28,22 @@
       import: ./show/web/consumer/details
       index: 1
 - kind: Message
+  name: GetSeasonAndEpisodeSummaryRequestBody
+  fields:
+    - name: seasonId
+      type: string
+      index: 1
+    - name: episodeId
+      type: string
+      index: 2
+- kind: Message
+  name: GetSeasonAndEpisodeSummaryResponse
+  fields:
+    - name: summary
+      type: SeasonAndEpisodeSummary
+      import: ./show/web/consumer/summary
+      index: 1
+- kind: Message
   name: ListEpisodesRequestBody
   fields:
     - name: seasonId
@@ -62,8 +78,8 @@
 - kind: Message
   name: GetContinueEpisodeResponse
   fields:
-    - name: episode
-      type: EpisodeSummary
+    - name: continue
+      type: ContinueEpisode
       import: ./show/web/consumer/summary
       index: 1
 - kind: Message
@@ -265,6 +281,11 @@
       body: GetEpisodeDetailsRequestBody
       authKey: a
       response: GetEpisodeDetailsResponse
+    - name: GetSeasonAndEpisodeSummary
+      path: /GetSeasonAndEpisodeSummary
+      body: GetSeasonAndEpisodeSummaryRequestBody
+      authKey: a
+      response: GetSeasonAndEpisodeSummaryResponse
     - name: ListEpisodes
       path: /ListEpisodes
       body: ListEpisodesRequestBody

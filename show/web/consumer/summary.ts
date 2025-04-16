@@ -6,7 +6,6 @@ export interface EpisodeSummary {
   name?: string,
   videoDurationSec?: number,
   premiereTimeMs?: number,
-  continueTimeMs?: number,
 }
 
 export let EPISODE_SUMMARY: MessageDescriptor<EpisodeSummary> = {
@@ -31,9 +30,23 @@ export let EPISODE_SUMMARY: MessageDescriptor<EpisodeSummary> = {
     name: 'premiereTimeMs',
     index: 5,
     primitiveType: PrimitiveType.NUMBER,
+  }],
+};
+
+export interface ContinueEpisode {
+  episode?: EpisodeSummary,
+  continueTimeMs?: number,
+}
+
+export let CONTINUE_EPISODE: MessageDescriptor<ContinueEpisode> = {
+  name: 'ContinueEpisode',
+  fields: [{
+    name: 'episode',
+    index: 1,
+    messageType: EPISODE_SUMMARY,
   }, {
     name: 'continueTimeMs',
-    index: 6,
+    index: 2,
     primitiveType: PrimitiveType.NUMBER,
   }],
 };
@@ -89,10 +102,33 @@ export let SEASON_SUMMARY: MessageDescriptor<SeasonSummary> = {
 export interface ContinueSeason {
   season?: SeasonSummary,
   episode?: EpisodeSummary,
+  continueTimeMs?: number,
 }
 
 export let CONTINUE_SEASON: MessageDescriptor<ContinueSeason> = {
   name: 'ContinueSeason',
+  fields: [{
+    name: 'season',
+    index: 1,
+    messageType: SEASON_SUMMARY,
+  }, {
+    name: 'episode',
+    index: 2,
+    messageType: EPISODE_SUMMARY,
+  }, {
+    name: 'continueTimeMs',
+    index: 3,
+    primitiveType: PrimitiveType.NUMBER,
+  }],
+};
+
+export interface SeasonAndEpisodeSummary {
+  season?: SeasonSummary,
+  episode?: EpisodeSummary,
+}
+
+export let SEASON_AND_EPISODE_SUMMARY: MessageDescriptor<SeasonAndEpisodeSummary> = {
+  name: 'SeasonAndEpisodeSummary',
   fields: [{
     name: 'season',
     index: 1,

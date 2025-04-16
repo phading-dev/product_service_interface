@@ -16,9 +16,15 @@
     - name: premiereTimeMs
       type: number
       index: 5
+- kind: Message
+  name: ContinueEpisode
+  fields:
+    - name: episode
+      type: EpisodeSummary
+      index: 1
     - name: continueTimeMs
       type: number
-      index: 6
+      index: 2
 - kind: Message
   name: SeasonSummary
   fields:
@@ -48,6 +54,18 @@
       index: 8
 - kind: Message
   name: ContinueSeason
+  fields:
+    - name: season
+      type: SeasonSummary
+      index: 1
+    - name: episode
+      type: EpisodeSummary
+      index: 2
+    - name: continueTimeMs
+      type: number
+      index: 3
+- kind: Message
+  name: SeasonAndEpisodeSummary
   fields:
     - name: season
       type: SeasonSummary

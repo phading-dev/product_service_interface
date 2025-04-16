@@ -1,4 +1,4 @@
-import { GetSeasonDetailsRequestBody, GET_SEASON_DETAILS, GetSeasonDetailsResponse, GetEpisodeDetailsRequestBody, GET_EPISODE_DETAILS, GetEpisodeDetailsResponse, ListEpisodesRequestBody, LIST_EPISODES, ListEpisodesResponse, GetContinueEpisodeRequestBody, GET_CONTINUE_EPISODE, GetContinueEpisodeResponse, ListSeasonsByRecentPremiereTimeRequestBody, LIST_SEASONS_BY_RECENT_PREMIERE_TIME, ListSeasonsByRecentPremiereTimeResponse, ListSeasonsByRatingRequestBody, LIST_SEASONS_BY_RATING, ListSeasonsByRatingResponse, ListContinueWatchingSeasonsRequestBody, LIST_CONTINUE_WATCHING_SEASONS, ListContinueWatchingSeasonsResponse, ListSeasonsByRecentPremiereTimeAndPublisherRequestBody, LIST_SEASONS_BY_RECENT_PREMIERE_TIME_AND_PUBLISHER, ListSeasonsByRecentPremiereTimeAndPublisherResponse, ListSeasonsByRatingAndPublisherRequestBody, LIST_SEASONS_BY_RATING_AND_PUBLISHER, ListSeasonsByRatingAndPublisherResponse, SearchSeasonsRequestBody, SEARCH_SEASONS, SearchSeasonsResponse, RateSeasonRequestBody, RATE_SEASON, RateSeasonResponse, UnrateSeasonRequestBody, UNRATE_SEASON, UnrateSeasonResponse, GetIndividualSeasonRatingRequestBody, GET_INDIVIDUAL_SEASON_RATING, GetIndividualSeasonRatingResponse } from './interface';
+import { GetSeasonDetailsRequestBody, GET_SEASON_DETAILS, GetSeasonDetailsResponse, GetEpisodeDetailsRequestBody, GET_EPISODE_DETAILS, GetEpisodeDetailsResponse, GetSeasonAndEpisodeSummaryRequestBody, GET_SEASON_AND_EPISODE_SUMMARY, GetSeasonAndEpisodeSummaryResponse, ListEpisodesRequestBody, LIST_EPISODES, ListEpisodesResponse, GetContinueEpisodeRequestBody, GET_CONTINUE_EPISODE, GetContinueEpisodeResponse, ListSeasonsByRecentPremiereTimeRequestBody, LIST_SEASONS_BY_RECENT_PREMIERE_TIME, ListSeasonsByRecentPremiereTimeResponse, ListSeasonsByRatingRequestBody, LIST_SEASONS_BY_RATING, ListSeasonsByRatingResponse, ListContinueWatchingSeasonsRequestBody, LIST_CONTINUE_WATCHING_SEASONS, ListContinueWatchingSeasonsResponse, ListSeasonsByRecentPremiereTimeAndPublisherRequestBody, LIST_SEASONS_BY_RECENT_PREMIERE_TIME_AND_PUBLISHER, ListSeasonsByRecentPremiereTimeAndPublisherResponse, ListSeasonsByRatingAndPublisherRequestBody, LIST_SEASONS_BY_RATING_AND_PUBLISHER, ListSeasonsByRatingAndPublisherResponse, SearchSeasonsRequestBody, SEARCH_SEASONS, SearchSeasonsResponse, RateSeasonRequestBody, RATE_SEASON, RateSeasonResponse, UnrateSeasonRequestBody, UNRATE_SEASON, UnrateSeasonResponse, GetIndividualSeasonRatingRequestBody, GET_INDIVIDUAL_SEASON_RATING, GetIndividualSeasonRatingResponse } from './interface';
 import { RemoteCallHandlerInterface } from '@selfage/service_descriptor/remote_call_handler_interface';
 
 export abstract class GetSeasonDetailsHandlerInterface implements RemoteCallHandlerInterface {
@@ -17,6 +17,15 @@ export abstract class GetEpisodeDetailsHandlerInterface implements RemoteCallHan
     body: GetEpisodeDetailsRequestBody,
     authStr: string,
   ): Promise<GetEpisodeDetailsResponse>;
+}
+
+export abstract class GetSeasonAndEpisodeSummaryHandlerInterface implements RemoteCallHandlerInterface {
+  public descriptor = GET_SEASON_AND_EPISODE_SUMMARY;
+  public abstract handle(
+    loggingPrefix: string,
+    body: GetSeasonAndEpisodeSummaryRequestBody,
+    authStr: string,
+  ): Promise<GetSeasonAndEpisodeSummaryResponse>;
 }
 
 export abstract class ListEpisodesHandlerInterface implements RemoteCallHandlerInterface {
