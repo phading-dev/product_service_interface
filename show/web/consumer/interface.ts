@@ -1,6 +1,5 @@
 import { PrimitiveType, MessageDescriptor } from '@selfage/message/descriptor';
-import { SeasonDetails, SEASON_DETAILS, EpisodeDetails, EPISODE_DETAILS } from './details';
-import { SeasonAndEpisodeSummary, SEASON_AND_EPISODE_SUMMARY, EpisodeSummary, EPISODE_SUMMARY, ContinueEpisode, CONTINUE_EPISODE, SeasonSummary, SEASON_SUMMARY, ContinueSeason, CONTINUE_SEASON } from './summary';
+import { SeasonSummary, SEASON_SUMMARY, SeasonDetails, SEASON_DETAILS, Episode, EPISODE, SeasonSummaryAndEpisode, SEASON_SUMMARY_AND_EPISODE, ContinueEpisode, CONTINUE_EPISODE, ContinueSeason, CONTINUE_SEASON } from './info';
 import { PRODUCT_WEB_SERVICE } from '../../../service';
 import { RemoteCallDescriptor } from '@selfage/service_descriptor';
 
@@ -30,6 +29,32 @@ export let GET_SEASON_NAME_RESPONSE: MessageDescriptor<GetSeasonNameResponse> = 
   }],
 };
 
+export interface GetSeasonSummaryRequestBody {
+  seasonId?: string,
+}
+
+export let GET_SEASON_SUMMARY_REQUEST_BODY: MessageDescriptor<GetSeasonSummaryRequestBody> = {
+  name: 'GetSeasonSummaryRequestBody',
+  fields: [{
+    name: 'seasonId',
+    index: 1,
+    primitiveType: PrimitiveType.STRING,
+  }],
+};
+
+export interface GetSeasonSummaryResponse {
+  seasonSummary?: SeasonSummary,
+}
+
+export let GET_SEASON_SUMMARY_RESPONSE: MessageDescriptor<GetSeasonSummaryResponse> = {
+  name: 'GetSeasonSummaryResponse',
+  fields: [{
+    name: 'seasonSummary',
+    index: 1,
+    messageType: SEASON_SUMMARY,
+  }],
+};
+
 export interface GetSeasonDetailsRequestBody {
   seasonId?: string,
 }
@@ -53,68 +78,6 @@ export let GET_SEASON_DETAILS_RESPONSE: MessageDescriptor<GetSeasonDetailsRespon
     name: 'seasonDetails',
     index: 1,
     messageType: SEASON_DETAILS,
-  }],
-};
-
-export interface GetEpisodeDetailsRequestBody {
-  seasonId?: string,
-  episodeId?: string,
-}
-
-export let GET_EPISODE_DETAILS_REQUEST_BODY: MessageDescriptor<GetEpisodeDetailsRequestBody> = {
-  name: 'GetEpisodeDetailsRequestBody',
-  fields: [{
-    name: 'seasonId',
-    index: 1,
-    primitiveType: PrimitiveType.STRING,
-  }, {
-    name: 'episodeId',
-    index: 2,
-    primitiveType: PrimitiveType.STRING,
-  }],
-};
-
-export interface GetEpisodeDetailsResponse {
-  episodeDetails?: EpisodeDetails,
-}
-
-export let GET_EPISODE_DETAILS_RESPONSE: MessageDescriptor<GetEpisodeDetailsResponse> = {
-  name: 'GetEpisodeDetailsResponse',
-  fields: [{
-    name: 'episodeDetails',
-    index: 1,
-    messageType: EPISODE_DETAILS,
-  }],
-};
-
-export interface GetSeasonAndEpisodeSummaryRequestBody {
-  seasonId?: string,
-  episodeId?: string,
-}
-
-export let GET_SEASON_AND_EPISODE_SUMMARY_REQUEST_BODY: MessageDescriptor<GetSeasonAndEpisodeSummaryRequestBody> = {
-  name: 'GetSeasonAndEpisodeSummaryRequestBody',
-  fields: [{
-    name: 'seasonId',
-    index: 1,
-    primitiveType: PrimitiveType.STRING,
-  }, {
-    name: 'episodeId',
-    index: 2,
-    primitiveType: PrimitiveType.STRING,
-  }],
-};
-
-export interface GetSeasonAndEpisodeSummaryResponse {
-  summary?: SeasonAndEpisodeSummary,
-}
-
-export let GET_SEASON_AND_EPISODE_SUMMARY_RESPONSE: MessageDescriptor<GetSeasonAndEpisodeSummaryResponse> = {
-  name: 'GetSeasonAndEpisodeSummaryResponse',
-  fields: [{
-    name: 'summary',
-    index: 1,
-    messageType: SEASON_AND_EPISODE_SUMMARY,
   }],
 };
 
@@ -147,7 +110,7 @@ export let LIST_EPISODES_REQUEST_BODY: MessageDescriptor<ListEpisodesRequestBody
 };
 
 export interface ListEpisodesResponse {
-  episodes?: Array<EpisodeSummary>,
+  episodes?: Array<Episode>,
   indexCursor?: number,
 }
 
@@ -156,7 +119,7 @@ export let LIST_EPISODES_RESPONSE: MessageDescriptor<ListEpisodesResponse> = {
   fields: [{
     name: 'episodes',
     index: 1,
-    messageType: EPISODE_SUMMARY,
+    messageType: EPISODE,
     isArray: true,
   }, {
     name: 'indexCursor',
@@ -165,29 +128,65 @@ export let LIST_EPISODES_RESPONSE: MessageDescriptor<ListEpisodesResponse> = {
   }],
 };
 
-export interface GetContinueEpisodeRequestBody {
+export interface GetEpisodeRequestBody {
   seasonId?: string,
+  episodeId?: string,
 }
 
-export let GET_CONTINUE_EPISODE_REQUEST_BODY: MessageDescriptor<GetContinueEpisodeRequestBody> = {
-  name: 'GetContinueEpisodeRequestBody',
+export let GET_EPISODE_REQUEST_BODY: MessageDescriptor<GetEpisodeRequestBody> = {
+  name: 'GetEpisodeRequestBody',
   fields: [{
     name: 'seasonId',
     index: 1,
     primitiveType: PrimitiveType.STRING,
+  }, {
+    name: 'episodeId',
+    index: 2,
+    primitiveType: PrimitiveType.STRING,
   }],
 };
 
-export interface GetContinueEpisodeResponse {
-  continue?: ContinueEpisode,
+export interface GetEpisodeResponse {
+  episode?: Episode,
 }
 
-export let GET_CONTINUE_EPISODE_RESPONSE: MessageDescriptor<GetContinueEpisodeResponse> = {
-  name: 'GetContinueEpisodeResponse',
+export let GET_EPISODE_RESPONSE: MessageDescriptor<GetEpisodeResponse> = {
+  name: 'GetEpisodeResponse',
   fields: [{
-    name: 'continue',
+    name: 'episode',
     index: 1,
-    messageType: CONTINUE_EPISODE,
+    messageType: EPISODE,
+  }],
+};
+
+export interface GetEpisodeWithSeasonSummaryRequestBody {
+  seasonId?: string,
+  episodeId?: string,
+}
+
+export let GET_EPISODE_WITH_SEASON_SUMMARY_REQUEST_BODY: MessageDescriptor<GetEpisodeWithSeasonSummaryRequestBody> = {
+  name: 'GetEpisodeWithSeasonSummaryRequestBody',
+  fields: [{
+    name: 'seasonId',
+    index: 1,
+    primitiveType: PrimitiveType.STRING,
+  }, {
+    name: 'episodeId',
+    index: 2,
+    primitiveType: PrimitiveType.STRING,
+  }],
+};
+
+export interface GetEpisodeWithSeasonSummaryResponse {
+  summary?: SeasonSummaryAndEpisode,
+}
+
+export let GET_EPISODE_WITH_SEASON_SUMMARY_RESPONSE: MessageDescriptor<GetEpisodeWithSeasonSummaryResponse> = {
+  name: 'GetEpisodeWithSeasonSummaryResponse',
+  fields: [{
+    name: 'summary',
+    index: 1,
+    messageType: SEASON_SUMMARY_AND_EPISODE,
   }],
 };
 
@@ -282,33 +281,6 @@ export let LIST_SEASONS_BY_RATING_RESPONSE: MessageDescriptor<ListSeasonsByRatin
     name: 'createdTimeCursor',
     index: 3,
     primitiveType: PrimitiveType.NUMBER,
-  }],
-};
-
-export interface ListContinueWatchingSeasonsRequestBody {
-  limit?: number,
-}
-
-export let LIST_CONTINUE_WATCHING_SEASONS_REQUEST_BODY: MessageDescriptor<ListContinueWatchingSeasonsRequestBody> = {
-  name: 'ListContinueWatchingSeasonsRequestBody',
-  fields: [{
-    name: 'limit',
-    index: 1,
-    primitiveType: PrimitiveType.NUMBER,
-  }],
-};
-
-export interface ListContinueWatchingSeasonsResponse {
-  continues?: Array<ContinueSeason>,
-}
-
-export let LIST_CONTINUE_WATCHING_SEASONS_RESPONSE: MessageDescriptor<ListContinueWatchingSeasonsResponse> = {
-  name: 'ListContinueWatchingSeasonsResponse',
-  fields: [{
-    name: 'continues',
-    index: 1,
-    messageType: CONTINUE_SEASON,
-    isArray: true,
   }],
 };
 
@@ -413,6 +385,90 @@ export let LIST_SEASONS_BY_RATING_AND_PUBLISHER_RESPONSE: MessageDescriptor<List
     name: 'createdTimeCursor',
     index: 3,
     primitiveType: PrimitiveType.NUMBER,
+  }],
+};
+
+export interface GetContinueEpisodeRequestBody {
+  seasonId?: string,
+}
+
+export let GET_CONTINUE_EPISODE_REQUEST_BODY: MessageDescriptor<GetContinueEpisodeRequestBody> = {
+  name: 'GetContinueEpisodeRequestBody',
+  fields: [{
+    name: 'seasonId',
+    index: 1,
+    primitiveType: PrimitiveType.STRING,
+  }],
+};
+
+export interface GetContinueEpisodeResponse {
+  continue?: ContinueEpisode,
+}
+
+export let GET_CONTINUE_EPISODE_RESPONSE: MessageDescriptor<GetContinueEpisodeResponse> = {
+  name: 'GetContinueEpisodeResponse',
+  fields: [{
+    name: 'continue',
+    index: 1,
+    messageType: CONTINUE_EPISODE,
+  }],
+};
+
+export interface ListContinueWatchingSeasonsRequestBody {
+  limit?: number,
+}
+
+export let LIST_CONTINUE_WATCHING_SEASONS_REQUEST_BODY: MessageDescriptor<ListContinueWatchingSeasonsRequestBody> = {
+  name: 'ListContinueWatchingSeasonsRequestBody',
+  fields: [{
+    name: 'limit',
+    index: 1,
+    primitiveType: PrimitiveType.NUMBER,
+  }],
+};
+
+export interface ListContinueWatchingSeasonsResponse {
+  continues?: Array<ContinueSeason>,
+}
+
+export let LIST_CONTINUE_WATCHING_SEASONS_RESPONSE: MessageDescriptor<ListContinueWatchingSeasonsResponse> = {
+  name: 'ListContinueWatchingSeasonsResponse',
+  fields: [{
+    name: 'continues',
+    index: 1,
+    messageType: CONTINUE_SEASON,
+    isArray: true,
+  }],
+};
+
+export interface AuthorizeEpisodePlaybackRequestBody {
+  episodeId?: string,
+  seasonId?: string,
+}
+
+export let AUTHORIZE_EPISODE_PLAYBACK_REQUEST_BODY: MessageDescriptor<AuthorizeEpisodePlaybackRequestBody> = {
+  name: 'AuthorizeEpisodePlaybackRequestBody',
+  fields: [{
+    name: 'episodeId',
+    index: 1,
+    primitiveType: PrimitiveType.STRING,
+  }, {
+    name: 'seasonId',
+    index: 2,
+    primitiveType: PrimitiveType.STRING,
+  }],
+};
+
+export interface AuthorizeEpisodePlaybackResponse {
+  videoUrl?: string,
+}
+
+export let AUTHORIZE_EPISODE_PLAYBACK_RESPONSE: MessageDescriptor<AuthorizeEpisodePlaybackResponse> = {
+  name: 'AuthorizeEpisodePlaybackResponse',
+  fields: [{
+    name: 'videoUrl',
+    index: 2,
+    primitiveType: PrimitiveType.STRING,
   }],
 };
 
@@ -553,6 +609,18 @@ export let GET_SEASON_NAME: RemoteCallDescriptor = {
   },
 }
 
+export let GET_SEASON_SUMMARY: RemoteCallDescriptor = {
+  name: "GetSeasonSummary",
+  service: PRODUCT_WEB_SERVICE,
+  path: "/GetSeasonSummary",
+  body: {
+    messageType: GET_SEASON_SUMMARY_REQUEST_BODY,
+  },
+  response: {
+    messageType: GET_SEASON_SUMMARY_RESPONSE,
+  },
+}
+
 export let GET_SEASON_DETAILS: RemoteCallDescriptor = {
   name: "GetSeasonDetails",
   service: PRODUCT_WEB_SERVICE,
@@ -560,35 +628,8 @@ export let GET_SEASON_DETAILS: RemoteCallDescriptor = {
   body: {
     messageType: GET_SEASON_DETAILS_REQUEST_BODY,
   },
-  authKey: "a",
   response: {
     messageType: GET_SEASON_DETAILS_RESPONSE,
-  },
-}
-
-export let GET_EPISODE_DETAILS: RemoteCallDescriptor = {
-  name: "GetEpisodeDetails",
-  service: PRODUCT_WEB_SERVICE,
-  path: "/GetEpisodeDetails",
-  body: {
-    messageType: GET_EPISODE_DETAILS_REQUEST_BODY,
-  },
-  authKey: "a",
-  response: {
-    messageType: GET_EPISODE_DETAILS_RESPONSE,
-  },
-}
-
-export let GET_SEASON_AND_EPISODE_SUMMARY: RemoteCallDescriptor = {
-  name: "GetSeasonAndEpisodeSummary",
-  service: PRODUCT_WEB_SERVICE,
-  path: "/GetSeasonAndEpisodeSummary",
-  body: {
-    messageType: GET_SEASON_AND_EPISODE_SUMMARY_REQUEST_BODY,
-  },
-  authKey: "a",
-  response: {
-    messageType: GET_SEASON_AND_EPISODE_SUMMARY_RESPONSE,
   },
 }
 
@@ -599,9 +640,80 @@ export let LIST_EPISODES: RemoteCallDescriptor = {
   body: {
     messageType: LIST_EPISODES_REQUEST_BODY,
   },
-  authKey: "a",
   response: {
     messageType: LIST_EPISODES_RESPONSE,
+  },
+}
+
+export let GET_EPISODE: RemoteCallDescriptor = {
+  name: "GetEpisode",
+  service: PRODUCT_WEB_SERVICE,
+  path: "/GetEpisode",
+  body: {
+    messageType: GET_EPISODE_REQUEST_BODY,
+  },
+  response: {
+    messageType: GET_EPISODE_RESPONSE,
+  },
+}
+
+export let GET_EPISODE_WITH_SEASON_SUMMARY: RemoteCallDescriptor = {
+  name: "GetEpisodeWithSeasonSummary",
+  service: PRODUCT_WEB_SERVICE,
+  path: "/GetEpisodeWithSeasonSummary",
+  body: {
+    messageType: GET_EPISODE_WITH_SEASON_SUMMARY_REQUEST_BODY,
+  },
+  response: {
+    messageType: GET_EPISODE_WITH_SEASON_SUMMARY_RESPONSE,
+  },
+}
+
+export let LIST_SEASONS_BY_RECENT_PREMIERE_TIME: RemoteCallDescriptor = {
+  name: "ListSeasonsByRecentPremiereTime",
+  service: PRODUCT_WEB_SERVICE,
+  path: "/ListSeasonsByRecentPremiereTime",
+  body: {
+    messageType: LIST_SEASONS_BY_RECENT_PREMIERE_TIME_REQUEST_BODY,
+  },
+  response: {
+    messageType: LIST_SEASONS_BY_RECENT_PREMIERE_TIME_RESPONSE,
+  },
+}
+
+export let LIST_SEASONS_BY_RATING: RemoteCallDescriptor = {
+  name: "ListSeasonsByRating",
+  service: PRODUCT_WEB_SERVICE,
+  path: "/ListSeasonsByRating",
+  body: {
+    messageType: LIST_SEASONS_BY_RATING_REQUEST_BODY,
+  },
+  response: {
+    messageType: LIST_SEASONS_BY_RATING_RESPONSE,
+  },
+}
+
+export let LIST_SEASONS_BY_RECENT_PREMIERE_TIME_AND_PUBLISHER: RemoteCallDescriptor = {
+  name: "ListSeasonsByRecentPremiereTimeAndPublisher",
+  service: PRODUCT_WEB_SERVICE,
+  path: "/ListSeasonsByRecentPremiereTimeAndPublisher",
+  body: {
+    messageType: LIST_SEASONS_BY_RECENT_PREMIERE_TIME_AND_PUBLISHER_REQUEST_BODY,
+  },
+  response: {
+    messageType: LIST_SEASONS_BY_RECENT_PREMIERE_TIME_AND_PUBLISHER_RESPONSE,
+  },
+}
+
+export let LIST_SEASONS_BY_RATING_AND_PUBLISHER: RemoteCallDescriptor = {
+  name: "ListSeasonsByRatingAndPublisher",
+  service: PRODUCT_WEB_SERVICE,
+  path: "/ListSeasonsByRatingAndPublisher",
+  body: {
+    messageType: LIST_SEASONS_BY_RATING_AND_PUBLISHER_REQUEST_BODY,
+  },
+  response: {
+    messageType: LIST_SEASONS_BY_RATING_AND_PUBLISHER_RESPONSE,
   },
 }
 
@@ -618,32 +730,6 @@ export let GET_CONTINUE_EPISODE: RemoteCallDescriptor = {
   },
 }
 
-export let LIST_SEASONS_BY_RECENT_PREMIERE_TIME: RemoteCallDescriptor = {
-  name: "ListSeasonsByRecentPremiereTime",
-  service: PRODUCT_WEB_SERVICE,
-  path: "/ListSeasonsByRecentPremiereTime",
-  body: {
-    messageType: LIST_SEASONS_BY_RECENT_PREMIERE_TIME_REQUEST_BODY,
-  },
-  authKey: "a",
-  response: {
-    messageType: LIST_SEASONS_BY_RECENT_PREMIERE_TIME_RESPONSE,
-  },
-}
-
-export let LIST_SEASONS_BY_RATING: RemoteCallDescriptor = {
-  name: "ListSeasonsByRating",
-  service: PRODUCT_WEB_SERVICE,
-  path: "/ListSeasonsByRating",
-  body: {
-    messageType: LIST_SEASONS_BY_RATING_REQUEST_BODY,
-  },
-  authKey: "a",
-  response: {
-    messageType: LIST_SEASONS_BY_RATING_RESPONSE,
-  },
-}
-
 export let LIST_CONTINUE_WATCHING_SEASONS: RemoteCallDescriptor = {
   name: "ListContinueWatchingSeasons",
   service: PRODUCT_WEB_SERVICE,
@@ -657,29 +743,16 @@ export let LIST_CONTINUE_WATCHING_SEASONS: RemoteCallDescriptor = {
   },
 }
 
-export let LIST_SEASONS_BY_RECENT_PREMIERE_TIME_AND_PUBLISHER: RemoteCallDescriptor = {
-  name: "ListSeasonsByRecentPremiereTimeAndPublisher",
+export let AUTHORIZE_EPISODE_PLAYBACK: RemoteCallDescriptor = {
+  name: "AuthorizeEpisodePlayback",
   service: PRODUCT_WEB_SERVICE,
-  path: "/ListSeasonsByRecentPremiereTimeAndPublisher",
+  path: "/AuthorizeEpisodePlayback",
   body: {
-    messageType: LIST_SEASONS_BY_RECENT_PREMIERE_TIME_AND_PUBLISHER_REQUEST_BODY,
+    messageType: AUTHORIZE_EPISODE_PLAYBACK_REQUEST_BODY,
   },
   authKey: "a",
   response: {
-    messageType: LIST_SEASONS_BY_RECENT_PREMIERE_TIME_AND_PUBLISHER_RESPONSE,
-  },
-}
-
-export let LIST_SEASONS_BY_RATING_AND_PUBLISHER: RemoteCallDescriptor = {
-  name: "ListSeasonsByRatingAndPublisher",
-  service: PRODUCT_WEB_SERVICE,
-  path: "/ListSeasonsByRatingAndPublisher",
-  body: {
-    messageType: LIST_SEASONS_BY_RATING_AND_PUBLISHER_REQUEST_BODY,
-  },
-  authKey: "a",
-  response: {
-    messageType: LIST_SEASONS_BY_RATING_AND_PUBLISHER_RESPONSE,
+    messageType: AUTHORIZE_EPISODE_PLAYBACK_RESPONSE,
   },
 }
 

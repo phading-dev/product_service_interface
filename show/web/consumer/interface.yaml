@@ -11,6 +11,19 @@
       type: string
       index: 1
 - kind: Message
+  name: GetSeasonSummaryRequestBody
+  fields:
+    - name: seasonId
+      type: string
+      index: 1
+- kind: Message
+  name: GetSeasonSummaryResponse
+  fields:
+    - name: seasonSummary
+      type: SeasonSummary
+      import: ./show/web/consumer/info
+      index: 1
+- kind: Message
   name: GetSeasonDetailsRequestBody
   fields:
     - name: seasonId
@@ -21,39 +34,7 @@
   fields:
     - name: seasonDetails
       type: SeasonDetails
-      import: ./show/web/consumer/details
-      index: 1
-- kind: Message
-  name: GetEpisodeDetailsRequestBody
-  fields:
-    - name: seasonId
-      type: string
-      index: 1
-    - name: episodeId
-      type: string
-      index: 2
-- kind: Message
-  name: GetEpisodeDetailsResponse
-  fields:
-    - name: episodeDetails
-      type: EpisodeDetails
-      import: ./show/web/consumer/details
-      index: 1
-- kind: Message
-  name: GetSeasonAndEpisodeSummaryRequestBody
-  fields:
-    - name: seasonId
-      type: string
-      index: 1
-    - name: episodeId
-      type: string
-      index: 2
-- kind: Message
-  name: GetSeasonAndEpisodeSummaryResponse
-  fields:
-    - name: summary
-      type: SeasonAndEpisodeSummary
-      import: ./show/web/consumer/summary
+      import: ./show/web/consumer/info
       index: 1
 - kind: Message
   name: ListEpisodesRequestBody
@@ -74,25 +55,44 @@
   name: ListEpisodesResponse
   fields:
     - name: episodes
-      type: EpisodeSummary
-      import: ./show/web/consumer/summary
+      type: Episode
+      import: ./show/web/consumer/info
       isArray: true
       index: 1
     - name: indexCursor
       type: number
       index: 2
 - kind: Message
-  name: GetContinueEpisodeRequestBody
+  name: GetEpisodeRequestBody
   fields:
     - name: seasonId
       type: string
       index: 1
+    - name: episodeId
+      type: string
+      index: 2
 - kind: Message
-  name: GetContinueEpisodeResponse
+  name: GetEpisodeResponse
   fields:
-    - name: continue
-      type: ContinueEpisode
-      import: ./show/web/consumer/summary
+    - name: episode
+      type: Episode
+      import: ./show/web/consumer/info
+      index: 1
+- kind: Message
+  name: GetEpisodeWithSeasonSummaryRequestBody
+  fields:
+    - name: seasonId
+      type: string
+      index: 1
+    - name: episodeId
+      type: string
+      index: 2
+- kind: Message
+  name: GetEpisodeWithSeasonSummaryResponse
+  fields:
+    - name: summary
+      type: SeasonSummaryAndEpisode
+      import: ./show/web/consumer/info
       index: 1
 - kind: Message
   name: ListSeasonsByRecentPremiereTimeRequestBody
@@ -111,7 +111,7 @@
   fields:
     - name: seasons
       type: SeasonSummary
-      import: ./show/web/consumer/summary
+      import: ./show/web/consumer/info
       isArray: true
       index: 1
     - name: premiereTimeCursor
@@ -137,7 +137,7 @@
   fields:
     - name: seasons
       type: SeasonSummary
-      import: ./show/web/consumer/summary
+      import: ./show/web/consumer/info
       isArray: true
       index: 1
     - name: ratingCursor
@@ -146,20 +146,6 @@
     - name: createdTimeCursor
       type: number
       index: 3
-- kind: Message
-  name: ListContinueWatchingSeasonsRequestBody
-  fields:
-    - name: limit
-      type: number
-      index: 1
-- kind: Message
-  name: ListContinueWatchingSeasonsResponse
-  fields:
-    - name: continues
-      type: ContinueSeason
-      import: ./show/web/consumer/summary
-      isArray: true
-      index: 1
 - kind: Message
   name: ListSeasonsByRecentPremiereTimeAndPublisherRequestBody
   fields:
@@ -180,7 +166,7 @@
   fields:
     - name: seasons
       type: SeasonSummary
-      import: ./show/web/consumer/summary
+      import: ./show/web/consumer/info
       isArray: true
       index: 1
     - name: premiereTimeCursor
@@ -209,7 +195,7 @@
   fields:
     - name: seasons
       type: SeasonSummary
-      import: ./show/web/consumer/summary
+      import: ./show/web/consumer/info
       isArray: true
       index: 1
     - name: ratingCursor
@@ -218,6 +204,48 @@
     - name: createdTimeCursor
       type: number
       index: 3
+- kind: Message
+  name: GetContinueEpisodeRequestBody
+  fields:
+    - name: seasonId
+      type: string
+      index: 1
+- kind: Message
+  name: GetContinueEpisodeResponse
+  fields:
+    - name: continue
+      type: ContinueEpisode
+      import: ./show/web/consumer/info
+      index: 1
+- kind: Message
+  name: ListContinueWatchingSeasonsRequestBody
+  fields:
+    - name: limit
+      type: number
+      index: 1
+- kind: Message
+  name: ListContinueWatchingSeasonsResponse
+  fields:
+    - name: continues
+      type: ContinueSeason
+      import: ./show/web/consumer/info
+      isArray: true
+      index: 1
+- kind: Message
+  name: AuthorizeEpisodePlaybackRequestBody
+  fields:
+    - name: episodeId
+      type: string
+      index: 1
+    - name: seasonId
+      type: string
+      index: 2
+- kind: Message
+  name: AuthorizeEpisodePlaybackResponse
+  fields:
+    - name: videoUrl
+      type: string
+      index: 2
 - kind: Message
   name: SearchSeasonsRequestBody
   fields:
@@ -238,7 +266,7 @@
   fields:
     - name: seasons
       type: SeasonSummary
-      import: ./show/web/consumer/summary
+      import: ./show/web/consumer/info
       isArray: true
       index: 1
     - name: scoreCursor
@@ -287,56 +315,57 @@
       path: /GetSeasonName
       body: GetSeasonNameRequestBody
       response: GetSeasonNameResponse
+    - name: GetSeasonSummary
+      path: /GetSeasonSummary
+      body: GetSeasonSummaryRequestBody
+      response: GetSeasonSummaryResponse
     - name: GetSeasonDetails
       path: /GetSeasonDetails
       body: GetSeasonDetailsRequestBody
-      authKey: a
       response: GetSeasonDetailsResponse
-    - name: GetEpisodeDetails
-      path: /GetEpisodeDetails
-      body: GetEpisodeDetailsRequestBody
-      authKey: a
-      response: GetEpisodeDetailsResponse
-    - name: GetSeasonAndEpisodeSummary
-      path: /GetSeasonAndEpisodeSummary
-      body: GetSeasonAndEpisodeSummaryRequestBody
-      authKey: a
-      response: GetSeasonAndEpisodeSummaryResponse
     - name: ListEpisodes
       path: /ListEpisodes
       body: ListEpisodesRequestBody
-      authKey: a
       response: ListEpisodesResponse
+    - name: GetEpisode
+      path: /GetEpisode
+      body: GetEpisodeRequestBody
+      response: GetEpisodeResponse
+    - name: GetEpisodeWithSeasonSummary
+      path: /GetEpisodeWithSeasonSummary
+      body: GetEpisodeWithSeasonSummaryRequestBody
+      response: GetEpisodeWithSeasonSummaryResponse
+    - name: ListSeasonsByRecentPremiereTime
+      path: /ListSeasonsByRecentPremiereTime
+      body: ListSeasonsByRecentPremiereTimeRequestBody
+      response: ListSeasonsByRecentPremiereTimeResponse
+    - name: ListSeasonsByRating
+      path: /ListSeasonsByRating
+      body: ListSeasonsByRatingRequestBody
+      response: ListSeasonsByRatingResponse
+    - name: ListSeasonsByRecentPremiereTimeAndPublisher
+      path: /ListSeasonsByRecentPremiereTimeAndPublisher
+      body: ListSeasonsByRecentPremiereTimeAndPublisherRequestBody
+      response: ListSeasonsByRecentPremiereTimeAndPublisherResponse
+    - name: ListSeasonsByRatingAndPublisher
+      path: /ListSeasonsByRatingAndPublisher
+      body: ListSeasonsByRatingAndPublisherRequestBody
+      response: ListSeasonsByRatingAndPublisherResponse
     - name: GetContinueEpisode
       path: /GetContinueEpisode
       body: GetContinueEpisodeRequestBody
       authKey: a
       response: GetContinueEpisodeResponse
-    - name: ListSeasonsByRecentPremiereTime
-      path: /ListSeasonsByRecentPremiereTime
-      body: ListSeasonsByRecentPremiereTimeRequestBody
-      authKey: a
-      response: ListSeasonsByRecentPremiereTimeResponse
-    - name: ListSeasonsByRating
-      path: /ListSeasonsByRating
-      body: ListSeasonsByRatingRequestBody
-      authKey: a
-      response: ListSeasonsByRatingResponse
     - name: ListContinueWatchingSeasons
       path: /ListContinueWatchingSeasons
       body: ListContinueWatchingSeasonsRequestBody
       authKey: a
       response: ListContinueWatchingSeasonsResponse
-    - name: ListSeasonsByRecentPremiereTimeAndPublisher
-      path: /ListSeasonsByRecentPremiereTimeAndPublisher
-      body: ListSeasonsByRecentPremiereTimeAndPublisherRequestBody
+    - name: AuthorizeEpisodePlayback
+      path: /AuthorizeEpisodePlayback
+      body: AuthorizeEpisodePlaybackRequestBody
       authKey: a
-      response: ListSeasonsByRecentPremiereTimeAndPublisherResponse
-    - name: ListSeasonsByRatingAndPublisher
-      path: /ListSeasonsByRatingAndPublisher
-      body: ListSeasonsByRatingAndPublisherRequestBody
-      authKey: a
-      response: ListSeasonsByRatingAndPublisherResponse
+      response: AuthorizeEpisodePlaybackResponse
     - name: SearchSeasons
       path: /SearchSeasons
       body: SearchSeasonsRequestBody

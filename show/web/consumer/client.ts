@@ -1,4 +1,4 @@
-import { GetSeasonNameRequestBody, GetSeasonNameResponse, GET_SEASON_NAME, GetSeasonDetailsRequestBody, GetSeasonDetailsResponse, GET_SEASON_DETAILS, GetEpisodeDetailsRequestBody, GetEpisodeDetailsResponse, GET_EPISODE_DETAILS, GetSeasonAndEpisodeSummaryRequestBody, GetSeasonAndEpisodeSummaryResponse, GET_SEASON_AND_EPISODE_SUMMARY, ListEpisodesRequestBody, ListEpisodesResponse, LIST_EPISODES, GetContinueEpisodeRequestBody, GetContinueEpisodeResponse, GET_CONTINUE_EPISODE, ListSeasonsByRecentPremiereTimeRequestBody, ListSeasonsByRecentPremiereTimeResponse, LIST_SEASONS_BY_RECENT_PREMIERE_TIME, ListSeasonsByRatingRequestBody, ListSeasonsByRatingResponse, LIST_SEASONS_BY_RATING, ListContinueWatchingSeasonsRequestBody, ListContinueWatchingSeasonsResponse, LIST_CONTINUE_WATCHING_SEASONS, ListSeasonsByRecentPremiereTimeAndPublisherRequestBody, ListSeasonsByRecentPremiereTimeAndPublisherResponse, LIST_SEASONS_BY_RECENT_PREMIERE_TIME_AND_PUBLISHER, ListSeasonsByRatingAndPublisherRequestBody, ListSeasonsByRatingAndPublisherResponse, LIST_SEASONS_BY_RATING_AND_PUBLISHER, SearchSeasonsRequestBody, SearchSeasonsResponse, SEARCH_SEASONS, RateSeasonRequestBody, RateSeasonResponse, RATE_SEASON, UnrateSeasonRequestBody, UnrateSeasonResponse, UNRATE_SEASON, GetIndividualSeasonRatingRequestBody, GetIndividualSeasonRatingResponse, GET_INDIVIDUAL_SEASON_RATING } from './interface';
+import { GetSeasonNameRequestBody, GetSeasonNameResponse, GET_SEASON_NAME, GetSeasonSummaryRequestBody, GetSeasonSummaryResponse, GET_SEASON_SUMMARY, GetSeasonDetailsRequestBody, GetSeasonDetailsResponse, GET_SEASON_DETAILS, ListEpisodesRequestBody, ListEpisodesResponse, LIST_EPISODES, GetEpisodeRequestBody, GetEpisodeResponse, GET_EPISODE, GetEpisodeWithSeasonSummaryRequestBody, GetEpisodeWithSeasonSummaryResponse, GET_EPISODE_WITH_SEASON_SUMMARY, ListSeasonsByRecentPremiereTimeRequestBody, ListSeasonsByRecentPremiereTimeResponse, LIST_SEASONS_BY_RECENT_PREMIERE_TIME, ListSeasonsByRatingRequestBody, ListSeasonsByRatingResponse, LIST_SEASONS_BY_RATING, ListSeasonsByRecentPremiereTimeAndPublisherRequestBody, ListSeasonsByRecentPremiereTimeAndPublisherResponse, LIST_SEASONS_BY_RECENT_PREMIERE_TIME_AND_PUBLISHER, ListSeasonsByRatingAndPublisherRequestBody, ListSeasonsByRatingAndPublisherResponse, LIST_SEASONS_BY_RATING_AND_PUBLISHER, GetContinueEpisodeRequestBody, GetContinueEpisodeResponse, GET_CONTINUE_EPISODE, ListContinueWatchingSeasonsRequestBody, ListContinueWatchingSeasonsResponse, LIST_CONTINUE_WATCHING_SEASONS, AuthorizeEpisodePlaybackRequestBody, AuthorizeEpisodePlaybackResponse, AUTHORIZE_EPISODE_PLAYBACK, SearchSeasonsRequestBody, SearchSeasonsResponse, SEARCH_SEASONS, RateSeasonRequestBody, RateSeasonResponse, RATE_SEASON, UnrateSeasonRequestBody, UnrateSeasonResponse, UNRATE_SEASON, GetIndividualSeasonRatingRequestBody, GetIndividualSeasonRatingResponse, GET_INDIVIDUAL_SEASON_RATING } from './interface';
 import { ClientRequestInterface } from '@selfage/service_descriptor/client_request_interface';
 
 export function newGetSeasonNameRequest(
@@ -6,6 +6,15 @@ export function newGetSeasonNameRequest(
 ): ClientRequestInterface<GetSeasonNameResponse> {
   return {
     descriptor: GET_SEASON_NAME,
+    body,
+  };
+}
+
+export function newGetSeasonSummaryRequest(
+  body: GetSeasonSummaryRequestBody,
+): ClientRequestInterface<GetSeasonSummaryResponse> {
+  return {
+    descriptor: GET_SEASON_SUMMARY,
     body,
   };
 }
@@ -19,24 +28,6 @@ export function newGetSeasonDetailsRequest(
   };
 }
 
-export function newGetEpisodeDetailsRequest(
-  body: GetEpisodeDetailsRequestBody,
-): ClientRequestInterface<GetEpisodeDetailsResponse> {
-  return {
-    descriptor: GET_EPISODE_DETAILS,
-    body,
-  };
-}
-
-export function newGetSeasonAndEpisodeSummaryRequest(
-  body: GetSeasonAndEpisodeSummaryRequestBody,
-): ClientRequestInterface<GetSeasonAndEpisodeSummaryResponse> {
-  return {
-    descriptor: GET_SEASON_AND_EPISODE_SUMMARY,
-    body,
-  };
-}
-
 export function newListEpisodesRequest(
   body: ListEpisodesRequestBody,
 ): ClientRequestInterface<ListEpisodesResponse> {
@@ -46,11 +37,20 @@ export function newListEpisodesRequest(
   };
 }
 
-export function newGetContinueEpisodeRequest(
-  body: GetContinueEpisodeRequestBody,
-): ClientRequestInterface<GetContinueEpisodeResponse> {
+export function newGetEpisodeRequest(
+  body: GetEpisodeRequestBody,
+): ClientRequestInterface<GetEpisodeResponse> {
   return {
-    descriptor: GET_CONTINUE_EPISODE,
+    descriptor: GET_EPISODE,
+    body,
+  };
+}
+
+export function newGetEpisodeWithSeasonSummaryRequest(
+  body: GetEpisodeWithSeasonSummaryRequestBody,
+): ClientRequestInterface<GetEpisodeWithSeasonSummaryResponse> {
+  return {
+    descriptor: GET_EPISODE_WITH_SEASON_SUMMARY,
     body,
   };
 }
@@ -73,15 +73,6 @@ export function newListSeasonsByRatingRequest(
   };
 }
 
-export function newListContinueWatchingSeasonsRequest(
-  body: ListContinueWatchingSeasonsRequestBody,
-): ClientRequestInterface<ListContinueWatchingSeasonsResponse> {
-  return {
-    descriptor: LIST_CONTINUE_WATCHING_SEASONS,
-    body,
-  };
-}
-
 export function newListSeasonsByRecentPremiereTimeAndPublisherRequest(
   body: ListSeasonsByRecentPremiereTimeAndPublisherRequestBody,
 ): ClientRequestInterface<ListSeasonsByRecentPremiereTimeAndPublisherResponse> {
@@ -96,6 +87,33 @@ export function newListSeasonsByRatingAndPublisherRequest(
 ): ClientRequestInterface<ListSeasonsByRatingAndPublisherResponse> {
   return {
     descriptor: LIST_SEASONS_BY_RATING_AND_PUBLISHER,
+    body,
+  };
+}
+
+export function newGetContinueEpisodeRequest(
+  body: GetContinueEpisodeRequestBody,
+): ClientRequestInterface<GetContinueEpisodeResponse> {
+  return {
+    descriptor: GET_CONTINUE_EPISODE,
+    body,
+  };
+}
+
+export function newListContinueWatchingSeasonsRequest(
+  body: ListContinueWatchingSeasonsRequestBody,
+): ClientRequestInterface<ListContinueWatchingSeasonsResponse> {
+  return {
+    descriptor: LIST_CONTINUE_WATCHING_SEASONS,
+    body,
+  };
+}
+
+export function newAuthorizeEpisodePlaybackRequest(
+  body: AuthorizeEpisodePlaybackRequestBody,
+): ClientRequestInterface<AuthorizeEpisodePlaybackResponse> {
+  return {
+    descriptor: AUTHORIZE_EPISODE_PLAYBACK,
     body,
   };
 }
