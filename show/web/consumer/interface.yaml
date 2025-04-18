@@ -1,4 +1,16 @@
 - kind: Message
+  name: GetSeasonNameRequestBody
+  fields:
+    - name: seasonId
+      type: string
+      index: 1
+- kind: Message
+  name: GetSeasonNameResponse
+  fields:
+    - name: name
+      type: string
+      index: 1
+- kind: Message
   name: GetSeasonDetailsRequestBody
   fields:
     - name: seasonId
@@ -271,6 +283,10 @@
   service: ProductWebService
   importService: ./service
   calls:
+    - name: GetSeasonName
+      path: /GetSeasonName
+      body: GetSeasonNameRequestBody
+      response: GetSeasonNameResponse
     - name: GetSeasonDetails
       path: /GetSeasonDetails
       body: GetSeasonDetailsRequestBody

@@ -4,6 +4,32 @@ import { SeasonAndEpisodeSummary, SEASON_AND_EPISODE_SUMMARY, EpisodeSummary, EP
 import { PRODUCT_WEB_SERVICE } from '../../../service';
 import { RemoteCallDescriptor } from '@selfage/service_descriptor';
 
+export interface GetSeasonNameRequestBody {
+  seasonId?: string,
+}
+
+export let GET_SEASON_NAME_REQUEST_BODY: MessageDescriptor<GetSeasonNameRequestBody> = {
+  name: 'GetSeasonNameRequestBody',
+  fields: [{
+    name: 'seasonId',
+    index: 1,
+    primitiveType: PrimitiveType.STRING,
+  }],
+};
+
+export interface GetSeasonNameResponse {
+  name?: string,
+}
+
+export let GET_SEASON_NAME_RESPONSE: MessageDescriptor<GetSeasonNameResponse> = {
+  name: 'GetSeasonNameResponse',
+  fields: [{
+    name: 'name',
+    index: 1,
+    primitiveType: PrimitiveType.STRING,
+  }],
+};
+
 export interface GetSeasonDetailsRequestBody {
   seasonId?: string,
 }
@@ -514,6 +540,18 @@ export let GET_INDIVIDUAL_SEASON_RATING_RESPONSE: MessageDescriptor<GetIndividua
     primitiveType: PrimitiveType.NUMBER,
   }],
 };
+
+export let GET_SEASON_NAME: RemoteCallDescriptor = {
+  name: "GetSeasonName",
+  service: PRODUCT_WEB_SERVICE,
+  path: "/GetSeasonName",
+  body: {
+    messageType: GET_SEASON_NAME_REQUEST_BODY,
+  },
+  response: {
+    messageType: GET_SEASON_NAME_RESPONSE,
+  },
+}
 
 export let GET_SEASON_DETAILS: RemoteCallDescriptor = {
   name: "GetSeasonDetails",
