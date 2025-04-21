@@ -201,6 +201,7 @@ export let CONTINUE_SEASON: MessageDescriptor<ContinueSeason> = {
 export interface ContinueEpisode {
   episode?: Episode,
   continueTimeMs?: number,
+  rewatching?: boolean,
 }
 
 export let CONTINUE_EPISODE: MessageDescriptor<ContinueEpisode> = {
@@ -213,5 +214,9 @@ export let CONTINUE_EPISODE: MessageDescriptor<ContinueEpisode> = {
     name: 'continueTimeMs',
     index: 2,
     primitiveType: PrimitiveType.NUMBER,
+  }, {
+    name: 'rewatching',
+    index: 3,
+    primitiveType: PrimitiveType.BOOLEAN,
   }],
 };

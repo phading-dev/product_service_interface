@@ -172,7 +172,7 @@
       import: ./show/web/publisher/details
       index: 1
 - kind: Message
-  name: UpdateEpisodeRequestBody
+  name: UpdateEpisodeNameRequestBody
   fields:
     - name: seasonId
       type: string
@@ -184,9 +184,23 @@
       type: string
       index: 3
 - kind: Message
-  name: UpdateEpisodeResponse
+  name: UpdateEpisodeNameResponse
 - kind: Message
-  name: UpdateEpisodeOrderRequestBody
+  name: UpdateEpisodePremiereTimeRequestBody
+  fields:
+    - name: seasonId
+      type: string
+      index: 1
+    - name: episodeId
+      type: string
+      index: 2
+    - name: premiereTimeMs
+      type: number
+      index: 3
+- kind: Message
+  name: UpdateEpisodePremiereTimeResponse
+- kind: Message
+  name: UpdateEpisodeIndexRequestBody
   fields:
     - name: seasonId
       type: string
@@ -198,7 +212,7 @@
       type: number
       index: 3
 - kind: Message
-  name: UpdateEpisodeOrderResponse
+  name: UpdateEpisodeIndexResponse
 - kind: Message
   name: PublishEpisodeRequestBody
   fields:
@@ -225,7 +239,21 @@
 - kind: Message
   name: UnpublishEpisodeResponse
 - kind: Message
-  name: ListEpisodesRequestBody
+  name: ListDraftEpisodesRequestBody
+  fields:
+    - name: seasonId
+      type: string
+      index: 1
+- kind: Message
+  name: ListDraftEpisodesResponse
+  fields:
+    - name: episodes
+      type: EpisodeSummary
+      import: ./show/web/publisher/summary
+      isArray: true
+      index: 1
+- kind: Message
+  name: ListPublishedEpisodesRequestBody
   fields:
     - name: seasonId
       type: string
@@ -240,7 +268,7 @@
       type: number
       index: 4
 - kind: Message
-  name: ListEpisodesResponse
+  name: ListPublishedEpisodesResponse
   fields:
     - name: episodes
       type: EpisodeSummary
@@ -599,16 +627,21 @@
       body: GetEpisodeRequestBody
       authKey: a
       response: GetEpisodeResponse
-    - name: UpdateEpisode
-      path: /UpdateEpisode
-      body: UpdateEpisodeRequestBody
+    - name: UpdateEpisodeName
+      path: /UpdateEpisodeName
+      body: UpdateEpisodeNameRequestBody
       authKey: a
-      response: UpdateEpisodeResponse
-    - name: UpdateEpisodeOrder
-      path: /UpdateEpisodeOrder
-      body: UpdateEpisodeOrderRequestBody
+      response: UpdateEpisodeNameResponse
+    - name: UpdateEpisodePremiereTime
+      path: /UpdateEpisodePremiereTime
+      body: UpdateEpisodePremiereTimeRequestBody
       authKey: a
-      response: UpdateEpisodeOrderResponse
+      response: UpdateEpisodePremiereTimeResponse
+    - name: UpdateEpisodeIndex
+      path: /UpdateEpisodeIndex
+      body: UpdateEpisodeIndexRequestBody
+      authKey: a
+      response: UpdateEpisodeIndexResponse
     - name: PublishEpisode
       path: /PublishEpisode
       body: PublishEpisodeRequestBody
@@ -619,11 +652,16 @@
       body: UnpublishEpisodeRequestBody
       authKey: a
       response: UnpublishEpisodeResponse
-    - name: ListEpisodes
-      path: /ListEpisodes
-      body: ListEpisodesRequestBody
+    - name: ListDraftEpisodes
+      path: /ListDraftEpisodes
+      body: ListDraftEpisodesRequestBody
       authKey: a
-      response: ListEpisodesResponse
+      response: ListDraftEpisodesResponse
+    - name: ListPublishedEpisodes
+      path: /ListPublishedEpisodes
+      body: ListPublishedEpisodesRequestBody
+      authKey: a
+      response: ListPublishedEpisodesResponse
     - name: CommitEpisodeStagingData
       path: /CommitEpisodeStagingData
       body: CommitEpisodeStagingDataRequestBody

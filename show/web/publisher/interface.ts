@@ -364,14 +364,14 @@ export let GET_EPISODE_RESPONSE: MessageDescriptor<GetEpisodeResponse> = {
   }],
 };
 
-export interface UpdateEpisodeRequestBody {
+export interface UpdateEpisodeNameRequestBody {
   seasonId?: string,
   episodeId?: string,
   name?: string,
 }
 
-export let UPDATE_EPISODE_REQUEST_BODY: MessageDescriptor<UpdateEpisodeRequestBody> = {
-  name: 'UpdateEpisodeRequestBody',
+export let UPDATE_EPISODE_NAME_REQUEST_BODY: MessageDescriptor<UpdateEpisodeNameRequestBody> = {
+  name: 'UpdateEpisodeNameRequestBody',
   fields: [{
     name: 'seasonId',
     index: 1,
@@ -387,22 +387,53 @@ export let UPDATE_EPISODE_REQUEST_BODY: MessageDescriptor<UpdateEpisodeRequestBo
   }],
 };
 
-export interface UpdateEpisodeResponse {
+export interface UpdateEpisodeNameResponse {
 }
 
-export let UPDATE_EPISODE_RESPONSE: MessageDescriptor<UpdateEpisodeResponse> = {
-  name: 'UpdateEpisodeResponse',
+export let UPDATE_EPISODE_NAME_RESPONSE: MessageDescriptor<UpdateEpisodeNameResponse> = {
+  name: 'UpdateEpisodeNameResponse',
   fields: [],
 };
 
-export interface UpdateEpisodeOrderRequestBody {
+export interface UpdateEpisodePremiereTimeRequestBody {
+  seasonId?: string,
+  episodeId?: string,
+  premiereTimeMs?: number,
+}
+
+export let UPDATE_EPISODE_PREMIERE_TIME_REQUEST_BODY: MessageDescriptor<UpdateEpisodePremiereTimeRequestBody> = {
+  name: 'UpdateEpisodePremiereTimeRequestBody',
+  fields: [{
+    name: 'seasonId',
+    index: 1,
+    primitiveType: PrimitiveType.STRING,
+  }, {
+    name: 'episodeId',
+    index: 2,
+    primitiveType: PrimitiveType.STRING,
+  }, {
+    name: 'premiereTimeMs',
+    index: 3,
+    primitiveType: PrimitiveType.NUMBER,
+  }],
+};
+
+export interface UpdateEpisodePremiereTimeResponse {
+}
+
+export let UPDATE_EPISODE_PREMIERE_TIME_RESPONSE: MessageDescriptor<UpdateEpisodePremiereTimeResponse> = {
+  name: 'UpdateEpisodePremiereTimeResponse',
+  fields: [],
+};
+
+export interface UpdateEpisodeIndexRequestBody {
   seasonId?: string,
   episodeId?: string,
   toIndex?: number,
 }
 
-export let UPDATE_EPISODE_ORDER_REQUEST_BODY: MessageDescriptor<UpdateEpisodeOrderRequestBody> = {
-  name: 'UpdateEpisodeOrderRequestBody',
+export let UPDATE_EPISODE_INDEX_REQUEST_BODY: MessageDescriptor<UpdateEpisodeIndexRequestBody> = {
+  name: 'UpdateEpisodeIndexRequestBody',
   fields: [{
     name: 'seasonId',
     index: 1,
@@ -418,11 +449,11 @@ export let UPDATE_EPISODE_ORDER_REQUEST_BODY: MessageDescriptor<UpdateEpisodeOrd
   }],
 };
 
-export interface UpdateEpisodeOrderResponse {
+export interface UpdateEpisodeIndexResponse {
 }
 
-export let UPDATE_EPISODE_ORDER_RESPONSE: MessageDescriptor<UpdateEpisodeOrderResponse> = {
-  name: 'UpdateEpisodeOrderResponse',
+export let UPDATE_EPISODE_INDEX_RESPONSE: MessageDescriptor<UpdateEpisodeIndexResponse> = {
+  name: 'UpdateEpisodeIndexResponse',
   fields: [],
 };
 
@@ -483,15 +514,42 @@ export let UNPUBLISH_EPISODE_RESPONSE: MessageDescriptor<UnpublishEpisodeRespons
   fields: [],
 };
 
-export interface ListEpisodesRequestBody {
+export interface ListDraftEpisodesRequestBody {
+  seasonId?: string,
+}
+
+export let LIST_DRAFT_EPISODES_REQUEST_BODY: MessageDescriptor<ListDraftEpisodesRequestBody> = {
+  name: 'ListDraftEpisodesRequestBody',
+  fields: [{
+    name: 'seasonId',
+    index: 1,
+    primitiveType: PrimitiveType.STRING,
+  }],
+};
+
+export interface ListDraftEpisodesResponse {
+  episodes?: Array<EpisodeSummary>,
+}
+
+export let LIST_DRAFT_EPISODES_RESPONSE: MessageDescriptor<ListDraftEpisodesResponse> = {
+  name: 'ListDraftEpisodesResponse',
+  fields: [{
+    name: 'episodes',
+    index: 1,
+    messageType: EPISODE_SUMMARY,
+    isArray: true,
+  }],
+};
+
+export interface ListPublishedEpisodesRequestBody {
   seasonId?: string,
   indexCursor?: number,
   next?: boolean,
   limit?: number,
 }
 
-export let LIST_EPISODES_REQUEST_BODY: MessageDescriptor<ListEpisodesRequestBody> = {
-  name: 'ListEpisodesRequestBody',
+export let LIST_PUBLISHED_EPISODES_REQUEST_BODY: MessageDescriptor<ListPublishedEpisodesRequestBody> = {
+  name: 'ListPublishedEpisodesRequestBody',
   fields: [{
     name: 'seasonId',
     index: 1,
@@ -511,13 +569,13 @@ export let LIST_EPISODES_REQUEST_BODY: MessageDescriptor<ListEpisodesRequestBody
   }],
 };
 
-export interface ListEpisodesResponse {
+export interface ListPublishedEpisodesResponse {
   episodes?: Array<EpisodeSummary>,
   indexCursor?: number,
 }
 
-export let LIST_EPISODES_RESPONSE: MessageDescriptor<ListEpisodesResponse> = {
-  name: 'ListEpisodesResponse',
+export let LIST_PUBLISHED_EPISODES_RESPONSE: MessageDescriptor<ListPublishedEpisodesResponse> = {
+  name: 'ListPublishedEpisodesResponse',
   fields: [{
     name: 'episodes',
     index: 1,
@@ -1292,29 +1350,42 @@ export let GET_EPISODE: RemoteCallDescriptor = {
   },
 }
 
-export let UPDATE_EPISODE: RemoteCallDescriptor = {
-  name: "UpdateEpisode",
+export let UPDATE_EPISODE_NAME: RemoteCallDescriptor = {
+  name: "UpdateEpisodeName",
   service: PRODUCT_WEB_SERVICE,
-  path: "/UpdateEpisode",
+  path: "/UpdateEpisodeName",
   body: {
-    messageType: UPDATE_EPISODE_REQUEST_BODY,
+    messageType: UPDATE_EPISODE_NAME_REQUEST_BODY,
   },
   authKey: "a",
   response: {
-    messageType: UPDATE_EPISODE_RESPONSE,
+    messageType: UPDATE_EPISODE_NAME_RESPONSE,
   },
 }
 
-export let UPDATE_EPISODE_ORDER: RemoteCallDescriptor = {
-  name: "UpdateEpisodeOrder",
+export let UPDATE_EPISODE_PREMIERE_TIME: RemoteCallDescriptor = {
+  name: "UpdateEpisodePremiereTime",
   service: PRODUCT_WEB_SERVICE,
-  path: "/UpdateEpisodeOrder",
+  path: "/UpdateEpisodePremiereTime",
   body: {
-    messageType: UPDATE_EPISODE_ORDER_REQUEST_BODY,
+    messageType: UPDATE_EPISODE_PREMIERE_TIME_REQUEST_BODY,
   },
   authKey: "a",
   response: {
-    messageType: UPDATE_EPISODE_ORDER_RESPONSE,
+    messageType: UPDATE_EPISODE_PREMIERE_TIME_RESPONSE,
+  },
+}
+
+export let UPDATE_EPISODE_INDEX: RemoteCallDescriptor = {
+  name: "UpdateEpisodeIndex",
+  service: PRODUCT_WEB_SERVICE,
+  path: "/UpdateEpisodeIndex",
+  body: {
+    messageType: UPDATE_EPISODE_INDEX_REQUEST_BODY,
+  },
+  authKey: "a",
+  response: {
+    messageType: UPDATE_EPISODE_INDEX_RESPONSE,
   },
 }
 
@@ -1344,16 +1415,29 @@ export let UNPUBLISH_EPISODE: RemoteCallDescriptor = {
   },
 }
 
-export let LIST_EPISODES: RemoteCallDescriptor = {
-  name: "ListEpisodes",
+export let LIST_DRAFT_EPISODES: RemoteCallDescriptor = {
+  name: "ListDraftEpisodes",
   service: PRODUCT_WEB_SERVICE,
-  path: "/ListEpisodes",
+  path: "/ListDraftEpisodes",
   body: {
-    messageType: LIST_EPISODES_REQUEST_BODY,
+    messageType: LIST_DRAFT_EPISODES_REQUEST_BODY,
   },
   authKey: "a",
   response: {
-    messageType: LIST_EPISODES_RESPONSE,
+    messageType: LIST_DRAFT_EPISODES_RESPONSE,
+  },
+}
+
+export let LIST_PUBLISHED_EPISODES: RemoteCallDescriptor = {
+  name: "ListPublishedEpisodes",
+  service: PRODUCT_WEB_SERVICE,
+  path: "/ListPublishedEpisodes",
+  body: {
+    messageType: LIST_PUBLISHED_EPISODES_REQUEST_BODY,
+  },
+  authKey: "a",
+  response: {
+    messageType: LIST_PUBLISHED_EPISODES_RESPONSE,
   },
 }
 

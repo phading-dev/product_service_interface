@@ -63,7 +63,7 @@ export interface SeasonDetails {
   name?: string,
   description?: string,
   coverImageUrl?: string,
-  totalEpisodes?: number,
+  totalPublishedEpisodes?: number,
   grade?: number,
   nextGrade?: NextGrade,
   createdTimeMs?: number,
@@ -87,7 +87,7 @@ export let SEASON_DETAILS: MessageDescriptor<SeasonDetails> = {
     index: 3,
     primitiveType: PrimitiveType.STRING,
   }, {
-    name: 'totalEpisodes',
+    name: 'totalPublishedEpisodes',
     index: 4,
     primitiveType: PrimitiveType.NUMBER,
   }, {

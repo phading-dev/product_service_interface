@@ -42,7 +42,7 @@
     - name: coverImageUrl
       type: string
       index: 3
-    - name: totalEpisodes
+    - name: totalPublishedEpisodes
       type: number
       index: 4
     - name: grade

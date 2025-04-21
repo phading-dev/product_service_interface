@@ -285,6 +285,7 @@ export let LIST_COVER_IMAGE_DELETING_TASKS_RESPONSE: MessageDescriptor<ListCover
 export interface ProcessSeasonRecentPremiereTimeUpdatingTaskRequestBody {
   seasonId?: string,
   episodeId?: string,
+  premiereTimeMs?: number,
 }
 
 export let PROCESS_SEASON_RECENT_PREMIERE_TIME_UPDATING_TASK_REQUEST_BODY: MessageDescriptor<ProcessSeasonRecentPremiereTimeUpdatingTaskRequestBody> = {
@@ -297,6 +298,10 @@ export let PROCESS_SEASON_RECENT_PREMIERE_TIME_UPDATING_TASK_REQUEST_BODY: Messa
     name: 'episodeId',
     index: 2,
     primitiveType: PrimitiveType.STRING,
+  }, {
+    name: 'premiereTimeMs',
+    index: 3,
+    primitiveType: PrimitiveType.NUMBER,
   }],
 };
 

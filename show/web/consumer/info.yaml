@@ -115,3 +115,6 @@
     - name: continueTimeMs
       type: number
       index: 2
+    - name: restarted
+      type: boolean
+      index: 3

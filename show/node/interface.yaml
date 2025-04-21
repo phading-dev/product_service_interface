@@ -130,6 +130,9 @@
     - name: episodeId
       type: string
       index: 2
+    - name: premiereTimeMs
+      type: number
+      index: 3
 - kind: Message
   name: ProcessSeasonRecentPremiereTimeUpdatingTaskResponse
 - kind: Message
