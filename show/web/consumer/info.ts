@@ -197,26 +197,3 @@ export let CONTINUE_SEASON: MessageDescriptor<ContinueSeason> = {
     primitiveType: PrimitiveType.NUMBER,
   }],
 };
-
-export interface ContinueEpisode {
-  episode?: Episode,
-  continueTimeMs?: number,
-  rewatching?: boolean,
-}
-
-export let CONTINUE_EPISODE: MessageDescriptor<ContinueEpisode> = {
-  name: 'ContinueEpisode',
-  fields: [{
-    name: 'episode',
-    index: 1,
-    messageType: EPISODE,
-  }, {
-    name: 'continueTimeMs',
-    index: 2,
-    primitiveType: PrimitiveType.NUMBER,
-  }, {
-    name: 'rewatching',
-    index: 3,
-    primitiveType: PrimitiveType.BOOLEAN,
-  }],
-};

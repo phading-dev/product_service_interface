@@ -1,5 +1,5 @@
 import { PrimitiveType, MessageDescriptor } from '@selfage/message/descriptor';
-import { SeasonSummary, SEASON_SUMMARY, SeasonDetails, SEASON_DETAILS, Episode, EPISODE, SeasonSummaryAndEpisode, SEASON_SUMMARY_AND_EPISODE, ContinueEpisode, CONTINUE_EPISODE, ContinueSeason, CONTINUE_SEASON } from './info';
+import { SeasonSummary, SEASON_SUMMARY, SeasonDetails, SEASON_DETAILS, Episode, EPISODE, SeasonSummaryAndEpisode, SEASON_SUMMARY_AND_EPISODE, ContinueSeason, CONTINUE_SEASON } from './info';
 import { PRODUCT_WEB_SERVICE } from '../../../service';
 import { RemoteCallDescriptor } from '@selfage/service_descriptor';
 
@@ -402,15 +402,20 @@ export let GET_CONTINUE_EPISODE_REQUEST_BODY: MessageDescriptor<GetContinueEpiso
 };
 
 export interface GetContinueEpisodeResponse {
-  continue?: ContinueEpisode,
+  episode?: Episode,
+  rewatching?: boolean,
 }
 
 export let GET_CONTINUE_EPISODE_RESPONSE: MessageDescriptor<GetContinueEpisodeResponse> = {
   name: 'GetContinueEpisodeResponse',
   fields: [{
-    name: 'continue',
+    name: 'episode',
     index: 1,
-    messageType: CONTINUE_EPISODE,
+    messageType: EPISODE,
+  }, {
+    name: 'rewatching',
+    index: 2,
+    primitiveType: PrimitiveType.BOOLEAN,
   }],
 };
 

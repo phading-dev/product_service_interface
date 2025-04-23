@@ -106,15 +106,3 @@
     - name: continueTimeMs
       type: number
       index: 3
-- kind: Message
-  name: ContinueEpisode
-  fields:
-    - name: episode
-      type: Episode
-      index: 1
-    - name: continueTimeMs
-      type: number
-      index: 2
-    - name: restarted
-      type: boolean
-      index: 3

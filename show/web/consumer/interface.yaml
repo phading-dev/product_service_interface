@@ -213,10 +213,13 @@
 - kind: Message
   name: GetContinueEpisodeResponse
   fields:
-    - name: continue
-      type: ContinueEpisode
+    - name: episode
+      type: Episode
       import: ./show/web/consumer/info
       index: 1
+    - name: rewatching
+      type: boolean
+      index: 2
 - kind: Message
   name: ListContinueWatchingSeasonsRequestBody
   fields:
