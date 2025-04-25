@@ -79,12 +79,15 @@
     - name: grade
       type: number
       index: 5
-    - name: averageRating
+    - name: totalEpisodes
       type: number
       index: 6
-    - name: ratingsCount
+    - name: averageRating
       type: number
       index: 7
+    - name: ratingsCount
+      type: number
+      index: 8
 - kind: Message
   name: SeasonSummaryAndEpisode
   fields:
