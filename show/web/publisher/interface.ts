@@ -225,6 +225,7 @@ export let LIST_SEASONS_RESPONSE: MessageDescriptor<ListSeasonsResponse> = {
 };
 
 export interface SearchSeasonsRequestBody {
+  state?: SeasonState,
   query?: string,
   limit?: number,
   scoreCursor?: number,
@@ -234,20 +235,24 @@ export interface SearchSeasonsRequestBody {
 export let SEARCH_SEASONS_REQUEST_BODY: MessageDescriptor<SearchSeasonsRequestBody> = {
   name: 'SearchSeasonsRequestBody',
   fields: [{
-    name: 'query',
+    name: 'state',
     index: 1,
+    enumType: SEASON_STATE,
+  }, {
+    name: 'query',
+    index: 2,
     primitiveType: PrimitiveType.STRING,
   }, {
     name: 'limit',
-    index: 2,
-    primitiveType: PrimitiveType.NUMBER,
-  }, {
-    name: 'scoreCursor',
     index: 3,
     primitiveType: PrimitiveType.NUMBER,
   }, {
-    name: 'createdTimeCursor',
+    name: 'scoreCursor',
     index: 4,
+    primitiveType: PrimitiveType.NUMBER,
+  }, {
+    name: 'createdTimeCursor',
+    index: 5,
     primitiveType: PrimitiveType.NUMBER,
   }],
 };

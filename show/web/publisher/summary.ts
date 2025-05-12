@@ -45,6 +45,7 @@ export interface SeasonSummary {
   name?: string,
   coverImageUrl?: string,
   totalPublishedEpisodes?: number,
+  grade?: number,
   lastChangeTimeMs?: number,
   averageRating?: number,
   ratingsCount?: number,
@@ -69,16 +70,20 @@ export let SEASON_SUMMARY: MessageDescriptor<SeasonSummary> = {
     index: 4,
     primitiveType: PrimitiveType.NUMBER,
   }, {
-    name: 'lastChangeTimeMs',
+    name: 'grade',
     index: 5,
     primitiveType: PrimitiveType.NUMBER,
   }, {
-    name: 'averageRating',
+    name: 'lastChangeTimeMs',
     index: 6,
     primitiveType: PrimitiveType.NUMBER,
   }, {
-    name: 'ratingsCount',
+    name: 'averageRating',
     index: 7,
+    primitiveType: PrimitiveType.NUMBER,
+  }, {
+    name: 'ratingsCount',
+    index: 8,
     primitiveType: PrimitiveType.NUMBER,
   }],
 };
