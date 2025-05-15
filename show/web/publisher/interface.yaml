@@ -549,9 +549,6 @@
     - name: name
       type: string
       index: 4
-    - name: isDefault
-      type: boolean
-      index: 5
 - kind: Message
   name: UpdateSubtitleTrackResponse
 - kind: Message

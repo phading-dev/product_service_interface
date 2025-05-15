@@ -1144,7 +1144,6 @@ export interface UpdateSubtitleTrackRequestBody {
   episodeId?: string,
   r2TrackDirname?: string,
   name?: string,
-  isDefault?: boolean,
 }
 
 export let UPDATE_SUBTITLE_TRACK_REQUEST_BODY: MessageDescriptor<UpdateSubtitleTrackRequestBody> = {
@@ -1165,10 +1164,6 @@ export let UPDATE_SUBTITLE_TRACK_REQUEST_BODY: MessageDescriptor<UpdateSubtitleT
     name: 'name',
     index: 4,
     primitiveType: PrimitiveType.STRING,
-  }, {
-    name: 'isDefault',
-    index: 5,
-    primitiveType: PrimitiveType.BOOLEAN,
   }],
 };
 
