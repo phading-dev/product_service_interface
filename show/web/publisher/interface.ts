@@ -154,11 +154,37 @@ export let UPLOAD_COVER_IMAGE_RESPONSE: MessageDescriptor<UploadCoverImageRespon
 export interface UpdateSeasonGradeRequestBody {
   seasonId?: string,
   grade?: number,
-  effectiveDate?: string,
 }
 
 export let UPDATE_SEASON_GRADE_REQUEST_BODY: MessageDescriptor<UpdateSeasonGradeRequestBody> = {
   name: 'UpdateSeasonGradeRequestBody',
+  fields: [{
+    name: 'seasonId',
+    index: 1,
+    primitiveType: PrimitiveType.STRING,
+  }, {
+    name: 'grade',
+    index: 2,
+    primitiveType: PrimitiveType.NUMBER,
+  }],
+};
+
+export interface UpdateSeasonGradeResponse {
+}
+
+export let UPDATE_SEASON_GRADE_RESPONSE: MessageDescriptor<UpdateSeasonGradeResponse> = {
+  name: 'UpdateSeasonGradeResponse',
+  fields: [],
+};
+
+export interface UpdateNextSeasonGradeRequestBody {
+  seasonId?: string,
+  grade?: number,
+  effectiveDate?: string,
+}
+
+export let UPDATE_NEXT_SEASON_GRADE_REQUEST_BODY: MessageDescriptor<UpdateNextSeasonGradeRequestBody> = {
+  name: 'UpdateNextSeasonGradeRequestBody',
   fields: [{
     name: 'seasonId',
     index: 1,
@@ -174,11 +200,32 @@ export let UPDATE_SEASON_GRADE_REQUEST_BODY: MessageDescriptor<UpdateSeasonGrade
   }],
 };
 
-export interface UpdateSeasonGradeResponse {
+export interface UpdateNextSeasonGradeResponse {
 }
 
-export let UPDATE_SEASON_GRADE_RESPONSE: MessageDescriptor<UpdateSeasonGradeResponse> = {
-  name: 'UpdateSeasonGradeResponse',
+export let UPDATE_NEXT_SEASON_GRADE_RESPONSE: MessageDescriptor<UpdateNextSeasonGradeResponse> = {
+  name: 'UpdateNextSeasonGradeResponse',
+  fields: [],
+};
+
+export interface DeleteNextSeasonGradeRequestBody {
+  seasonId?: string,
+}
+
+export let DELETE_NEXT_SEASON_GRADE_REQUEST_BODY: MessageDescriptor<DeleteNextSeasonGradeRequestBody> = {
+  name: 'DeleteNextSeasonGradeRequestBody',
+  fields: [{
+    name: 'seasonId',
+    index: 1,
+    primitiveType: PrimitiveType.STRING,
+  }],
+};
+
+export interface DeleteNextSeasonGradeResponse {
+}
+
+export let DELETE_NEXT_SEASON_GRADE_RESPONSE: MessageDescriptor<DeleteNextSeasonGradeResponse> = {
+  name: 'DeleteNextSeasonGradeResponse',
   fields: [],
 };
 
@@ -1287,6 +1334,32 @@ export let UPDATE_SEASON_GRADE: RemoteCallDescriptor = {
   authKey: "a",
   response: {
     messageType: UPDATE_SEASON_GRADE_RESPONSE,
+  },
+}
+
+export let UPDATE_NEXT_SEASON_GRADE: RemoteCallDescriptor = {
+  name: "UpdateNextSeasonGrade",
+  service: PRODUCT_WEB_SERVICE,
+  path: "/UpdateNextSeasonGrade",
+  body: {
+    messageType: UPDATE_NEXT_SEASON_GRADE_REQUEST_BODY,
+  },
+  authKey: "a",
+  response: {
+    messageType: UPDATE_NEXT_SEASON_GRADE_RESPONSE,
+  },
+}
+
+export let DELETE_NEXT_SEASON_GRADE: RemoteCallDescriptor = {
+  name: "DeleteNextSeasonGrade",
+  service: PRODUCT_WEB_SERVICE,
+  path: "/DeleteNextSeasonGrade",
+  body: {
+    messageType: DELETE_NEXT_SEASON_GRADE_REQUEST_BODY,
+  },
+  authKey: "a",
+  response: {
+    messageType: DELETE_NEXT_SEASON_GRADE_RESPONSE,
   },
 }
 

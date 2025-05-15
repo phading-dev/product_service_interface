@@ -70,11 +70,30 @@
     - name: grade
       type: number
       index: 2
+- kind: Message
+  name: UpdateSeasonGradeResponse
+- kind: Message
+  name: UpdateNextSeasonGradeRequestBody
+  fields:
+    - name: seasonId
+      type: string
+      index: 1
+    - name: grade
+      type: number
+      index: 2
     - name: effectiveDate
       type: string
       index: 3
 - kind: Message
-  name: UpdateSeasonGradeResponse
+  name: UpdateNextSeasonGradeResponse
+- kind: Message
+  name: DeleteNextSeasonGradeRequestBody
+  fields:
+    - name: seasonId
+      type: string
+      index: 1
+- kind: Message
+  name: DeleteNextSeasonGradeResponse
 - kind: Message
   name: ListSeasonsRequestBody
   fields:
@@ -606,6 +625,16 @@
       body: UpdateSeasonGradeRequestBody
       authKey: a
       response: UpdateSeasonGradeResponse
+    - name: UpdateNextSeasonGrade
+      path: /UpdateNextSeasonGrade
+      body: UpdateNextSeasonGradeRequestBody
+      authKey: a
+      response: UpdateNextSeasonGradeResponse
+    - name: DeleteNextSeasonGrade
+      path: /DeleteNextSeasonGrade
+      body: DeleteNextSeasonGradeRequestBody
+      authKey: a
+      response: DeleteNextSeasonGradeResponse
     - name: ListSeasons
       path: /ListSeasons
       body: ListSeasonsRequestBody
