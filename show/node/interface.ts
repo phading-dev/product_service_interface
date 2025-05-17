@@ -1,5 +1,5 @@
 import { PrimitiveType, MessageDescriptor } from '@selfage/message/descriptor';
-import { VideoContainer, VIDEO_CONTAINER } from '../video_container';
+import { VideoContainerCached, VIDEO_CONTAINER_CACHED } from '../video_container_cached';
 import { PRODUCT_NODE_SERVICE } from '../../service';
 import { RemoteCallDescriptor } from '@selfage/service_descriptor';
 
@@ -63,7 +63,7 @@ export let GET_SEASON_GRADE_RESPONSE: MessageDescriptor<GetSeasonGradeResponse> 
 export interface CacheVideoContainerRequestBody {
   seasonId?: string,
   episodeId?: string,
-  videoContainer?: VideoContainer,
+  videoContainerCached?: VideoContainerCached,
 }
 
 export let CACHE_VIDEO_CONTAINER_REQUEST_BODY: MessageDescriptor<CacheVideoContainerRequestBody> = {
@@ -77,9 +77,9 @@ export let CACHE_VIDEO_CONTAINER_REQUEST_BODY: MessageDescriptor<CacheVideoConta
     index: 2,
     primitiveType: PrimitiveType.STRING,
   }, {
-    name: 'videoContainer',
+    name: 'videoContainerCached',
     index: 3,
-    messageType: VIDEO_CONTAINER,
+    messageType: VIDEO_CONTAINER_CACHED,
   }],
 };
 

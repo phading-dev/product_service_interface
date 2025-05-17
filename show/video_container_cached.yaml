@@ -1,5 +1,5 @@
 - kind: Message
-  name: VideoContainer
+  name: VideoContainerCached
   fields:
     - name: version
       type: number

@@ -34,9 +34,9 @@
     - name: episodeId
       type: string
       index: 2
-    - name: videoContainer
-      type: VideoContainer
-      import: ./show/video_container
+    - name: videoContainerCached
+      type: VideoContainerCached
+      import: ./show/video_container_cached
       index: 3
 - kind: Message
   name: CacheVideoContainerResponse

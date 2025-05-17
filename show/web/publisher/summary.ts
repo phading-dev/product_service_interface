@@ -1,12 +1,12 @@
 import { PrimitiveType, MessageDescriptor } from '@selfage/message/descriptor';
-import { VideoContainer, VIDEO_CONTAINER } from '../../video_container';
+import { VideoContainerCached, VIDEO_CONTAINER_CACHED } from '../../video_container_cached';
 import { EpisodeState, EPISODE_STATE } from '../../episode_state';
 
 export interface EpisodeSummary {
   episodeId?: string,
   index?: number,
   name?: string,
-  videoContainer?: VideoContainer,
+  videoContainer?: VideoContainerCached,
   state?: EpisodeState,
   premiereTimeMs?: number,
 }
@@ -28,7 +28,7 @@ export let EPISODE_SUMMARY: MessageDescriptor<EpisodeSummary> = {
   }, {
     name: 'videoContainer',
     index: 4,
-    messageType: VIDEO_CONTAINER,
+    messageType: VIDEO_CONTAINER_CACHED,
   }, {
     name: 'state',
     index: 5,

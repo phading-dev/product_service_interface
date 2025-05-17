@@ -1,15 +1,19 @@
 import { PrimitiveType, MessageDescriptor } from '@selfage/message/descriptor';
-import { VideoContainer, VIDEO_CONTAINER } from '@phading/video_service_interface/node/video_container';
 import { EpisodeState, EPISODE_STATE } from '../../episode_state';
+import { VideoContainerCached, VIDEO_CONTAINER_CACHED } from '../../video_container_cached';
+import { VideoContainer, VIDEO_CONTAINER } from '@phading/video_service_interface/node/video_container';
 import { SeasonState, SEASON_STATE } from '../../season_state';
 
 export interface EpisodeDetails {
   seasonName?: string,
   episodeName?: string,
-  episodeIndex?: number,
-  videoContainer?: VideoContainer,
   state?: EpisodeState,
+  episodeIndex?: number,
+  totalPublishedEpisodes?: number,
   premiereTimeMs?: number,
+  videoContainerCached?: VideoContainerCached,
+  videoUrl?: string,
+  videoContainer?: VideoContainer,
 }
 
 export let EPISODE_DETAILS: MessageDescriptor<EpisodeDetails> = {
@@ -23,21 +27,33 @@ export let EPISODE_DETAILS: MessageDescriptor<EpisodeDetails> = {
     index: 2,
     primitiveType: PrimitiveType.STRING,
   }, {
-    name: 'episodeIndex',
+    name: 'state',
     index: 3,
+    enumType: EPISODE_STATE,
+  }, {
+    name: 'episodeIndex',
+    index: 4,
     primitiveType: PrimitiveType.NUMBER,
   }, {
-    name: 'videoContainer',
-    index: 4,
-    messageType: VIDEO_CONTAINER,
-  }, {
-    name: 'state',
+    name: 'totalPublishedEpisodes',
     index: 5,
-    enumType: EPISODE_STATE,
+    primitiveType: PrimitiveType.NUMBER,
   }, {
     name: 'premiereTimeMs',
     index: 6,
     primitiveType: PrimitiveType.NUMBER,
+  }, {
+    name: 'videoContainerCached',
+    index: 7,
+    messageType: VIDEO_CONTAINER_CACHED,
+  }, {
+    name: 'videoUrl',
+    index: 8,
+    primitiveType: PrimitiveType.STRING,
+  }, {
+    name: 'videoContainer',
+    index: 9,
+    messageType: VIDEO_CONTAINER,
   }],
 };
 

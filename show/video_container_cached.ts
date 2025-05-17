@@ -1,6 +1,6 @@
 import { PrimitiveType, MessageDescriptor } from '@selfage/message/descriptor';
 
-export interface VideoContainer {
+export interface VideoContainerCached {
   version?: number,
   r2RootDirname?: string,
   r2MasterPlaylistFilename?: string,
@@ -8,8 +8,8 @@ export interface VideoContainer {
   resolution?: string,
 }
 
-export let VIDEO_CONTAINER: MessageDescriptor<VideoContainer> = {
-  name: 'VideoContainer',
+export let VIDEO_CONTAINER_CACHED: MessageDescriptor<VideoContainerCached> = {
+  name: 'VideoContainerCached',
   fields: [{
     name: 'version',
     index: 1,
