@@ -716,15 +716,16 @@ export let COMMIT_EPISODE_STAGING_DATA_RESPONSE: MessageDescriptor<CommitEpisode
   }],
 };
 
-export interface StartMediaUploadingRequestBody {
+export interface StartUploadingRequestBody {
   seasonId?: string,
   episodeId?: string,
   contentLength?: number,
-  fileType?: string,
+  fileExt?: string,
+  md5?: string,
 }
 
-export let START_MEDIA_UPLOADING_REQUEST_BODY: MessageDescriptor<StartMediaUploadingRequestBody> = {
-  name: 'StartMediaUploadingRequestBody',
+export let START_UPLOADING_REQUEST_BODY: MessageDescriptor<StartUploadingRequestBody> = {
+  name: 'StartUploadingRequestBody',
   fields: [{
     name: 'seasonId',
     index: 1,
@@ -738,19 +739,23 @@ export let START_MEDIA_UPLOADING_REQUEST_BODY: MessageDescriptor<StartMediaUploa
     index: 3,
     primitiveType: PrimitiveType.NUMBER,
   }, {
-    name: 'fileType',
+    name: 'fileExt',
     index: 4,
+    primitiveType: PrimitiveType.STRING,
+  }, {
+    name: 'md5',
+    index: 5,
     primitiveType: PrimitiveType.STRING,
   }],
 };
 
-export interface StartMediaUploadingResponse {
+export interface StartUploadingResponse {
   uploadSessionUrl?: string,
   byteOffset?: number,
 }
 
-export let START_MEDIA_UPLOADING_RESPONSE: MessageDescriptor<StartMediaUploadingResponse> = {
-  name: 'StartMediaUploadingResponse',
+export let START_UPLOADING_RESPONSE: MessageDescriptor<StartUploadingResponse> = {
+  name: 'StartUploadingResponse',
   fields: [{
     name: 'uploadSessionUrl',
     index: 1,
@@ -762,14 +767,14 @@ export let START_MEDIA_UPLOADING_RESPONSE: MessageDescriptor<StartMediaUploading
   }],
 };
 
-export interface CompleteMediaUploadingRequestBody {
+export interface CompleteUploadingRequestBody {
   seasonId?: string,
   episodeId?: string,
   uploadSessionUrl?: string,
 }
 
-export let COMPLETE_MEDIA_UPLOADING_REQUEST_BODY: MessageDescriptor<CompleteMediaUploadingRequestBody> = {
-  name: 'CompleteMediaUploadingRequestBody',
+export let COMPLETE_UPLOADING_REQUEST_BODY: MessageDescriptor<CompleteUploadingRequestBody> = {
+  name: 'CompleteUploadingRequestBody',
   fields: [{
     name: 'seasonId',
     index: 1,
@@ -785,21 +790,21 @@ export let COMPLETE_MEDIA_UPLOADING_REQUEST_BODY: MessageDescriptor<CompleteMedi
   }],
 };
 
-export interface CompleteMediaUploadingResponse {
+export interface CompleteUploadingResponse {
 }
 
-export let COMPLETE_MEDIA_UPLOADING_RESPONSE: MessageDescriptor<CompleteMediaUploadingResponse> = {
-  name: 'CompleteMediaUploadingResponse',
+export let COMPLETE_UPLOADING_RESPONSE: MessageDescriptor<CompleteUploadingResponse> = {
+  name: 'CompleteUploadingResponse',
   fields: [],
 };
 
-export interface CancelMediaUploadingRequestBody {
+export interface CancelUploadingRequestBody {
   seasonId?: string,
   episodeId?: string,
 }
 
-export let CANCEL_MEDIA_UPLOADING_REQUEST_BODY: MessageDescriptor<CancelMediaUploadingRequestBody> = {
-  name: 'CancelMediaUploadingRequestBody',
+export let CANCEL_UPLOADING_REQUEST_BODY: MessageDescriptor<CancelUploadingRequestBody> = {
+  name: 'CancelUploadingRequestBody',
   fields: [{
     name: 'seasonId',
     index: 1,
@@ -811,166 +816,11 @@ export let CANCEL_MEDIA_UPLOADING_REQUEST_BODY: MessageDescriptor<CancelMediaUpl
   }],
 };
 
-export interface CancelMediaUploadingResponse {
+export interface CancelUploadingResponse {
 }
 
-export let CANCEL_MEDIA_UPLOADING_RESPONSE: MessageDescriptor<CancelMediaUploadingResponse> = {
-  name: 'CancelMediaUploadingResponse',
-  fields: [],
-};
-
-export interface StartSubtitleUploadingRequestBody {
-  seasonId?: string,
-  episodeId?: string,
-  contentLength?: number,
-  fileType?: string,
-}
-
-export let START_SUBTITLE_UPLOADING_REQUEST_BODY: MessageDescriptor<StartSubtitleUploadingRequestBody> = {
-  name: 'StartSubtitleUploadingRequestBody',
-  fields: [{
-    name: 'seasonId',
-    index: 1,
-    primitiveType: PrimitiveType.STRING,
-  }, {
-    name: 'episodeId',
-    index: 2,
-    primitiveType: PrimitiveType.STRING,
-  }, {
-    name: 'contentLength',
-    index: 3,
-    primitiveType: PrimitiveType.NUMBER,
-  }, {
-    name: 'fileType',
-    index: 4,
-    primitiveType: PrimitiveType.STRING,
-  }],
-};
-
-export interface StartSubtitleUploadingResponse {
-  uploadSessionUrl?: string,
-  byteOffset?: number,
-}
-
-export let START_SUBTITLE_UPLOADING_RESPONSE: MessageDescriptor<StartSubtitleUploadingResponse> = {
-  name: 'StartSubtitleUploadingResponse',
-  fields: [{
-    name: 'uploadSessionUrl',
-    index: 1,
-    primitiveType: PrimitiveType.STRING,
-  }, {
-    name: 'byteOffset',
-    index: 2,
-    primitiveType: PrimitiveType.NUMBER,
-  }],
-};
-
-export interface CompleteSubtitleUploadingRequestBody {
-  seasonId?: string,
-  episodeId?: string,
-  uploadSessionUrl?: string,
-}
-
-export let COMPLETE_SUBTITLE_UPLOADING_REQUEST_BODY: MessageDescriptor<CompleteSubtitleUploadingRequestBody> = {
-  name: 'CompleteSubtitleUploadingRequestBody',
-  fields: [{
-    name: 'seasonId',
-    index: 1,
-    primitiveType: PrimitiveType.STRING,
-  }, {
-    name: 'episodeId',
-    index: 2,
-    primitiveType: PrimitiveType.STRING,
-  }, {
-    name: 'uploadSessionUrl',
-    index: 3,
-    primitiveType: PrimitiveType.STRING,
-  }],
-};
-
-export interface CompleteSubtitleUploadingResponse {
-}
-
-export let COMPLETE_SUBTITLE_UPLOADING_RESPONSE: MessageDescriptor<CompleteSubtitleUploadingResponse> = {
-  name: 'CompleteSubtitleUploadingResponse',
-  fields: [],
-};
-
-export interface CancelSubtitleUploadingRequestBody {
-  seasonId?: string,
-  episodeId?: string,
-}
-
-export let CANCEL_SUBTITLE_UPLOADING_REQUEST_BODY: MessageDescriptor<CancelSubtitleUploadingRequestBody> = {
-  name: 'CancelSubtitleUploadingRequestBody',
-  fields: [{
-    name: 'seasonId',
-    index: 1,
-    primitiveType: PrimitiveType.STRING,
-  }, {
-    name: 'episodeId',
-    index: 2,
-    primitiveType: PrimitiveType.STRING,
-  }],
-};
-
-export interface CancelSubtitleUploadingResponse {
-}
-
-export let CANCEL_SUBTITLE_UPLOADING_RESPONSE: MessageDescriptor<CancelSubtitleUploadingResponse> = {
-  name: 'CancelSubtitleUploadingResponse',
-  fields: [],
-};
-
-export interface CancelMediaFormattingRequestBody {
-  seasonId?: string,
-  episodeId?: string,
-}
-
-export let CANCEL_MEDIA_FORMATTING_REQUEST_BODY: MessageDescriptor<CancelMediaFormattingRequestBody> = {
-  name: 'CancelMediaFormattingRequestBody',
-  fields: [{
-    name: 'seasonId',
-    index: 1,
-    primitiveType: PrimitiveType.STRING,
-  }, {
-    name: 'episodeId',
-    index: 2,
-    primitiveType: PrimitiveType.STRING,
-  }],
-};
-
-export interface CancelMediaFormattingResponse {
-}
-
-export let CANCEL_MEDIA_FORMATTING_RESPONSE: MessageDescriptor<CancelMediaFormattingResponse> = {
-  name: 'CancelMediaFormattingResponse',
-  fields: [],
-};
-
-export interface CancelSubtitleFormattingRequestBody {
-  seasonId?: string,
-  episodeId?: string,
-}
-
-export let CANCEL_SUBTITLE_FORMATTING_REQUEST_BODY: MessageDescriptor<CancelSubtitleFormattingRequestBody> = {
-  name: 'CancelSubtitleFormattingRequestBody',
-  fields: [{
-    name: 'seasonId',
-    index: 1,
-    primitiveType: PrimitiveType.STRING,
-  }, {
-    name: 'episodeId',
-    index: 2,
-    primitiveType: PrimitiveType.STRING,
-  }],
-};
-
-export interface CancelSubtitleFormattingResponse {
-}
-
-export let CANCEL_SUBTITLE_FORMATTING_RESPONSE: MessageDescriptor<CancelSubtitleFormattingResponse> = {
-  name: 'CancelSubtitleFormattingResponse',
+export let CANCEL_UPLOADING_RESPONSE: MessageDescriptor<CancelUploadingResponse> = {
+  name: 'CancelUploadingResponse',
   fields: [],
 };
 
@@ -1527,107 +1377,42 @@ export let COMMIT_EPISODE_STAGING_DATA: RemoteCallDescriptor = {
   },
 }
 
-export let START_MEDIA_UPLOADING: RemoteCallDescriptor = {
-  name: "StartMediaUploading",
+export let START_UPLOADING: RemoteCallDescriptor = {
+  name: "StartUploading",
   service: PRODUCT_WEB_SERVICE,
-  path: "/StartMediaUploading",
+  path: "/StartUploading",
   body: {
-    messageType: START_MEDIA_UPLOADING_REQUEST_BODY,
+    messageType: START_UPLOADING_REQUEST_BODY,
   },
   authKey: "a",
   response: {
-    messageType: START_MEDIA_UPLOADING_RESPONSE,
+    messageType: START_UPLOADING_RESPONSE,
   },
 }
 
-export let COMPLETE_MEDIA_UPLOADING: RemoteCallDescriptor = {
-  name: "CompleteMediaUploading",
+export let COMPLETE_UPLOADING: RemoteCallDescriptor = {
+  name: "CompleteUploading",
   service: PRODUCT_WEB_SERVICE,
-  path: "/CompleteMediaUploading",
+  path: "/CompleteUploading",
   body: {
-    messageType: COMPLETE_MEDIA_UPLOADING_REQUEST_BODY,
+    messageType: COMPLETE_UPLOADING_REQUEST_BODY,
   },
   authKey: "a",
   response: {
-    messageType: COMPLETE_MEDIA_UPLOADING_RESPONSE,
+    messageType: COMPLETE_UPLOADING_RESPONSE,
   },
 }
 
-export let CANCEL_MEDIA_UPLOADING: RemoteCallDescriptor = {
-  name: "CancelMediaUploading",
+export let CANCEL_UPLOADING: RemoteCallDescriptor = {
+  name: "CancelUploading",
   service: PRODUCT_WEB_SERVICE,
-  path: "/CancelMediaUploading",
+  path: "/CancelUploading",
   body: {
-    messageType: CANCEL_MEDIA_UPLOADING_REQUEST_BODY,
+    messageType: CANCEL_UPLOADING_REQUEST_BODY,
   },
   authKey: "a",
   response: {
-    messageType: CANCEL_MEDIA_UPLOADING_RESPONSE,
-  },
-}
-
-export let START_SUBTITLE_UPLOADING: RemoteCallDescriptor = {
-  name: "StartSubtitleUploading",
-  service: PRODUCT_WEB_SERVICE,
-  path: "/StartSubtitleUploading",
-  body: {
-    messageType: START_SUBTITLE_UPLOADING_REQUEST_BODY,
-  },
-  authKey: "a",
-  response: {
-    messageType: START_SUBTITLE_UPLOADING_RESPONSE,
-  },
-}
-
-export let COMPLETE_SUBTITLE_UPLOADING: RemoteCallDescriptor = {
-  name: "CompleteSubtitleUploading",
-  service: PRODUCT_WEB_SERVICE,
-  path: "/CompleteSubtitleUploading",
-  body: {
-    messageType: COMPLETE_SUBTITLE_UPLOADING_REQUEST_BODY,
-  },
-  authKey: "a",
-  response: {
-    messageType: COMPLETE_SUBTITLE_UPLOADING_RESPONSE,
-  },
-}
-
-export let CANCEL_SUBTITLE_UPLOADING: RemoteCallDescriptor = {
-  name: "CancelSubtitleUploading",
-  service: PRODUCT_WEB_SERVICE,
-  path: "/CancelSubtitleUploading",
-  body: {
-    messageType: CANCEL_SUBTITLE_UPLOADING_REQUEST_BODY,
-  },
-  authKey: "a",
-  response: {
-    messageType: CANCEL_SUBTITLE_UPLOADING_RESPONSE,
-  },
-}
-
-export let CANCEL_MEDIA_FORMATTING: RemoteCallDescriptor = {
-  name: "CancelMediaFormatting",
-  service: PRODUCT_WEB_SERVICE,
-  path: "/CancelMediaFormatting",
-  body: {
-    messageType: CANCEL_MEDIA_FORMATTING_REQUEST_BODY,
-  },
-  authKey: "a",
-  response: {
-    messageType: CANCEL_MEDIA_FORMATTING_RESPONSE,
-  },
-}
-
-export let CANCEL_SUBTITLE_FORMATTING: RemoteCallDescriptor = {
-  name: "CancelSubtitleFormatting",
-  service: PRODUCT_WEB_SERVICE,
-  path: "/CancelSubtitleFormatting",
-  body: {
-    messageType: CANCEL_SUBTITLE_FORMATTING_REQUEST_BODY,
-  },
-  authKey: "a",
-  response: {
-    messageType: CANCEL_SUBTITLE_FORMATTING_RESPONSE,
+    messageType: CANCEL_UPLOADING_RESPONSE,
   },
 }
 

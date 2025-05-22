@@ -1,4 +1,4 @@
-import { GetSeasonRequestBody, GetSeasonResponse, GET_SEASON, CreateSeasonRequestBody, CreateSeasonResponse, CREATE_SEASON, DeleteSeasonRequestBody, DeleteSeasonResponse, DELETE_SEASON, ArchiveSeasonRequestBody, ArchiveSeasonResponse, ARCHIVE_SEASON, UpdateSeasonRequestBody, UpdateSeasonResponse, UPDATE_SEASON, UploadCoverImageRequestMetadata, UploadCoverImageResponse, UPLOAD_COVER_IMAGE, UpdateSeasonGradeRequestBody, UpdateSeasonGradeResponse, UPDATE_SEASON_GRADE, UpdateNextSeasonGradeRequestBody, UpdateNextSeasonGradeResponse, UPDATE_NEXT_SEASON_GRADE, DeleteNextSeasonGradeRequestBody, DeleteNextSeasonGradeResponse, DELETE_NEXT_SEASON_GRADE, ListSeasonsRequestBody, ListSeasonsResponse, LIST_SEASONS, SearchSeasonsRequestBody, SearchSeasonsResponse, SEARCH_SEASONS, CreateEpisodeRequestBody, CreateEpisodeResponse, CREATE_EPISODE, DeleteEpisodeRequestBody, DeleteEpisodeResponse, DELETE_EPISODE, GetEpisodeRequestBody, GetEpisodeResponse, GET_EPISODE, UpdateEpisodeNameRequestBody, UpdateEpisodeNameResponse, UPDATE_EPISODE_NAME, UpdateEpisodePremiereTimeRequestBody, UpdateEpisodePremiereTimeResponse, UPDATE_EPISODE_PREMIERE_TIME, UpdateEpisodeIndexRequestBody, UpdateEpisodeIndexResponse, UPDATE_EPISODE_INDEX, PublishEpisodeRequestBody, PublishEpisodeResponse, PUBLISH_EPISODE, UnpublishEpisodeRequestBody, UnpublishEpisodeResponse, UNPUBLISH_EPISODE, ListDraftEpisodesRequestBody, ListDraftEpisodesResponse, LIST_DRAFT_EPISODES, ListPublishedEpisodesRequestBody, ListPublishedEpisodesResponse, LIST_PUBLISHED_EPISODES, CommitEpisodeStagingDataRequestBody, CommitEpisodeStagingDataResponse, COMMIT_EPISODE_STAGING_DATA, StartMediaUploadingRequestBody, StartMediaUploadingResponse, START_MEDIA_UPLOADING, CompleteMediaUploadingRequestBody, CompleteMediaUploadingResponse, COMPLETE_MEDIA_UPLOADING, CancelMediaUploadingRequestBody, CancelMediaUploadingResponse, CANCEL_MEDIA_UPLOADING, StartSubtitleUploadingRequestBody, StartSubtitleUploadingResponse, START_SUBTITLE_UPLOADING, CompleteSubtitleUploadingRequestBody, CompleteSubtitleUploadingResponse, COMPLETE_SUBTITLE_UPLOADING, CancelSubtitleUploadingRequestBody, CancelSubtitleUploadingResponse, CANCEL_SUBTITLE_UPLOADING, CancelMediaFormattingRequestBody, CancelMediaFormattingResponse, CANCEL_MEDIA_FORMATTING, CancelSubtitleFormattingRequestBody, CancelSubtitleFormattingResponse, CANCEL_SUBTITLE_FORMATTING, DeleteVideoTrackRequestBody, DeleteVideoTrackResponse, DELETE_VIDEO_TRACK, DropVideoTrackStagingDataRequestBody, DropVideoTrackStagingDataResponse, DROP_VIDEO_TRACK_STAGING_DATA, UpdateAudioTrackRequestBody, UpdateAudioTrackResponse, UPDATE_AUDIO_TRACK, DeleteAudioTrackRequestBody, DeleteAudioTrackResponse, DELETE_AUDIO_TRACK, DropAudioTrackStagingDataRequestBody, DropAudioTrackStagingDataResponse, DROP_AUDIO_TRACK_STAGING_DATA, UpdateSubtitleTrackRequestBody, UpdateSubtitleTrackResponse, UPDATE_SUBTITLE_TRACK, DeleteSubtitleTrackRequestBody, DeleteSubtitleTrackResponse, DELETE_SUBTITLE_TRACK, DropSubtitleTrackStagingDataRequestBody, DropSubtitleTrackStagingDataResponse, DROP_SUBTITLE_TRACK_STAGING_DATA } from './interface';
+import { GetSeasonRequestBody, GetSeasonResponse, GET_SEASON, CreateSeasonRequestBody, CreateSeasonResponse, CREATE_SEASON, DeleteSeasonRequestBody, DeleteSeasonResponse, DELETE_SEASON, ArchiveSeasonRequestBody, ArchiveSeasonResponse, ARCHIVE_SEASON, UpdateSeasonRequestBody, UpdateSeasonResponse, UPDATE_SEASON, UploadCoverImageRequestMetadata, UploadCoverImageResponse, UPLOAD_COVER_IMAGE, UpdateSeasonGradeRequestBody, UpdateSeasonGradeResponse, UPDATE_SEASON_GRADE, UpdateNextSeasonGradeRequestBody, UpdateNextSeasonGradeResponse, UPDATE_NEXT_SEASON_GRADE, DeleteNextSeasonGradeRequestBody, DeleteNextSeasonGradeResponse, DELETE_NEXT_SEASON_GRADE, ListSeasonsRequestBody, ListSeasonsResponse, LIST_SEASONS, SearchSeasonsRequestBody, SearchSeasonsResponse, SEARCH_SEASONS, CreateEpisodeRequestBody, CreateEpisodeResponse, CREATE_EPISODE, DeleteEpisodeRequestBody, DeleteEpisodeResponse, DELETE_EPISODE, GetEpisodeRequestBody, GetEpisodeResponse, GET_EPISODE, UpdateEpisodeNameRequestBody, UpdateEpisodeNameResponse, UPDATE_EPISODE_NAME, UpdateEpisodePremiereTimeRequestBody, UpdateEpisodePremiereTimeResponse, UPDATE_EPISODE_PREMIERE_TIME, UpdateEpisodeIndexRequestBody, UpdateEpisodeIndexResponse, UPDATE_EPISODE_INDEX, PublishEpisodeRequestBody, PublishEpisodeResponse, PUBLISH_EPISODE, UnpublishEpisodeRequestBody, UnpublishEpisodeResponse, UNPUBLISH_EPISODE, ListDraftEpisodesRequestBody, ListDraftEpisodesResponse, LIST_DRAFT_EPISODES, ListPublishedEpisodesRequestBody, ListPublishedEpisodesResponse, LIST_PUBLISHED_EPISODES, CommitEpisodeStagingDataRequestBody, CommitEpisodeStagingDataResponse, COMMIT_EPISODE_STAGING_DATA, StartUploadingRequestBody, StartUploadingResponse, START_UPLOADING, CompleteUploadingRequestBody, CompleteUploadingResponse, COMPLETE_UPLOADING, CancelUploadingRequestBody, CancelUploadingResponse, CANCEL_UPLOADING, DeleteVideoTrackRequestBody, DeleteVideoTrackResponse, DELETE_VIDEO_TRACK, DropVideoTrackStagingDataRequestBody, DropVideoTrackStagingDataResponse, DROP_VIDEO_TRACK_STAGING_DATA, UpdateAudioTrackRequestBody, UpdateAudioTrackResponse, UPDATE_AUDIO_TRACK, DeleteAudioTrackRequestBody, DeleteAudioTrackResponse, DELETE_AUDIO_TRACK, DropAudioTrackStagingDataRequestBody, DropAudioTrackStagingDataResponse, DROP_AUDIO_TRACK_STAGING_DATA, UpdateSubtitleTrackRequestBody, UpdateSubtitleTrackResponse, UPDATE_SUBTITLE_TRACK, DeleteSubtitleTrackRequestBody, DeleteSubtitleTrackResponse, DELETE_SUBTITLE_TRACK, DropSubtitleTrackStagingDataRequestBody, DropSubtitleTrackStagingDataResponse, DROP_SUBTITLE_TRACK_STAGING_DATA } from './interface';
 import { ClientRequestInterface } from '@selfage/service_descriptor/client_request_interface';
 
 export function newGetSeasonRequest(
@@ -201,74 +201,29 @@ export function newCommitEpisodeStagingDataRequest(
   };
 }
 
-export function newStartMediaUploadingRequest(
-  body: StartMediaUploadingRequestBody,
-): ClientRequestInterface<StartMediaUploadingResponse> {
+export function newStartUploadingRequest(
+  body: StartUploadingRequestBody,
+): ClientRequestInterface<StartUploadingResponse> {
   return {
-    descriptor: START_MEDIA_UPLOADING,
+    descriptor: START_UPLOADING,
     body,
   };
 }
 
-export function newCompleteMediaUploadingRequest(
-  body: CompleteMediaUploadingRequestBody,
-): ClientRequestInterface<CompleteMediaUploadingResponse> {
+export function newCompleteUploadingRequest(
+  body: CompleteUploadingRequestBody,
+): ClientRequestInterface<CompleteUploadingResponse> {
   return {
-    descriptor: COMPLETE_MEDIA_UPLOADING,
+    descriptor: COMPLETE_UPLOADING,
     body,
   };
 }
 
-export function newCancelMediaUploadingRequest(
-  body: CancelMediaUploadingRequestBody,
-): ClientRequestInterface<CancelMediaUploadingResponse> {
+export function newCancelUploadingRequest(
+  body: CancelUploadingRequestBody,
+): ClientRequestInterface<CancelUploadingResponse> {
   return {
-    descriptor: CANCEL_MEDIA_UPLOADING,
-    body,
-  };
-}
-
-export function newStartSubtitleUploadingRequest(
-  body: StartSubtitleUploadingRequestBody,
-): ClientRequestInterface<StartSubtitleUploadingResponse> {
-  return {
-    descriptor: START_SUBTITLE_UPLOADING,
-    body,
-  };
-}
-
-export function newCompleteSubtitleUploadingRequest(
-  body: CompleteSubtitleUploadingRequestBody,
-): ClientRequestInterface<CompleteSubtitleUploadingResponse> {
-  return {
-    descriptor: COMPLETE_SUBTITLE_UPLOADING,
-    body,
-  };
-}
-
-export function newCancelSubtitleUploadingRequest(
-  body: CancelSubtitleUploadingRequestBody,
-): ClientRequestInterface<CancelSubtitleUploadingResponse> {
-  return {
-    descriptor: CANCEL_SUBTITLE_UPLOADING,
-    body,
-  };
-}
-
-export function newCancelMediaFormattingRequest(
-  body: CancelMediaFormattingRequestBody,
-): ClientRequestInterface<CancelMediaFormattingResponse> {
-  return {
-    descriptor: CANCEL_MEDIA_FORMATTING,
-    body,
-  };
-}
-
-export function newCancelSubtitleFormattingRequest(
-  body: CancelSubtitleFormattingRequestBody,
-): ClientRequestInterface<CancelSubtitleFormattingResponse> {
-  return {
-    descriptor: CANCEL_SUBTITLE_FORMATTING,
+    descriptor: CANCEL_UPLOADING,
     body,
   };
 }
