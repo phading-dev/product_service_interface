@@ -1,4 +1,4 @@
-import { GetSeasonRequestBody, GET_SEASON, GetSeasonResponse, CreateSeasonRequestBody, CREATE_SEASON, CreateSeasonResponse, DeleteSeasonRequestBody, DELETE_SEASON, DeleteSeasonResponse, ArchiveSeasonRequestBody, ARCHIVE_SEASON, ArchiveSeasonResponse, UpdateSeasonRequestBody, UPDATE_SEASON, UpdateSeasonResponse, UploadCoverImageRequestMetadata, UPLOAD_COVER_IMAGE, UploadCoverImageResponse, UpdateSeasonGradeRequestBody, UPDATE_SEASON_GRADE, UpdateSeasonGradeResponse, UpdateNextSeasonGradeRequestBody, UPDATE_NEXT_SEASON_GRADE, UpdateNextSeasonGradeResponse, DeleteNextSeasonGradeRequestBody, DELETE_NEXT_SEASON_GRADE, DeleteNextSeasonGradeResponse, ListSeasonsRequestBody, LIST_SEASONS, ListSeasonsResponse, SearchSeasonsRequestBody, SEARCH_SEASONS, SearchSeasonsResponse, CreateEpisodeRequestBody, CREATE_EPISODE, CreateEpisodeResponse, DeleteEpisodeRequestBody, DELETE_EPISODE, DeleteEpisodeResponse, GetEpisodeRequestBody, GET_EPISODE, GetEpisodeResponse, UpdateEpisodeNameRequestBody, UPDATE_EPISODE_NAME, UpdateEpisodeNameResponse, UpdateEpisodePremiereTimeRequestBody, UPDATE_EPISODE_PREMIERE_TIME, UpdateEpisodePremiereTimeResponse, UpdateEpisodeIndexRequestBody, UPDATE_EPISODE_INDEX, UpdateEpisodeIndexResponse, PublishEpisodeRequestBody, PUBLISH_EPISODE, PublishEpisodeResponse, UnpublishEpisodeRequestBody, UNPUBLISH_EPISODE, UnpublishEpisodeResponse, ListDraftEpisodesRequestBody, LIST_DRAFT_EPISODES, ListDraftEpisodesResponse, ListPublishedEpisodesRequestBody, LIST_PUBLISHED_EPISODES, ListPublishedEpisodesResponse, CommitEpisodeStagingDataRequestBody, COMMIT_EPISODE_STAGING_DATA, CommitEpisodeStagingDataResponse, StartUploadingRequestBody, START_UPLOADING, StartUploadingResponse, CompleteUploadingRequestBody, COMPLETE_UPLOADING, CompleteUploadingResponse, CancelUploadingRequestBody, CANCEL_UPLOADING, CancelUploadingResponse, DeleteVideoTrackRequestBody, DELETE_VIDEO_TRACK, DeleteVideoTrackResponse, DropVideoTrackStagingDataRequestBody, DROP_VIDEO_TRACK_STAGING_DATA, DropVideoTrackStagingDataResponse, UpdateAudioTrackRequestBody, UPDATE_AUDIO_TRACK, UpdateAudioTrackResponse, DeleteAudioTrackRequestBody, DELETE_AUDIO_TRACK, DeleteAudioTrackResponse, DropAudioTrackStagingDataRequestBody, DROP_AUDIO_TRACK_STAGING_DATA, DropAudioTrackStagingDataResponse, UpdateSubtitleTrackRequestBody, UPDATE_SUBTITLE_TRACK, UpdateSubtitleTrackResponse, DeleteSubtitleTrackRequestBody, DELETE_SUBTITLE_TRACK, DeleteSubtitleTrackResponse, DropSubtitleTrackStagingDataRequestBody, DROP_SUBTITLE_TRACK_STAGING_DATA, DropSubtitleTrackStagingDataResponse } from './interface';
+import { GetSeasonRequestBody, GET_SEASON, GetSeasonResponse, CreateSeasonRequestBody, CREATE_SEASON, CreateSeasonResponse, DeleteSeasonRequestBody, DELETE_SEASON, DeleteSeasonResponse, ArchiveSeasonRequestBody, ARCHIVE_SEASON, ArchiveSeasonResponse, UpdateSeasonRequestBody, UPDATE_SEASON, UpdateSeasonResponse, UploadCoverImageRequestMetadata, UPLOAD_COVER_IMAGE, UploadCoverImageResponse, UpdateSeasonGradeRequestBody, UPDATE_SEASON_GRADE, UpdateSeasonGradeResponse, UpdateNextSeasonGradeRequestBody, UPDATE_NEXT_SEASON_GRADE, UpdateNextSeasonGradeResponse, DeleteNextSeasonGradeRequestBody, DELETE_NEXT_SEASON_GRADE, DeleteNextSeasonGradeResponse, ListSeasonsRequestBody, LIST_SEASONS, ListSeasonsResponse, SearchSeasonsRequestBody, SEARCH_SEASONS, SearchSeasonsResponse, CreateEpisodeRequestBody, CREATE_EPISODE, CreateEpisodeResponse, DeleteEpisodeRequestBody, DELETE_EPISODE, DeleteEpisodeResponse, GetEpisodeRequestBody, GET_EPISODE, GetEpisodeResponse, UpdateEpisodeNameRequestBody, UPDATE_EPISODE_NAME, UpdateEpisodeNameResponse, UpdateEpisodePremiereTimeRequestBody, UPDATE_EPISODE_PREMIERE_TIME, UpdateEpisodePremiereTimeResponse, UpdateEpisodeIndexRequestBody, UPDATE_EPISODE_INDEX, UpdateEpisodeIndexResponse, PublishEpisodeRequestBody, PUBLISH_EPISODE, PublishEpisodeResponse, UnpublishEpisodeRequestBody, UNPUBLISH_EPISODE, UnpublishEpisodeResponse, ListDraftEpisodesRequestBody, LIST_DRAFT_EPISODES, ListDraftEpisodesResponse, ListPublishedEpisodesRequestBody, LIST_PUBLISHED_EPISODES, ListPublishedEpisodesResponse, StartUploadingRequestBody, START_UPLOADING, StartUploadingResponse, CompleteUploadingRequestBody, COMPLETE_UPLOADING, CompleteUploadingResponse, CancelUploadingRequestBody, CANCEL_UPLOADING, CancelUploadingResponse, SaveEpisodeStagingDataRequestBody, SAVE_EPISODE_STAGING_DATA, SaveEpisodeStagingDataResponse, CommitEpisodeStagingDataRequestBody, COMMIT_EPISODE_STAGING_DATA, CommitEpisodeStagingDataResponse } from './interface';
 import { RemoteCallHandlerInterface } from '@selfage/service_descriptor/remote_call_handler_interface';
 import { Readable } from 'stream';
 
@@ -192,15 +192,6 @@ export abstract class ListPublishedEpisodesHandlerInterface implements RemoteCal
   ): Promise<ListPublishedEpisodesResponse>;
 }
 
-export abstract class CommitEpisodeStagingDataHandlerInterface implements RemoteCallHandlerInterface {
-  public descriptor = COMMIT_EPISODE_STAGING_DATA;
-  public abstract handle(
-    loggingPrefix: string,
-    body: CommitEpisodeStagingDataRequestBody,
-    authStr: string,
-  ): Promise<CommitEpisodeStagingDataResponse>;
-}
-
 export abstract class StartUploadingHandlerInterface implements RemoteCallHandlerInterface {
   public descriptor = START_UPLOADING;
   public abstract handle(
@@ -228,74 +219,20 @@ export abstract class CancelUploadingHandlerInterface implements RemoteCallHandl
   ): Promise<CancelUploadingResponse>;
 }
 
-export abstract class DeleteVideoTrackHandlerInterface implements RemoteCallHandlerInterface {
-  public descriptor = DELETE_VIDEO_TRACK;
+export abstract class SaveEpisodeStagingDataHandlerInterface implements RemoteCallHandlerInterface {
+  public descriptor = SAVE_EPISODE_STAGING_DATA;
   public abstract handle(
     loggingPrefix: string,
-    body: DeleteVideoTrackRequestBody,
+    body: SaveEpisodeStagingDataRequestBody,
     authStr: string,
-  ): Promise<DeleteVideoTrackResponse>;
+  ): Promise<SaveEpisodeStagingDataResponse>;
 }
 
-export abstract class DropVideoTrackStagingDataHandlerInterface implements RemoteCallHandlerInterface {
-  public descriptor = DROP_VIDEO_TRACK_STAGING_DATA;
+export abstract class CommitEpisodeStagingDataHandlerInterface implements RemoteCallHandlerInterface {
+  public descriptor = COMMIT_EPISODE_STAGING_DATA;
   public abstract handle(
     loggingPrefix: string,
-    body: DropVideoTrackStagingDataRequestBody,
+    body: CommitEpisodeStagingDataRequestBody,
     authStr: string,
-  ): Promise<DropVideoTrackStagingDataResponse>;
-}
-
-export abstract class UpdateAudioTrackHandlerInterface implements RemoteCallHandlerInterface {
-  public descriptor = UPDATE_AUDIO_TRACK;
-  public abstract handle(
-    loggingPrefix: string,
-    body: UpdateAudioTrackRequestBody,
-    authStr: string,
-  ): Promise<UpdateAudioTrackResponse>;
-}
-
-export abstract class DeleteAudioTrackHandlerInterface implements RemoteCallHandlerInterface {
-  public descriptor = DELETE_AUDIO_TRACK;
-  public abstract handle(
-    loggingPrefix: string,
-    body: DeleteAudioTrackRequestBody,
-    authStr: string,
-  ): Promise<DeleteAudioTrackResponse>;
-}
-
-export abstract class DropAudioTrackStagingDataHandlerInterface implements RemoteCallHandlerInterface {
-  public descriptor = DROP_AUDIO_TRACK_STAGING_DATA;
-  public abstract handle(
-    loggingPrefix: string,
-    body: DropAudioTrackStagingDataRequestBody,
-    authStr: string,
-  ): Promise<DropAudioTrackStagingDataResponse>;
-}
-
-export abstract class UpdateSubtitleTrackHandlerInterface implements RemoteCallHandlerInterface {
-  public descriptor = UPDATE_SUBTITLE_TRACK;
-  public abstract handle(
-    loggingPrefix: string,
-    body: UpdateSubtitleTrackRequestBody,
-    authStr: string,
-  ): Promise<UpdateSubtitleTrackResponse>;
-}
-
-export abstract class DeleteSubtitleTrackHandlerInterface implements RemoteCallHandlerInterface {
-  public descriptor = DELETE_SUBTITLE_TRACK;
-  public abstract handle(
-    loggingPrefix: string,
-    body: DeleteSubtitleTrackRequestBody,
-    authStr: string,
-  ): Promise<DeleteSubtitleTrackResponse>;
-}
-
-export abstract class DropSubtitleTrackStagingDataHandlerInterface implements RemoteCallHandlerInterface {
-  public descriptor = DROP_SUBTITLE_TRACK_STAGING_DATA;
-  public abstract handle(
-    loggingPrefix: string,
-    body: DropSubtitleTrackStagingDataRequestBody,
-    authStr: string,
-  ): Promise<DropSubtitleTrackStagingDataResponse>;
+  ): Promise<CommitEpisodeStagingDataResponse>;
 }

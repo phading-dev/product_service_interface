@@ -1,4 +1,4 @@
-import { GetSeasonRequestBody, GetSeasonResponse, GET_SEASON, CreateSeasonRequestBody, CreateSeasonResponse, CREATE_SEASON, DeleteSeasonRequestBody, DeleteSeasonResponse, DELETE_SEASON, ArchiveSeasonRequestBody, ArchiveSeasonResponse, ARCHIVE_SEASON, UpdateSeasonRequestBody, UpdateSeasonResponse, UPDATE_SEASON, UploadCoverImageRequestMetadata, UploadCoverImageResponse, UPLOAD_COVER_IMAGE, UpdateSeasonGradeRequestBody, UpdateSeasonGradeResponse, UPDATE_SEASON_GRADE, UpdateNextSeasonGradeRequestBody, UpdateNextSeasonGradeResponse, UPDATE_NEXT_SEASON_GRADE, DeleteNextSeasonGradeRequestBody, DeleteNextSeasonGradeResponse, DELETE_NEXT_SEASON_GRADE, ListSeasonsRequestBody, ListSeasonsResponse, LIST_SEASONS, SearchSeasonsRequestBody, SearchSeasonsResponse, SEARCH_SEASONS, CreateEpisodeRequestBody, CreateEpisodeResponse, CREATE_EPISODE, DeleteEpisodeRequestBody, DeleteEpisodeResponse, DELETE_EPISODE, GetEpisodeRequestBody, GetEpisodeResponse, GET_EPISODE, UpdateEpisodeNameRequestBody, UpdateEpisodeNameResponse, UPDATE_EPISODE_NAME, UpdateEpisodePremiereTimeRequestBody, UpdateEpisodePremiereTimeResponse, UPDATE_EPISODE_PREMIERE_TIME, UpdateEpisodeIndexRequestBody, UpdateEpisodeIndexResponse, UPDATE_EPISODE_INDEX, PublishEpisodeRequestBody, PublishEpisodeResponse, PUBLISH_EPISODE, UnpublishEpisodeRequestBody, UnpublishEpisodeResponse, UNPUBLISH_EPISODE, ListDraftEpisodesRequestBody, ListDraftEpisodesResponse, LIST_DRAFT_EPISODES, ListPublishedEpisodesRequestBody, ListPublishedEpisodesResponse, LIST_PUBLISHED_EPISODES, CommitEpisodeStagingDataRequestBody, CommitEpisodeStagingDataResponse, COMMIT_EPISODE_STAGING_DATA, StartUploadingRequestBody, StartUploadingResponse, START_UPLOADING, CompleteUploadingRequestBody, CompleteUploadingResponse, COMPLETE_UPLOADING, CancelUploadingRequestBody, CancelUploadingResponse, CANCEL_UPLOADING, DeleteVideoTrackRequestBody, DeleteVideoTrackResponse, DELETE_VIDEO_TRACK, DropVideoTrackStagingDataRequestBody, DropVideoTrackStagingDataResponse, DROP_VIDEO_TRACK_STAGING_DATA, UpdateAudioTrackRequestBody, UpdateAudioTrackResponse, UPDATE_AUDIO_TRACK, DeleteAudioTrackRequestBody, DeleteAudioTrackResponse, DELETE_AUDIO_TRACK, DropAudioTrackStagingDataRequestBody, DropAudioTrackStagingDataResponse, DROP_AUDIO_TRACK_STAGING_DATA, UpdateSubtitleTrackRequestBody, UpdateSubtitleTrackResponse, UPDATE_SUBTITLE_TRACK, DeleteSubtitleTrackRequestBody, DeleteSubtitleTrackResponse, DELETE_SUBTITLE_TRACK, DropSubtitleTrackStagingDataRequestBody, DropSubtitleTrackStagingDataResponse, DROP_SUBTITLE_TRACK_STAGING_DATA } from './interface';
+import { GetSeasonRequestBody, GetSeasonResponse, GET_SEASON, CreateSeasonRequestBody, CreateSeasonResponse, CREATE_SEASON, DeleteSeasonRequestBody, DeleteSeasonResponse, DELETE_SEASON, ArchiveSeasonRequestBody, ArchiveSeasonResponse, ARCHIVE_SEASON, UpdateSeasonRequestBody, UpdateSeasonResponse, UPDATE_SEASON, UploadCoverImageRequestMetadata, UploadCoverImageResponse, UPLOAD_COVER_IMAGE, UpdateSeasonGradeRequestBody, UpdateSeasonGradeResponse, UPDATE_SEASON_GRADE, UpdateNextSeasonGradeRequestBody, UpdateNextSeasonGradeResponse, UPDATE_NEXT_SEASON_GRADE, DeleteNextSeasonGradeRequestBody, DeleteNextSeasonGradeResponse, DELETE_NEXT_SEASON_GRADE, ListSeasonsRequestBody, ListSeasonsResponse, LIST_SEASONS, SearchSeasonsRequestBody, SearchSeasonsResponse, SEARCH_SEASONS, CreateEpisodeRequestBody, CreateEpisodeResponse, CREATE_EPISODE, DeleteEpisodeRequestBody, DeleteEpisodeResponse, DELETE_EPISODE, GetEpisodeRequestBody, GetEpisodeResponse, GET_EPISODE, UpdateEpisodeNameRequestBody, UpdateEpisodeNameResponse, UPDATE_EPISODE_NAME, UpdateEpisodePremiereTimeRequestBody, UpdateEpisodePremiereTimeResponse, UPDATE_EPISODE_PREMIERE_TIME, UpdateEpisodeIndexRequestBody, UpdateEpisodeIndexResponse, UPDATE_EPISODE_INDEX, PublishEpisodeRequestBody, PublishEpisodeResponse, PUBLISH_EPISODE, UnpublishEpisodeRequestBody, UnpublishEpisodeResponse, UNPUBLISH_EPISODE, ListDraftEpisodesRequestBody, ListDraftEpisodesResponse, LIST_DRAFT_EPISODES, ListPublishedEpisodesRequestBody, ListPublishedEpisodesResponse, LIST_PUBLISHED_EPISODES, StartUploadingRequestBody, StartUploadingResponse, START_UPLOADING, CompleteUploadingRequestBody, CompleteUploadingResponse, COMPLETE_UPLOADING, CancelUploadingRequestBody, CancelUploadingResponse, CANCEL_UPLOADING, SaveEpisodeStagingDataRequestBody, SaveEpisodeStagingDataResponse, SAVE_EPISODE_STAGING_DATA, CommitEpisodeStagingDataRequestBody, CommitEpisodeStagingDataResponse, COMMIT_EPISODE_STAGING_DATA } from './interface';
 import { ClientRequestInterface } from '@selfage/service_descriptor/client_request_interface';
 
 export function newGetSeasonRequest(
@@ -192,15 +192,6 @@ export function newListPublishedEpisodesRequest(
   };
 }
 
-export function newCommitEpisodeStagingDataRequest(
-  body: CommitEpisodeStagingDataRequestBody,
-): ClientRequestInterface<CommitEpisodeStagingDataResponse> {
-  return {
-    descriptor: COMMIT_EPISODE_STAGING_DATA,
-    body,
-  };
-}
-
 export function newStartUploadingRequest(
   body: StartUploadingRequestBody,
 ): ClientRequestInterface<StartUploadingResponse> {
@@ -228,74 +219,20 @@ export function newCancelUploadingRequest(
   };
 }
 
-export function newDeleteVideoTrackRequest(
-  body: DeleteVideoTrackRequestBody,
-): ClientRequestInterface<DeleteVideoTrackResponse> {
+export function newSaveEpisodeStagingDataRequest(
+  body: SaveEpisodeStagingDataRequestBody,
+): ClientRequestInterface<SaveEpisodeStagingDataResponse> {
   return {
-    descriptor: DELETE_VIDEO_TRACK,
+    descriptor: SAVE_EPISODE_STAGING_DATA,
     body,
   };
 }
 
-export function newDropVideoTrackStagingDataRequest(
-  body: DropVideoTrackStagingDataRequestBody,
-): ClientRequestInterface<DropVideoTrackStagingDataResponse> {
+export function newCommitEpisodeStagingDataRequest(
+  body: CommitEpisodeStagingDataRequestBody,
+): ClientRequestInterface<CommitEpisodeStagingDataResponse> {
   return {
-    descriptor: DROP_VIDEO_TRACK_STAGING_DATA,
-    body,
-  };
-}
-
-export function newUpdateAudioTrackRequest(
-  body: UpdateAudioTrackRequestBody,
-): ClientRequestInterface<UpdateAudioTrackResponse> {
-  return {
-    descriptor: UPDATE_AUDIO_TRACK,
-    body,
-  };
-}
-
-export function newDeleteAudioTrackRequest(
-  body: DeleteAudioTrackRequestBody,
-): ClientRequestInterface<DeleteAudioTrackResponse> {
-  return {
-    descriptor: DELETE_AUDIO_TRACK,
-    body,
-  };
-}
-
-export function newDropAudioTrackStagingDataRequest(
-  body: DropAudioTrackStagingDataRequestBody,
-): ClientRequestInterface<DropAudioTrackStagingDataResponse> {
-  return {
-    descriptor: DROP_AUDIO_TRACK_STAGING_DATA,
-    body,
-  };
-}
-
-export function newUpdateSubtitleTrackRequest(
-  body: UpdateSubtitleTrackRequestBody,
-): ClientRequestInterface<UpdateSubtitleTrackResponse> {
-  return {
-    descriptor: UPDATE_SUBTITLE_TRACK,
-    body,
-  };
-}
-
-export function newDeleteSubtitleTrackRequest(
-  body: DeleteSubtitleTrackRequestBody,
-): ClientRequestInterface<DeleteSubtitleTrackResponse> {
-  return {
-    descriptor: DELETE_SUBTITLE_TRACK,
-    body,
-  };
-}
-
-export function newDropSubtitleTrackStagingDataRequest(
-  body: DropSubtitleTrackStagingDataRequestBody,
-): ClientRequestInterface<DropSubtitleTrackStagingDataResponse> {
-  return {
-    descriptor: DROP_SUBTITLE_TRACK_STAGING_DATA,
+    descriptor: COMMIT_EPISODE_STAGING_DATA,
     body,
   };
 }

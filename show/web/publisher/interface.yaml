@@ -302,43 +302,6 @@
       type: number
       index: 2
 - kind: Message
-  name: CommitEpisodeStagingDataRequestBody
-  fields:
-    - name: seasonId
-      type: string
-      index: 1
-    - name: episodeId
-      type: string
-      index: 2
-- kind: Enum
-  name: ValidationError
-  values:
-    - name: NO_VIDEO_TRACK
-      value: 1
-    - name: MORE_THAN_ONE_VIDEO_TRACKS
-      value: 2
-    - name: TOO_MANY_AUDIO_TRACKS
-      value: 3
-    - name: NO_DEFAULT_AUDIO_TRACK
-      value: 4
-    - name: MORE_THAN_ONE_DEFAULT_AUDIO_TRACKS
-      value: 5
-    - name: TOO_MANY_SUBTITLE_TRACKS
-      value: 6
-    - name: NO_DEFAULT_SUBTITLE_TRACK
-      value: 7
-    - name: MORE_THAN_ONE_DEFAULT_SUBTITLE_TRACKS
-      value: 8
-- kind: Message
-  name: CommitEpisodeStagingDataResponse
-  fields:
-    - name: success
-      type: boolean
-      index: 1
-    - name: error
-      type: ValidationError
-      index: 2
-- kind: Message
   name: StartUploadingRequestBody
   fields:
     - name: seasonId
@@ -391,7 +354,7 @@
 - kind: Message
   name: CancelUploadingResponse
 - kind: Message
-  name: DeleteVideoTrackRequestBody
+  name: SaveEpisodeStagingDataRequestBody
   fields:
     - name: seasonId
       type: string
@@ -399,13 +362,19 @@
     - name: episodeId
       type: string
       index: 2
-    - name: r2TrackDirname
-      type: string
+    - name: videoContainerStagingData
+      type: VideoContainerStagingData
+      import: "@phading/video_service_interface/node/video_container_staging_data"
       index: 3
 - kind: Message
-  name: DeleteVideoTrackResponse
+  name: SaveEpisodeStagingDataResponse
+  fields:
+    - name: error
+      type: ValidationError
+      import: "@phading/video_service_interface/node/validation_error"
+      index: 1
 - kind: Message
-  name: DropVideoTrackStagingDataRequestBody
+  name: CommitEpisodeStagingDataRequestBody
   fields:
     - name: seasonId
       type: string
@@ -413,104 +382,17 @@
     - name: episodeId
       type: string
       index: 2
-    - name: r2TrackDirname
-      type: string
+    - name: videoContainer
+      type: VideoContainerStagingData
+      import: "@phading/video_service_interface/node/video_container_staging_data"
       index: 3
 - kind: Message
-  name: DropVideoTrackStagingDataResponse
-- kind: Message
-  name: UpdateAudioTrackRequestBody
+  name: CommitEpisodeStagingDataResponse
   fields:
-    - name: seasonId
-      type: string
+    - name: error
+      type: ValidationError
+      import: "@phading/video_service_interface/node/validation_error"
       index: 1
-    - name: episodeId
-      type: string
-      index: 2
-    - name: r2TrackDirname
-      type: string
-      index: 3
-    - name: name
-      type: string
-      index: 4
-    - name: isDefault
-      type: boolean
-      index: 5
-- kind: Message
-  name: UpdateAudioTrackResponse
-- kind: Message
-  name: DeleteAudioTrackRequestBody
-  fields:
-    - name: seasonId
-      type: string
-      index: 1
-    - name: episodeId
-      type: string
-      index: 2
-    - name: r2TrackDirname
-      type: string
-      index: 3
-- kind: Message
-  name: DeleteAudioTrackResponse
-- kind: Message
-  name: DropAudioTrackStagingDataRequestBody
-  fields:
-    - name: seasonId
-      type: string
-      index: 1
-    - name: episodeId
-      type: string
-      index: 2
-    - name: r2TrackDirname
-      type: string
-      index: 3
-- kind: Message
-  name: DropAudioTrackStagingDataResponse
-- kind: Message
-  name: UpdateSubtitleTrackRequestBody
-  fields:
-    - name: seasonId
-      type: string
-      index: 1
-    - name: episodeId
-      type: string
-      index: 2
-    - name: r2TrackDirname
-      type: string
-      index: 3
-    - name: name
-      type: string
-      index: 4
-- kind: Message
-  name: UpdateSubtitleTrackResponse
-- kind: Message
-  name: DeleteSubtitleTrackRequestBody
-  fields:
-    - name: seasonId
-      type: string
-      index: 1
-    - name: episodeId
-      type: string
-      index: 2
-    - name: r2TrackDirname
-      type: string
-      index: 3
-- kind: Message
-  name: DeleteSubtitleTrackResponse
-- kind: Message
-  name: DropSubtitleTrackStagingDataRequestBody
-  fields:
-    - name: seasonId
-      type: string
-      index: 1
-    - name: episodeId
-      type: string
-      index: 2
-    - name: r2TrackDirname
-      type: string
-      index: 3
-- kind: Message
-  name: DropSubtitleTrackStagingDataResponse
 - kind: RemoteCallsGroup
   name: ProductShowWebPublisherRemoteCalls
   service: ProductWebService
@@ -624,11 +506,6 @@
       body: ListPublishedEpisodesRequestBody
       authKey: a
       response: ListPublishedEpisodesResponse
-    - name: CommitEpisodeStagingData
-      path: /CommitEpisodeStagingData
-      body: CommitEpisodeStagingDataRequestBody
-      authKey: a
-      response: CommitEpisodeStagingDataResponse
     - name: StartUploading
       path: /StartUploading
       body: StartUploadingRequestBody
@@ -644,45 +521,15 @@
       body: CancelUploadingRequestBody
       authKey: a
       response: CancelUploadingResponse
-    - name: DeleteVideoTrack
-      path: /DeleteVideoTrack
-      body: DeleteVideoTrackRequestBody
+    - name: SaveEpisodeStagingData
+      path: /SaveEpisodeStagingData
+      body: SaveEpisodeStagingDataRequestBody
       authKey: a
-      response: DeleteVideoTrackResponse
-    - name: DropVideoTrackStagingData
-      path: /DropVideoTrackStagingData
-      body: DropVideoTrackStagingDataRequestBody
+      response: SaveEpisodeStagingDataResponse
+    - name: CommitEpisodeStagingData
+      path: /CommitEpisodeStagingData
+      body: CommitEpisodeStagingDataRequestBody
       authKey: a
-      response: DropVideoTrackStagingDataResponse
-    - name: UpdateAudioTrack
-      path: /UpdateAudioTrack
-      body: UpdateAudioTrackRequestBody
-      authKey: a
-      response: UpdateAudioTrackResponse
-    - name: DeleteAudioTrack
-      path: /DeleteAudioTrack
-      body: DeleteAudioTrackRequestBody
-      authKey: a
-      response: DeleteAudioTrackResponse
-    - name: DropAudioTrackStagingData
-      path: /DropAudioTrackStagingData
-      body: DropAudioTrackStagingDataRequestBody
-      authKey: a
-      response: DropAudioTrackStagingDataResponse
-    - name: UpdateSubtitleTrack
-      path: /UpdateSubtitleTrack
-      body: UpdateSubtitleTrackRequestBody
-      authKey: a
-      response: UpdateSubtitleTrackResponse
-    - name: DeleteSubtitleTrack
-      path: /DeleteSubtitleTrack
-      body: DeleteSubtitleTrackRequestBody
-      authKey: a
-      response: DeleteSubtitleTrackResponse
-    - name: DropSubtitleTrackStagingData
-      path: /DropSubtitleTrackStagingData
-      body: DropSubtitleTrackStagingDataRequestBody
-      authKey: a
-      response: DropSubtitleTrackStagingDataResponse
+      response: CommitEpisodeStagingDataResponse
   outputClient: ./show/web/publisher/client
   outputHandler: ./show/web/publisher/handler
