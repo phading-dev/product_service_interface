@@ -753,7 +753,7 @@ export let CANCEL_UPLOADING_RESPONSE: MessageDescriptor<CancelUploadingResponse>
 export interface SaveEpisodeStagingDataRequestBody {
   seasonId?: string,
   episodeId?: string,
-  videoContainerStagingData?: VideoContainerStagingData,
+  videoContainer?: VideoContainerStagingData,
 }
 
 export let SAVE_EPISODE_STAGING_DATA_REQUEST_BODY: MessageDescriptor<SaveEpisodeStagingDataRequestBody> = {
@@ -767,7 +767,7 @@ export let SAVE_EPISODE_STAGING_DATA_REQUEST_BODY: MessageDescriptor<SaveEpisode
     index: 2,
     primitiveType: PrimitiveType.STRING,
   }, {
-    name: 'videoContainerStagingData',
+    name: 'videoContainer',
     index: 3,
     messageType: VIDEO_CONTAINER_STAGING_DATA,
   }],

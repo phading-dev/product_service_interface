@@ -362,7 +362,7 @@
     - name: episodeId
       type: string
       index: 2
-    - name: videoContainerStagingData
+    - name: videoContainer
       type: VideoContainerStagingData
       import: "@phading/video_service_interface/node/video_container_staging_data"
       index: 3
