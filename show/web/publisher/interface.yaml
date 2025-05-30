@@ -163,9 +163,8 @@
 - kind: Message
   name: CreateEpisodeResponse
   fields:
-    - name: episode
-      type: EpisodeSummary
-      import: ./show/web/publisher/summary
+    - name: episodeId
+      type: string
       index: 1
 - kind: Message
   name: DeleteEpisodeRequestBody

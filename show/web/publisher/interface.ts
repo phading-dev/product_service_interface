@@ -349,15 +349,15 @@ export let CREATE_EPISODE_REQUEST_BODY: MessageDescriptor<CreateEpisodeRequestBo
 };
 
 export interface CreateEpisodeResponse {
-  episode?: EpisodeSummary,
+  episodeId?: string,
 }
 
 export let CREATE_EPISODE_RESPONSE: MessageDescriptor<CreateEpisodeResponse> = {
   name: 'CreateEpisodeResponse',
   fields: [{
-    name: 'episode',
+    name: 'episodeId',
     index: 1,
-    messageType: EPISODE_SUMMARY,
+    primitiveType: PrimitiveType.STRING,
   }],
 };
 
