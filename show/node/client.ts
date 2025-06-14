@@ -1,4 +1,4 @@
-import { GetSeasonPublisherRequestBody, GetSeasonPublisherResponse, GET_SEASON_PUBLISHER, GetSeasonGradeRequestBody, GetSeasonGradeResponse, GET_SEASON_GRADE, CacheVideoContainerRequestBody, CacheVideoContainerResponse, CACHE_VIDEO_CONTAINER, CheckPresenceOfSeasonRequestBody, CheckPresenceOfSeasonResponse, CHECK_PRESENCE_OF_SEASON, CheckPresenceOfEpisodeRequestBody, CheckPresenceOfEpisodeResponse, CHECK_PRESENCE_OF_EPISODE, ProcessVideoContainerCreatingTaskRequestBody, ProcessVideoContainerCreatingTaskResponse, PROCESS_VIDEO_CONTAINER_CREATING_TASK, ListVideoContainerCreatingTasksRequestBody, ListVideoContainerCreatingTasksResponse, LIST_VIDEO_CONTAINER_CREATING_TASKS, ProcessVideoContainerDeletingTaskRequestBody, ProcessVideoContainerDeletingTaskResponse, PROCESS_VIDEO_CONTAINER_DELETING_TASK, ListVideoContainerDeletingTasksRequestBody, ListVideoContainerDeletingTasksResponse, LIST_VIDEO_CONTAINER_DELETING_TASKS, ProcessCoverImageDeletingTaskRequestBody, ProcessCoverImageDeletingTaskResponse, PROCESS_COVER_IMAGE_DELETING_TASK, ListCoverImageDeletingTasksRequestBody, ListCoverImageDeletingTasksResponse, LIST_COVER_IMAGE_DELETING_TASKS, ProcessSeasonRecentPremiereTimeUpdatingTaskRequestBody, ProcessSeasonRecentPremiereTimeUpdatingTaskResponse, PROCESS_SEASON_RECENT_PREMIERE_TIME_UPDATING_TASK, ListSeasonRecentPremiereTimeUpdatingTasksRequestBody, ListSeasonRecentPremiereTimeUpdatingTasksResponse, LIST_SEASON_RECENT_PREMIERE_TIME_UPDATING_TASKS } from './interface';
+import { GetSeasonPublisherRequestBody, GetSeasonPublisherResponse, GET_SEASON_PUBLISHER, GetSeasonGradeRequestBody, GetSeasonGradeResponse, GET_SEASON_GRADE, CacheVideoContainerRequestBody, CacheVideoContainerResponse, CACHE_VIDEO_CONTAINER, CheckPresenceOfSeasonRequestBody, CheckPresenceOfSeasonResponse, CHECK_PRESENCE_OF_SEASON, CheckPresenceOfEpisodeRequestBody, CheckPresenceOfEpisodeResponse, CHECK_PRESENCE_OF_EPISODE, ProcessVideoContainerDeletingTaskRequestBody, ProcessVideoContainerDeletingTaskResponse, PROCESS_VIDEO_CONTAINER_DELETING_TASK, ListVideoContainerDeletingTasksRequestBody, ListVideoContainerDeletingTasksResponse, LIST_VIDEO_CONTAINER_DELETING_TASKS, ProcessCoverImageDeletingTaskRequestBody, ProcessCoverImageDeletingTaskResponse, PROCESS_COVER_IMAGE_DELETING_TASK, ListCoverImageDeletingTasksRequestBody, ListCoverImageDeletingTasksResponse, LIST_COVER_IMAGE_DELETING_TASKS, ProcessSeasonRecentPremiereTimeUpdatingTaskRequestBody, ProcessSeasonRecentPremiereTimeUpdatingTaskResponse, PROCESS_SEASON_RECENT_PREMIERE_TIME_UPDATING_TASK, ListSeasonRecentPremiereTimeUpdatingTasksRequestBody, ListSeasonRecentPremiereTimeUpdatingTasksResponse, LIST_SEASON_RECENT_PREMIERE_TIME_UPDATING_TASKS } from './interface';
 import { ClientRequestInterface } from '@selfage/service_descriptor/client_request_interface';
 
 export function newGetSeasonPublisherRequest(
@@ -42,24 +42,6 @@ export function newCheckPresenceOfEpisodeRequest(
 ): ClientRequestInterface<CheckPresenceOfEpisodeResponse> {
   return {
     descriptor: CHECK_PRESENCE_OF_EPISODE,
-    body,
-  };
-}
-
-export function newProcessVideoContainerCreatingTaskRequest(
-  body: ProcessVideoContainerCreatingTaskRequestBody,
-): ClientRequestInterface<ProcessVideoContainerCreatingTaskResponse> {
-  return {
-    descriptor: PROCESS_VIDEO_CONTAINER_CREATING_TASK,
-    body,
-  };
-}
-
-export function newListVideoContainerCreatingTasksRequest(
-  body: ListVideoContainerCreatingTasksRequestBody,
-): ClientRequestInterface<ListVideoContainerCreatingTasksResponse> {
-  return {
-    descriptor: LIST_VIDEO_CONTAINER_CREATING_TASKS,
     body,
   };
 }

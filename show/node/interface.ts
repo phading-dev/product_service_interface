@@ -148,54 +148,6 @@ export let CHECK_PRESENCE_OF_EPISODE_RESPONSE: MessageDescriptor<CheckPresenceOf
   }],
 };
 
-export interface ProcessVideoContainerCreatingTaskRequestBody {
-  seasonId?: string,
-  episodeId?: string,
-}
-
-export let PROCESS_VIDEO_CONTAINER_CREATING_TASK_REQUEST_BODY: MessageDescriptor<ProcessVideoContainerCreatingTaskRequestBody> = {
-  name: 'ProcessVideoContainerCreatingTaskRequestBody',
-  fields: [{
-    name: 'seasonId',
-    index: 1,
-    primitiveType: PrimitiveType.STRING,
-  }, {
-    name: 'episodeId',
-    index: 2,
-    primitiveType: PrimitiveType.STRING,
-  }],
-};
-
-export interface ProcessVideoContainerCreatingTaskResponse {
-}
-
-export let PROCESS_VIDEO_CONTAINER_CREATING_TASK_RESPONSE: MessageDescriptor<ProcessVideoContainerCreatingTaskResponse> = {
-  name: 'ProcessVideoContainerCreatingTaskResponse',
-  fields: [],
-};
-
-export interface ListVideoContainerCreatingTasksRequestBody {
-}
-
-export let LIST_VIDEO_CONTAINER_CREATING_TASKS_REQUEST_BODY: MessageDescriptor<ListVideoContainerCreatingTasksRequestBody> = {
-  name: 'ListVideoContainerCreatingTasksRequestBody',
-  fields: [],
-};
-
-export interface ListVideoContainerCreatingTasksResponse {
-  tasks?: Array<ProcessVideoContainerCreatingTaskRequestBody>,
-}
-
-export let LIST_VIDEO_CONTAINER_CREATING_TASKS_RESPONSE: MessageDescriptor<ListVideoContainerCreatingTasksResponse> = {
-  name: 'ListVideoContainerCreatingTasksResponse',
-  fields: [{
-    name: 'tasks',
-    index: 1,
-    messageType: PROCESS_VIDEO_CONTAINER_CREATING_TASK_REQUEST_BODY,
-    isArray: true,
-  }],
-};
-
 export interface ProcessVideoContainerDeletingTaskRequestBody {
   videoContainerId?: string,
 }
@@ -392,30 +344,6 @@ export let CHECK_PRESENCE_OF_EPISODE: RemoteCallDescriptor = {
   },
   response: {
     messageType: CHECK_PRESENCE_OF_EPISODE_RESPONSE,
-  },
-}
-
-export let PROCESS_VIDEO_CONTAINER_CREATING_TASK: RemoteCallDescriptor = {
-  name: "ProcessVideoContainerCreatingTask",
-  service: PRODUCT_NODE_SERVICE,
-  path: "/ProcessVideoContainerCreatingTask",
-  body: {
-    messageType: PROCESS_VIDEO_CONTAINER_CREATING_TASK_REQUEST_BODY,
-  },
-  response: {
-    messageType: PROCESS_VIDEO_CONTAINER_CREATING_TASK_RESPONSE,
-  },
-}
-
-export let LIST_VIDEO_CONTAINER_CREATING_TASKS: RemoteCallDescriptor = {
-  name: "ListVideoContainerCreatingTasks",
-  service: PRODUCT_NODE_SERVICE,
-  path: "/ListVideoContainerCreatingTasks",
-  body: {
-    messageType: LIST_VIDEO_CONTAINER_CREATING_TASKS_REQUEST_BODY,
-  },
-  response: {
-    messageType: LIST_VIDEO_CONTAINER_CREATING_TASKS_RESPONSE,
   },
 }
 

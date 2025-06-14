@@ -68,26 +68,6 @@
       type: boolean
       index: 1
 - kind: Message
-  name: ProcessVideoContainerCreatingTaskRequestBody
-  fields:
-    - name: seasonId
-      type: string
-      index: 1
-    - name: episodeId
-      type: string
-      index: 2
-- kind: Message
-  name: ProcessVideoContainerCreatingTaskResponse
-- kind: Message
-  name: ListVideoContainerCreatingTasksRequestBody
-- kind: Message
-  name: ListVideoContainerCreatingTasksResponse
-  fields:
-    - name: tasks
-      type: ProcessVideoContainerCreatingTaskRequestBody
-      isArray: true
-      index: 1
-- kind: Message
   name: ProcessVideoContainerDeletingTaskRequestBody
   fields:
     - name: videoContainerId
@@ -169,14 +149,6 @@
       path: /CheckPresenceOfEpisode
       body: CheckPresenceOfEpisodeRequestBody
       response: CheckPresenceOfEpisodeResponse
-    - name: ProcessVideoContainerCreatingTask
-      path: /ProcessVideoContainerCreatingTask
-      body: ProcessVideoContainerCreatingTaskRequestBody
-      response: ProcessVideoContainerCreatingTaskResponse
-    - name: ListVideoContainerCreatingTasks
-      path: /ListVideoContainerCreatingTasks
-      body: ListVideoContainerCreatingTasksRequestBody
-      response: ListVideoContainerCreatingTasksResponse
     - name: ProcessVideoContainerDeletingTask
       path: /ProcessVideoContainerDeletingTask
       body: ProcessVideoContainerDeletingTaskRequestBody
