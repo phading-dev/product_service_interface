@@ -825,7 +825,7 @@ export let COMMIT_EPISODE_STAGING_DATA_RESPONSE: MessageDescriptor<CommitEpisode
 export let GET_SEASON: RemoteCallDescriptor = {
   name: "GetSeason",
   service: PRODUCT_WEB_SERVICE,
-  path: "/GetSeason",
+  path: "/sp/GetSeason",
   body: {
     messageType: GET_SEASON_REQUEST_BODY,
   },
@@ -838,7 +838,7 @@ export let GET_SEASON: RemoteCallDescriptor = {
 export let CREATE_SEASON: RemoteCallDescriptor = {
   name: "CreateSeason",
   service: PRODUCT_WEB_SERVICE,
-  path: "/CreateSeason",
+  path: "/sp/CreateSeason",
   body: {
     messageType: CREATE_SEASON_REQUEST_BODY,
   },
@@ -851,7 +851,7 @@ export let CREATE_SEASON: RemoteCallDescriptor = {
 export let DELETE_SEASON: RemoteCallDescriptor = {
   name: "DeleteSeason",
   service: PRODUCT_WEB_SERVICE,
-  path: "/DeleteSeason",
+  path: "/sp/DeleteSeason",
   body: {
     messageType: DELETE_SEASON_REQUEST_BODY,
   },
@@ -864,7 +864,7 @@ export let DELETE_SEASON: RemoteCallDescriptor = {
 export let ARCHIVE_SEASON: RemoteCallDescriptor = {
   name: "ArchiveSeason",
   service: PRODUCT_WEB_SERVICE,
-  path: "/ArchiveSeason",
+  path: "/sp/ArchiveSeason",
   body: {
     messageType: ARCHIVE_SEASON_REQUEST_BODY,
   },
@@ -877,7 +877,7 @@ export let ARCHIVE_SEASON: RemoteCallDescriptor = {
 export let UPDATE_SEASON: RemoteCallDescriptor = {
   name: "UpdateSeason",
   service: PRODUCT_WEB_SERVICE,
-  path: "/UpdateSeason",
+  path: "/sp/UpdateSeason",
   body: {
     messageType: UPDATE_SEASON_REQUEST_BODY,
   },
@@ -890,7 +890,7 @@ export let UPDATE_SEASON: RemoteCallDescriptor = {
 export let UPLOAD_COVER_IMAGE: RemoteCallDescriptor = {
   name: "UploadCoverImage",
   service: PRODUCT_WEB_SERVICE,
-  path: "/UploadCoverImage",
+  path: "/sp/UploadCoverImage",
   body: {
     primitiveType: PrimitveTypeForBody.BYTES,
   },
@@ -907,7 +907,7 @@ export let UPLOAD_COVER_IMAGE: RemoteCallDescriptor = {
 export let UPDATE_SEASON_GRADE: RemoteCallDescriptor = {
   name: "UpdateSeasonGrade",
   service: PRODUCT_WEB_SERVICE,
-  path: "/UpdateSeasonGrade",
+  path: "/sp/UpdateSeasonGrade",
   body: {
     messageType: UPDATE_SEASON_GRADE_REQUEST_BODY,
   },
@@ -920,7 +920,7 @@ export let UPDATE_SEASON_GRADE: RemoteCallDescriptor = {
 export let UPDATE_NEXT_SEASON_GRADE: RemoteCallDescriptor = {
   name: "UpdateNextSeasonGrade",
   service: PRODUCT_WEB_SERVICE,
-  path: "/UpdateNextSeasonGrade",
+  path: "/sp/UpdateNextSeasonGrade",
   body: {
     messageType: UPDATE_NEXT_SEASON_GRADE_REQUEST_BODY,
   },
@@ -933,7 +933,7 @@ export let UPDATE_NEXT_SEASON_GRADE: RemoteCallDescriptor = {
 export let DELETE_NEXT_SEASON_GRADE: RemoteCallDescriptor = {
   name: "DeleteNextSeasonGrade",
   service: PRODUCT_WEB_SERVICE,
-  path: "/DeleteNextSeasonGrade",
+  path: "/sp/DeleteNextSeasonGrade",
   body: {
     messageType: DELETE_NEXT_SEASON_GRADE_REQUEST_BODY,
   },
@@ -946,7 +946,7 @@ export let DELETE_NEXT_SEASON_GRADE: RemoteCallDescriptor = {
 export let LIST_SEASONS: RemoteCallDescriptor = {
   name: "ListSeasons",
   service: PRODUCT_WEB_SERVICE,
-  path: "/ListSeasons",
+  path: "/sp/ListSeasons",
   body: {
     messageType: LIST_SEASONS_REQUEST_BODY,
   },
@@ -959,7 +959,7 @@ export let LIST_SEASONS: RemoteCallDescriptor = {
 export let SEARCH_SEASONS: RemoteCallDescriptor = {
   name: "SearchSeasons",
   service: PRODUCT_WEB_SERVICE,
-  path: "/SearchSeasons",
+  path: "/sp/SearchSeasons",
   body: {
     messageType: SEARCH_SEASONS_REQUEST_BODY,
   },
@@ -972,7 +972,7 @@ export let SEARCH_SEASONS: RemoteCallDescriptor = {
 export let CREATE_EPISODE: RemoteCallDescriptor = {
   name: "CreateEpisode",
   service: PRODUCT_WEB_SERVICE,
-  path: "/CreateEpisode",
+  path: "/sp/CreateEpisode",
   body: {
     messageType: CREATE_EPISODE_REQUEST_BODY,
   },
@@ -985,7 +985,7 @@ export let CREATE_EPISODE: RemoteCallDescriptor = {
 export let DELETE_EPISODE: RemoteCallDescriptor = {
   name: "DeleteEpisode",
   service: PRODUCT_WEB_SERVICE,
-  path: "/DeleteEpisode",
+  path: "/sp/DeleteEpisode",
   body: {
     messageType: DELETE_EPISODE_REQUEST_BODY,
   },
@@ -998,7 +998,7 @@ export let DELETE_EPISODE: RemoteCallDescriptor = {
 export let GET_EPISODE: RemoteCallDescriptor = {
   name: "GetEpisode",
   service: PRODUCT_WEB_SERVICE,
-  path: "/GetEpisode",
+  path: "/sp/GetEpisode",
   body: {
     messageType: GET_EPISODE_REQUEST_BODY,
   },
@@ -1011,7 +1011,7 @@ export let GET_EPISODE: RemoteCallDescriptor = {
 export let UPDATE_EPISODE_NAME: RemoteCallDescriptor = {
   name: "UpdateEpisodeName",
   service: PRODUCT_WEB_SERVICE,
-  path: "/UpdateEpisodeName",
+  path: "/sp/UpdateEpisodeName",
   body: {
     messageType: UPDATE_EPISODE_NAME_REQUEST_BODY,
   },
@@ -1024,7 +1024,7 @@ export let UPDATE_EPISODE_NAME: RemoteCallDescriptor = {
 export let UPDATE_EPISODE_PREMIERE_TIME: RemoteCallDescriptor = {
   name: "UpdateEpisodePremiereTime",
   service: PRODUCT_WEB_SERVICE,
-  path: "/UpdateEpisodePremiereTime",
+  path: "/sp/UpdateEpisodePremiereTime",
   body: {
     messageType: UPDATE_EPISODE_PREMIERE_TIME_REQUEST_BODY,
   },
@@ -1037,7 +1037,7 @@ export let UPDATE_EPISODE_PREMIERE_TIME: RemoteCallDescriptor = {
 export let UPDATE_EPISODE_INDEX: RemoteCallDescriptor = {
   name: "UpdateEpisodeIndex",
   service: PRODUCT_WEB_SERVICE,
-  path: "/UpdateEpisodeIndex",
+  path: "/sp/UpdateEpisodeIndex",
   body: {
     messageType: UPDATE_EPISODE_INDEX_REQUEST_BODY,
   },
@@ -1050,7 +1050,7 @@ export let UPDATE_EPISODE_INDEX: RemoteCallDescriptor = {
 export let PUBLISH_EPISODE: RemoteCallDescriptor = {
   name: "PublishEpisode",
   service: PRODUCT_WEB_SERVICE,
-  path: "/PublishEpisode",
+  path: "/sp/PublishEpisode",
   body: {
     messageType: PUBLISH_EPISODE_REQUEST_BODY,
   },
@@ -1063,7 +1063,7 @@ export let PUBLISH_EPISODE: RemoteCallDescriptor = {
 export let UNPUBLISH_EPISODE: RemoteCallDescriptor = {
   name: "UnpublishEpisode",
   service: PRODUCT_WEB_SERVICE,
-  path: "/UnpublishEpisode",
+  path: "/sp/UnpublishEpisode",
   body: {
     messageType: UNPUBLISH_EPISODE_REQUEST_BODY,
   },
@@ -1076,7 +1076,7 @@ export let UNPUBLISH_EPISODE: RemoteCallDescriptor = {
 export let LIST_DRAFT_EPISODES: RemoteCallDescriptor = {
   name: "ListDraftEpisodes",
   service: PRODUCT_WEB_SERVICE,
-  path: "/ListDraftEpisodes",
+  path: "/sp/ListDraftEpisodes",
   body: {
     messageType: LIST_DRAFT_EPISODES_REQUEST_BODY,
   },
@@ -1089,7 +1089,7 @@ export let LIST_DRAFT_EPISODES: RemoteCallDescriptor = {
 export let LIST_PUBLISHED_EPISODES: RemoteCallDescriptor = {
   name: "ListPublishedEpisodes",
   service: PRODUCT_WEB_SERVICE,
-  path: "/ListPublishedEpisodes",
+  path: "/sp/ListPublishedEpisodes",
   body: {
     messageType: LIST_PUBLISHED_EPISODES_REQUEST_BODY,
   },
@@ -1102,7 +1102,7 @@ export let LIST_PUBLISHED_EPISODES: RemoteCallDescriptor = {
 export let START_UPLOADING: RemoteCallDescriptor = {
   name: "StartUploading",
   service: PRODUCT_WEB_SERVICE,
-  path: "/StartUploading",
+  path: "/sp/StartUploading",
   body: {
     messageType: START_UPLOADING_REQUEST_BODY,
   },
@@ -1115,7 +1115,7 @@ export let START_UPLOADING: RemoteCallDescriptor = {
 export let COMPLETE_UPLOADING: RemoteCallDescriptor = {
   name: "CompleteUploading",
   service: PRODUCT_WEB_SERVICE,
-  path: "/CompleteUploading",
+  path: "/sp/CompleteUploading",
   body: {
     messageType: COMPLETE_UPLOADING_REQUEST_BODY,
   },
@@ -1128,7 +1128,7 @@ export let COMPLETE_UPLOADING: RemoteCallDescriptor = {
 export let CANCEL_UPLOADING: RemoteCallDescriptor = {
   name: "CancelUploading",
   service: PRODUCT_WEB_SERVICE,
-  path: "/CancelUploading",
+  path: "/sp/CancelUploading",
   body: {
     messageType: CANCEL_UPLOADING_REQUEST_BODY,
   },
@@ -1141,7 +1141,7 @@ export let CANCEL_UPLOADING: RemoteCallDescriptor = {
 export let SAVE_EPISODE_STAGING_DATA: RemoteCallDescriptor = {
   name: "SaveEpisodeStagingData",
   service: PRODUCT_WEB_SERVICE,
-  path: "/SaveEpisodeStagingData",
+  path: "/sp/SaveEpisodeStagingData",
   body: {
     messageType: SAVE_EPISODE_STAGING_DATA_REQUEST_BODY,
   },
@@ -1154,7 +1154,7 @@ export let SAVE_EPISODE_STAGING_DATA: RemoteCallDescriptor = {
 export let COMMIT_EPISODE_STAGING_DATA: RemoteCallDescriptor = {
   name: "CommitEpisodeStagingData",
   service: PRODUCT_WEB_SERVICE,
-  path: "/CommitEpisodeStagingData",
+  path: "/sp/CommitEpisodeStagingData",
   body: {
     messageType: COMMIT_EPISODE_STAGING_DATA_REQUEST_BODY,
   },

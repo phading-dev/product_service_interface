@@ -128,6 +128,7 @@
   name: ProductShowNodeRemoteCalls
   service: ProductNodeService
   importService: ./service
+  path: /s
   calls:
     - name: GetSeasonPublisher
       path: /GetSeasonPublisher

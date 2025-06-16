@@ -290,7 +290,7 @@ export let LIST_SEASON_RECENT_PREMIERE_TIME_UPDATING_TASKS_RESPONSE: MessageDesc
 export let GET_SEASON_PUBLISHER: RemoteCallDescriptor = {
   name: "GetSeasonPublisher",
   service: PRODUCT_NODE_SERVICE,
-  path: "/GetSeasonPublisher",
+  path: "/s/GetSeasonPublisher",
   body: {
     messageType: GET_SEASON_PUBLISHER_REQUEST_BODY,
   },
@@ -302,7 +302,7 @@ export let GET_SEASON_PUBLISHER: RemoteCallDescriptor = {
 export let GET_SEASON_GRADE: RemoteCallDescriptor = {
   name: "GetSeasonGrade",
   service: PRODUCT_NODE_SERVICE,
-  path: "/GetSeasonGrade",
+  path: "/s/GetSeasonGrade",
   body: {
     messageType: GET_SEASON_GRADE_REQUEST_BODY,
   },
@@ -314,7 +314,7 @@ export let GET_SEASON_GRADE: RemoteCallDescriptor = {
 export let CACHE_VIDEO_CONTAINER: RemoteCallDescriptor = {
   name: "CacheVideoContainer",
   service: PRODUCT_NODE_SERVICE,
-  path: "/CacheVideoContainer",
+  path: "/s/CacheVideoContainer",
   body: {
     messageType: CACHE_VIDEO_CONTAINER_REQUEST_BODY,
   },
@@ -326,7 +326,7 @@ export let CACHE_VIDEO_CONTAINER: RemoteCallDescriptor = {
 export let CHECK_PRESENCE_OF_SEASON: RemoteCallDescriptor = {
   name: "CheckPresenceOfSeason",
   service: PRODUCT_NODE_SERVICE,
-  path: "/CheckPresenceOfSeason",
+  path: "/s/CheckPresenceOfSeason",
   body: {
     messageType: CHECK_PRESENCE_OF_SEASON_REQUEST_BODY,
   },
@@ -338,7 +338,7 @@ export let CHECK_PRESENCE_OF_SEASON: RemoteCallDescriptor = {
 export let CHECK_PRESENCE_OF_EPISODE: RemoteCallDescriptor = {
   name: "CheckPresenceOfEpisode",
   service: PRODUCT_NODE_SERVICE,
-  path: "/CheckPresenceOfEpisode",
+  path: "/s/CheckPresenceOfEpisode",
   body: {
     messageType: CHECK_PRESENCE_OF_EPISODE_REQUEST_BODY,
   },
@@ -350,7 +350,7 @@ export let CHECK_PRESENCE_OF_EPISODE: RemoteCallDescriptor = {
 export let PROCESS_VIDEO_CONTAINER_DELETING_TASK: RemoteCallDescriptor = {
   name: "ProcessVideoContainerDeletingTask",
   service: PRODUCT_NODE_SERVICE,
-  path: "/ProcessVideoContainerDeletingTask",
+  path: "/s/ProcessVideoContainerDeletingTask",
   body: {
     messageType: PROCESS_VIDEO_CONTAINER_DELETING_TASK_REQUEST_BODY,
   },
@@ -362,7 +362,7 @@ export let PROCESS_VIDEO_CONTAINER_DELETING_TASK: RemoteCallDescriptor = {
 export let LIST_VIDEO_CONTAINER_DELETING_TASKS: RemoteCallDescriptor = {
   name: "ListVideoContainerDeletingTasks",
   service: PRODUCT_NODE_SERVICE,
-  path: "/ListVideoContainerDeletingTasks",
+  path: "/s/ListVideoContainerDeletingTasks",
   body: {
     messageType: LIST_VIDEO_CONTAINER_DELETING_TASKS_REQUEST_BODY,
   },
@@ -374,7 +374,7 @@ export let LIST_VIDEO_CONTAINER_DELETING_TASKS: RemoteCallDescriptor = {
 export let PROCESS_COVER_IMAGE_DELETING_TASK: RemoteCallDescriptor = {
   name: "ProcessCoverImageDeletingTask",
   service: PRODUCT_NODE_SERVICE,
-  path: "/ProcessCoverImageDeletingTask",
+  path: "/s/ProcessCoverImageDeletingTask",
   body: {
     messageType: PROCESS_COVER_IMAGE_DELETING_TASK_REQUEST_BODY,
   },
@@ -386,7 +386,7 @@ export let PROCESS_COVER_IMAGE_DELETING_TASK: RemoteCallDescriptor = {
 export let LIST_COVER_IMAGE_DELETING_TASKS: RemoteCallDescriptor = {
   name: "ListCoverImageDeletingTasks",
   service: PRODUCT_NODE_SERVICE,
-  path: "/ListCoverImageDeletingTasks",
+  path: "/s/ListCoverImageDeletingTasks",
   body: {
     messageType: LIST_COVER_IMAGE_DELETING_TASKS_REQUEST_BODY,
   },
@@ -398,7 +398,7 @@ export let LIST_COVER_IMAGE_DELETING_TASKS: RemoteCallDescriptor = {
 export let PROCESS_SEASON_RECENT_PREMIERE_TIME_UPDATING_TASK: RemoteCallDescriptor = {
   name: "ProcessSeasonRecentPremiereTimeUpdatingTask",
   service: PRODUCT_NODE_SERVICE,
-  path: "/ProcessSeasonRecentPremiereTimeUpdatingTask",
+  path: "/s/ProcessSeasonRecentPremiereTimeUpdatingTask",
   body: {
     messageType: PROCESS_SEASON_RECENT_PREMIERE_TIME_UPDATING_TASK_REQUEST_BODY,
   },
@@ -410,7 +410,7 @@ export let PROCESS_SEASON_RECENT_PREMIERE_TIME_UPDATING_TASK: RemoteCallDescript
 export let LIST_SEASON_RECENT_PREMIERE_TIME_UPDATING_TASKS: RemoteCallDescriptor = {
   name: "ListSeasonRecentPremiereTimeUpdatingTasks",
   service: PRODUCT_NODE_SERVICE,
-  path: "/ListSeasonRecentPremiereTimeUpdatingTasks",
+  path: "/s/ListSeasonRecentPremiereTimeUpdatingTasks",
   body: {
     messageType: LIST_SEASON_RECENT_PREMIERE_TIME_UPDATING_TASKS_REQUEST_BODY,
   },

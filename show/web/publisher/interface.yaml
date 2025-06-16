@@ -396,6 +396,7 @@
   name: ProductShowWebPublisherRemoteCalls
   service: ProductWebService
   importService: ./service
+  path: /sp
   calls:
     - name: GetSeason
       path: /GetSeason

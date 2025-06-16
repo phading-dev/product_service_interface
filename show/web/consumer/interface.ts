@@ -605,7 +605,7 @@ export let GET_INDIVIDUAL_SEASON_RATING_RESPONSE: MessageDescriptor<GetIndividua
 export let GET_SEASON_NAME: RemoteCallDescriptor = {
   name: "GetSeasonName",
   service: PRODUCT_WEB_SERVICE,
-  path: "/GetSeasonName",
+  path: "/sc/GetSeasonName",
   body: {
     messageType: GET_SEASON_NAME_REQUEST_BODY,
   },
@@ -617,7 +617,7 @@ export let GET_SEASON_NAME: RemoteCallDescriptor = {
 export let GET_SEASON_SUMMARY: RemoteCallDescriptor = {
   name: "GetSeasonSummary",
   service: PRODUCT_WEB_SERVICE,
-  path: "/GetSeasonSummary",
+  path: "/sc/GetSeasonSummary",
   body: {
     messageType: GET_SEASON_SUMMARY_REQUEST_BODY,
   },
@@ -629,7 +629,7 @@ export let GET_SEASON_SUMMARY: RemoteCallDescriptor = {
 export let GET_SEASON_DETAILS: RemoteCallDescriptor = {
   name: "GetSeasonDetails",
   service: PRODUCT_WEB_SERVICE,
-  path: "/GetSeasonDetails",
+  path: "/sc/GetSeasonDetails",
   body: {
     messageType: GET_SEASON_DETAILS_REQUEST_BODY,
   },
@@ -641,7 +641,7 @@ export let GET_SEASON_DETAILS: RemoteCallDescriptor = {
 export let LIST_EPISODES: RemoteCallDescriptor = {
   name: "ListEpisodes",
   service: PRODUCT_WEB_SERVICE,
-  path: "/ListEpisodes",
+  path: "/sc/ListEpisodes",
   body: {
     messageType: LIST_EPISODES_REQUEST_BODY,
   },
@@ -653,7 +653,7 @@ export let LIST_EPISODES: RemoteCallDescriptor = {
 export let GET_EPISODE: RemoteCallDescriptor = {
   name: "GetEpisode",
   service: PRODUCT_WEB_SERVICE,
-  path: "/GetEpisode",
+  path: "/sc/GetEpisode",
   body: {
     messageType: GET_EPISODE_REQUEST_BODY,
   },
@@ -665,7 +665,7 @@ export let GET_EPISODE: RemoteCallDescriptor = {
 export let GET_EPISODE_WITH_SEASON_SUMMARY: RemoteCallDescriptor = {
   name: "GetEpisodeWithSeasonSummary",
   service: PRODUCT_WEB_SERVICE,
-  path: "/GetEpisodeWithSeasonSummary",
+  path: "/sc/GetEpisodeWithSeasonSummary",
   body: {
     messageType: GET_EPISODE_WITH_SEASON_SUMMARY_REQUEST_BODY,
   },
@@ -677,7 +677,7 @@ export let GET_EPISODE_WITH_SEASON_SUMMARY: RemoteCallDescriptor = {
 export let LIST_SEASONS_BY_RECENT_PREMIERE_TIME: RemoteCallDescriptor = {
   name: "ListSeasonsByRecentPremiereTime",
   service: PRODUCT_WEB_SERVICE,
-  path: "/ListSeasonsByRecentPremiereTime",
+  path: "/sc/ListSeasonsByRecentPremiereTime",
   body: {
     messageType: LIST_SEASONS_BY_RECENT_PREMIERE_TIME_REQUEST_BODY,
   },
@@ -689,7 +689,7 @@ export let LIST_SEASONS_BY_RECENT_PREMIERE_TIME: RemoteCallDescriptor = {
 export let LIST_SEASONS_BY_RATING: RemoteCallDescriptor = {
   name: "ListSeasonsByRating",
   service: PRODUCT_WEB_SERVICE,
-  path: "/ListSeasonsByRating",
+  path: "/sc/ListSeasonsByRating",
   body: {
     messageType: LIST_SEASONS_BY_RATING_REQUEST_BODY,
   },
@@ -701,7 +701,7 @@ export let LIST_SEASONS_BY_RATING: RemoteCallDescriptor = {
 export let LIST_SEASONS_BY_RECENT_PREMIERE_TIME_AND_PUBLISHER: RemoteCallDescriptor = {
   name: "ListSeasonsByRecentPremiereTimeAndPublisher",
   service: PRODUCT_WEB_SERVICE,
-  path: "/ListSeasonsByRecentPremiereTimeAndPublisher",
+  path: "/sc/ListSeasonsByRecentPremiereTimeAndPublisher",
   body: {
     messageType: LIST_SEASONS_BY_RECENT_PREMIERE_TIME_AND_PUBLISHER_REQUEST_BODY,
   },
@@ -713,7 +713,7 @@ export let LIST_SEASONS_BY_RECENT_PREMIERE_TIME_AND_PUBLISHER: RemoteCallDescrip
 export let LIST_SEASONS_BY_RATING_AND_PUBLISHER: RemoteCallDescriptor = {
   name: "ListSeasonsByRatingAndPublisher",
   service: PRODUCT_WEB_SERVICE,
-  path: "/ListSeasonsByRatingAndPublisher",
+  path: "/sc/ListSeasonsByRatingAndPublisher",
   body: {
     messageType: LIST_SEASONS_BY_RATING_AND_PUBLISHER_REQUEST_BODY,
   },
@@ -725,7 +725,7 @@ export let LIST_SEASONS_BY_RATING_AND_PUBLISHER: RemoteCallDescriptor = {
 export let GET_CONTINUE_EPISODE: RemoteCallDescriptor = {
   name: "GetContinueEpisode",
   service: PRODUCT_WEB_SERVICE,
-  path: "/GetContinueEpisode",
+  path: "/sc/GetContinueEpisode",
   body: {
     messageType: GET_CONTINUE_EPISODE_REQUEST_BODY,
   },
@@ -738,7 +738,7 @@ export let GET_CONTINUE_EPISODE: RemoteCallDescriptor = {
 export let LIST_CONTINUE_WATCHING_SEASONS: RemoteCallDescriptor = {
   name: "ListContinueWatchingSeasons",
   service: PRODUCT_WEB_SERVICE,
-  path: "/ListContinueWatchingSeasons",
+  path: "/sc/ListContinueWatchingSeasons",
   body: {
     messageType: LIST_CONTINUE_WATCHING_SEASONS_REQUEST_BODY,
   },
@@ -751,7 +751,7 @@ export let LIST_CONTINUE_WATCHING_SEASONS: RemoteCallDescriptor = {
 export let AUTHORIZE_EPISODE_PLAYBACK: RemoteCallDescriptor = {
   name: "AuthorizeEpisodePlayback",
   service: PRODUCT_WEB_SERVICE,
-  path: "/AuthorizeEpisodePlayback",
+  path: "/sc/AuthorizeEpisodePlayback",
   body: {
     messageType: AUTHORIZE_EPISODE_PLAYBACK_REQUEST_BODY,
   },
@@ -764,7 +764,7 @@ export let AUTHORIZE_EPISODE_PLAYBACK: RemoteCallDescriptor = {
 export let SEARCH_SEASONS: RemoteCallDescriptor = {
   name: "SearchSeasons",
   service: PRODUCT_WEB_SERVICE,
-  path: "/SearchSeasons",
+  path: "/sc/SearchSeasons",
   body: {
     messageType: SEARCH_SEASONS_REQUEST_BODY,
   },
@@ -777,7 +777,7 @@ export let SEARCH_SEASONS: RemoteCallDescriptor = {
 export let RATE_SEASON: RemoteCallDescriptor = {
   name: "RateSeason",
   service: PRODUCT_WEB_SERVICE,
-  path: "/RateSeason",
+  path: "/sc/RateSeason",
   body: {
     messageType: RATE_SEASON_REQUEST_BODY,
   },
@@ -790,7 +790,7 @@ export let RATE_SEASON: RemoteCallDescriptor = {
 export let UNRATE_SEASON: RemoteCallDescriptor = {
   name: "UnrateSeason",
   service: PRODUCT_WEB_SERVICE,
-  path: "/UnrateSeason",
+  path: "/sc/UnrateSeason",
   body: {
     messageType: UNRATE_SEASON_REQUEST_BODY,
   },
@@ -803,7 +803,7 @@ export let UNRATE_SEASON: RemoteCallDescriptor = {
 export let GET_INDIVIDUAL_SEASON_RATING: RemoteCallDescriptor = {
   name: "GetIndividualSeasonRating",
   service: PRODUCT_WEB_SERVICE,
-  path: "/GetIndividualSeasonRating",
+  path: "/sc/GetIndividualSeasonRating",
   body: {
     messageType: GET_INDIVIDUAL_SEASON_RATING_REQUEST_BODY,
   },

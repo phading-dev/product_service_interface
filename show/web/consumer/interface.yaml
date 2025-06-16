@@ -313,6 +313,7 @@
   name: ProductShowWebConsumerRemoteCalls
   service: ProductWebService
   importService: ./service
+  path: /sc
   calls:
     - name: GetSeasonName
       path: /GetSeasonName
