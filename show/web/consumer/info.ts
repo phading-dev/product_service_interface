@@ -7,6 +7,7 @@ export interface Episode {
   videoDurationSec?: number,
   resolution?: string,
   premiereTimeMs?: number,
+  canPlay?: boolean,
 }
 
 export let EPISODE: MessageDescriptor<Episode> = {
@@ -35,6 +36,10 @@ export let EPISODE: MessageDescriptor<Episode> = {
     name: 'premiereTimeMs',
     index: 6,
     primitiveType: PrimitiveType.NUMBER,
+  }, {
+    name: 'canPlay',
+    index: 7,
+    primitiveType: PrimitiveType.BOOLEAN,
   }],
 };
 

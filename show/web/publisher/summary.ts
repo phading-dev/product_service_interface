@@ -9,6 +9,7 @@ export interface EpisodeSummary {
   videoContainer?: VideoContainerCached,
   state?: EpisodeState,
   premiereTimeMs?: number,
+  canPlay?: boolean,
 }
 
 export let EPISODE_SUMMARY: MessageDescriptor<EpisodeSummary> = {
@@ -37,6 +38,10 @@ export let EPISODE_SUMMARY: MessageDescriptor<EpisodeSummary> = {
     name: 'premiereTimeMs',
     index: 6,
     primitiveType: PrimitiveType.NUMBER,
+  }, {
+    name: 'canPlay',
+    index: 7,
+    primitiveType: PrimitiveType.BOOLEAN,
   }],
 };
 

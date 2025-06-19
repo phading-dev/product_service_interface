@@ -20,17 +20,20 @@
     - name: premiereTimeMs
       type: number
       index: 6
+    - name: canPlay
+      type: boolean
+      index: 7
     - name: videoContainerCached
       type: VideoContainerCached
       import: ./show/video_container_cached
-      index: 7
+      index: 8
     - name: videoUrl
       type: string
-      index: 8
+      index: 9
     - name: videoContainer
       type: VideoContainer
       import: "@phading/video_service_interface/node/video_container"
-      index: 9
+      index: 10
 - kind: Message
   name: NextGrade
   fields:

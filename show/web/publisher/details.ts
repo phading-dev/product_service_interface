@@ -11,6 +11,7 @@ export interface EpisodeDetails {
   episodeIndex?: number,
   totalPublishedEpisodes?: number,
   premiereTimeMs?: number,
+  canPlay?: boolean,
   videoContainerCached?: VideoContainerCached,
   videoUrl?: string,
   videoContainer?: VideoContainer,
@@ -43,16 +44,20 @@ export let EPISODE_DETAILS: MessageDescriptor<EpisodeDetails> = {
     index: 6,
     primitiveType: PrimitiveType.NUMBER,
   }, {
-    name: 'videoContainerCached',
+    name: 'canPlay',
     index: 7,
+    primitiveType: PrimitiveType.BOOLEAN,
+  }, {
+    name: 'videoContainerCached',
+    index: 8,
     messageType: VIDEO_CONTAINER_CACHED,
   }, {
     name: 'videoUrl',
-    index: 8,
+    index: 9,
     primitiveType: PrimitiveType.STRING,
   }, {
     name: 'videoContainer',
-    index: 9,
+    index: 10,
     messageType: VIDEO_CONTAINER,
   }],
 };

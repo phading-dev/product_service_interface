@@ -21,6 +21,9 @@
     - name: premiereTimeMs
       type: number
       index: 6
+    - name: canPlay
+      type: boolean
+      index: 7
 - kind: Message
   name: SeasonSummary
   fields:
