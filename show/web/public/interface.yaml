@@ -1,0 +1,308 @@
+- kind: Message
+  name: GetSeasonNameRequestBody
+  fields:
+    - name: seasonId
+      type: string
+      index: 1
+- kind: Message
+  name: GetSeasonNameResponse
+  fields:
+    - name: name
+      type: string
+      index: 1
+- kind: Message
+  name: GetSeasonSummaryRequestBody
+  fields:
+    - name: seasonId
+      type: string
+      index: 1
+- kind: Message
+  name: GetSeasonSummaryResponse
+  fields:
+    - name: seasonSummary
+      type: SeasonSummary
+      import: ./show/web/public/info
+      index: 1
+- kind: Message
+  name: GetSeasonDetailsRequestBody
+  fields:
+    - name: seasonId
+      type: string
+      index: 1
+- kind: Message
+  name: GetSeasonDetailsResponse
+  fields:
+    - name: seasonDetails
+      type: SeasonDetails
+      import: ./show/web/public/info
+      index: 1
+- kind: Message
+  name: ListEpisodesRequestBody
+  fields:
+    - name: seasonId
+      type: string
+      index: 1
+    - name: indexCursor
+      type: number
+      index: 2
+    - name: next # Next index or prev index
+      type: boolean
+      index: 3
+    - name: limit
+      type: number
+      index: 4
+- kind: Message
+  name: ListEpisodesResponse
+  fields:
+    - name: episodes
+      type: Episode
+      import: ./show/web/public/info
+      isArray: true
+      index: 1
+    - name: indexCursor
+      type: number
+      index: 2
+- kind: Message
+  name: GetEpisodeRequestBody
+  fields:
+    - name: seasonId
+      type: string
+      index: 1
+    - name: episodeId
+      type: string
+      index: 2
+- kind: Message
+  name: GetEpisodeResponse
+  fields:
+    - name: episode
+      type: Episode
+      import: ./show/web/public/info
+      index: 1
+- kind: Message
+  name: GetEpisodeWithSeasonSummaryRequestBody
+  fields:
+    - name: seasonId
+      type: string
+      index: 1
+    - name: episodeId
+      type: string
+      index: 2
+- kind: Message
+  name: GetEpisodeWithSeasonSummaryResponse
+  fields:
+    - name: summary
+      type: SeasonSummaryAndEpisode
+      import: ./show/web/public/info
+      index: 1
+- kind: Message
+  name: ListSeasonsByRecentPremiereTimeRequestBody
+  fields:
+    - name: limit
+      type: number
+      index: 1
+    - name: premiereTimeCursor
+      type: number
+      index: 2
+    - name: createdTimeCursor
+      type: number
+      index: 3
+- kind: Message
+  name: ListSeasonsByRecentPremiereTimeResponse
+  fields:
+    - name: seasons
+      type: SeasonSummary
+      import: ./show/web/public/info
+      isArray: true
+      index: 1
+    - name: premiereTimeCursor
+      type: number
+      index: 2
+    - name: createdTimeCursor
+      type: number
+      index: 3
+- kind: Message
+  name: ListSeasonsByRatingRequestBody
+  fields:
+    - name: limit
+      type: number
+      index: 1
+    - name: ratingCursor
+      type: number
+      index: 2
+    - name: createdTimeCursor
+      type: number
+      index: 3
+- kind: Message
+  name: ListSeasonsByRatingResponse
+  fields:
+    - name: seasons
+      type: SeasonSummary
+      import: ./show/web/public/info
+      isArray: true
+      index: 1
+    - name: ratingCursor
+      type: number
+      index: 2
+    - name: createdTimeCursor
+      type: number
+      index: 3
+- kind: Message
+  name: ListSeasonsByRecentPremiereTimeAndPublisherRequestBody
+  fields:
+    - name: publisherId
+      type: string
+      index: 1
+    - name: limit
+      type: number
+      index: 2
+    - name: premiereTimeCursor
+      type: number
+      index: 3
+    - name: createdTimeCursor
+      type: number
+      index: 4
+- kind: Message
+  name: ListSeasonsByRecentPremiereTimeAndPublisherResponse
+  fields:
+    - name: seasons
+      type: SeasonSummary
+      import: ./show/web/public/info
+      isArray: true
+      index: 1
+    - name: premiereTimeCursor
+      type: number
+      index: 2
+    - name: createdTimeCursor
+      type: number
+      index: 3
+- kind: Message
+  name: ListSeasonsByRatingAndPublisherRequestBody
+  fields:
+    - name: publisherId
+      type: string
+      index: 1
+    - name: limit
+      type: number
+      index: 2
+    - name: ratingCursor
+      type: number
+      index: 3
+    - name: createdTimeCursor
+      type: number
+      index: 4
+- kind: Message
+  name: ListSeasonsByRatingAndPublisherResponse
+  fields:
+    - name: seasons
+      type: SeasonSummary
+      import: ./show/web/public/info
+      isArray: true
+      index: 1
+    - name: ratingCursor
+      type: number
+      index: 2
+    - name: createdTimeCursor
+      type: number
+      index: 3
+- kind: Message
+  name: SearchSeasonsRequestBody
+  fields:
+    - name: query
+      type: string
+      index: 1
+    - name: limit
+      type: number
+      index: 2
+    - name: scoreCursor
+      type: number
+      index: 3
+    - name: createdTimeCursor
+      type: number
+      index: 4
+- kind: Message
+  name: SearchSeasonsResponse
+  fields:
+    - name: seasons
+      type: SeasonSummary
+      import: ./show/web/public/info
+      isArray: true
+      index: 1
+    - name: scoreCursor
+      type: number
+      index: 2
+    - name: createdTimeCursor
+      type: number
+      index: 3
+- kind: Message
+  name: FlagSeasonRequestBody
+  fields:
+    - name: seasonId
+      type: string
+      index: 1
+    - name: reason
+      type: SeasonFlagReason
+      import: ./show/season_flag_reason
+      index: 2
+    - name: comment
+      type: string
+      index: 3
+- kind: Message
+  name: FlagSeasonResponse
+- kind: RemoteCallsGroup
+  name: ProductShowWebPublicRemoteCalls
+  service: ProductWebService
+  importService: ./service
+  path: /su
+  calls:
+    - name: GetSeasonName
+      path: /GetSeasonName
+      body: GetSeasonNameRequestBody
+      response: GetSeasonNameResponse
+    - name: GetSeasonSummary
+      path: /GetSeasonSummary
+      body: GetSeasonSummaryRequestBody
+      response: GetSeasonSummaryResponse
+    - name: GetSeasonDetails
+      path: /GetSeasonDetails
+      body: GetSeasonDetailsRequestBody
+      response: GetSeasonDetailsResponse
+    - name: ListEpisodes
+      path: /ListEpisodes
+      body: ListEpisodesRequestBody
+      response: ListEpisodesResponse
+    - name: GetEpisode
+      path: /GetEpisode
+      body: GetEpisodeRequestBody
+      response: GetEpisodeResponse
+    - name: GetEpisodeWithSeasonSummary
+      path: /GetEpisodeWithSeasonSummary
+      body: GetEpisodeWithSeasonSummaryRequestBody
+      response: GetEpisodeWithSeasonSummaryResponse
+    - name: ListSeasonsByRecentPremiereTime
+      path: /ListSeasonsByRecentPremiereTime
+      body: ListSeasonsByRecentPremiereTimeRequestBody
+      response: ListSeasonsByRecentPremiereTimeResponse
+    - name: ListSeasonsByRating
+      path: /ListSeasonsByRating
+      body: ListSeasonsByRatingRequestBody
+      response: ListSeasonsByRatingResponse
+    - name: ListSeasonsByRecentPremiereTimeAndPublisher
+      path: /ListSeasonsByRecentPremiereTimeAndPublisher
+      body: ListSeasonsByRecentPremiereTimeAndPublisherRequestBody
+      response: ListSeasonsByRecentPremiereTimeAndPublisherResponse
+    - name: ListSeasonsByRatingAndPublisher
+      path: /ListSeasonsByRatingAndPublisher
+      body: ListSeasonsByRatingAndPublisherRequestBody
+      response: ListSeasonsByRatingAndPublisherResponse
+    - name: SearchSeasons
+      path: /SearchSeasons
+      body: SearchSeasonsRequestBody
+      authKey: a
+      response: SearchSeasonsResponse
+    - name: FlagSeason
+      path: /FlagSeason
+      body: FlagSeasonRequestBody
+      authKey: a
+      response: FlagSeasonResponse
+  outputClient: ./show/web/public/client
+  outputHandler: ./show/web/public/handler

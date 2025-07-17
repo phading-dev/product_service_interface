@@ -7,3 +7,5 @@
       value: 2
     - name: ARCHIVED
       value: 3
+    - name: TAKEN_DOWN
+      value: 4

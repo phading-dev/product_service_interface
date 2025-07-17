@@ -1,0 +1,15 @@
+- kind: Enum
+  name: SeasonFlagReason
+  values:
+    - name: PRIVACY_VIOLATION
+      value: 1
+    - name: HARASSMENT
+      value: 2
+    - name: SEXUAL_CONTENT
+      value: 3
+    - name: SPAM
+      value: 4
+    - name: CHILD_ABUSE
+      value: 5
+    - name: COPYRIGHT_OR_TRADEMARK_INFRINGEMENT
+      value: 6

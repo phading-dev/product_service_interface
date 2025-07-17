@@ -4,6 +4,7 @@ export enum SeasonState {
   DRAFT = 1,
   PUBLISHED = 2,
   ARCHIVED = 3,
+  TAKEN_DOWN = 4,
 }
 
 export let SEASON_STATE: EnumDescriptor<SeasonState> = {
@@ -17,5 +18,8 @@ export let SEASON_STATE: EnumDescriptor<SeasonState> = {
   }, {
     name: 'ARCHIVED',
     value: 3,
+  }, {
+    name: 'TAKEN_DOWN',
+    value: 4,
   }]
 }

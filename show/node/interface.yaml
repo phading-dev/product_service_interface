@@ -124,6 +124,25 @@
       type: ProcessSeasonRecentPremiereTimeUpdatingTaskRequestBody
       isArray: true
       index: 1
+- kind: Message
+  name: AdminTakeDownSeasonRequestBody
+  fields:
+    - name: seasonId
+      type: string
+      index: 1
+    - name: reason
+      type: string
+      index: 2
+- kind: Message
+  name: AdminTakeDownSeasonResponse
+- kind: Message
+  name: AdminRestoreSeasonRequestBody
+  fields:
+    - name: seasonId
+      type: string
+      index: 1
+- kind: Message
+  name: AdminRestoreSeasonResponse
 - kind: RemoteCallsGroup
   name: ProductShowNodeRemoteCalls
   service: ProductNodeService
@@ -174,5 +193,13 @@
       path: /ListSeasonRecentPremiereTimeUpdatingTasks
       body: ListSeasonRecentPremiereTimeUpdatingTasksRequestBody
       response: ListSeasonRecentPremiereTimeUpdatingTasksResponse
+    - name: AdminTakeDownSeason
+      path: /AdminTakeDownSeason
+      body: AdminTakeDownSeasonRequestBody
+      response: AdminTakeDownSeasonResponse
+    - name: AdminRestoreSeason
+      path: /AdminRestoreSeason
+      body: AdminRestoreSeasonRequestBody
+      response: AdminRestoreSeasonResponse
   outputClient: ./show/node/client
   outputHandler: ./show/node/handler

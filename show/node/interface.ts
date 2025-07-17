@@ -287,6 +287,53 @@ export let LIST_SEASON_RECENT_PREMIERE_TIME_UPDATING_TASKS_RESPONSE: MessageDesc
   }],
 };
 
+export interface AdminTakeDownSeasonRequestBody {
+  seasonId?: string,
+  reason?: string,
+}
+
+export let ADMIN_TAKE_DOWN_SEASON_REQUEST_BODY: MessageDescriptor<AdminTakeDownSeasonRequestBody> = {
+  name: 'AdminTakeDownSeasonRequestBody',
+  fields: [{
+    name: 'seasonId',
+    index: 1,
+    primitiveType: PrimitiveType.STRING,
+  }, {
+    name: 'reason',
+    index: 2,
+    primitiveType: PrimitiveType.STRING,
+  }],
+};
+
+export interface AdminTakeDownSeasonResponse {
+}
+
+export let ADMIN_TAKE_DOWN_SEASON_RESPONSE: MessageDescriptor<AdminTakeDownSeasonResponse> = {
+  name: 'AdminTakeDownSeasonResponse',
+  fields: [],
+};
+
+export interface AdminRestoreSeasonRequestBody {
+  seasonId?: string,
+}
+
+export let ADMIN_RESTORE_SEASON_REQUEST_BODY: MessageDescriptor<AdminRestoreSeasonRequestBody> = {
+  name: 'AdminRestoreSeasonRequestBody',
+  fields: [{
+    name: 'seasonId',
+    index: 1,
+    primitiveType: PrimitiveType.STRING,
+  }],
+};
+
+export interface AdminRestoreSeasonResponse {
+}
+
+export let ADMIN_RESTORE_SEASON_RESPONSE: MessageDescriptor<AdminRestoreSeasonResponse> = {
+  name: 'AdminRestoreSeasonResponse',
+  fields: [],
+};
+
 export let GET_SEASON_PUBLISHER: RemoteCallDescriptor = {
   name: "GetSeasonPublisher",
   service: PRODUCT_NODE_SERVICE,
@@ -416,5 +463,29 @@ export let LIST_SEASON_RECENT_PREMIERE_TIME_UPDATING_TASKS: RemoteCallDescriptor
   },
   response: {
     messageType: LIST_SEASON_RECENT_PREMIERE_TIME_UPDATING_TASKS_RESPONSE,
+  },
+}
+
+export let ADMIN_TAKE_DOWN_SEASON: RemoteCallDescriptor = {
+  name: "AdminTakeDownSeason",
+  service: PRODUCT_NODE_SERVICE,
+  path: "/s/AdminTakeDownSeason",
+  body: {
+    messageType: ADMIN_TAKE_DOWN_SEASON_REQUEST_BODY,
+  },
+  response: {
+    messageType: ADMIN_TAKE_DOWN_SEASON_RESPONSE,
+  },
+}
+
+export let ADMIN_RESTORE_SEASON: RemoteCallDescriptor = {
+  name: "AdminRestoreSeason",
+  service: PRODUCT_NODE_SERVICE,
+  path: "/s/AdminRestoreSeason",
+  body: {
+    messageType: ADMIN_RESTORE_SEASON_REQUEST_BODY,
+  },
+  response: {
+    messageType: ADMIN_RESTORE_SEASON_RESPONSE,
   },
 }

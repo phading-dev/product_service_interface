@@ -1,6 +1,7 @@
 import { PrimitiveType, MessageDescriptor } from '@selfage/message/descriptor';
 import { VideoContainerCached, VIDEO_CONTAINER_CACHED } from '../../video_container_cached';
 import { EpisodeState, EPISODE_STATE } from '../../episode_state';
+import { SeasonState, SEASON_STATE } from '../../season_state';
 
 export interface EpisodeSummary {
   episodeId?: string,
@@ -51,6 +52,7 @@ export interface SeasonSummary {
   coverImageUrl?: string,
   totalPublishedEpisodes?: number,
   grade?: number,
+  state?: SeasonState,
   lastChangeTimeMs?: number,
   averageRating?: number,
   ratingsCount?: number,
@@ -79,16 +81,20 @@ export let SEASON_SUMMARY: MessageDescriptor<SeasonSummary> = {
     index: 5,
     primitiveType: PrimitiveType.NUMBER,
   }, {
-    name: 'lastChangeTimeMs',
+    name: 'state',
     index: 6,
-    primitiveType: PrimitiveType.NUMBER,
+    enumType: SEASON_STATE,
   }, {
-    name: 'averageRating',
+    name: 'lastChangeTimeMs',
     index: 7,
     primitiveType: PrimitiveType.NUMBER,
   }, {
-    name: 'ratingsCount',
+    name: 'averageRating',
     index: 8,
+    primitiveType: PrimitiveType.NUMBER,
+  }, {
+    name: 'ratingsCount',
+    index: 9,
     primitiveType: PrimitiveType.NUMBER,
   }],
 };

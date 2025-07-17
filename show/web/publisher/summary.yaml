@@ -42,12 +42,16 @@
     - name: grade
       type: number
       index: 5
+    - name: state
+      type: SeasonState
+      import: ./show/season_state
+      index: 6
     - name: lastChangeTimeMs
       type: number
-      index: 6
+      index: 7
     - name: averageRating
       type: number
-      index: 7
+      index: 8
     - name: ratingsCount
       type: number
-      index: 8
+      index: 9
