@@ -53,6 +53,7 @@ export interface SeasonSummary {
   totalPublishedEpisodes?: number,
   grade?: number,
   state?: SeasonState,
+  takeDownReason?: string,
   lastChangeTimeMs?: number,
   averageRating?: number,
   ratingsCount?: number,
@@ -85,16 +86,20 @@ export let SEASON_SUMMARY: MessageDescriptor<SeasonSummary> = {
     index: 6,
     enumType: SEASON_STATE,
   }, {
-    name: 'lastChangeTimeMs',
+    name: 'takeDownReason',
     index: 7,
-    primitiveType: PrimitiveType.NUMBER,
+    primitiveType: PrimitiveType.STRING,
   }, {
-    name: 'averageRating',
+    name: 'lastChangeTimeMs',
     index: 8,
     primitiveType: PrimitiveType.NUMBER,
   }, {
-    name: 'ratingsCount',
+    name: 'averageRating',
     index: 9,
+    primitiveType: PrimitiveType.NUMBER,
+  }, {
+    name: 'ratingsCount',
+    index: 10,
     primitiveType: PrimitiveType.NUMBER,
   }],
 };

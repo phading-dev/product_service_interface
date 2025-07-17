@@ -1,6 +1,6 @@
 {
   "name": "@phading/product_service_interface",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "The interface of ProductService.",
   "repository": {
     "type": "git",
