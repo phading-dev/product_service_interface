@@ -46,15 +46,12 @@
       type: SeasonState
       import: ./show/season_state
       index: 6
-    - name: takeDownReason
-      type: string
-      index: 7
     - name: lastChangeTimeMs
       type: number
-      index: 8
+      index: 7
     - name: averageRating
       type: number
-      index: 9
+      index: 8
     - name: ratingsCount
       type: number
-      index: 10
+      index: 9

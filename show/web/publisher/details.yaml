@@ -74,6 +74,9 @@
       type: SeasonState
       import: ./show/season_state
       index: 9
+    - name: takeDownReason
+      type: string
+      index: 10
     - name: averageRating
       type: number
-      index: 10
+      index: 11

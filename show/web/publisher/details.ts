@@ -90,6 +90,7 @@ export interface SeasonDetails {
   createdTimeMs?: number,
   lastChangeTimeMs?: number,
   state?: SeasonState,
+  takeDownReason?: string,
   averageRating?: number,
 }
 
@@ -132,8 +133,12 @@ export let SEASON_DETAILS: MessageDescriptor<SeasonDetails> = {
     index: 9,
     enumType: SEASON_STATE,
   }, {
-    name: 'averageRating',
+    name: 'takeDownReason',
     index: 10,
+    primitiveType: PrimitiveType.STRING,
+  }, {
+    name: 'averageRating',
+    index: 11,
     primitiveType: PrimitiveType.NUMBER,
   }],
 };
